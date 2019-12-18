@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="线性规划与单纯形法, CUG Information Management and Information System">
-    <meta name="description" content="线性规划问题及其数学模型一、问题的提出&amp;emsp;&amp;emsp;共同特征:&amp;emsp;&amp;emsp;(1) 每一个问题都用一组决策变量 $(x_1,x_2,···,x_n)$ 表示某一方案，这组决策变量的值就代表一个具体方案。一般这些变量取值是">
+    <meta name="keywords" content="行列式, CUG Information Management and Information System">
+    <meta name="description" content="一、二阶与三阶行列式$\left| \begin{matrix}a_{11} &amp;amp; a_{12}\\ a_{21} &amp;amp; a_{22}\end{matrix} \right|=a_{11}a_{22}-a_{12}a_{21}$">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>线性规划与单纯形法 | Destin Histoire的博客</title>
+    <title>行列式 | Destin Histoire的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -304,13 +304,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        线性规划与单纯形法
+                        行列式
                     </div>
                 </div>
             </div>
@@ -428,8 +428,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E8%BF%90%E7%AD%B9%E5%AD%A6/">
-                                <span class="chip bg-color">运筹学</span>
+                            <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
+                                <span class="chip bg-color">线性代数</span>
                             </a>
                         
                     </div>
@@ -453,7 +453,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-05
+                    2019-12-18
                 </div>
                 
 
@@ -470,25 +470,13 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="线性规划问题及其数学模型"><a href="#线性规划问题及其数学模型" class="headerlink" title="线性规划问题及其数学模型"></a>线性规划问题及其数学模型</h2><h3 id="一、问题的提出"><a href="#一、问题的提出" class="headerlink" title="一、问题的提出"></a>一、问题的提出</h3><p>&emsp;&emsp;共同特征:<br>&emsp;&emsp;(1) 每一个问题都<strong>用一组决策变量 $(x_1,x_2,···,x_n)$ 表示某一方案</strong>，这组决策变量的值就代表一个具体方案。一般这些变量取值是非负且连续的。<br>&emsp;&emsp;(2) 要<strong>有建模的有关数据</strong>，如资源拥有量、消耗资源定额、创造新价值量等，并构成互不矛盾的约束条件，这些约束条件可以用一组线性等式或线性不等式来表示。<br>&emsp;&emsp;(3) 都<strong>有一个要求达到的目标</strong>，它可用决策变量及其有关的价值系数构成的线性函数(称为目标函数)来表示。按问题的不同,要求目标函数实现最大化或最小化。<br>&emsp;&emsp;满足以上三个条件的数学模型称为线性规划的数学模型。其一般形式为<br>$$<br>\max(\min) z=c_1x_1+c_2x_2+···+x_nx_n\tag{2-1}<br>$$</p>
-<p>$$<br>\begin{cases} a_{11}x_1+a_{12}x_2+···+a_{1n}x_n\leq(=,\geq)b_1 \\ a_{21}x_1+a_{22}x_2+···+a_{2n}x_n\leq(=,\geq)b_2 \\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \    \vdots \\a_{m1}x_1+a_{m2}x_2+···+a_{mn}\leq(=,\geq)b_m \\x_1,x_2,···,x_n\geq 0\tag{2-2}  \end{cases}<br>$$</p>
-<p>&emsp;&emsp;在线性规划的数学模型中，式 (2-1) 称为目标函数；$c_j$为价值系数；式 (2-2) 称为约束条件；$a_{ij}$ 称为技术系数，$b_i$ 称为限额系数。一般情况下 $m&lt;n$。</p>
-<h3 id="二、图解法"><a href="#二、图解法" class="headerlink" title="二、图解法"></a>二、图解法</h3><p>&emsp;&emsp;图解法简单直观，求解线性规划问题时不需将数学模型化为标准型，可以直接在平面上作图，但此法只适用于二维问题，故有一定局限性。</p>
-<h4 id="1-无穷多最优解（多重最优解）"><a href="#1-无穷多最优解（多重最优解）" class="headerlink" title="1.无穷多最优解（多重最优解）"></a>1.无穷多最优解（多重最优解）</h4><p>&emsp;&emsp;参数 $z$ 的平行直线与约束条件的边界线平行。</p>
-<h4 id="2-无界解"><a href="#2-无界解" class="headerlink" title="2.无界解"></a>2.无界解</h4><p>&emsp;&emsp;问题可行域无界，目标函数值可以增大到无穷大。称这种情况为无界解。</p>
-<h4 id="3-无可行解"><a href="#3-无可行解" class="headerlink" title="3.无可行解"></a>3.无可行解</h4><p>&emsp;&emsp;问题的可行域为空集，既无可行解，也不存在最优解。</p>
-<h3 id="三、线性规划问题的标准形式"><a href="#三、线性规划问题的标准形式" class="headerlink" title="三、线性规划问题的标准形式"></a>三、线性规划问题的标准形式</h3><h4 id="1-线性规划问题的标准形式"><a href="#1-线性规划问题的标准形式" class="headerlink" title="1.线性规划问题的标准形式"></a>1.线性规划问题的标准形式</h4><p>$$<br>(M_1)\max\ z=c_1x_1+c_2x_2+···+c_nx_n  \\ \begin{cases}a_{11}x_1+a_{12}x_2+···+a_{1n}x_n =b_1  \\a_{21}x_1+a_{22}x_2+···+a_{2n}x_n =b_2  \\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \vdots \\a_{m1}x_1+a_{m2}x_2+···+a_{mn}x_n=b_m\\x_1,x_2,···,x_n\geq 0 \end{cases}<br>$$</p>
-<p>$$<br>(M_1’)\max\ z=\sum\limits_{j=1}^{n}c_jx_j \\ \begin{cases} \sum\limits_{j=1}^{n}a_{ij}x_j=b_i,i=1,2,···，m  \\ x_j\geq 0,j=1,2,···,n \end{cases}<br>$$</p>
-<p>&emsp;&emsp;在标准形式中规定各约束条件的右端项 $b_i&gt;0$，否则等式两端乘以 $“-1”$。  </p>
-<p>&emsp;&emsp;用向量和矩阵符号表述时为<br>$$<br>(M_1’’)\max=\textbf{CX} \\ \begin{cases} \sum\limits_{j=1}^{n}\textbf{P}_jx_j=\textbf{b} \\ x_j\geq 0,j=1,2,···,n\end{cases}<br>$$<br>&emsp;&emsp;约定：$\textbf{C}=(c_1,c_2,···,c_n)$，向量 $\textbf{P}_j$ 对应的决策变量是 $x_j$。<br>$$<br>\textbf{X}=\begin{bmatrix}x_1 \\x_2 \\ \vdots \\x_n \end{bmatrix};<br>\textbf{P}_j=\begin{bmatrix}a_{1j} \\a_{2j} \\ \vdots \\a_{mj} \end{bmatrix};<br>\textbf{b}=\begin{bmatrix}b_1 \\b_2 \\ \vdots \\b_m \end{bmatrix};<br>$$<br>&emsp;&emsp;用矩阵描述时为<br>$$<br>\max z=\textbf{CX} \\ \textbf{AX}=\textbf{b} \\ \textbf{X}\geq 0<br>$$<br>&emsp;&emsp;其中<br>$$<br>\textbf{A}=\begin{bmatrix}a_{11} &amp; a_{12} &amp;\dots &amp; a_{1n} \\ \vdots &amp; \vdots &amp; &amp;\vdots \\a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn} \end{bmatrix}=(\textbf{P}_1,\textbf{P}_2,\cdots,\textbf{P}_n);\textbf{O}=\begin{bmatrix}0 \\0 \\ \vdots \\0 \end{bmatrix};<br>$$<br>&emsp;&emsp;$\textbf{A}$——约束条件的 $m\times n$ 维系数矩阵，一般有 $m&lt;n$；</p>
-<p>&emsp;&emsp;$\textbf{b}$——资源向量；</p>
-<p>&emsp;&emsp;$\textbf{C}$——价值向量；</p>
-<p>&emsp;&emsp;$\textbf{X}$——决策变量向量。</p>
-<h4 id="2-数学模型化为标准型"><a href="#2-数学模型化为标准型" class="headerlink" title="2.数学模型化为标准型"></a>2.数学模型化为标准型</h4><p>$(1)$ 若要求目标函数实现最小化，则<br>$$<br>\min z=-\max\ z’(令\ z’=-z)<br>$$<br>使目标函数同标准型一致。</p>
-<p>$(2)$若约束方程为不等式，有两种情况：  </p>
-<p>若约束方程为$“\leq”$不等式，左端$+$松弛变量$(\geq0)=$右端</p>
-<p>若约束方程为$“\geq”$不等式，左端$-$剩余变量$(\geq0)=$右端</p>
-<p>$(3)$若存在取值无约束的变量 $x_k(1\leq k\leq n)$，则在标准型中<br>$$<br>x_k=x’_k-x’’_k(其中 x_k=x’,x’’_k\geq 0)<br>$$</p>
+                <h2 id="一、二阶与三阶行列式"><a href="#一、二阶与三阶行列式" class="headerlink" title="一、二阶与三阶行列式"></a>一、二阶与三阶行列式</h2><p>$\left| \begin{matrix}a_{11} &amp; a_{12}\\ a_{21} &amp; a_{22}\end{matrix} \right|=a_{11}a_{22}-a_{12}a_{21}$</p>
+<p>$\left| \begin{matrix}a_{11} &amp; a_{12} &amp; a_{13} \\ a_{21} &amp; a_{22} &amp; a_{23} \\ a_{31} &amp; a_{32} &amp; a_{33}\end{matrix} \right|=a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{12}a_{21}a_{33}-a_{11}a_{23}a_{32}$</p>
+<h2 id="二、排列与逆序数"><a href="#二、排列与逆序数" class="headerlink" title="二、排列与逆序数"></a>二、排列与逆序数</h2><p>$1.$把 $n$ 个不同的元素排成一列，叫做这 $n$ 个元素的全排列（也简称排列）。$n$ 个不同元素的所有排列的种数，通常用 $P_n$ 表示：$P_n=n·(n-1)·\dots·3·2·1=n!$  </p>
+<p>$2.$</p>
+<h2 id="三、-n-阶行列式的定义"><a href="#三、-n-阶行列式的定义" class="headerlink" title="三、$n$ 阶行列式的定义"></a>三、$n$ 阶行列式的定义</h2><p>$1.$ $n$ 阶行列式用  </p>
+<p>$D=\left| \begin{matrix}a_{11} &amp; a_{12} &amp;\dots &amp; a_{1n} \\ a_{21} &amp; a_{22} &amp; \dots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; &amp; \vdots \\ a_{n1} &amp; a_{n2} &amp; \cdots &amp;  a_{nn}\end{matrix} \right|=a_{11}a_{22}-a_{12}a_{21}$ 表示，也可简单记作 $D=|a_{ij}|$。</p>
+<p>$2.$ </p>
 
             </div>
             <hr/>
@@ -514,7 +502,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2019/12/05/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E4%B8%8E%E5%8D%95%E7%BA%AF%E5%BD%A2%E6%B3%95/">http://yoursite.com/2019/12/05/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E4%B8%8E%E5%8D%95%E7%BA%AF%E5%BD%A2%E6%B3%95/</a>
+                    <a href="http://yoursite.com/2019/12/18/%E8%A1%8C%E5%88%97%E5%BC%8F/">http://yoursite.com/2019/12/18/%E8%A1%8C%E5%88%97%E5%BC%8F/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -552,8 +540,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E8%BF%90%E7%AD%B9%E5%AD%A6/">
-                                    <span class="chip bg-color">运筹学</span>
+                                <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
+                                    <span class="chip bg-color">线性代数</span>
                                 </a>
                             
                         </div>
@@ -719,9 +707,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/12/18/%E8%A1%8C%E5%88%97%E5%BC%8F/">
                     <div class="card-image">
@@ -739,9 +728,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-12-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -754,6 +743,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -769,7 +759,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2019/12/05/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E4%B8%8E%E5%8D%95%E7%BA%AF%E5%BD%A2%E6%B3%95/">
@@ -803,7 +793,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
