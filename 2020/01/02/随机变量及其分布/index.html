@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="随机变量及其分布, CUG Information Management and Information System">
-    <meta name="description" content="2.1    随机变量与分布函数2.1.1    随机变量&amp;emsp;&amp;emsp;设 $E$ 是一个随机试验，其样本空间为 $\Omega={\omega}$，如果对于每一个样本点 $\omega\in\Omega$，都有唯一的一个实数 $">
+    <meta name="description" content="2.1    随机变量与分布函数2.1.1    随机变量&amp;emsp;&amp;emsp;设 $E$ 是一个随机试验，其样本空间为 $\Omega=\{\omega\}$，如果对于每一个样本点 $\omega\in\Omega$，都有唯一的一个实数">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -470,19 +470,19 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="2-1-随机变量与分布函数"><a href="#2-1-随机变量与分布函数" class="headerlink" title="2.1    随机变量与分布函数"></a>2.1    随机变量与分布函数</h1><h2 id="2-1-1-随机变量"><a href="#2-1-1-随机变量" class="headerlink" title="2.1.1    随机变量"></a>2.1.1    随机变量</h2><p>&emsp;&emsp;设 $E$ 是一个随机试验，其样本空间为 $\Omega={\omega}$，如果对于每一个样本点 $\omega\in\Omega$，都有唯一的一个实数 $X(\omega)$ 与之对应，则称 $X(\omega)$ 为一维随机变量。通常用 $X,Y,Z,···$ 表示随机变量。  </p>
-<h2 id="2-1-2-分布函数"><a href="#2-1-2-分布函数" class="headerlink" title="2.1.2    分布函数"></a>2.1.2    分布函数</h2><p><strong>定义</strong>：设 $X$ 是随机变量，$x$ 是任意的实数，称函数 $F(x)=P{X\leq x},-\infty&lt;x&lt;+\infty$ ，是随机变量 $X$ 的<strong>分布函数</strong>。</p>
-<p>&emsp;&emsp;随机变量 $X$ 的分布函数 $F(x)$，通常称为 $“X$ 服从分布函数 $F(x)”$，并可记为 $X\sim F(x)$。当 $F(x)$ 已知时，对任意的实数 $a,b$，显然有 $P{a&lt;X\leq b}=F(b)-F(a)$。</p>
+                <h1 id="2-1-随机变量与分布函数"><a href="#2-1-随机变量与分布函数" class="headerlink" title="2.1    随机变量与分布函数"></a>2.1    随机变量与分布函数</h1><h2 id="2-1-1-随机变量"><a href="#2-1-1-随机变量" class="headerlink" title="2.1.1    随机变量"></a>2.1.1    随机变量</h2><p>&emsp;&emsp;设 $E$ 是一个随机试验，其样本空间为 $\Omega=\{\omega\}$，如果对于每一个样本点 $\omega\in\Omega$，都有唯一的一个实数 $X(\omega)$ 与之对应，则称 $X(\omega)$ 为一维随机变量。通常用 $X,Y,Z,···$ 表示随机变量。  </p>
+<h2 id="2-1-2-分布函数"><a href="#2-1-2-分布函数" class="headerlink" title="2.1.2    分布函数"></a>2.1.2    分布函数</h2><p><strong>定义</strong>：设 $X$ 是随机变量，$x$ 是任意的实数，称函数 $F(x)=P\{X\leq x\},-\infty&lt;x&lt;+\infty$ ，是随机变量 $X$ 的<strong>分布函数</strong>。</p>
+<p>&emsp;&emsp;随机变量 $X$ 的分布函数 $F(x)$，通常称为 $“X$ 服从分布函数 $F(x)”$，并可记为 $X\sim F(x)$。当 $F(x)$ 已知时，对任意的实数 $a,b$，显然有 $P\{a&lt;X\leq b\}=F(b)-F(a)$。</p>
 <p><strong>基本性质</strong>：</p>
-<p>$(1)$ <strong>有界性</strong>：$0\leq F(x)\leq 1$，且 $F(+\infty)=\lim\limits<em>{x\rightarrow +\infty}F(x)=1,F(-\infty)=\lim\limits</em>{x\rightarrow -\infty}F(x)=0,$ </p>
+<p>$(1)$ <strong>有界性</strong>：$0\leq F(x)\leq 1$，且 $F(+\infty)=\lim\limits_{x\rightarrow +\infty}F(x)=1,F(-\infty)=\lim\limits_{x\rightarrow -\infty}F(x)=0,$ </p>
 <p>$(2)$ <strong>单调性</strong>：$F(x)$ 是一个单调不减的函数，即当 $x_1&lt;x_2$ 时，$F(x_1)\leq F(x_2)$。</p>
-<p>$(3)$ <strong>连续性</strong>：$F(x<em>0+0)=\lim\limits</em>{t\rightarrow x_0^+}F(t)=F(x_0)$  </p>
+<p>$(3)$ <strong>连续性</strong>：$F(x_0+0)=\lim\limits_{t\rightarrow x_0^+}F(t)=F(x_0)$  </p>
 <p>$(4)$ $P(X&gt;x)=1-P(X\leq x)=1-F(x)$  </p>
 <p>$(5)$ $P(X=x)=F(x)-F(x-0)$  </p>
 <p>$(6)$ $P(X&lt;x)=P(X\leq x)-P(X=x)$ </p>
 <p>$(7)$ $P(X\geq x)=1-P(X&lt;x)=1-F(x-0)$</p>
 <h1 id="2-2-离散型随机变量及其分布函数"><a href="#2-2-离散型随机变量及其分布函数" class="headerlink" title="2.2    离散型随机变量及其分布函数"></a>2.2    离散型随机变量及其分布函数</h1><h2 id="2-2-1-定义与基本概念"><a href="#2-2-1-定义与基本概念" class="headerlink" title="2.2.1    定义与基本概念"></a>2.2.1    定义与基本概念</h2><p><strong>离散型随机变量</strong>：若离散型随机变量 $X$ 的全部可能取值是有限个或无限可列个，则称 $X$ 为离散型随机变量。</p>
-<p><strong>分布律(分布列)</strong>：离散型随机变量 $X$ 所有可能的取值为 $x_k(k=1,2,···)$，事件 ${X=x_k}$ 的概率为 $P{X=x_k}=p_k(k=1,2,···)$，则称 $P{X=x_k}=p_k(k=1,2,···)$ 为 $X$ 的<strong>分布律</strong>或<strong>分布列</strong>。分布律也可以写成表格形式：  </p>
+<p><strong>分布律(分布列)</strong>：离散型随机变量 $X$ 所有可能的取值为 $x_k(k=1,2,···)$，事件 $\{X=x_k\}$ 的概率为 $P\{X=x_k\}=p_k(k=1,2,···)$，则称 $P\{X=x_k\}=p_k(k=1,2,···)$ 为 $X$ 的<strong>分布律</strong>或<strong>分布列</strong>。分布律也可以写成表格形式：  </p>
 <div class="table-container">
 <table>
 <thead>
@@ -508,12 +508,12 @@
 </table>
 </div>
 <p><strong>离散型随机变量的分布律的性质</strong>：</p>
-<p>$(1)$ $P{X=x_k}=p_k\geq 0(k=1,2,···)$  </p>
+<p>$(1)$ $P\{X=x_k\}=p_k\geq 0(k=1,2,···)$  </p>
 <p>$(2)$ $\sum\limits_{k=1}^{\infty}p_k=1$ </p>
-<h2 id="2-2-2-几种常见的离散型随机变量"><a href="#2-2-2-几种常见的离散型随机变量" class="headerlink" title="2.2.2    几种常见的离散型随机变量"></a>2.2.2    几种常见的离散型随机变量</h2><h3 id="1-0-1-分布"><a href="#1-0-1-分布" class="headerlink" title="1.0 - 1 分布"></a>1.0 - 1 分布</h3><p>&emsp;&emsp;设随机变量 $X$ 表示伯努利试验中 “成功” 出现的次数，则 $X$ 取 $0,1$ 两个值，且 $P{X=k}=p_k=p^k(1-p)^{1-k}(k=0,1;0&lt;p&lt;1)$ ，即 $P(X=1)=p,P(x=0)=1-p$。</p>
-<h3 id="2-二项分布"><a href="#2-二项分布" class="headerlink" title="2.二项分布"></a>2.二项分布</h3><p>&emsp;&emsp;设在 $n$ 重伯努利试验中事件 $A$ 发生的次数为 $X$，则 $P{X=k}=C_n^kp^kq^{n-k},k=0,1,2,···,n$，其中 $p$ 为事件 $A$ 在每次试验中出现的概率，$q=1-p$，称随机变量 $X$ 服从二项分布，记为 $X\sim B(n,p)$。</p>
-<h3 id="3-泊松分布"><a href="#3-泊松分布" class="headerlink" title="3.泊松分布"></a>3.泊松分布</h3><p>&emsp;&emsp;设随机变量 $X$ 取值 $0,1,2,···$,且其分布列为 $P{X=k}=\frac{\lambda^ke^{-k}}{k!}(\lambda&gt;0;k=0,1,2,···)$，其中 $\lambda &gt;0$ 是常数，则称 $X$ 服从参数为 $\lambda$ 的泊松分布，记为 $X\sim \pi(\lambda)$ 或 $P(\lambda)$。</p>
-<p><strong>泊松定理</strong>：设随机变量 $X<em>n\sim B(n,p_n)$，若 $\lim\limits</em>{n\rightarrow\infty}np_n=\lambda&gt;0$，则有 </p>
+<h2 id="2-2-2-几种常见的离散型随机变量"><a href="#2-2-2-几种常见的离散型随机变量" class="headerlink" title="2.2.2    几种常见的离散型随机变量"></a>2.2.2    几种常见的离散型随机变量</h2><h3 id="1-0-1-分布"><a href="#1-0-1-分布" class="headerlink" title="1.0 - 1 分布"></a>1.0 - 1 分布</h3><p>&emsp;&emsp;设随机变量 $X$ 表示伯努利试验中 “成功” 出现的次数，则 $X$ 取 $0,1$ 两个值，且 $P\{X=k\}=p_k=p^k(1-p)^{1-k}(k=0,1;0&lt;p&lt;1)$ ，即 $P(X=1)=p,P(x=0)=1-p$。</p>
+<h3 id="2-二项分布"><a href="#2-二项分布" class="headerlink" title="2.二项分布"></a>2.二项分布</h3><p>&emsp;&emsp;设在 $n$ 重伯努利试验中事件 $A$ 发生的次数为 $X$，则 $P\{X=k\}=C_n^kp^kq^{n-k},k=0,1,2,···,n$，其中 $p$ 为事件 $A$ 在每次试验中出现的概率，$q=1-p$，称随机变量 $X$ 服从二项分布，记为 $X\sim B(n,p)$。</p>
+<h3 id="3-泊松分布"><a href="#3-泊松分布" class="headerlink" title="3.泊松分布"></a>3.泊松分布</h3><p>&emsp;&emsp;设随机变量 $X$ 取值 $0,1,2,···$,且其分布列为 $P\{X=k\}=\frac{\lambda^ke^{-k}}{k!}(\lambda&gt;0;k=0,1,2,···)$，其中 $\lambda &gt;0$ 是常数，则称 $X$ 服从参数为 $\lambda$ 的泊松分布，记为 $X\sim \pi(\lambda)$ 或 $P(\lambda)$。</p>
+<p><strong>泊松定理</strong>：设随机变量 $X_n\sim B(n,p_n)$，若 $\lim\limits_{n\rightarrow\infty}np_n=\lambda&gt;0$，则有 </p>
 <script type="math/tex; mode=display">
 \lim\limits_{n\rightarrow\infty}C_n^kp_n^k(1-p_n)^{n-k}=\frac{\lambda^k e^{-\lambda}}{k!}(k=1,2,···)</script><p>由泊松定理，当 $n$ 充分大时，二项分布可以用泊松分布作为近似。</p>
 <p><strong>证明</strong>  </p>
@@ -523,8 +523,8 @@ C_n^kp_n^k(1-p_n)^{n-k}=\frac{n(n-1)···(n-k+1)}{k}\left( \frac{\lambda_n}{n} 
 <script type="math/tex; mode=display">
 \lim\limits_{n\rightarrow\infty}\lambda_n^k=\lambda^k,\lim\limits_{n\rightarrow\infty}\left(1- \frac{\lambda_n}{n} \right)^{n-k}=e^{-k},\lim\limits_{n\rightarrow\infty}\left(1- \frac{1}{n} \right)\left(1-\frac{2}{n} \right)···\left(1- \frac{k-1}{n} \right)=1   \\</script><p>故有</p>
 <script type="math/tex; mode=display">
-\lim\limits_{n\rightarrow\infty}P_n(k)=\lim\limits_{n\rightarrow\infty}C_n^kp_n^k(1-p_n)^{n-k}=\frac{\lambda^k e^{-\lambda}}{k!}(k=1,2,···)</script><h3 id="4-超几何分布"><a href="#4-超几何分布" class="headerlink" title="4.超几何分布"></a>4.超几何分布</h3><p>&emsp;&emsp;设随机变量 $X$ 的分布律为 $P{X=i}=\frac{C<em>M^iC</em>{N-M}^{n-i}}{C_N^n}(i=0,1,2,···,l;l=\min(n,M))$ ，其中 $M,N,n$ 都是自然数，且 $n&lt;N,M&lt;N$，则称 $X$ 服从参数为 $N,M,n$ 的超几何分布，记作 $X\sim H(N,M,n)$。  </p>
-<h3 id="5-几何分布"><a href="#5-几何分布" class="headerlink" title="5.几何分布"></a>5.几何分布</h3><p>&emsp;&emsp;设随机变量 $X$ 的分布律为 $P{X=i}=p(1-p)^{i-1}(i=1,2,3,···)$，其中 $0&lt;p&lt;1$，则称 $X$ 服从参数为 $p$ 的几何分布，记为 $X\sim G(p)$。</p>
+\lim\limits_{n\rightarrow\infty}P_n(k)=\lim\limits_{n\rightarrow\infty}C_n^kp_n^k(1-p_n)^{n-k}=\frac{\lambda^k e^{-\lambda}}{k!}(k=1,2,···)</script><h3 id="4-超几何分布"><a href="#4-超几何分布" class="headerlink" title="4.超几何分布"></a>4.超几何分布</h3><p>&emsp;&emsp;设随机变量 $X$ 的分布律为 $P\{X=i\}=\frac{C_M^iC_{N-M}^{n-i}}{C_N^n}(i=0,1,2,···,l;l=\min(n,M))$ ，其中 $M,N,n$ 都是自然数，且 $n&lt;N,M&lt;N$，则称 $X$ 服从参数为 $N,M,n$ 的超几何分布，记作 $X\sim H(N,M,n)$。  </p>
+<h3 id="5-几何分布"><a href="#5-几何分布" class="headerlink" title="5.几何分布"></a>5.几何分布</h3><p>&emsp;&emsp;设随机变量 $X$ 的分布律为 $P\{X=i\}=p(1-p)^{i-1}(i=1,2,3,···)$，其中 $0&lt;p&lt;1$，则称 $X$ 服从参数为 $p$ 的几何分布，记为 $X\sim G(p)$。</p>
 <p>&emsp;&emsp;可以证明，当 $N\rightarrow+\infty$ 时，超几何分布以二项分布为极限，即当 $N$ 充分大，$n$ 相对较小时，$X$ 近似服从 $B\left( n,\frac{M}{N}  \right)$。</p>
 <h1 id="2-3-连续型随机变量及其分布函数"><a href="#2-3-连续型随机变量及其分布函数" class="headerlink" title="2.3    连续型随机变量及其分布函数"></a>2.3    连续型随机变量及其分布函数</h1><h2 id="2-3-1-定义与基本概念"><a href="#2-3-1-定义与基本概念" class="headerlink" title="2.3.1    定义与基本概念"></a>2.3.1    定义与基本概念</h2><p><strong>连续型随机变量的概率密度</strong>：如果对于随机变量 $X$ 的分布函数 $F(x)$，存在非负可积函数 $f(x)$ ，使得对任意实数 $x$，有 $F(x)=\displaystyle\int^{x}_{-\infty}{f(t)dt}$，则称 $X$ 为<strong>连续型随机变量</strong>，函数 $f(x)$ 称为 $X$ 的 <strong>概率密度</strong>（或<strong>分布密度</strong>）。</p>
 <p><strong>概率密度 $f(x)$ 的性质</strong>：  </p>
@@ -532,8 +532,8 @@ C_n^kp_n^k(1-p_n)^{n-k}=\frac{n(n-1)···(n-k+1)}{k}\left( \frac{\lambda_n}{n} 
 <p>$(2)$ <script type="math/tex">\displaystyle \int^{+\infty}_{-\infty}{f(x)dx}=1</script></p>
 <p><strong>连续型随机变量的概率密度与分布函数以及事件概率的关系</strong>：</p>
 <p>$(1)$ 若 $f(x)$ 在点 $x$ 处连续，则有 $F’(x)=f(x)$；</p>
-<p>$(2)$ $P{a&lt;X\leq b}=P{a&lt;X&lt;b}=P{a\leq X&lt;b}=P{a\leq X\leq b}=F(b)-F(a)=\displaystyle \int_{a}^bf(x)dx$；</p>
-<p>$(3)$ $P{X=a}=0(-\infty&lt;a&lt;+\infty)$  </p>
+<p>$(2)$ $P\{a&lt;X\leq b\}=P\{a&lt;X&lt;b\}=P\{a\leq X&lt;b\}=P\{a\leq X\leq b\}=F(b)-F(a)=\displaystyle \int_{a}^bf(x)dx$；</p>
+<p>$(3)$ $P\{X=a\}=0(-\infty&lt;a&lt;+\infty)$  </p>
 <h2 id="2-3-2-几种常见的连续型随机变量"><a href="#2-3-2-几种常见的连续型随机变量" class="headerlink" title="2.3.2    几种常见的连续型随机变量"></a>2.3.2    几种常见的连续型随机变量</h2><h3 id="1-均匀分布"><a href="#1-均匀分布" class="headerlink" title="1.均匀分布"></a>1.均匀分布</h3><p>&emsp;&emsp;若连续型随机变量 $X$ 的概率密度为  </p>
 <script type="math/tex; mode=display">
 f(x)=\begin{cases} \frac{1}{b-a} & a\leq x\leq b \\ 0 & 其他 \end{cases}</script><p>则称 $X$ 服从 $[a,b]$ 上的均匀分布，记为 $U\sim [a,b]$。  </p>
@@ -543,14 +543,14 @@ f(x)=\begin{cases} \lambda e^{-\lambda x} & x>0 \\ 0 & 其他 \end{cases}</scrip
 <h3 id="3-正态分布"><a href="#3-正态分布" class="headerlink" title="3.正态分布"></a>3.正态分布</h3><p>&emsp;&emsp;若连续型随机变量 $X$ 的概率密度函数为   </p>
 <script type="math/tex; mode=display">
 f(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}(-\infty<x<+\infty)</script><p>其中 $\mu$ 与 $\sigma$ 都是常数，$\sigma&gt;0$ ，则称 $X$ 服从参数为 $\mu$ 和 $\sigma$ 的正态分布。简记为 $X\sim N(\mu,\sigma^2)$。</p>
-<p>&emsp;&emsp;性质：$P{X\leq \mu}=P{X&gt;\mu}=\frac{1}{2}$  </p>
+<p>&emsp;&emsp;性质：$P\{X\leq \mu\}=P\{X&gt;\mu\}=\frac{1}{2}$  </p>
 <h3 id="4-标准正态分布"><a href="#4-标准正态分布" class="headerlink" title="4.标准正态分布"></a>4.标准正态分布</h3><p>&emsp;&emsp;当 $\mu=0,\sigma=1$ 时称 $X$ 服从标准正态分布，简记为 $X\sim N(0,1)$，其概率密度函数和分布函数分别用 $\phi(x),\Phi(x)$ 表示，即有</p>
 <script type="math/tex; mode=display">
 \phi(x)=\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}} \\  
 \Phi(x)=\frac{1}{\sqrt{2\pi}}\displaystyle\int_{-\infty}^xe^{-\frac{t^2}{2}}dt</script><p><strong>性质1</strong>：$\Phi(-x)=1-\Phi(x)$  </p>
 <p><strong>性质2</strong>：当 $X\sim N(\mu,\sigma^2)$ 时，$U=\frac{X-\mu}{\sigma}\sim N(0,1)$，即 $F(x)=\Phi(\frac{x-\mu}{\sigma})$</p>
 <h1 id="2-4-随机变量函数的分布"><a href="#2-4-随机变量函数的分布" class="headerlink" title="2.4    随机变量函数的分布"></a>2.4    随机变量函数的分布</h1><p>$1.$ 离散型随机变量函数的分布</p>
-<p>&emsp;&emsp;设随机变量 $X$ 的分布律为 $P{X=x_k}=p_k,k=1,2,3,···$，则当 $Y=g(X)$ 的所有取值为 $y_j(j=1,2,···)$ 时，随机变量 $Y$ 有分布律  </p>
+<p>&emsp;&emsp;设随机变量 $X$ 的分布律为 $P\{X=x_k\}=p_k,k=1,2,3,···$，则当 $Y=g(X)$ 的所有取值为 $y_j(j=1,2,···)$ 时，随机变量 $Y$ 有分布律  </p>
 <script type="math/tex; mode=display">
 P\{Y=y_j\}=\sum\limits_{g(x_k)=y_j} P\{X=x_k\}</script><p>$2.$ 连续型随机变量函数的分布</p>
 <p><strong>方法一</strong>：设随机变量 $X$ 的概率密度为 $f_X(x)(-\infty&lt;x&lt;+\infty)$，那么 $Y=g(X)$ 的分布函数为  </p>
@@ -558,17 +558,17 @@ P\{Y=y_j\}=\sum\limits_{g(x_k)=y_j} P\{X=x_k\}</script><p>$2.$ 连续型随机�
 F_Y(y)=P\{Y\leq y\}=P\{g(X)\leq y\}=\displaystyle\int\limits_{g(x)\leq y}f_X(x)dx,</script><p>其概率密度为 $f_Y(y)=F’_Y(y)$。</p>
 <p><strong>方法二</strong>：设随机变量 $X$ 具有概率密度函数 $f_X(x)(-\infty&lt;x&lt;+\infty),g(x)$ 为 $(-\infty,+\infty)$ 内的严格单调的可导函数，则随机变量 $Y=g(X)$ 的概率密度为</p>
 <script type="math/tex; mode=display">
-f_Y(y)=\begin{cases} f_X[h(y)]|h'(y)| & \alpha<y< \beta \\   0 & 其他  \end{cases}</script><p>其中 $h(y)$ 是 $g(x)$ 的反函数，$\alpha=\min{g(-\infty),g(+\infty)},\beta=\max{g(-\infty),g(+\infty)}$</p>
-<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p>$1.$ 设离散型随机变量 $X$ 的分布律为：$P{X=k}=b\lambda ^k(k=1,2,3,···)$，且 $b&gt;0$，则 $\lambda=\underline{\frac{1}{1+b}}$</p>
+f_Y(y)=\begin{cases} f_X[h(y)]|h'(y)| & \alpha<y< \beta \\   0 & 其他  \end{cases}</script><p>其中 $h(y)$ 是 $g(x)$ 的反函数，$\alpha=\min\{g(-\infty),g(+\infty)\},\beta=\max\{g(-\infty),g(+\infty)\}$</p>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p>$1.$ 设离散型随机变量 $X$ 的分布律为：$P\{X=k\}=b\lambda ^k(k=1,2,3,···)$，且 $b&gt;0$，则 $\lambda=\underline{\frac{1}{1+b}}$</p>
 <script type="math/tex; mode=display">
 \because \sum\limits_{k=1}^{\infty}P\{X=k\}=\sum\limits_{k=1}^{\infty}b\lambda^k=1 \\  
 \therefore 当|\lambda|<1时,b·\frac{\lambda}{1-\lambda}=1 \\  
-\therefore \lambda=\frac{1}{1+b}<1(b>0)</script><p>$2.$  设 $X$ 服从参数为 $\lambda$ 的泊松分布，$P{X=1}=P{X=2}$，则 $E(X)=\underline{2}$  </p>
+\therefore \lambda=\frac{1}{1+b}<1(b>0)</script><p>$2.$  设 $X$ 服从参数为 $\lambda$ 的泊松分布，$P\{X=1\}=P\{X=2\}$，则 $E(X)=\underline{2}$  </p>
 <script type="math/tex; mode=display">
 \because P\{X=1\}=P\{X=2\},P\{X=k\}=\frac{\lambda^ke^{-\lambda}}{k!}  \\  
 \therefore \lambda e^{-\lambda}=\frac{\lambda^2e^{-\lambda}}{2}  \\   
 \therefore \lambda^2-2\lambda=0  \\   
-\therefore \lambda=2</script><p>$3.$ 已知 $P{X=k}=c^{-1}\frac{\lambda^k}{k!}(k=1,2,···),\lambda&gt;0$，则 $c$ 的值为 $\underline{e^{\lambda}-1}$</p>
+\therefore \lambda=2</script><p>$3.$ 已知 $P\{X=k\}=c^{-1}\frac{\lambda^k}{k!}(k=1,2,···),\lambda&gt;0$，则 $c$ 的值为 $\underline{e^{\lambda}-1}$</p>
 <script type="math/tex; mode=display">
 \sum\limits_{k=0}^{\infty}\frac{\lambda^k}{k!}=e^\lambda  \\  
 \because \sum\limits_{k=1}^{\infty}c^{-1}\frac{\lambda^k}{k!}=c^{-1}(e^{\lambda}-1)=1  \\  \therefore  c=e^{\lambda}-1</script><p>$4.$ 已知连续型随机变量 $X$ 的概率密度函数为 $f(x)=Ce^{-x^2+2x-1}$，则 $C=\underline{\frac{1}{\sqrt\pi}}$   </p>
@@ -586,12 +586,12 @@ A.F(-a)=1-\displaystyle\int_{0}^{a}\phi(x)dx \ \ \ \ \ \ \  \ \ \ \ \  B.F(-a)=\
 F(-a)=\displaystyle\int_{-\infty}^{-a}\phi(x)dx\xlongequal{x=-t}-\displaystyle\int_{-\infty}^{a}\phi(t)dt=\displaystyle\int^{+\infty}_{a}\phi(x)dx  \\
 \because \displaystyle\int_{-\infty}^{+\infty}\phi(x)dx=1,\phi(-x)=\phi(x)   \\
 \begin{align}&\displaystyle\int_{-\infty}^{-a}\phi(x)dx+\displaystyle\int_{-a}^{0}\phi(x)dx  \\ =&\displaystyle\int_{0}^{a}\phi(x)dx+\displaystyle\int_{a}^{\infty}\phi(x)dx \\=&\frac{1}{2}\displaystyle\int_{-\infty}^{+\infty}\phi(x)dx \\ =&\frac{1}{2} \end{align}   \\  
-\therefore F(-a)=\frac{1}{2}-\displaystyle\int_{0}^{a}\phi(x)dx</script><p>$8.$ 设随机变量 $X$ 服从正态分布 $N(\mu_1,\sigma_1^2)$，$Y$ 服从正态分布 $N(\mu_2,\sigma_2^2)$，且 $P{|X-\mu_1|<1\}>P{|Y-\mu_2|&lt;1}$，则必有 $\underline{\sigma_1&lt;\sigma_2}$</1\}></p>
+\therefore F(-a)=\frac{1}{2}-\displaystyle\int_{0}^{a}\phi(x)dx</script><p>$8.$ 设随机变量 $X$ 服从正态分布 $N(\mu_1,\sigma_1^2)$，$Y$ 服从正态分布 $N(\mu_2,\sigma_2^2)$，且 $P\{|X-\mu_1|<1\}>P\{|Y-\mu_2|&lt;1\}$，则必有 $\underline{\sigma_1&lt;\sigma_2}$</1\}></p>
 <script type="math/tex; mode=display">
 解：P\{|X-\mu_1|<1\}>P\{|Y-\mu_2|<1\} 即 P\{\frac{-1}{\sigma_1}<\frac{X-\mu_1}{\sigma_1}<\frac{1}{\sigma_1}\}>P\{\frac{-1}{\sigma_2}<\frac{Y-\mu_2}{\sigma_2}<\frac{1}{\sigma_2}\}  \\  
 \therefore 2\Phi(\frac{1}{\sigma_1})-1>2\Phi(\frac{1}{\sigma_2})-1  \\  
 \therefore\Phi(\frac{1}{\sigma_1})>  \Phi(\frac{1}{\sigma_2}),\frac{1}{\sigma_1}>\frac{1}{\sigma_2}  \\  
-\therefore \sigma_2>\sigma_1</script><p>$9.$ 设随机变量 $X$ 在 $(0,1)$ 服从均匀分布，求 $(1)Y=e^X;(2)Z=-2\ln\ X$ 的密度函数。</p>
+\therefore \sigma_2>\sigma_1</script><p>$9.$ 设随机变量 $X$ 在 $(0,1)$ 服从均匀分布，求 $(1)Y=e^X;(2)Z=-2\ln X$ 的密度函数。</p>
 <p>解：</p>
 <script type="math/tex; mode=display">
 X 的密度函数为 f(x)=\begin{cases} 1 & 0<x<1 \\ 0 & x\leq0,x\geq 1 \end{cases} \\ 
@@ -863,8 +863,7 @@ G(y)=P\{Y\leq y\}=P\{1-e^{-2X}\leq y\}=\begin{cases}0 & y\leq 0 \\P\{X\leq-\frac
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            3.1    二维随机变量的概率分布$1.$ 二维随机变量：设 $E$ 是随机试验，样本空间 $\Omega={\omega}$，由 $X=X(\omega),Y=Y(\omega)$ 构成的向量 $(X,Y)$ 称为二维随机变量。  
-$
+                            3.1    二维随机变量的概率分布$1.$ 二维随机变量：设 $E$ 是随机试验，样本空间 $\Omega=\{\omega\}$，由 $X=X(\omega),Y=Y(\omega)$ 构成的向量 $(X,Y)$ 称为二维随机变量。  
                         
                     </div>
                     <div class="publish-info">
@@ -1249,6 +1248,22 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+//<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 
 	<script type="text/javascript"> var OriginTitile = document.title, st; 

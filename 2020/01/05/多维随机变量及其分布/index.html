@@ -5,8 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="多维随机变量及其分布, CUG Information Management and Information System">
-    <meta name="description" content="3.1    二维随机变量的概率分布$1.$ 二维随机变量：设 $E$ 是随机试验，样本空间 $\Omega={\omega}$，由 $X=X(\omega),Y=Y(\omega)$ 构成的向量 $(X,Y)$ 称为二维随机变量。  
-$">
+    <meta name="description" content="3.1    二维随机变量的概率分布$1.$ 二维随机变量：设 $E$ 是随机试验，样本空间 $\Omega=\{\omega\}$，由 $X=X(\omega),Y=Y(\omega)$ 构成的向量 $(X,Y)$ 称为二维随机变量。  ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -471,8 +470,8 @@ $">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="3-1-二维随机变量的概率分布"><a href="#3-1-二维随机变量的概率分布" class="headerlink" title="3.1    二维随机变量的概率分布"></a>3.1    二维随机变量的概率分布</h1><p>$1.$ <strong>二维随机变量</strong>：设 $E$ 是随机试验，样本空间 $\Omega={\omega}$，由 $X=X(\omega),Y=Y(\omega)$ 构成的向量 $(X,Y)$ 称为二维随机变量。  </p>
-<p>$2.$ <strong>联合分布函数</strong>：设 $(X,Y)$ 是二维随机变量，对于任意实数 $x,y$ ，称二元函数 $F(x,y)=P{X\leq x,Y\leq y}$ 为二维随机变量 $(X,Y)$ 的<strong>联合分布函数</strong>（或简称<strong>分布函数</strong>）。</p>
+                <h1 id="3-1-二维随机变量的概率分布"><a href="#3-1-二维随机变量的概率分布" class="headerlink" title="3.1    二维随机变量的概率分布"></a>3.1    二维随机变量的概率分布</h1><p>$1.$ <strong>二维随机变量</strong>：设 $E$ 是随机试验，样本空间 $\Omega=\{\omega\}$，由 $X=X(\omega),Y=Y(\omega)$ 构成的向量 $(X,Y)$ 称为二维随机变量。  </p>
+<p>$2.$ <strong>联合分布函数</strong>：设 $(X,Y)$ 是二维随机变量，对于任意实数 $x,y$ ，称二元函数 $F(x,y)=P\{X\leq x,Y\leq y\}$ 为二维随机变量 $(X,Y)$ 的<strong>联合分布函数</strong>（或简称<strong>分布函数</strong>）。</p>
 <p><strong>联合分布函数的性质</strong>：</p>
 <p>$(1)$ 单调性：$F(x,y)$ 分别对 $x$ 或 $y$ 是单调不减的，即  </p>
 <p>当 $x_1&lt;x_2$ 时，有 $F(x_1,y)\leq F(x_2,y)$；</p>
@@ -483,20 +482,20 @@ F(-\infty,y)=\lim\limits_{x\rightarrow-\infty}F(x,y)=0\ \ \ \ \ F(x,-\infty)=\li
 F(-\infty,-\infty)=\lim\limits_{x,y\rightarrow-\infty} F(x,y)=0\ \ \ \ \ F(+\infty,+\infty)=\lim\limits_{x,y\rightarrow+\infty}F(x,y)=1</script><p>$(3)$ 右连续型：对每个变量都是右连续的，即                                  </p>
 <script type="math/tex; mode=display">
 F(x+0,y)=F(x,y)\ \ \ \ \ F(x,y+0)=F(x,y)</script><p>$(4)$ 非负性：对于任意的 $x_1&lt;x_2,y_1&lt;y_2$ 有   </p>
-<p>$P{x_1&lt;X\leq x_2,y_1&lt;Y\leq y_2}=F(x_2,y_2)-F(x_1,y_2)-F(x_2,y_1)+F(x_1,y_1)\geq 0$</p>
+<p>$P\{x_1&lt;X\leq x_2,y_1&lt;Y\leq y_2\}=F(x_2,y_2)-F(x_1,y_2)-F(x_2,y_1)+F(x_1,y_1)\geq 0$</p>
 <p>$3.$ <strong>二维离散型随机变量</strong>   </p>
-<p>&emsp;&emsp;若 $(X,Y)$ 所有可能取值为 $(x<em>i,y_i),i,j=1,2,···$。则 $P{X=x_i,Y=y_i}=p</em>{ij}$ 称为<strong>联合分布律</strong>。  </p>
+<p>&emsp;&emsp;若 $(X,Y)$ 所有可能取值为 $(x_i,y_i),i,j=1,2,···$。则 $P\{X=x_i,Y=y_i\}=p_{ij}$ 称为<strong>联合分布律</strong>。  </p>
 <p><strong>联合分布律的性质</strong>：</p>
 <p>$(1)$ $p_{ij}\geq 0$ </p>
-<p>$(2)$ $\sum\limits<em>{i=1}^{\infty}\sum\limits</em>{j=1}^{\infty}p_{ij}=1$</p>
-<p>$(3)$ $P{(X,Y)\in G}=\sum\limits<em>{(x_i,y_i)\in G}p</em>{ij}$</p>
+<p>$(2)$ $\sum\limits_{i=1}^{\infty}\sum\limits_{j=1}^{\infty}p_{ij}=1$</p>
+<p>$(3)$ $P\{(X,Y)\in G\}=\sum\limits_{(x_i,y_i)\in G}p_{ij}$</p>
 <p>$4.$ <strong>二维连续型随机变量</strong></p>
-<p>&emsp;&emsp;若分布函数 $F(x,y)=\displaystyle\int<em>{-\infty}^{x}\displaystyle\int</em>{-\infty}^{y}f(u,v)dudv$，则称 $(X,Y)$ 是连续型随机变量，$f(x,y)$ 称为 $(X, Y)$ 的联合概率密度。</p>
+<p>&emsp;&emsp;若分布函数 $F(x,y)=\displaystyle\int_{-\infty}^{x}\displaystyle\int_{-\infty}^{y}f(u,v)dudv$，则称 $(X,Y)$ 是连续型随机变量，$f(x,y)$ 称为 $(X, Y)$ 的联合概率密度。</p>
 <p><strong>联合密度的性质</strong>：</p>
 <p>$(1)$ $f(x,y)\geq 0 $</p>
 <p>$(2)$ $\displaystyle\int_{-\infty}^{+\infty}f(x,y)dydx=1$  </p>
 <p>$(3)$ 若 $f(x,y)$ 在点 $(x,y)$ 处连续，则 $\frac{\partial^2F(x,y)}{\partial x\partial y}=f(x,y)$；</p>
-<p>$(4)$ 设 $G$ 是 $xOy$ 平面上一个区域，则 $P{(X,Y)\in G}=\displaystyle\iint\limits_{G}f(x,y)dxdy$  </p>
+<p>$(4)$ 设 $G$ 是 $xOy$ 平面上一个区域，则 $P\{(X,Y)\in G\}=\displaystyle\iint\limits_{G}f(x,y)dxdy$  </p>
 <p>$5.$ <strong>二维均匀分布</strong>  </p>
 <p>&emsp;&emsp;设 $D$ 是平面上面积为 $A$ 的区域，称 $(X,Y)$ 服从区域 $D$ 上的均匀分布是指它的概率密度函数为 </p>
 <script type="math/tex; mode=display">
@@ -506,18 +505,18 @@ f(x,y)=\begin{cases} \frac{1}{A} & (x,y)\in D \\0 & 其他  \end{cases}</script>
 f(x,y)=\frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}}e^{-\frac{1}{2(1-\rho^2)}[\frac{(x-\mu_1)^2}{\sigma_1^2}-2\rho\frac{(x-\mu_1)(y-\mu_2)}{\sigma_1\sigma_2}+\frac{(y-\mu_2)^2}{\sigma_2^2}]}</script><p>其中 $\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho$ 都是参数，且 $\sigma_1&gt;0,\sigma_2&gt;0,-\infty&lt;\mu_1,\mu_2&lt;+\infty,|\rho|&lt;1$，则称 $(X,Y)$ 服从参数 $\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho$ 的二维正态分布，记为 $(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$  </p>
 <p>性质：$(X,Y)\sim N(\mu_1,\sigma_1^2,\mu_2,\sigma_2^2,\rho)\Rightarrow X\sim(\mu_1,\sigma_1^2),Y\sim (\mu_2,\sigma_2^2)$。逆命题不成立。</p>
 <h1 id="3-2-边缘分布"><a href="#3-2-边缘分布" class="headerlink" title="3.2    边缘分布"></a>3.2    边缘分布</h1><p>$1.$ <strong>边缘分布函数</strong></p>
-<p>&emsp;&emsp;设二维随机变量 $(X,Y)$ 的分布函数为 $F(X,Y)$ ，分别称函数 $F_X(x)=P{X\leq x}=P{X\leq x,Y&lt;+\infty }=F(x,+\infty),F_Y(y)=P{Y\leq y}=P{X&lt;+\infty,Y\leq y}=F(+\infty,y)$</p>
+<p>&emsp;&emsp;设二维随机变量 $(X,Y)$ 的分布函数为 $F(X,Y)$ ，分别称函数 $F_X(x)=P\{X\leq x\}=P\{X\leq x,Y&lt;+\infty \}=F(x,+\infty),F_Y(y)=P\{Y\leq y\}=P\{X&lt;+\infty,Y\leq y\}=F(+\infty,y)$</p>
 <p>为 $(X,Y)$ 关于 $X$ 和 $Y$ 的边缘分布函数。</p>
 <p>$2.$ <strong>边缘分布律</strong></p>
-<p>&emsp;&emsp;设二位离散型随机变量 $(X,Y)$ 的联合分布律为 $P{X=x<em>i,Y=y_j}=p</em>{ij}$，则分别称 $p<em>{i·}=\sum\limits</em>{j=1}^{\infty}p<em>{ij}=p{X=x_i}(i=1,2,3,···)$ 和 $p</em>{·j}=\sum\limits<em>{i=1}^{\infty}p</em>{ij}=P{Y=y_j}(j=1,2,3,···)$ 为 $(X,Y)$ 关于 $X$ 和 $Y$ 的边缘分布律。</p>
+<p>&emsp;&emsp;设二位离散型随机变量 $(X,Y)$ 的联合分布律为 $P\{X=x_i,Y=y_j\}=p_{ij}$，则分别称 $p_{i·}=\sum\limits_{j=1}^{\infty}p_{ij}=p\{X=x_i\}(i=1,2,3,···)$ 和 $p_{·j}=\sum\limits_{i=1}^{\infty}p_{ij}=P\{Y=y_j\}(j=1,2,3,···)$ 为 $(X,Y)$ 关于 $X$ 和 $Y$ 的边缘分布律。</p>
 <p>$3.$ <strong>边缘概率密度</strong></p>
-<p>&emsp;&emsp;$f<em>X(x)=\displaystyle\int</em>{-\infty}^{+\infty}f(x,y)dy$ 和 $f<em>Y(y)=\displaystyle\int</em>{-\infty}^{+\infty}f(x,y)dx$ 分别称为 $(X,Y)$ 关于 $X$ 和 $Y$ 的边缘概率密度。</p>
+<p>&emsp;&emsp;$f_X(x)=\displaystyle\int_{-\infty}^{+\infty}f(x,y)dy$ 和 $f_Y(y)=\displaystyle\int_{-\infty}^{+\infty}f(x,y)dx$ 分别称为 $(X,Y)$ 关于 $X$ 和 $Y$ 的边缘概率密度。</p>
 <h1 id="3-3-条件分布"><a href="#3-3-条件分布" class="headerlink" title="3.3    条件分布"></a>3.3    条件分布</h1><p>$1.$ 离散随机变量的条件分布</p>
 <p>&emsp;&emsp;设二维随机变量 $(X,Y)$ 的联合分布列为 $p_{ij}=P(X=x_i,Y=y_i)(i,j=1,2,···)$  </p>
-<p><strong>定义3.3.1</strong> 对一切使 $P(Y=y<em>j)=p</em>{·j}=\sum\limits<em>{i=1}^{+\infty}p</em>{ij}&gt;0$ 的 $y<em>j$，称 $p</em>{i|j}=P(X=x<em>i|Y=y_j)=\frac{P(X=x_i,Y=y_j)}{P(Y=y_j)}=\frac{p</em>{ij}}{p_{·j}}(i=1,2,···)$  为给定 $Y=y_j$ 条件下的 <strong>条件分布列</strong>。</p>
-<p>同理，对一切使 $P(X=x<em>i)=p</em>{i·}=\sum\limits<em>{j=1}^{+\infty}p</em>{ij}&gt;0$ 的 $x<em>i$，称 $p</em>{j|i}=P(Y=y<em>j|X=x_i)=\frac{p</em>{ij}}{p_{i·}}(j=1,2,···)$  为给定 $X=x_i$ 条件下的 <strong>条件分布列</strong>。</p>
-<p><strong>定义3.3.2</strong> 给定 $Y=y<em>j$ 条件下 $X$ 的条件分布函数为 $F</em>{X|Y}(x|y<em>j)=\sum\limits</em>{x<em>i\leq x}P(X=x_i|Y=y_j)=\sum\limits</em>{x<em>i\leq x}p</em>{i|j}$ </p>
-<p>给定 $X=x<em>i$ 条件下 $Y$ 的条件分布函数为 $F</em>{Y|Z}(y|x<em>i)=\sum\limits</em>{y<em>j\leq y}P(Y=y_j|X=x_i)=\sum\limits</em>{y<em>j\leq y}p</em>{j|i}$</p>
+<p><strong>定义3.3.1</strong> 对一切使 $P(Y=y_j)=p_{·j}=\sum\limits_{i=1}^{+\infty}p_{ij}&gt;0$ 的 $y_j$，称 $p_{i|j}=P(X=x_i|Y=y_j)=\frac{P(X=x_i,Y=y_j)}{P(Y=y_j)}=\frac{p_{ij}}{p_{·j}}(i=1,2,···)$  为给定 $Y=y_j$ 条件下的 <strong>条件分布列</strong>。</p>
+<p>同理，对一切使 $P(X=x_i)=p_{i·}=\sum\limits_{j=1}^{+\infty}p_{ij}&gt;0$ 的 $x_i$，称 $p_{j|i}=P(Y=y_j|X=x_i)=\frac{p_{ij}}{p_{i·}}(j=1,2,···)$  为给定 $X=x_i$ 条件下的 <strong>条件分布列</strong>。</p>
+<p><strong>定义3.3.2</strong> 给定 $Y=y_j$ 条件下 $X$ 的条件分布函数为 $F_{X|Y}(x|y_j)=\sum\limits_{x_i\leq x}P(X=x_i|Y=y_j)=\sum\limits_{x_i\leq x}p_{i|j}$ </p>
+<p>给定 $X=x_i$ 条件下 $Y$ 的条件分布函数为 $F_{Y|Z}(y|x_i)=\sum\limits_{y_j\leq y}P(Y=y_j|X=x_i)=\sum\limits_{y_j\leq y}p_{j|i}$</p>
 
             </div>
             <hr/>
@@ -806,7 +805,7 @@ f(x,y)=\frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}}e^{-\frac{1}{2(1-\rho^2)}[\f
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            2.1    随机变量与分布函数2.1.1    随机变量&emsp;&emsp;设 $E$ 是一个随机试验，其样本空间为 $\Omega={\omega}$，如果对于每一个样本点 $\omega\in\Omega$，都有唯一的一个实数 $
+                            2.1    随机变量与分布函数2.1.1    随机变量&emsp;&emsp;设 $E$ 是一个随机试验，其样本空间为 $\Omega=\{\omega\}$，如果对于每一个样本点 $\omega\in\Omega$，都有唯一的一个实数
                         
                     </div>
                     <div class="publish-info">
@@ -1152,6 +1151,22 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+//<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 
 	<script type="text/javascript"> var OriginTitile = document.title, st; 
