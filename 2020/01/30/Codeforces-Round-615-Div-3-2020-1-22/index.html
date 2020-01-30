@@ -469,7 +469,7 @@
             <div id="articleContent">
                 <h2 id="CF1294A-Collecting-Coins（模拟）"><a href="#CF1294A-Collecting-Coins（模拟）" class="headerlink" title="CF1294A    Collecting Coins（模拟）"></a>CF1294A    Collecting Coins（模拟）</h2><p><a href="https://codeforces.com/contest/1294/problem/A" target="_blank" rel="noopener">https://codeforces.com/contest/1294/problem/A</a></p>
 <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>&emsp;&emsp;有 $a,b,c,n$ 4个数, 询问是否存在 $A,B,C(A,B,C\geq0)$ 可以满足：$a+A=b+B=c+C(A+B+C=n)$</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">#include<bits/stdc++.h>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">#include<bits stdc++.h>
 using namespace std;
 int main()
 {
@@ -482,23 +482,13 @@ int main()
         int ans=a+b+c+n;
         if(ans%3==0)
         {
-            if(3*a<=ans&&3*b<=ans&&3*c<=ans)
-                puts("YES");
-            else
-                puts("NO");        
-        }
-        else
-            puts("NO");
-    }
-    return 0;
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+            if(3*a<=ans&&3*b<=ans&&3*c<=ans) puts("yes"); else puts("no"); } return 0; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></=ans&&3*b<=ans&&3*c<=ans)></bits></code></pre>
 <h2 id="CF1294B-Collecting-Packages（排序）"><a href="#CF1294B-Collecting-Packages（排序）" class="headerlink" title="CF1294B    Collecting Packages（排序）"></a>CF1294B    Collecting Packages（排序）</h2><p><a href="https://codeforces.com/contest/1294/problem/B" target="_blank" rel="noopener">https://codeforces.com/contest/1294/problem/B</a></p>
 <h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>&emsp;&emsp;给定 $n$ 个特殊点的坐标 $(x,y)$，将其按照字典序排序，如果能够从第 $1$ 个走到第 $n$ 个，那么输出 $YES$  并输出最短路径，否则输出 $NO$。</p>
 <p>&emsp;&emsp;其中字典序是先比较 $x_i$ 的大小，如果相等再比较 $y_i$ 的大小，保证点 $(0,0)$ 没有特殊点。机器人只能向上走（输出 $U$ ）或向右走（输出 $R$）。</p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;先对特殊点进行排序，考虑到机器人不能向下走，那么每个包裹的 $y_i$ 值一定是单调不减的，也就是 $y_i≥y_i−1,2≤i≤n$，检查即可。</p>
 <p>&emsp;&emsp;如果确定有解，那么输出路径，只要是排过序再走一定是最短路径。</p>
-<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">#include<bits/stdc++.h>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">#include<bits stdc++.h>
 using namespace std;
 struct Point 
 {
@@ -507,47 +497,17 @@ struct Point
 bool cmp(Point A,Point B)
 {
     if(A.x==B.x)
-        return A.y<B.y;
-    return A.x<B.x;
-}
-int main()
-{
-    int T;
-    cin>>T;
+        return A.y<B.y; return a.x<b.x; } int main() { t; cin>>T;
     while(T--)
     {
         string str="";
         int n;
         cin>>n;
         bool flag=true;
-        for(int i=1;i<=n;i++)
-            scanf("%d %d",&p[i].x,&p[i].y);
-        sort(p+1,p+1+n,cmp);
-        for(int i=1;i<=n;i++)
-            for(int j=i+1;j<=n;j++)
-                if(p[i].y>p[j].y)
+        for(int i=1;i<=n;i++) scanf("%d %d",&p[i].x,&p[i].y); sort(p+1,p+1+n,cmp); for(int i="1;i<=n;i++)" j="i+1;j<=n;j++)" if(p[i].y>p[j].y)
                     flag=false;
         p[0].x=p[0].y=0;
-        for(int i=1;i<=n;i++)
-        {
-            int disx=p[i].x-p[i-1].x;
-            int disy=p[i].y-p[i-1].y;
-            for(int j=1;j<=disx;j++)
-                str+='R';
-            for(int j=1;j<=disy;j++)
-                str+='U';
-        }
-        if(flag)
-        {
-            puts("YES");
-            cout<<str<<endl;
-        }
-        else
-            puts("NO");
-    }
-    return 0;
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        for(int i=1;i<=n;i++) { int disx="p[i].x-p[i-1].x;" disy="p[i].y-p[i-1].y;" for(int j="1;j<=disx;j++)" str+="R" ; } if(flag) puts("yes"); cout<<str<<endl; else puts("no"); return 0; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></=n;i++)></=n;i++)></B.y;></bits></code></pre>
 <h2 id="CF1294C-Product-of-Three-Numbers（数学）"><a href="#CF1294C-Product-of-Three-Numbers（数学）" class="headerlink" title="CF1294C    Product of Three Numbers（数学）"></a>CF1294C    Product of Three Numbers（数学）</h2><h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p>&emsp;&emsp;给定一个数 $n$ ，求出三个不相同的整数 $a,b,c$ 且 $2 \leq a,b,c$，使得 $a \cdot b \cdot c =n$。</p>
 <p>&emsp;&emsp;如果有多个答案，输出任一合法解。</p>
 <h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;把 $n$ 分解质因数，设 $n=\prod\limits<em>{i=1}^{m}p</em>{i}^ {a_i}$。</p>
@@ -558,7 +518,7 @@ int main()
 <p>&emsp;&emsp;显然，满足条件的只有 $a_1 - 1 + a_2 - 1\geq 2$，即 $a_1 + a_2 \geq 4$ 时满足条件。</p>
 <p>&emsp;&emsp;$3.$ 当 $m=1$ 时，最小的分法是 $(p_1^1,p_1^2,p_1^3)$  </p>
 <p>&emsp;&emsp;$a_1\geq 1+2+3 $，即 $a_1&gt;6$ 时满足条件。</p>
-<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">#include<bits/stdc++.h>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">#include<bits stdc++.h>
 using namespace std;
 int p[10000010],v[50];
 int main()
@@ -571,19 +531,7 @@ int main()
         cin>>n;
         int cnt=0;
         int temp=n;
-        for(int i=2;i*i<=n;i++)
-        {
-            if(n%i==0)
-            {
-                p[++cnt]=i;v[cnt]=0;
-                while(n%i==0)
-                {
-                    n/=i;
-                    v[cnt]++;
-                }
-            }
-        } 
-        if(n>1)
+        for(int i=2;i*i<=n;i++) { if(n%i="=0)" p[++cnt]="i;v[cnt]=0;" while(n%i="=0)" n =i; v[cnt]++; } if(n>1)
             p[++cnt]=n,v[cnt]=1;
         bool flag=true;
         int a,b,c;
@@ -596,24 +544,12 @@ int main()
         }
         if(cnt==2)
         {
-            if(v[1]+v[2]<=3)
-                flag=false;
-            else
-                a=p[1],b=p[2],c=temp/p[1]/p[2];
-        }
-        if(cnt>=3)
+            if(v[1]+v[2]<=3) flag="false;" else a="p[1],b=p[2],c=temp/p[1]/p[2];" } if(cnt>=3)
             a=p[1],b=p[2],c=temp/p[1]/p[2];
         if(flag)
         {
             puts("YES");
-            cout<<a<<" "<<b<<" "<<c<<endl;
-        }
-        else
-            puts("NO");
-    } 
-    return 0;
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+            cout<<a<<" "<<b<<" "<<c<<endl; } else puts("no"); return 0; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></a<<"></=3)></=n;i++)></bits></code></pre>
 <h2 id="CF1294D-MEX-maximizing（思维）"><a href="#CF1294D-MEX-maximizing（思维）" class="headerlink" title="CF1294D    MEX maximizing（思维）"></a>CF1294D    MEX maximizing（思维）</h2><p><a href="https://codeforces.com/contest/1294/problem/D" target="_blank" rel="noopener">https://codeforces.com/contest/1294/problem/D</a></p>
 <h3 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h3><p>&emsp;&emsp;定义数组中的 $MEX$  为不属于该数组的最小非负整数，比如：$[0,0,1,0,2]$ 的 $MEX$ 就是 $3$。</p>
 <p>&emsp;&emsp;给出 $q,x$，和一个空数组 $a[]$(即数组中没有元素)。</p>
@@ -623,27 +559,10 @@ int main()
 <h2 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h2><p>&emsp;&emsp;若答案 $ans$ 会修改，一定是存在  $y_j$  通过操作后可以变为 $ans$，此时 $ans$  就要加  $1$。</p>
 <p>&emsp;&emsp;考虑把 $ans$  与  $y_j$ 都修改为最小值，即 $ans=ans\bmod x,y_j=y_j\bmod x$ 。每次把 $y_j \bmod x$  存入数组。</p>
 <p>&emsp;&emsp;若存在 $y_j \equiv ans \mod x$，则表示 $y_j$ 通过操作后可以变为 $ans$，此时，$num[ans \bmod x]−−,ans++$。</p>
-<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">#include <bits/stdc++.h>
+<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">#include <bits stdc++.h>
 using namespace std;
-int num[100010<<2];
-int main()
-{
-    int q,x,y,ans=0;
-    cin>>q>>x;
-    for(int i=1;i<=q;i++)
-    {
-        scanf("%d",&y);
-        num[y%x]++;
-        while(num[ans%x]!=0)
-        {
-            num[ans%x]--;
-            ans++;
-        }
-        cout<<ans<<endl;
-    }
-    return 0;
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+int num[100010<<2]; int main() { q,x,y,ans="0;" cin>>q>>x;
+    for(int i=1;i<=q;i++) { scanf("%d",&y); num[y%x]++; while(num[ans%x]!="0)" num[ans%x]--; ans++; } cout<<ans<<endl; return 0; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></=q;i++)></2];></bits></code></pre>
 <h2 id="CF1294E-Obtain-a-Permutation（思维）"><a href="#CF1294E-Obtain-a-Permutation（思维）" class="headerlink" title="CF1294E    Obtain a Permutation（思维）"></a>CF1294E    Obtain a Permutation（思维）</h2><p><a href="https://codeforces.com/contest/1294/problem/E" target="_blank" rel="noopener">https://codeforces.com/contest/1294/problem/E</a></p>
 <h3 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h3><p><img src="https://cdn.luogu.com.cn/upload/image_hosting/nrwyhgdv.png" alt></p>
 <h3 id="分析-3"><a href="#分析-3" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;由于单点修改和整列上移两种操作都不会对其他列产生影响，所以考虑对每一列分开处理。</p>
@@ -654,43 +573,19 @@ int main()
 <p>&emsp;&emsp;$2.$ 若 $i&lt;k$ ，需要移动 $i-k+n$ 次 $($ 第 $i$ 行移动到第 $1$ 行需要 $i-1$ 次，再移动 $1$ 次到第 $n$ 行，从第 $n$ 行移动到第 $k$ 行需要 $n-k$ 次，加起来为 $i-1+1+n-k=i-k+n$ 次 $)。$</p>
 <p>&emsp;&emsp;合并的话，需要移动 $(i-k+n)\bmod n$ 次，就可以把  $same_{j,(i- k+n)\bmod n}$ 增加 $1$ 了。</p>
 <p>&emsp;&emsp;注意 $n,m$ 都有可能达到 $2 \times 10^5$，所以需要开不定长数组，时间复杂度 $O(nm)$。$same$ 可以每列重复使用，所以舍去前一个维度。</p>
-<h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">#include <bits/stdc++.h>
+<h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">#include <bits stdc++.h>
 using namespace std;
 int n,m,k,same[200010],ans;
 vector<int> a[200010];
 int main()
 {
     cin>>n>>m;
-    for(int i=1;i<=n;i++)
-    {
-        a[i].push_back(0);//把vector的第二维下标凑成从1开始 
-        for(int j=1;j<=m;j++)
-        {
-            int x;
-            scanf("%d",&x);
-            a[i].push_back(x);
-        }
-    }
-    for(int j=1;j<=m;j++)
-    {
-        int minn=0x3f3f3f3f;
-        for(int i=0;i<n;i++)
-            same[i]=0;
-        for(int i=1;i<=n;i++)
-        {
-            if(a[i][j]<j||a[i][j]>n*m||(a[i][j]-j)%m!=0)
+    for(int i=1;i<=n;i++) { a[i].push_back(0); 把vector的第二维下标凑成从1开始 for(int j="1;j<=m;j++)" int x; scanf("%d",&x); a[i].push_back(x); } minn="0x3f3f3f3f;" i="0;i<n;i++)" same[i]="0;" if(a[i][j]<j||a[i][j]>n*m||(a[i][j]-j)%m!=0)
                 continue;
             k=(a[i][j]-j)/m+1;
             same[(i-k+n)%n]++;
         }
-        for(int i=0;i<n;i++)
-            minn=min(minn,i+n-same[i]);
-        ans=ans+minn;
-    }
-    cout<<ans<<endl;
-    return 0;
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        for(int i=0;i<n;i++) minn="min(minn,i+n-same[i]);" ans="ans+minn;" } cout<<ans<<endl; return 0; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></n;i++)></=n;i++)></int></bits></code></pre>
 <h2 id="CF1294F-Three-Paths-on-a-Tree（两次BFS求树的直径）"><a href="#CF1294F-Three-Paths-on-a-Tree（两次BFS求树的直径）" class="headerlink" title="CF1294F    Three Paths on a Tree（两次BFS求树的直径）"></a>CF1294F    Three Paths on a Tree（两次BFS求树的直径）</h2><p><a href="http://codeforces.com/contest/1294/problem/F" target="_blank" rel="noopener">http://codeforces.com/contest/1294/problem/F</a></p>
 <h3 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h3><p>&emsp;&emsp;给定一棵含 $n\ (3\leq n\leq2\cdot 10^5)$ 个结点的无权树，试找出三个结点 $u$、$v$、$w$，使得$\operatorname{dis}({u,v\text{ 间的路径}}\cup{v,w\text{ 间的路径}}\cup{w,u\text{ 间的路径}})$ 最大。</p>
 <p>输出两行：</p>
@@ -702,7 +597,7 @@ int main()
 <p>&emsp;&emsp;用两次BFS可以求出直径的两个端点，在这个过程中还能顺便求出一个端点到树上每一点的距离。之后再用一次BFS求得另一个端点到树上每一点的距离。再枚举第三个顶点 $c$ 就可以求出这三个顶点了。</p>
 <p>&emsp;&emsp;最终距离为：$[\operatorname{dis(a,b)}+\operatorname{dis(b,c)}+\operatorname{dis(a,c)}]/2$</p>
 <h3 id="两次BFS求树的直径"><a href="#两次BFS求树的直径" class="headerlink" title="两次BFS求树的直径"></a>两次BFS求树的直径</h3><p>  通过两次 BFS 或者两次 DFS 也可以求出树的直径，并且更容易计算出直径上的具体节点。详细地说，这种做法包括两步：<br>   $1.$ 从任意一个节点出发，通过 BFS 或 DFS 对树进行一次遍历，求出与出发点距离最远的节点，记为  $p$ 。<br>   $2.$ 从节点  pp<em>p</em>  出发，通过 BFS 或 DFS 再进行一次遍历，求出与 $p$ 距离最远的节点,记为  $q$ 。<br>  从  $p$  到  $q$  的路径就是树的一条直径。这是因为  $p$  一定是直径的一端，否则总能找到一条更长的链，与直径的定义矛盾。既然  $p$  是直径的一端，那么与  $p$ 距离最远的  $q$  当然就是直径的另一端了。<br>   $3.$ 在第  $2$  步的遍历过程中，可以记录下来每个点第一次被访问时的前驱节点。最后从  $q$  递归回到  $p$ ，即可得到直径的具体方案。 </p>
-<h3 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">#include <bits/stdc++.h>
+<h3 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">#include <bits stdc++.h>
 using namespace std;
 vector<int> edge[200010];
 int n,vis[200010],dis1[200010],dis2[200010],dis[200010],pos;
@@ -719,14 +614,7 @@ void bfs(int x)
     {
         int y=Q.front();
         Q.pop();
-        for(int i=0;i<edge[y].size();i++)
-        {
-            if(!vis[edge[y][i]])
-            {
-                vis[edge[y][i]]=1;
-                dis[edge[y][i]]=dis[y]+1;
-                Q.push(edge[y][i]);
-                if(dis[edge[y][i]]>dis[pos])
+        for(int i=0;i<edge[y].size();i++) { if(!vis[edge[y][i]]) vis[edge[y][i]]="1;" dis[edge[y][i]]="dis[y]+1;" q.push(edge[y][i]); if(dis[edge[y][i]]>dis[pos])
                     pos=edge[y][i];
             }
         }
@@ -735,32 +623,10 @@ void bfs(int x)
 int main()
 {
     cin>>n;
-    for(int i=1;i<=n-1;i++)
-    {
-        int u,v;
-        scanf("%d %d",&u,&v);
-        edge[u].push_back(v);
-        edge[v].push_back(u);
-    }
-    bfs(1);
-    int a=pos;
-    bfs(pos);
-    int b=pos;
-    for(int i=1;i<=n;i++)
-        dis1[i]=dis[i];
-    bfs(pos);
-    for(int i=1;i<=n;i++)
-        dis2[i]=dis[i];
-    int c=0;
-    for(int i=1;i<=n;i++)
-        if(dis1[i]+dis2[i]>dis1[c]+dis2[c]&&i!=a&&i!=b)
+    for(int i=1;i<=n-1;i++) { int u,v; scanf("%d %d",&u,&v); edge[u].push_back(v); edge[v].push_back(u); } bfs(1); a="pos;" bfs(pos); b="pos;" for(int i="1;i<=n;i++)" dis1[i]="dis[i];" dis2[i]="dis[i];" c="0;" if(dis1[i]+dis2[i]>dis1[c]+dis2[c]&&i!=a&&i!=b)
             c=i;
     int ans=(dis1[b]+dis1[c]+dis2[c])/2;
-    cout<<ans<<endl;
-    cout<<a<<" "<<b<<" "<<c<<endl;
-    return 0;
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    cout<<ans<<endl; cout<<a<<" "<<b<<" "<<c<<endl; return 0; } <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></ans<<endl;></=n-1;i++)></edge[y].size();i++)></int></int></bits></code></pre>
 
             </div>
             <hr/>
@@ -1209,7 +1075,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 </main>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script>
     MathJax.Hub.Config({
         tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
@@ -1394,22 +1260,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-//<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 
 	<script type="text/javascript"> var OriginTitile = document.title, st; 
