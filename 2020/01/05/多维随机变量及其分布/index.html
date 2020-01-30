@@ -4,10 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="随机事件及其——概率, CUG Information Management and Information System">
-    <meta name="description" content="1.1    样本空间与随机事件1.1.1    随机试验&amp;emsp;&amp;emsp;在概率论中将具备下列三个条件的试验称为随机试验，简称试验：
-&amp;emsp;&amp;emsp;$(1)$在相同的条件下可重复进行.
-&amp;emsp;&amp;emsp;$(2)$每">
+    <meta name="keywords" content="多维随机变量及其分布, CUG Information Management and Information System">
+    <meta name="description" content="3.1    二维随机变量的概率分布$1.$ 二维随机变量：设 $E$ 是随机试验，样本空间 $\Omega=\{\omega\}$，由 $X=X(\omega),Y=Y(\omega)$ 构成的向量 $(X,Y)$ 称为二维随机变量。  ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>随机事件及其——概率 | Destin Histoire的博客</title>
+    <title>多维随机变量及其分布 | Destin Histoire的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -306,13 +304,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        随机事件及其——概率
+                        多维随机变量及其分布
                     </div>
                 </div>
             </div>
@@ -428,12 +426,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/">
+                                <span class="chip bg-color">概率论</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%95%B0%E5%AD%A6/" class="post-category">
+                                数学
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -442,7 +453,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-02
+                    2020-01-05
                 </div>
                 
 
@@ -459,89 +470,44 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1-1-样本空间与随机事件"><a href="#1-1-样本空间与随机事件" class="headerlink" title="1.1    样本空间与随机事件"></a>1.1    样本空间与随机事件</h1><h2 id="1-1-1-随机试验"><a href="#1-1-1-随机试验" class="headerlink" title="1.1.1    随机试验"></a>1.1.1    随机试验</h2><p>&emsp;&emsp;在概率论中将具备下列三个条件的试验称为<strong>随机试验</strong>，简称<strong>试验</strong>：</p>
-<p>&emsp;&emsp;$(1)$在相同的条件下可重复进行.</p>
-<p>&emsp;&emsp;$(2)$每次试验的可能结果不止一个，并且能事先明确试验的所有可能结果.</p>
-<p>&emsp;&emsp;$(3)$进行一次试验之前不能确定哪一个结果会出现.</p>
-<h2 id="1-1-2-样本空间"><a href="#1-1-2-样本空间" class="headerlink" title="1.1.2    样本空间"></a>1.1.2    样本空间</h2><p>&emsp;&emsp;随机试验 $E$ 的所有可能出现的结果所构成的集合称为 $E$ 的 <strong>样本空间</strong>，通常记为 $\Omega$。样本空间的元素，即 $E$ 的每一个结果，称为 <strong>样本点</strong>。</p>
-<h2 id="1-1-3-随机事件"><a href="#1-1-3-随机事件" class="headerlink" title="1.1.3    随机事件"></a>1.1.3    随机事件</h2><p>&emsp;&emsp;随机试验的每一种可能的结果称为<strong>随机事件</strong>，简称<strong>事件</strong>，通常用大写字母 $A,B,C,D$ 来表示。</p>
-<p>&emsp;&emsp;<strong>基本事件</strong>：不能分解为其他事件组合的最简单的随机事件。</p>
-<p>&emsp;&emsp;<strong>必然事件</strong>：每次试验中一定发生的事件，常用 $\Omega$ 表示。</p>
-<p>&emsp;&emsp;<strong>不可能事件</strong>：每次试验中一定不发生的事件，常用 $\emptyset$ 表示。</p>
-<h2 id="1-1-4-事件间的关系与事件的运算"><a href="#1-1-4-事件间的关系与事件的运算" class="headerlink" title="1.1.4    事件间的关系与事件的运算"></a>1.1.4    事件间的关系与事件的运算</h2><h3 id="1-包含"><a href="#1-包含" class="headerlink" title="1.包含"></a>1.包含</h3><p>&emsp;&emsp;$A$ 发生必然导致 $B$ 发生，则称 $B$ 包含 $A$（或 $A$ 包含与 $B$），记为 $B\supset A$ (或 $A\subset B$)。</p>
-<h3 id="2-相等"><a href="#2-相等" class="headerlink" title="2.相等"></a>2.相等</h3><p>&emsp;&emsp;若 $A\subset B$ 且 $B\subset A$ ，则称事件 $A$ 与事件 $B$ 相等，记为 $A=B$。</p>
-<h3 id="3-事件的和"><a href="#3-事件的和" class="headerlink" title="3.事件的和"></a>3.事件的和</h3><p>&emsp;&emsp;事件 $A\bigcup B=\{x|x\in A 或 x\in B\}$称为事件$A$ 与事件 $B$ 的<strong>和事件</strong>。当且仅当 $A,B$ 中至少有一个发生时，事件 $A\bigcup B$ 发生，$A\bigcup B$也记为 $A+B$。</p>
-<h3 id="4-事件的积"><a href="#4-事件的积" class="headerlink" title="4.事件的积"></a>4.事件的积</h3><p>&emsp;&emsp;事件 $A\bigcap B=\{x\in A且x\in B\}$称为事件 $A$ 与事件 $B$ 的<strong>积事件</strong>。当且仅当 $A,B$同时发生时，事件 $A\bigcap B$发生，$A\bigcap B$ 也记为 $AB$。</p>
-<h3 id="5-事件的差"><a href="#5-事件的差" class="headerlink" title="5.事件的差"></a>5.事件的差</h3><p>&emsp;&emsp;事件 $A-B=\{x\in A 且x\notin B\}$ 称为事件 $A$ 与事件 $B$ 的<strong>差事件</strong>，当且仅当 $A$ 发生 $B$ 不发生时事件 $A-B$ 发生。</p>
-<h3 id="6-互斥事件"><a href="#6-互斥事件" class="headerlink" title="6.互斥事件"></a>6.互斥事件</h3><p>&emsp;&emsp; 若 $A\bigcap B=\emptyset$ ，则称事件 $A$ 与 $B$ 是<strong>互不相容</strong>的，或<strong>互斥</strong>的。这指的是事件 $A$ 与事件 $B$ 不能同时发生，基本事件是两两互不相容的。</p>
-<h3 id="7-对立事件"><a href="#7-对立事件" class="headerlink" title="7.对立事件"></a>7.对立事件</h3><p>&emsp;&emsp;若 $A\bigcup B=\Omega$ 且 $A\bigcap B=\emptyset$ ，则称事件 $A$ 与事件 $B$ 互为<strong>逆事件</strong>。又称事件 $A$ 与事件 $B$ 互为<strong>对立事件</strong>。这指的是对每次实验而言，事件 $A,B$ 中必有一个发生，且仅有一个发生。$A$ 的对立事件记为 $\overline{A}=\Omega-A$。</p>
-<h3 id="8-事件运算的主要性质"><a href="#8-事件运算的主要性质" class="headerlink" title="8.事件运算的主要性质"></a>8.事件运算的主要性质</h3><p>$(1)$交换律：$A\bigcup B=B\bigcup A,A\bigcap B=B\bigcap A$</p>
-<p>$(2)$结合律：$A\bigcup(B\bigcup C)=(A\bigcup B)\bigcup C,A\bigcap(B\bigcap C)=(A\bigcap B)\bigcap C$</p>
-<p>$(3)$分配律：$A\bigcup (B\bigcap C)=(A\bigcup B)\bigcap(A\bigcup C),A\bigcap(B\bigcup C)=(A\bigcap B)\bigcup(A\bigcap C)$</p>
-<p>$(4)$德摩根律（对偶律）：$\overline{A\bigcup B}=\overline{A}\bigcap\overline{B},\overline{A\bigcap B}=\overline{A}\bigcup\overline{B}$</p>
-<p><strong>分配律</strong>可以推广到有限或可列无穷多个事件的情形：<br>$$<br>A\bigcap (\bigcup\limits_{k=1}^n A_k)=\bigcup\limits_{k=1}^{n}(A\bigcap A_k),A\bigcap (\bigcup\limits_{k=1}^{\infty} A_k)=\bigcup\limits_{k=1}^{\infty}(A\bigcap A_k)\\<br>A\bigcup (\bigcap\limits_{k=1}^n A_k)=\bigcap\limits_{k=1}^{n}(A\bigcup A_k),A\bigcup (\bigcap\limits_{k=1}^{\infty} A_k)=\bigcap\limits_{k=1}^{\infty}(A\bigcup A_k)<br>$$<br><strong>德摩根律</strong>也可以推广到有限或可列无穷多个事件的情形：<br>$$<br>\overline{\bigcup\limits_{k=1}^n A_k}=\bigcap\limits_{k=1}^{n}\overline{A_k},\overline{\bigcup\limits_{k=1}^{\infty} A_k}=\bigcap\limits_{k=1}^{\infty}\overline{A_k} \\<br>\overline{\bigcap\limits_{k=1}^{n} A_k}=\bigcup\limits_{k=1}^{n}\overline{A_k},\overline{\bigcap\limits_{k=1}^{\infty} A_k}=\bigcup\limits_{k=1}^{\infty}\overline{A_k}<br>$$<br>易证下列等式的正确性：<br>$$<br>A\bigcup A=A,A\bigcap A=A,A\bigcup \Omega=\Omega,A\bigcap \Omega=A \\<br>A\bigcup \emptyset=A,A\bigcap \emptyset=\emptyset,A\bigcup \overline{A}=\emptyset,A\bigcap \overline{A}=\emptyset\\<br>A-B=A-AB=A\bigcap \overline{B},A+B=A+B\overline{A},A=(A\bigcap B)\bigcup(A\bigcap \overline{B})<br>$$</p>
-<h1 id="1-2-事件的频率与概率"><a href="#1-2-事件的频率与概率" class="headerlink" title="1.2    事件的频率与概率"></a>1.2    事件的频率与概率</h1><h2 id="1-2-1-概率的统计定义"><a href="#1-2-1-概率的统计定义" class="headerlink" title="1.2.1    概率的统计定义"></a>1.2.1    概率的统计定义</h2><p>&emsp;&emsp;在相同的条件下，重复进行 $n$ 次试验，当 $n$ 充分大，事件 $A$ 发生的频率 $f_n(A)=\frac{n_A}{n}$ 稳定地在某个数值</p>
-<p> $p$ 附近摆动，则称 $p$ 为事件 $A$ 的<strong>概率</strong>，记为 $P(A)=p$。</p>
-<h2 id="1-2-2-概率的公理化定义"><a href="#1-2-2-概率的公理化定义" class="headerlink" title="1.2.2    概率的公理化定义"></a>1.2.2    概率的公理化定义</h2><p>&emsp;&emsp;设 $\Omega$ 为一个随机试验的样本空间，对 $\Omega$ 中任一事件 $A$，规定一个实数 $P(A)$。如果这样的集合函数 $P(·)$ 满足以下 3 个条件，则称 $P(A)$ 为事件 $A$ 发生的<strong>概率</strong>。</p>
-<p>&emsp;&emsp;$(1)$非负性：对于每一个事件 $A$ 有 $P(A)\geq0$。</p>
-<p>&emsp;&emsp;$(2)$规范性：对于必然事件 $\Omega$ 有 $P(\Omega)=1$。</p>
-<p>&emsp;&emsp;$(3)$可加性：设 $A_1,A_2,···$ 是可列个两两互不相容事件，即对于 $i\neq j$，$A_iA_j=\emptyset(i,j=1,2,···)$，有可列可加性成立，即<br>$$<br>P(\bigcup\limits_{k=1}^{\infty}A_k)=\sum\limits_{k=1}^{\infty}P(A_k)<br>$$</p>
-<h2 id="1-1-3-概率的性质"><a href="#1-1-3-概率的性质" class="headerlink" title="1.1.3    概率的性质"></a>1.1.3    概率的性质</h2><p>$1.$对任何事件 $A$，$0\leq P(A)\leq 1$。</p>
-<p>$2.$$P(\Omega)=1,P(\emptyset)=0$。</p>
-<p>$3.$设 $A$ 为任一随机事件，则 $P(\overline A)=1-P(A)$。</p>
-<p>$4.$设 $B\subset A$，则 $P(A-B)=P(A)-P(B)$，且有 $P(A)\geq P(B)$。  </p>
-<p>$5.$设事件 $A_1,A_2,···，A_n$ 两两互斥，则 $P(\bigcup\limits_{i=1}^{n}A_i)=\sum\limits_{i=1}^{n}P(A_i)$，这称为概率的<strong>有限可加性</strong>。</p>
-<p>$6.$设 $A,B$ 为两个任意随机事件，则 $P(A\bigcup B)=P(A)+P(B)-P(AB)$。 </p>
-<p>上式还能推广到多个事件的情况。例如，设 $A_1,A_2,A_3$ 为任意三个随机事件，则<br>$$<br>P(A\bigcup B\bigcup C)=P(A)+P(B)+P(C)-P(AB)-P(BC)-P(AC)+P(ABC)<br>$$<br>一般地，对任意 $n$ 个事件 $A_1,A_2,···,A_n$ ，有<br>$$<br>P(\bigcup\limits_{i=1}^{n}A_i)=\sum\limits_{i=1}^{n}P(A_i)-\sum\limits_{1\leq i&lt; j\leq n}P(A_iA_j)+\sum\limits_{1\leq i&lt;j&lt;k\leq n}P(A_iA_jA_k)-···+(-1)^{n-1}P(A_1A_2···A_n)<br>$$</p>
-<h1 id="1-3-古典概型与几何概型"><a href="#1-3-古典概型与几何概型" class="headerlink" title="1.3    古典概型与几何概型"></a>1.3    古典概型与几何概型</h1><h2 id="1-3-1-古典概型"><a href="#1-3-1-古典概型" class="headerlink" title="1.3.1    古典概型"></a>1.3.1    古典概型</h2><p>具有下列两个特点的试验称为古典概型。</p>
-<p>$(1)$每次试验只有有限种可能的试验结果；</p>
-<p>$(2)$每次试验中，各基本事件出现的可能性完全相同。</p>
-<p>对于古典概型，事件 $A$ 发生的概率为<br>$$<br>P(A)=\frac{A 中基本事件数}{\Omega 中基本事件数}=\frac{m}{n}<br>$$</p>
-<h2 id="1-3-2-几何概型"><a href="#1-3-2-几何概型" class="headerlink" title="1.3.2    几何概型"></a>1.3.2    几何概型</h2><p>&emsp;&emsp;如果随机试验的样本空间是一个区域（例如直线上的区间、平面或空间中的区域），而且样本空间中每个试验结果的出现具有等可能性，那么规定事件 $A$ 的概率为<br>$$<br>P(A)=\frac{A 的测度（长度、面积、体积）}{样本空间的测度（长度、面积、体积）}<br>$$</p>
-<h2 id="1-4-条件概率"><a href="#1-4-条件概率" class="headerlink" title="1.4    条件概率"></a>1.4    条件概率</h2><h3 id="1-4-1-条件概率"><a href="#1-4-1-条件概率" class="headerlink" title="1.4.1    条件概率"></a>1.4.1    条件概率</h3><p>&emsp;&emsp;设 $A,B$ 为同一随机试验中的两个事件，且 $P(B)&gt;0$，称<br>$$<br>P(A|B)=\frac{P(AB)}{P(B)}<br>$$<br>为在事件 $B$ 发生的条件下事件 $A$ 发生的概率，简称为 <strong>条件概率</strong>。</p>
-<p>&emsp;&emsp;不难验证，条件概率满足概率公理化三条件：</p>
-<p>&emsp;&emsp;$(1)$非负性：$P(A|B)\geq 0$  </p>
-<p>&emsp;&emsp;$(2)$规范性：$P(\Omega|B)=1$  </p>
-<p>&emsp;&emsp;$(3)$可列可加性：设可列个事件 $A_1,A_2,···$ 两两不相容，则<br>$$<br>P(\bigcup\limits_{i=1}^{\infty}A_i|B)=\frac{P(\bigcup\limits_{i=1}^{\infty})A_iB}{P(B)}=\frac{\sum\limits_{i=1}^{\infty}P(A_iB)}{P(B)}=\sum\limits_{i=1}^{\infty}P(A_i|B)<br>$$</p>
-<h3 id="1-4-2-乘法公式"><a href="#1-4-2-乘法公式" class="headerlink" title="1.4.2    乘法公式"></a>1.4.2    乘法公式</h3><p>设 $A,B$ 是任意两个随机事件，$P(A)&gt;0$，$P(B)&gt;0$，则<br>$$<br>P(AB)=P(A|B)P(B)=P(B|A)P(A)<br>$$<br>一般地，设 $A_1,···A_n$ 是 $n$ 个随机事件，且 $P(A_1···A_{n-1})&gt;0$，则<br>$$<br>P(A_1···A_n)=P(A_n|A_1···A_{n-1})···P(A_3|A_1A_2)P(A_2|A_1)P(A_1)<br>$$</p>
-<h1 id="1-5-全概率公式与贝叶斯公式"><a href="#1-5-全概率公式与贝叶斯公式" class="headerlink" title="1.5    全概率公式与贝叶斯公式"></a>1.5    全概率公式与贝叶斯公式</h1><h2 id="1-5-1-完备事件组"><a href="#1-5-1-完备事件组" class="headerlink" title="1.5.1    完备事件组"></a>1.5.1    完备事件组</h2><p>设 $\Omega$ 为试验的样本空间，$B_1,B_2,···,B_n$ 为试验的一组事件，若有  </p>
-<p>$(1)$$B_iB_j=\emptyset(i\neq j,i,j=1,2,···,n)$；</p>
-<p>$(2)$$\bigcup\limits_{i=1}^{n}B_i=\Omega$。</p>
-<p>则称 $B_1,B_2,···,B_n$ 为 $\Omega$ 的一个<strong>划分</strong>或<strong>完备事件组</strong>。  </p>
-<p>由定义可见，若 $B_1,B_2,···,B_n$ 为 $\Omega$ 的一个划分，则在一次试验中，$B_1,B_2,···,B_n$ 必有且仅有一个发生。</p>
-<h2 id="1-5-2-全概率公式"><a href="#1-5-2-全概率公式" class="headerlink" title="1.5.2    全概率公式"></a>1.5.2    全概率公式</h2><p>设事件 $B_1,B_2,···,B_n$ 是样本空间 $\Omega$ 的一个划分，$P(B_i)&gt;0(i=1,2,···,n)$，$A$ 是试验的任一事件，则有<br>$$<br>P(A)=\sum\limits_{i=1}^{n}P(B)P(A|B_i)<br>$$</p>
-<h2 id="1-5-3-贝叶斯公式"><a href="#1-5-3-贝叶斯公式" class="headerlink" title="1.5.3    贝叶斯公式"></a>1.5.3    贝叶斯公式</h2><p>设事件 $B_1,B_2,···,B_n$ 是样本空间 $\Omega$ 的一个划分，$P(B_i)&gt;0(i=1,2,···,n)$，$A$ 是试验的任一事件，且 $P(A)&gt;0 $，则有<br>$$<br>P(B_i|A)=\frac{P(B_i)P(A|B_i)}{\sum\limits_{j=1}^{n}P(B_j)P(A|B_i)}<br>$$</p>
-<h1 id="1-6-事件的独立性"><a href="#1-6-事件的独立性" class="headerlink" title="1.6    事件的独立性"></a>1.6    事件的独立性</h1><h2 id="1-6-1-两个事件的独立性"><a href="#1-6-1-两个事件的独立性" class="headerlink" title="1.6.1    两个事件的独立性"></a>1.6.1    两个事件的独立性</h2><p><strong>定义</strong>：设 $A,B$ 为两事件，如果满足等式 $P(AB)=P(A)P(B)$，则称事件 $A,B$ <strong>相互独立</strong>，简称 $A,B$ <strong>独立</strong>。 </p>
-<p><strong>定理</strong>：设 $A,B$ 是两事件，且 $P(B)&gt;0$ ，若 $A,B$ 相互独立，则 $P(A|B)=P(A)$。</p>
-<p><strong>定理</strong>：若事件$A$与$B$ 相互独立，则下列各对事件也相互独立：$A$ 与 $\overline{B}$，$\overline{A}$ 与 $B$，$\overline{A}$ 与 $\overline{B}$。</p>
-<h2 id="1-6-2-多个事件的独立性"><a href="#1-6-2-多个事件的独立性" class="headerlink" title="1.6.2    多个事件的独立性"></a>1.6.2    多个事件的独立性</h2><p><strong>定义</strong>：&emsp;&emsp;设 $A,B,C$ 是 $3$ 个事件，如果满足等式<br>$$<br>\left\{<br>\begin{aligned}<br>P(AB)=&amp;P(A)P(B)\<br>P(BC)=&amp;P(B)P(C)\<br>P(AC)=&amp;P(A)P(C)\<br>P(ABC)=&amp;P(A)P(B)P(C)<br>\end{aligned}<br>\right.<br>$$<br>则称事件 $A,B,C$ 独立。</p>
-<p><strong>推论</strong>：</p>
-<p>$(1)$ 如果事件 $A_1,A_2,···,A_n(n\geq 2)$ 相互独立，则其中任意 $k(2\leq k\leq n)$ 个事件也是相互独立的。  </p>
-<p>$(2)$ 若 $n$ 个事件 $A_1,A_2,···,A_n(n\geq 2)$ 相互独立，则将 $A_1,A_2,···,A_n$ 中任意多个事件换成它们的对立事件，所得的 $n$ 个事件仍相互独立。</p>
-<p><strong>独立性的应用</strong>：</p>
-<p>$($<strong>相互独立事件至少发生其一的概率的计算</strong>$)$ 设事件$A_1,A_2,···A_n$ 相互独立，则 $P(A_1\bigcup A_2 \bigcup ···\bigcup A_n)=1-P(\overline{A_1\bigcup A_2\bigcup···\bigcup A_n})=1-P(\overline{A_1}\overline{A_2}···\overline{A_n})=1-\prod\limits_{i=1}^{n}P(\overline{A_i})$ </p>
-<h2 id="1-6-3-伯努利概型"><a href="#1-6-3-伯努利概型" class="headerlink" title="1.6.3    伯努利概型"></a>1.6.3    伯努利概型</h2><p>$1.$ 伯努利试验</p>
-<p>若试验 $E$ 只有两个可能的结果：$A$ 及 $\overline{A}$ ，称这个试验为伯努利试验。</p>
-<p>$2.$ 伯努利概型</p>
-<p>设随机试验 $E$ 具有如下特征：</p>
-<p>$(1)$ 每次试验是相互独立的。</p>
-<p>$(2)$ 每次试验有且仅有两种结果：事件 $A$ 和事件 $\overline{A}$ 。</p>
-<p>$(3)$ 每次试验的结果发生的概率相同。即 $P(A)=p,P(\overline{A})=1-p=q$。</p>
-<p>称试验 $E$ 表示的数学模型为 <strong>伯努利概型</strong>。若将试验做了 $n$ 次，则这个试验也称为 <strong>$n$ 重伯努利试验</strong>。</p>
-<h1 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h1><p>$1.$ 设 $A,B$ 是任意两个随机事件，则 $P\{(\overline{A}+B)(A+B)(\overline{A}+\overline{B})(A+\overline{B})\}=\underline{0}$<br>$$<br>\because P(A+B)(\overline{A}+\overline{B})=A(\overline{A}+\overline{B})+B(\overline{A}+\overline{B})=A\overline{B}+\overline{A}B\\<br>\ \ \ P(\overline{A}+B)(A+\overline{B})=\overline{A}(A+\overline{B})+B(A+\overline{B})=\overline{A}\overline{B}+AB<br>\\<br>\therefore P\{(\overline{A}+B)(A+B)(\overline{A}+\overline{B})(A+\overline{B})=P\{(A\overline{B}+\overline{A}B)(\overline{A}\overline{B}+AB)\}=P\{\emptyset\}={0}<br>$$<br>$2.$ 已知 $A,B$ 两个事件满足条件 $P(AB)=P(\overline{A}\overline{B})$，且 $P(A)=p$，则 $P(B)=\underline{1-p}$。<br>$$<br>\because \overline{A\bigcup B}=\overline{A}\overline{B},P(A\bigcup B)=P(A)+P(B)-P(AB),P(A\bigcup B)=1-P(\overline{A\bigcup B})=1-P(\overline{A}\overline{B}) \\<br>\therefore P(A)+P(B)=1 \\<br>\therefore P(B)=1-p<br>$$<br>$3.$ 设 $P(A)=a,P(B)=0.3,P(\overline{A}\bigcup B)=0.7$。若事件 $A$ 与 $B$ 互不相容，则 $a=\underline{0.3}$。若事件 $A$ 与 $B$ 相互独立，则 $a=\underline{\frac{3}{7}}$。<br>$$<br>P(\overline{A}\bigcup B)=P(\overline{A})+P(B)-P(\overline{A}B)\\<br>=P(\overline{A})+P(B)-[P(B)-P(AB)]\\<br>=1-P(A)P(AB)  \<br>$$<br>由题设可知 $0.7=1-a+P(AB)$  </p>
-<p>$(1)$ 若事件 $A$ 与 $B$ 互不相容，则 $AB=\emptyset,P(AB)=0$ ，代入上式得 $a=0.3$ ;</p>
-<p>$(2)$ 若事件 $A$ 与 $B$ 相互独立，则有 $P(AB)=P(A)P(B),0.7=1-a+0.3a$，于是解得 $a=\frac{3}{7}$。  </p>
-<p>$4.$ 设 $0&lt;P(A)&lt;1,0&lt;P(B)&lt;1,P(A|B)+P(\overline{A}|\overline{B})=1$，则$A$ 与 $B$ $\underline{相互独立}$<br>$$<br>\because P(A|B)=\frac{P(AB)}{P(B)},P(\overline{A}|\overline{B})=\frac{P(\overline{A}\overline{B})}{P(\overline{B})}=\frac{1-P(A\bigcup B)}{1-P(B)}  \\<br>\therefore 1=\frac{P(AB)}{P(B)}+\frac{1-P(A\bigcup B)}{1-P(B)}  \\<br>\therefore P(AB)[1-P(B)]=P(B)[P(A)-P(AB)] \\<br>\therefore P(AB)=P(B)[P(AB)+P(A\overline{B})]=P(B)P(A(B+\overline{B}))=P(B)P(A)<br>$$<br>$5.$  甲、乙两台机床加工同种零件，出现次品的概率分别为 $0.03$ 和 $0.02$ ,甲机床加工的零件比乙机床多一倍，且两机床加工的零件放在一起。  </p>
-<p>$(1)$ 求随机取出的零件是合格品的概率；</p>
-<p>$(2)$ 若取出的零件是次品，求它是乙机床加工的概率。  </p>
-<p>解：设事件 $A_1$ 与 $A_2$ 分别表示 “取出的是甲、乙机床加工的零件”，$B=$ “取出的零件为次品”，则由已知条件，知 $P(A_1)=\frac{2}{3},P(A_1)=\frac{1}{3},P(B|A_1)=0.03,P(B|A_2)=0.02$  </p>
-<p>$(1)$<br>$$<br>P(B)=P(A_1)P(B|A_1)+P(A_2)P(B|A_2)=\frac{2}{3}\times0.03+\frac{1}{3}\times0.02=\frac{0.08}{3} \\<br>\therefore P(\overline{B})=1-P(B)=\frac{73}{75}<br>$$<br> $(2)$<br>$$<br>P(A_2|B)=\frac{P(A_2|B)}{P(B)}=\frac{P(B|A_2)}{P(B)}=\frac{1}{4}<br>$$<br>$6.$  袋中有 $50$ 个乒乓球，其中 $20$ 个黄球、$30$ 个白球，今有两人依次随机地从袋中各取出一球，取后不放回。求 $(1)$ 第二人取到黄球的概率 $p$ 。$(2)$ 已知第二人取到的是黄球，求第一人取到的是白球的概率 $q$。</p>
-<p>解：<br>$$<br>A_1=“第一人取到黄球”，A_2=“第二人取到白球”，A_3=“第二人取到黄球”\\<br>P(B)=P(A_1)P(B|A_1)+P(A_2)P(B|A_2)=\frac{2}{5}\times\frac{19}{49}+\frac{3}{5}\times\frac{20}{49}=\frac{2}{5} \\<br>P(A_2|B)=\frac{P(A_2)P(B|A_2)}{P(B)}=\frac{\frac{3}{5}\times\frac{20}{49}}{\frac{2}{5}}=\frac{30}{49}<br>$$<br>$7.$  设有三门火炮同时对某目标射击，命中概率分别为 $0.2、0.3、0.5$，目标命中一发被击毁的概率为$0.2$，命中二发被击毁的概率为 $0.6$ ，三发均命中被击毁的概率为 $0.9$ ，求三门火炮在一次射击中击毁目标的概率。  </p>
-<p>解：<br>$$<br>设A=\{目标一次射击中被击毁\}，B_i=\{目标被击中的发数\}(i=0,1,2,3)  \\<br>P(B_0)=0.8\times0.7\times0.5=0.28 \\<br>P(B_1)=0.2\times0.7\times0.5+0.8\times0.3\times0.5+0.8\times0.7\times0.5=0.47\\<br>P(B_1)=0.2\times0.3\times0.5+0.2\times0.7\times0.5+0.8\times0.3\times0.5=0.22\\<br>P(A|B_0)=0,P(A|B_1)=0.2,P(A|B_2)=0.6,P(A|B_3)=0.9  \\<br>\therefore P(A)=P(B_0)P(A|B_0)+P(B_1)P(A|B_1)+P(B_2)P(A|B_2)+P(B_3)P(A|B_3)\\=0.47\times0.2+0.2\times0.6+0.03\times0.9=0.253<br>$$</p>
-<p>$8.$ 某厂卡车运送防 “H1N1” 用品下乡，顶层装 $10$ 个纸箱，其中 $5$ 箱民用口罩、$2$ 箱医用口罩、$3$ 箱消毒棉花。到目的地时发现丢失 $1$ 箱，不知丢失哪一箱。现从剩下 $9$ 箱中任意打开 $2$ 箱，结果都是民用口罩，求丢失的一箱也是民用口罩的概率。  </p>
-<p>解：设 $A$ 表示 “任取 $2$ 箱都是民用口罩”，$B_i$ 表示 “丢失的一箱为 $i(i=1,2,3)$” ，分别表示民用口罩，医用口罩，消毒棉花。<br>$$<br>P(A)=P(B_1)P(A|B_1)+P(B_2)P(A|B_2)+P(B_3)P(A|B_3)=\frac{1}{2}·\frac{C_4^2}{C_9^2}+\frac{3}{10}·\frac{C_5^2}{C_9^2}+\frac{1}{5}·\frac{C_5^2}{C_9^2}=\frac{8}{36}\\<br>P(B_1|A)=\frac{P(B_1)P(A|B_1)}{P(A)}=\frac{\frac{1}{2}·\frac{C_4^2}{C_9^2}}{P(A)}=\frac{\frac{3}{36}}{\frac{8}{36}}=\frac{3}{8}<br>$$</p>
-<p>$9. $ 一个人把 $6$ 根草紧握在手中，仅露出它们的头和尾。然后随机把 $6$ 个头两两相连，$6$ 个尾两两相连，则放手后 $6$ 根草恰好连成一个环的概率是$\underline{\frac{8}{15}}$  </p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/fsrdyrl1.png" alt></p>
+                <h1 id="3-1-二维随机变量的概率分布"><a href="#3-1-二维随机变量的概率分布" class="headerlink" title="3.1    二维随机变量的概率分布"></a>3.1    二维随机变量的概率分布</h1><p>$1.$ <strong>二维随机变量</strong>：设 $E$ 是随机试验，样本空间 $\Omega=\{\omega\}$，由 $X=X(\omega),Y=Y(\omega)$ 构成的向量 $(X,Y)$ 称为二维随机变量。  </p>
+<p>$2.$ <strong>联合分布函数</strong>：设 $(X,Y)$ 是二维随机变量，对于任意实数 $x,y$ ，称二元函数 $F(x,y)=P\{X\leq x,Y\leq y\}$ 为二维随机变量 $(X,Y)$ 的<strong>联合分布函数</strong>（或简称<strong>分布函数</strong>）。</p>
+<p><strong>联合分布函数的性质</strong>：</p>
+<p>$(1)$ 单调性：$F(x,y)$ 分别对 $x$ 或 $y$ 是单调不减的，即  </p>
+<p>当 $x_1&lt;x_2$ 时，有 $F(x_1,y)\leq F(x_2,y)$；</p>
+<p>当 $y_1&lt;y_2$ 时，有 $F(x,y_1)\leq F(x,y_2)$ 。</p>
+<p>$(2)$ 有界性：对任意的 $x$ 和 $y$ ，有 $0\leq F(x,y)\leq1$，且<br>$$<br>F(-\infty,y)=\lim\limits_{x\rightarrow-\infty}F(x,y)=0\ \ \ \ \ F(x,-\infty)=\lim\limits_{y\rightarrow-\infty}F(x,y)=0 \\<br>F(-\infty,-\infty)=\lim\limits_{x,y\rightarrow-\infty} F(x,y)=0\ \ \ \ \ F(+\infty,+\infty)=\lim\limits_{x,y\rightarrow+\infty}F(x,y)=1<br>$$<br>$(3)$ 右连续型：对每个变量都是右连续的，即<br>$$<br>F(x+0,y)=F(x,y)\ \ \ \ \ F(x,y+0)=F(x,y)<br>$$<br>$(4)$ 非负性：对于任意的 $x_1&lt;x_2,y_1&lt;y_2$ 有   </p>
+<p>$P\{x_1&lt;X\leq x_2,y_1&lt;Y\leq y_2\}=F(x_2,y_2)-F(x_1,y_2)-F(x_2,y_1)+F(x_1,y_1)\geq 0$</p>
+<p>$3.$ <strong>二维离散型随机变量</strong>   </p>
+<p>&emsp;&emsp;若 $(X,Y)$ 所有可能取值为 $(x_i,y_i),i,j=1,2,···$。则 $P\{X=x_i,Y=y_i\}=p_{ij}$ 称为<strong>联合分布律</strong>。  </p>
+<p><strong>联合分布律的性质</strong>：</p>
+<p>$(1)$ $p_{ij}\geq 0$ </p>
+<p>$(2)$ $\sum\limits_{i=1}^{\infty}\sum\limits_{j=1}^{\infty}p_{ij}=1$</p>
+<p>$(3)$ $P\{(X,Y)\in G\}=\sum\limits_{(x_i,y_i)\in G}p_{ij}$</p>
+<p>$4.$ <strong>二维连续型随机变量</strong></p>
+<p>&emsp;&emsp;若分布函数 $F(x,y)=\displaystyle\int_{-\infty}^{x}\displaystyle\int_{-\infty}^{y}f(u,v)dudv$，则称 $(X,Y)$ 是连续型随机变量，$f(x,y)$ 称为 $(X, Y)$ 的联合概率密度。</p>
+<p><strong>联合密度的性质</strong>：</p>
+<p>$(1)$ $f(x,y)\geq 0 $</p>
+<p>$(2)$ $\displaystyle\int_{-\infty}^{+\infty}f(x,y)dydx=1$  </p>
+<p>$(3)$ 若 $f(x,y)$ 在点 $(x,y)$ 处连续，则 $\frac{\partial^2F(x,y)}{\partial x\partial y}=f(x,y)$；</p>
+<p>$(4)$ 设 $G$ 是 $xOy$ 平面上一个区域，则 $P\{(X,Y)\in G\}=\displaystyle\iint\limits_{G}f(x,y)dxdy$  </p>
+<p>$5.$ <strong>二维均匀分布</strong>  </p>
+<p>&emsp;&emsp;设 $D$ 是平面上面积为 $A$ 的区域，称 $(X,Y)$ 服从区域 $D$ 上的均匀分布是指它的概率密度函数为<br>$$<br>f(x,y)=\begin{cases} \frac{1}{A} &amp; (x,y)\in D \\0 &amp; 其他  \end{cases}<br>$$<br>$6.$ <strong>二维正态分布</strong></p>
+<p>&emsp;&emsp;若随机变量 $(X,Y)$ 的概率密度函数为<br>$$<br>f(x,y)=\frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}}e^{-\frac{1}{2(1-\rho^2)}[\frac{(x-\mu_1)^2}{\sigma_1^2}-2\rho\frac{(x-\mu_1)(y-\mu_2)}{\sigma_1\sigma_2}+\frac{(y-\mu_2)^2}{\sigma_2^2}]}<br>$$<br>其中 $\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho$ 都是参数，且 $\sigma_1&gt;0,\sigma_2&gt;0,-\infty&lt;\mu_1,\mu_2&lt;+\infty,|\rho|&lt;1$，则称 $(X,Y)$ 服从参数 $\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho$ 的二维正态分布，记为 $(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$  </p>
+<p>性质：$(X,Y)\sim N(\mu_1,\sigma_1^2,\mu_2,\sigma_2^2,\rho)\Rightarrow X\sim(\mu_1,\sigma_1^2),Y\sim (\mu_2,\sigma_2^2)$。逆命题不成立。</p>
+<h1 id="3-2-边缘分布"><a href="#3-2-边缘分布" class="headerlink" title="3.2    边缘分布"></a>3.2    边缘分布</h1><p>$1.$ <strong>边缘分布函数</strong></p>
+<p>&emsp;&emsp;设二维随机变量 $(X,Y)$ 的分布函数为 $F(X,Y)$ ，分别称函数 $F_X(x)=P\{X\leq x\}=P\{X\leq x,Y&lt;+\infty \}=F(x,+\infty),F_Y(y)=P\{Y\leq y\}=P\{X&lt;+\infty,Y\leq y\}=F(+\infty,y)$</p>
+<p>为 $(X,Y)$ 关于 $X$ 和 $Y$ 的边缘分布函数。</p>
+<p>$2.$ <strong>边缘分布律</strong></p>
+<p>&emsp;&emsp;设二位离散型随机变量 $(X,Y)$ 的联合分布律为 $P\{X=x_i,Y=y_j\}=p_{ij}$，则分别称 $p_{i·}=\sum\limits_{j=1}^{\infty}p_{ij}=p\{X=x_i\}(i=1,2,3,···)$ 和 $p_{·j}=\sum\limits_{i=1}^{\infty}p_{ij}=P\{Y=y_j\}(j=1,2,3,···)$ 为 $(X,Y)$ 关于 $X$ 和 $Y$ 的边缘分布律。</p>
+<p>$3.$ <strong>边缘概率密度</strong></p>
+<p>&emsp;&emsp;$f_X(x)=\displaystyle\int_{-\infty}^{+\infty}f(x,y)dy$ 和 $f_Y(y)=\displaystyle\int_{-\infty}^{+\infty}f(x,y)dx$ 分别称为 $(X,Y)$ 关于 $X$ 和 $Y$ 的边缘概率密度。</p>
+<h1 id="3-3-条件分布"><a href="#3-3-条件分布" class="headerlink" title="3.3    条件分布"></a>3.3    条件分布</h1><p>$1.$ 离散随机变量的条件分布</p>
+<p>&emsp;&emsp;设二维随机变量 $(X,Y)$ 的联合分布列为 $p_{ij}=P(X=x_i,Y=y_i)(i,j=1,2,···)$  </p>
+<p><strong>定义3.3.1</strong> 对一切使 $P(Y=y_j)=p_{·j}=\sum\limits_{i=1}^{+\infty}p_{ij}&gt;0$ 的 $y_j$，称 $p_{i|j}=P(X=x_i|Y=y_j)=\frac{P(X=x_i,Y=y_j)}{P(Y=y_j)}=\frac{p_{ij}}{p_{·j}}(i=1,2,···)$  为给定 $Y=y_j$ 条件下的 <strong>条件分布列</strong>。</p>
+<p>同理，对一切使 $P(X=x_i)=p_{i·}=\sum\limits_{j=1}^{+\infty}p_{ij}&gt;0$ 的 $x_i$，称 $p_{j|i}=P(Y=y_j|X=x_i)=\frac{p_{ij}}{p_{i·}}(j=1,2,···)$  为给定 $X=x_i$ 条件下的 <strong>条件分布列</strong>。</p>
+<p><strong>定义3.3.2</strong> 给定 $Y=y_j$ 条件下 $X$ 的条件分布函数为 $F_{X|Y}(x|y_j)=\sum\limits_{x_i\leq x}P(X=x_i|Y=y_j)=\sum\limits_{x_i\leq x}p_{i|j}$ </p>
+<p>给定 $X=x_i$ 条件下 $Y$ 的条件分布函数为 $F_{Y|Z}(y|x_i)=\sum\limits_{y_j\leq y}P(Y=y_j|X=x_i)=\sum\limits_{y_j\leq y}p_{j|i}$</p>
 
             </div>
             <hr/>
@@ -567,7 +533,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/01/02/%E9%9A%8F%E6%9C%BA%E4%BA%8B%E4%BB%B6%E5%8F%8A%E5%85%B6%E6%A6%82%E7%8E%87/">http://yoursite.com/2020/01/02/%E9%9A%8F%E6%9C%BA%E4%BA%8B%E4%BB%B6%E5%8F%8A%E5%85%B6%E6%A6%82%E7%8E%87/</a>
+                    <a href="http://yoursite.com/2020/01/05/%E5%A4%9A%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/">http://yoursite.com/2020/01/05/%E5%A4%9A%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -604,7 +570,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/">
+                                    <span class="chip bg-color">概率论</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -772,6 +742,48 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2020/01/30/Codeforces-Round-615-Div-3-2020-1-22/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Codeforces Round #615 (Div. 3)(2020.1.22)">
+                        
+                        <span class="card-title">Codeforces Round #615 (Div. 3)(2020.1.22)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            CF1294A    Collecting Coins(模拟)https://codeforces.com/contest/1294/problem/A
+题目描述&emsp;&emsp;有 $a,b,c,n$ 4个数, 询问是否存在 $A,
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-30
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/codeforces/" class="post-category">
+                                    codeforces
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2020/01/02/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/">
                     <div class="card-image">
                         
@@ -788,9 +800,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-02
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -808,55 +820,6 @@
                     
                     <a href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/">
                         <span class="chip bg-color">概率论</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/12/18/%E8%A1%8C%E5%88%97%E5%BC%8F/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="行列式">
-                        
-                        <span class="card-title">行列式</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            一、二阶与三阶行列式$\left| \begin{matrix}a_{11} &amp; a_{12}\\ a_{21} &amp; a_{22}\end{matrix} \right|=a_{11}a_{22}-a_{12}a_{21}$
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-18
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%95%B0%E5%AD%A6/" class="post-category">
-                                    数学
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
-                        <span class="chip bg-color">线性代数</span>
                     </a>
                     
                 </div>
