@@ -473,7 +473,7 @@
                 <h2 id="线性规划问题及其数学模型"><a href="#线性规划问题及其数学模型" class="headerlink" title="线性规划问题及其数学模型"></a>线性规划问题及其数学模型</h2><h3 id="一、问题的提出"><a href="#一、问题的提出" class="headerlink" title="一、问题的提出"></a>一、问题的提出</h3><p>&emsp;&emsp;共同特征:<br>&emsp;&emsp;(1) 每一个问题都<strong>用一组决策变量 $(x_1,x_2,···,x_n)$ 表示某一方案</strong>，这组决策变量的值就代表一个具体方案。一般这些变量取值是非负且连续的。<br>&emsp;&emsp;(2) 要<strong>有建模的有关数据</strong>，如资源拥有量、消耗资源定额、创造新价值量等，并构成互不矛盾的约束条件，这些约束条件可以用一组线性等式或线性不等式来表示。<br>&emsp;&emsp;(3) 都<strong>有一个要求达到的目标</strong>，它可用决策变量及其有关的价值系数构成的线性函数(称为目标函数)来表示。按问题的不同,要求目标函数实现最大化或最小化。<br>&emsp;&emsp;满足以上三个条件的数学模型称为线性规划的数学模型。其一般形式为  </p>
 <script type="math/tex; mode=display">
 \max(\min) z=c_1x_1+c_2x_2+···+x_nx_n\tag{2-1}</script><script type="math/tex; mode=display">
-\begin{cases} a_{11}x_1+a_{12}x_2+···+a_{1n}x_n\leq(=,\geq)b_1 \\ a_{21}x_1+a_{22}x_2+···+a_{2n}x_n\leq(=,\geq)b_2 \\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \    \vdots \\a_{m1}x_1+a_{m2}x_2+···+a_{mn}\leq(=,\geq)b_m \\x_1,x_2,···,x_n\geq 0\tag{2-2}  \end{cases}</script><p>&emsp;&emsp;在线性规划的数学模型中，式 (2-1) 称为目标函数；$c_j$为价值系数；式 (2-2) 称为约束条件；$a_{ij}$ 称为技术系数，$b_i$ 称为限额系数。一般情况下 $m&lt;n$。</p>
+\begin{cases} a_{11}x_1+a_{12}x_2+···+a_{1n}x_n\leq(=,\geq)b_1 \\ a_{21}x_1+a_{22}x_2+···+a_{2n}x_n\leq(=,\geq)b_2 \\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \    \vdots \\a_{m1}x_1+a_{m2}x_2+···+a_{mn}\leq(=,\geq)b_m \\x_1,x_2,···,x_n\geq 0\tag{2-2}  \end{cases}</script><p>&emsp;&emsp;在线性规划的数学模型中，式 (2-1) 称为目标函数；$c<em>j$为价值系数；式 (2-2) 称为约束条件；$a</em>{ij}$ 称为技术系数，$b_i$ 称为限额系数。一般情况下 $m&lt;n$。</p>
 <h3 id="二、图解法"><a href="#二、图解法" class="headerlink" title="二、图解法"></a>二、图解法</h3><p>&emsp;&emsp;图解法简单直观，求解线性规划问题时不需将数学模型化为标准型，可以直接在平面上作图，但此法只适用于二维问题，故有一定局限性。</p>
 <h4 id="1-无穷多最优解（多重最优解）"><a href="#1-无穷多最优解（多重最优解）" class="headerlink" title="1.无穷多最优解（多重最优解）"></a>1.无穷多最优解（多重最优解）</h4><p>&emsp;&emsp;参数 $z$ 的平行直线与约束条件的边界线平行。</p>
 <h4 id="2-无界解"><a href="#2-无界解" class="headerlink" title="2.无界解"></a>2.无界解</h4><p>&emsp;&emsp;问题可行域无界，目标函数值可以增大到无穷大。称这种情况为无界解。</p>
@@ -749,8 +749,8 @@ x_k=x'_k-x''_k(其中 x_k=x',x''_k\geq 0)</script>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一、二阶与三阶行列式$\left| \begin{matrix}a_{11} &amp; a_{12}\ a_{21} &amp; a_{22}\end{matrix} \right|=a_{11}a_{22}-a_{12}a_{21}$
-
+                            一、二阶与三阶行列式$\left| \begin{matrix}a{11} &amp; a{12}\ a{21} &amp; a{22}\end{matrix} \right|=a{11}a{22}-a{12}a{21}$
+$\left| 
                         
                     </div>
                     <div class="publish-info">
