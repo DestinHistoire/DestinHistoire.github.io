@@ -550,7 +550,7 @@ int main()
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="CF1294C-Product-of-Three-Numbers（数学）"><a href="#CF1294C-Product-of-Three-Numbers（数学）" class="headerlink" title="CF1294C    Product of Three Numbers（数学）"></a>CF1294C    Product of Three Numbers（数学）</h2><h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p>&emsp;&emsp;给定一个数 $n$ ，求出三个不相同的整数 $a,b,c$ 且 $2 \leq a,b,c$，使得 $a \cdot b \cdot c =n$。</p>
 <p>&emsp;&emsp;如果有多个答案，输出任一合法解。</p>
-<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;把 $n$ 分解质因数，设 $n=\prod\limits_{i=1}^{m}p_{i}^ {a_i}$。</p>
+<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;把 $n$ 分解质因数，设 $n=\prod\limits<em>{i=1}^{m}p</em>{i}^ {a_i}$。</p>
 <p>&emsp;&emsp;<strong>分类讨论</strong>：</p>
 <p>&emsp;&emsp;$1.$ 当 $m\geq 3$ 时，必存在 $(p_1,p_2,\frac{n}{p_1\times p_2})$ 符合条件。</p>
 <p>&emsp;&emsp;$2.$ 当 $m=2$ 时，可能存在 $(p_1,p_2,\frac{n}{p_1\times p_2}) $，其中 $(\frac{n}{p_1\times p_2}\geq 2 $ 且 $p_1\neq p_2\neq \frac{n}{p_1\times p_2})$。</p>
@@ -647,8 +647,8 @@ int main()
 <h2 id="CF1294E-Obtain-a-Permutation（思维）"><a href="#CF1294E-Obtain-a-Permutation（思维）" class="headerlink" title="CF1294E    Obtain a Permutation（思维）"></a>CF1294E    Obtain a Permutation（思维）</h2><p><a href="https://codeforces.com/contest/1294/problem/E" target="_blank" rel="noopener">https://codeforces.com/contest/1294/problem/E</a></p>
 <h3 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h3><p><img src="https://cdn.luogu.com.cn/upload/image_hosting/nrwyhgdv.png" alt></p>
 <h3 id="分析-3"><a href="#分析-3" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;由于单点修改和整列上移两种操作都不会对其他列产生影响，所以考虑对每一列分开处理。</p>
-<p>&emsp;&emsp;定义 $same_{j,i}(0\leq i&lt;n)$，表示将第 $j$ 列上移 $i$ 个单位后，有几个数字是不需要被单点修改的。上移了 $i$ 个单位后，需要花费 $n-same_{j,i}$ 次修改操作，由于上移也花费了 $i$ 次操作，则第 $j$ 列的最优方案就是 $\min\limits_{0\leq i&lt;n}(i+n-same_{j,i})$，最终答案为 $ans=\displaystyle{\sum\limits_{j=1}^{m}} \Big(\min\limits_{0\leq i&lt;n}(i+n-same_{j,i})\Big)$。</p>
-<p>&emsp;&emsp;下面讨论如何求出 $same_{j,i}$ 。如果一个数字 $a_{i,j}$ 是出现在第 $j$ 列的数字，那么有 $j\leq a_{i,j}\leq n\times m$ 且 $a_{i,j}\equiv j\pmod m$ ，$a_{i,j}$ 这个数字应该出现在 $\frac{a_{i,j}-j}{m}+1$ 行 $($ 记作 $k)$。</p>
+<p>&emsp;&emsp;定义 $same<em>{j,i}(0\leq i&lt;n)$，表示将第 $j$ 列上移 $i$ 个单位后，有几个数字是不需要被单点修改的。上移了 $i$ 个单位后，需要花费 $n-same</em>{j,i}$ 次修改操作，由于上移也花费了 $i$ 次操作，则第 $j$ 列的最优方案就是 $\min\limits<em>{0\leq i&lt;n}(i+n-same</em>{j,i})$，最终答案为 $ans=\displaystyle{\sum\limits<em>{j=1}^{m}} \Big(\min\limits</em>{0\leq i&lt;n}(i+n-same_{j,i})\Big)$。</p>
+<p>&emsp;&emsp;下面讨论如何求出 $same<em>{j,i}$ 。如果一个数字 $a</em>{i,j}$ 是出现在第 $j$ 列的数字，那么有 $j\leq a<em>{i,j}\leq n\times m$ 且 $a</em>{i,j}\equiv j\pmod m$ ，$a<em>{i,j}$ 这个数字应该出现在 $\frac{a</em>{i,j}-j}{m}+1$ 行 $($ 记作 $k)$。</p>
 <p>&emsp;&emsp;如果把 $a_{i,j}$ 移动到第 $k$ 行，这个数字就不用变了。</p>
 <p>&emsp;&emsp;$1.$ 若 $i\geq k$，需要移动 $i-k$ 次。</p>
 <p>&emsp;&emsp;$2.$ 若 $i&lt;k$ ，需要移动 $i-k+n$ 次 $($ 第 $i$ 行移动到第 $1$ 行需要 $i-1$ 次，再移动 $1$ 次到第 $n$ 行，从第 $n$ 行移动到第 $k$ 行需要 $n-k$ 次，加起来为 $i-1+1+n-k=i-k+n$ 次 $)。$</p>
@@ -692,9 +692,9 @@ int main()
 }
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="CF1294F-Three-Paths-on-a-Tree（两次BFS求树的直径）"><a href="#CF1294F-Three-Paths-on-a-Tree（两次BFS求树的直径）" class="headerlink" title="CF1294F    Three Paths on a Tree（两次BFS求树的直径）"></a>CF1294F    Three Paths on a Tree（两次BFS求树的直径）</h2><p><a href="http://codeforces.com/contest/1294/problem/F" target="_blank" rel="noopener">http://codeforces.com/contest/1294/problem/F</a></p>
-<h3 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h3><p>&emsp;&emsp;给定一棵含 $n (3\leq n\leq2\cdot 10^5)$ 个结点的无权树，试找出三个结点 $u$、$v$、$w$，使得$\operatorname{dis}(\{u,v\text{ 间的路径}\}\cup\{v,w\text{ 间的路径}\}\cup\{w,u\text{ 间的路径}\})$ 最大。</p>
+<h3 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h3><p>&emsp;&emsp;给定一棵含 $n\ (3\leq n\leq2\cdot 10^5)$ 个结点的无权树，试找出三个结点 $u$、$v$、$w$，使得$\operatorname{dis}({u,v\text{ 间的路径}}\cup{v,w\text{ 间的路径}}\cup{w,u\text{ 间的路径}})$ 最大。</p>
 <p>输出两行：</p>
-<p>&emsp;&emsp;第一行为 $\max \operatorname{dis}(\{u,v\text{ 间的路径}\}\cup\{v,w\text{ 间的路径}\}\cup\{w,u\text{ 间的路径}\})$。</p>
+<p>&emsp;&emsp;第一行为 $\max \operatorname{dis}({u,v\text{ 间的路径}}\cup{v,w\text{ 间的路径}}\cup{w,u\text{ 间的路径}})$。</p>
 <p>&emsp;&emsp;第二行三个整数，即 $u$、$v$、$w$，如有多种答案，输出一种即可。</p>
 <h3 id="分析-4"><a href="#分析-4" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;必定会有一组最优解，使得 $u,v$ 是树直径上的端点。</p>
 <p><strong>证明</strong>：</p>
@@ -1047,7 +1047,8 @@ int main()
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            3.1    二维随机变量的概率分布$1.$ 二维随机变量：设 $E$ 是随机试验，样本空间 $\Omega=\{\omega\}$，由 $X=X(\omega),Y=Y(\omega)$ 构成的向量 $(X,Y)$ 称为二维随机变量。  
+                            3.1    二维随机变量的概率分布$1.$ 二维随机变量：设 $E$ 是随机试验，样本空间 $\Omega={\omega}$，由 $X=X(\omega),Y=Y(\omega)$ 构成的向量 $(X,Y)$ 称为二维随机变量。  
+$
                         
                     </div>
                     <div class="publish-info">
@@ -1408,7 +1409,7 @@ $(function () {
     });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-//<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 
 	<script type="text/javascript"> var OriginTitile = document.title, st; 
