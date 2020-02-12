@@ -522,9 +522,9 @@
 <h2 id="CF1300C-Anu-Has-a-Function-位运算"><a href="#CF1300C-Anu-Has-a-Function-位运算" class="headerlink" title="CF1300C     Anu Has a Function(位运算)"></a>CF1300C     Anu Has a Function(位运算)</h2><p><a href="https://codeforces.com/contest/1300/problem/C" target="_blank" rel="noopener">https://codeforces.com/contest/1300/problem/C</a></p>
 <h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p>&emsp;&emsp;给定一个 $n$ 个数的序列，重新排列此序列，使 $f(f(…f(f(a_1,a_2),a_3),…,a_{n−1}),a_n)$ 最大。</p>
 <p>其中 $f(x,y)=(x|y)-y$。$(1\leq n\leq 10^5.0\leq a_i\leq 10^9)$</p>
-<h3 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;$y$ 的某一位为 $0$ 的话 $x$ 的这一位不变，$y$ 的某一位为 $1$ 的话 $x$ 的这一位为 $0$，因此 $f(x,y)=(x|y)-y=x&amp;(\sim y)$。</p>
-<p>&emsp;&emsp;$f(f(…f(f(a_1,a_2),a_3),…,a_{n−1}),a_n)=a_1&amp;(\sim a_2)&amp;(\sim a_3)&amp;…&amp;(\sim a_n)=a_1&amp;{\sim(a_2|a_3|…|a_n)}$ 因此只需要找到某一个数字 $a_k$ 与 其余数字的或和最大即可。</p>
-<p>&emsp;&emsp;$a_k&amp;{\sim(a_1|a_2|…|a_{k-1})}&amp;{\sim(a_{k+1}|a_{k+2}|…|a_n)}=a_1|a_2|…|a_n-a_1|a_{2}|…|a_{k-1}|a_{k+1}|…|a_n)}$</p>
+<h3 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;$y$ 的某一位为 $0$ 的话 $x$ 的这一位不变，$y$ 的某一位为 $1$ 的话 $x$ 的这一位为 $0$，因此 $f(x,y)=(x|y)-y=x&amp;(_\tilde\ y)$。</p>
+<p>&emsp;&emsp;$f(f(…f(f(a_1,a_2),a_3),…,a_{n−1}),a_n)=a_1&amp;(_\tilde\ a_2)&amp;(_\tilde\ a_3)&amp;…&amp;(_\tilde\ a_n)=a_1&amp;{_\tilde\ (a_2|a_3|…|a_n)}$ 因此只需要找到某一个数字 $a_k$ 与 其余数字的或和最大即可。</p>
+<p>&emsp;&emsp;$a_k&amp;{<em>\tilde\ (a_1|a_2|…|a</em>{k-1})}&amp;{<em>\tilde\ (a</em>{k+1}|a_{k+2}|…|a_n)}=a_1|a_2|…|a_n-a_1|a_{2}|…|a_{k-1}|a_{k+1}|…|a_n)}$</p>
 <p>&emsp;&emsp;预处理序列的或和前缀 $dp1[i]$ 和序列的或和后缀 $dp2[i]$ ，记录令函数值最大的 $k$ 后输出 $a_k$，其余数字依次输出即可。时间复杂度 $O(n)$。</p>
 <h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
