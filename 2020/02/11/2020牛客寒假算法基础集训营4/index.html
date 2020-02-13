@@ -1074,7 +1074,7 @@ map<span class="token operator">&lt;</span><span class="token keyword">int</span
 <h3 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h3><p>&emsp;&emsp;输出一行一个百分数，代表期末分数占比多少为合适。保留两位小数。</p>
 <h3 id="分析-5"><a href="#分析-5" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;如果论文成绩占比为 $x$，一个人平时分数为 $a_i $ ，$y$ 是一个随机的 $0$ 到 $90$ 之间的数字，那么 $ a_i * (1-x)+y*x\geq 90 $，所以 $ (a_i-90) * (1-x)+(y-90) * x\geq 0$。</p>
 <p>&emsp;&emsp;因为 $ y\in [0,90],y-90\in [-90,0],-y\in [-90,0]$，$ -y $ 和 $ 90-y $ 的值域相同，所以用 $ -y $ 替换 $ 90-y $。</p>
-<p>&emsp;&emsp;那么 $ (a_i-90)<em>(1-x)-y * x\ge 0,\frac{(a_i-90)</em>(1-x)}{x}\ge y$。</p>
+<p>&emsp;&emsp;那么 $ (a_i-90) * (1-x)-y * x\ge 0,\frac{(a_i-90) * (1-x)}{x}\ge y$。</p>
 <p>&emsp;&emsp;$E=\sum\limits_{i=1}^{n} \frac{(a_i-90)(1-x)}{90x}=0.1n$，解方程可知答案为 $x=\frac{\sum\limits_{i=1}^n(a_i-90)}{9n+\sum_{i=1}^n\limits(a_i-90)}$。</p>
 <h3 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
