@@ -1,0 +1,1207 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="莫比乌斯反演, CUG Information Management and Information System">
+    <meta name="description" content="符号及规定$1.[P]$ 是指，当 $P$ 为真时，式子的值是 $1$；当 $P$ 为假时，式子的值是 $0$。
+$2.a\mid b$ 是指 $b$ 被 $a$ 整除，即存在一个整数 $k$ 使得 $b=ka$。
+$3.n\perp m$">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>莫比乌斯反演 | Destin Histoire的博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Destin Histoire的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Destin Histoire的博客</div>
+        <div class="logo-desc">
+            
+            中国地质大学(武汉) | 信息管理与信息系统
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Contact
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        莫比乌斯反演
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%95%B0%E8%AE%BA/">
+                                <span class="chip bg-color">数论</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">
+                                <span class="chip bg-color">莫比乌斯反演</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
+                                算法笔记
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-02-18
+                </div>
+                
+
+                
+
+                
+
+                
+				
+                
+            </div>
+            
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="符号及规定"><a href="#符号及规定" class="headerlink" title="符号及规定"></a>符号及规定</h2><p>$1.[P]$ 是指，当 $P$ 为真时，式子的值是 $1$；当 $P$ 为假时，式子的值是 $0$。</p>
+<p>$2.a\mid b$ 是指 $b$ 被 $a$ 整除，即存在一个整数 $k$ 使得 $b=ka$。</p>
+<p>$3.n\perp m$  是指 $n$ 与 $m$ 互质。</p>
+<h2 id="数论函数与狄利克雷卷积"><a href="#数论函数与狄利克雷卷积" class="headerlink" title="数论函数与狄利克雷卷积"></a>数论函数与狄利克雷卷积</h2><h3 id="数论函数"><a href="#数论函数" class="headerlink" title="数论函数"></a>数论函数</h3><p><strong>数论函数</strong>是指定义域是正整数，值域是一个数集的一类函数。</p>
+<p>定义两个数论函数的加法为<strong>逐项相加</strong>，即 $(\mathbf f+\mathbf g)(n)=\mathbf f(n)+\mathbf g(n)$</p>
+<p>数乘定义为这个数与数论函数的每一项都相乘，即 $(x\mathbf f)(n)=x·\mathbf f(n)$。</p>
+<h3 id="狄利克雷卷积"><a href="#狄利克雷卷积" class="headerlink" title="狄利克雷卷积"></a>狄利克雷卷积</h3><p>定义两个数论函数的 <strong>狄利克雷卷积</strong> $\ast$  ：</p>
+<p>若 $\mathbf t=\mathbf f \ast \mathbf g$，则<br>$$<br>\mathbf t(n)=\displaystyle{\sum\limits_{i|n}\mathbf f(i)\mathbf g(\frac{n}{i})}<br>$$<br>即<br>$$<br>\mathbf t(n)=\displaystyle{\sum\limits_{i·j=n}\mathbf f(i)\mathbf g(j)}<br>$$<br>狄利克雷卷积的性质：</p>
+<p>$1.$ <strong>交换律</strong>：$\mathbf f \ast \mathbf g=\mathbf g \ast \mathbf f$</p>
+<p>$2.$ <strong>结合律</strong>：$(\mathbf f\ast \mathbf g)\ast \mathbf h=\mathbf f<em>(\mathbf g\ast \mathbf h)$<br>$$<br>\sum\limits_{(i·j)·k=n}(\mathbf f(i)\mathbf g(j))\mathbf h(k)=\sum\limits_{i·(j·k)=n}\mathbf f(i)(\mathbf g(j)\mathbf h(k))<br>$$<br>$3.$*</em>分配律<strong>：$(\mathbf f+\mathbf g)\ast \mathbf h=\mathbf f \ast \mathbf h+\mathbf g \ast \mathbf h$<br>$$<br>\sum\limits_{i·j=n}(\mathbf f(i)+\mathbf g(i))\ast \mathbf h(j)=\sum\limits_{i·j=n}(\mathbf f(i)\ast \mathbf h(j)+\mathbf g(i)\ast \mathbf h(j))=\sum\limits_{i·j=n}\mathbf f(i)\ast \mathbf h(j)+\sum\limits_{i·j=n}\mathbf g(i)\ast \mathbf h(j)<br>$$<br>$4.(x\mathbf f)\ast \mathbf g=x(\mathbf f\ast \mathbf g)$<br>$$<br>\sum\limits_{i·j=n}(x·\mathbf f(i))\ast \mathbf g(j)=x·\sum\limits_{i·j=n}\mathbf f(i)\ast \mathbf g(j)<br>$$<br>$5.$</strong>单位元**：$\epsilon \ast \mathbf f=\mathbf f$，其中 $\epsilon(n)=[n=1]=\begin{cases} 1 &amp; n=1 \ 0 &amp; n&gt;1\end{cases}$</p>
+<p>$6.$<strong>逆元</strong>：对每个 $\mathbf f(1)\neq 0$ 的函数 $\mathbf f$，都存在一个函数 $\mathbf g$ 使得 $\mathbf f \ast \mathbf g=\epsilon$</p>
+<p><strong>如何求出一个函数的逆？</strong></p>
+<p>定义：<br>$$<br>\mathbf g(n)=\frac 1{\mathbf f(1)}\left([n=1]-\sum_{i\mid n, i\neq1}\mathbf f(i)\mathbf g\left(\frac ni\right)\right)<br>$$<br>则<br>$$<br>\begin{aligned}&amp;\quad\sum_{i\mid n}\mathbf f(i)\mathbf g\left(\frac ni\right)\&amp;=\mathbf f(1)\mathbf g(n)+\sum_{i\mid n,i\neq1}\mathbf f(i)\mathbf g\left(\frac ni\right)\&amp;=[n=1]\end{aligned}</p>
+<p>$$</p>
+<h2 id="积性函数"><a href="#积性函数" class="headerlink" title="积性函数"></a>积性函数</h2><p>定义：如果一个数论函数 $\mathbf f $ 满足：当 $ n\perp m $ 时，$\mathbf f(nm)=\mathbf f(n) \mathbf f(m)$，则称其为 <strong>积性函数</strong>。</p>
+<p>一些常见的积性函数有：</p>
+<p>$\epsilon(n)=[n=1];\mathbf {id}(n)=n;\mathbf{id}^k(n)=n^k$</p>
+<p>实际上，它们满足完全积性，也就是说，无论  $n,m$  是否互质，都有 $\mathbf f(nm)=\mathbf f(n)\mathbf f(m)$</p>
+<p>另外两个常见的积性函数是 $\sigma_0$ 和 $\varphi$ ，其中 $\sigma_0(n)$ 表示 $n$ 的因数个数（$\sigma_k$ 表示所有因数的 $k$ 次方和），而 $\varphi(n)$ 表示 $[1,n]$ 中与 $n$ 互质的数的个数。</p>
+<p><strong>证明 $\sigma_0$ 的积性</strong></p>
+<p>&emsp;&emsp;如果 $n\perp m$，可以发现每个 $nm$ 的约数 $t$ 都可以分解成一个 $n$ 的约数 $\gcd(n,t)$ 和一个 $m$ 的约数 $\gcd(m,t)$ 的积。</p>
+<p>&emsp;&emsp;这是因为 $ n\perp m,t\mid nm \Rightarrow t=\gcd(t,nm)=\gcd(t,n)·\gcd(t,m)$ ，而且 $a\mid n,b\mid m\Rightarrow ab\mid nm$，并且 $a\mid n,b\mid n\Rightarrow \gcd(ab,n)=a$。</p>
+<p>&emsp;&emsp;所以 $\sigma_0(nm)=\sigma_0(n)\sigma_0(m)$。</p>
+<p><strong>证明 $\varphi$ 的积性</strong></p>
+<p>&emsp;&emsp;因为 $t\perp nm\Leftrightarrow t\perp n,t\perp m \Leftrightarrow (t\ \text{mod}\ n)\perp n,(t\ \text{mod}\ m)\perp m$，所以每个 $[1,nm]$ 之间的与 $nm$ 互质的数 $t$ 都可以对应到一个 $[1,n]$ 的与 $n$ 互质的数 $t\ \text{mod}\ n$ 和一个 $[1,m]$ 的与 $m$ 互质的数 $t\ \text{mod}\ m$。</p>
+<p>&emsp;&emsp;根据中国剩余定理，这种对应是一一对应的（即已知 $a \perp n,b \perp m$ 后可以唯一确定一个 $[1,nm]$ 之间的 $t$ 使得 $t\ \text{mod}\ n=a,t\ \text{mod}\ m=b$，且 $t \perp nm$）。因此 $\varphi(nm)=\varphi(n)\varphi(m)$。</p>
+<h3 id="结论1：两个积性函数的狄利克雷卷积是积性函数"><a href="#结论1：两个积性函数的狄利克雷卷积是积性函数" class="headerlink" title="结论1：两个积性函数的狄利克雷卷积是积性函数"></a>结论1：两个积性函数的狄利克雷卷积是积性函数</h3><p>&emsp;&emsp;已知 $\mathbf t=\mathbf f\ast \mathbf g$，且 $\mathbf f,\mathbf g$ 都是积性函数</p>
+<p>&emsp;&emsp;由于 “若 $n\perp m$ 则每个 $nm$ 的约数都可以分解成一个 $n$ 的约数和一个 $m$ 的约数的积”，且 $n\perp m,a\perp n,b\perp m$，则 $a\perp b$。</p>
+<p>若 $n\perp m$，则<br>$$<br>\begin{aligned}\mathbf t(nm)&amp;=\sum_{d\mid nm}\mathbf f(d)\mathbf g\left(\frac{nm}d\right)\&amp;=\sum_{a\mid n,b\mid m}\mathbf f(ab)\mathbf g\left(\frac{nm}{ab}\right)\&amp;=\sum_{a\mid n,b\mid m}\mathbf f(a)\mathbf f(b)\mathbf g\left(\frac na\right)\mathbf g\left(\frac mb\right)\&amp;=\left(\sum_{a\mid n}\mathbf f(a)\mathbf g\left(\frac na\right)\right)\left(\sum_{b\mid m}\mathbf f(b)\mathbf g\left(\frac mb\right)\right)\&amp;=\mathbf t(n)\mathbf t(m)\end{aligned}<br>$$</p>
+<h3 id="结论2：积性函数的逆是积性函数"><a href="#结论2：积性函数的逆是积性函数" class="headerlink" title="结论2：积性函数的逆是积性函数"></a>结论2：积性函数的逆是积性函数</h3><p>对于一个积性函数 $\mathbf f$，其逆 $\mathbf g(n)=[n=1]-\sum\limits_{i\mid n,i\neq 1}\mathbf f(i)\mathbf g(\frac{n}{i})$（注意，积性函数一定满足 $\mathbf f(1)=1$），因为 $\mathbf f(1)=\mathbf f(1)\mathbf f(1)$；如果 $\mathbf f(1)=0$ 则 $\mathbf f(n)\equiv0$，这种情况不作考虑）</p>
+<p><strong>证明：</strong></p>
+<p>考虑数学归纳法，对 $nm$ 的大小进行归纳：</p>
+<p>$1.nm=1$ 时，$\mathbf g(1)=1$，结论显然成立；</p>
+<p>$2.$假设 $nm&gt;1$，当 $n’m’&lt;nm$ 的时候有 $\mathbf g(n’m’)=\mathbf g(n’)\mathbf g(m’)$<br>$$<br>\begin{aligned}\mathbf g(nm)&amp;=-\sum_{d\mid nm,d\neq1}\mathbf f(d)\mathbf g\left(\frac{nm}d\right)\&amp;=-\sum_{a\mid n,b\mid m,ab\neq1}\mathbf f(ab)\mathbf g\left(\frac{nm}{ab}\right)\&amp;=-\sum_{a\mid n,b\mid m,ab\neq1}\mathbf f(a)\mathbf f(b)\mathbf g\left(\frac na\right)\mathbf g\left(\frac mb\right)(此处运用了归纳条件,即 \frac{nm}{ab}&lt;nm)\&amp;=\mathbf f(1)\mathbf f(1)\mathbf g(n)\mathbf g(m)-\sum_{a\mid n,b\mid m}\mathbf f(a)\mathbf f(b)\mathbf g\left(\frac na\right)\mathbf g\left(\frac mb\right)\&amp;=\mathbf g(n)\mathbf g(m)-\left(\sum_{a\mid n}\mathbf f(a)\mathbf g\left(\frac na\right)\right)\left(\sum_{b\mid m}\mathbf f(b)\mathbf g\left(\frac mb\right)\right)\&amp;=\mathbf g(n)\mathbf g(m)-\epsilon(n)\epsilon(m)\&amp;=\mathbf g(n)\mathbf g(m)\end{aligned}<br>$$<br>最后一步是因为 $nm&gt;1$ 所以 $n,m$ 之间至少一个不为 $1$，则 $\epsilon(n)\epsilon(m)=[n=1][m=1]=0$。</p>
+<h2 id="线性筛"><a href="#线性筛" class="headerlink" title="线性筛"></a>线性筛</h2><p>由于每个正整数 $n$ 都可以写成唯一的质因数分解形式 $n=\prod\limits_{i=1}^{t}p_i^{k_i}$，并且不同的 $p_i^{k_i}$ 显然互质，所以<br>$$<br>\mathbf f(n)=\prod\limits_{i=1}^{t}\mathbf f(p_i^{k_i})<br>$$<br>&emsp;&emsp;所以我们有另一种方法表示积性函数，即给出某积性函数在素数幂处的取值（这些值决定了整个积性函数）。</p>
+<p>&emsp;&emsp;由于在线性筛素数的时候我们可以顺便求出每个数的最小质因数 $p_1$、最小质因数的次数 $k_1$ 以及 $\frac{n}{p_1^{k_1}}$，就可以利用递推式 $\mathbf f(n)=\mathbf f(p_1^{k_1})\mathbf f(\frac{n}{p_1^{k_1}})$ 直接计算 $\mathbf f$ 了。</p>
+<p>&emsp;&emsp;由于 $\sigma_0$ 和 $\varphi$ 在素数幂处的值很容易得到：$k&gt;0$ 时，$\sigma_0(p^k)=k+1,\varphi(p^k)=p^{k-1}(p-1)$。</p>
+<p>所以对于 $n=\prod\limits_{i=1}^tp_i^{k_i}$，<br>$$<br>\sigma_0(n)=\prod_{i=1}^t(k_i+1),\varphi(n)=\prod_{i=1}^np_i^{k_i-1}(p_i-1)=n\prod\limits_{i=1}^t(1-\frac{1}{p_i})<br>$$<br>&emsp;&emsp;因为 $\varphi \ast \mathbf 1$ 也是积性函数并且 $(\varphi \ast \mathbf 1)(p^k)=p^k$，得到：$\mathbf {id}=\varphi \ast \mathbf 1$。</p>
+<h2 id="莫比乌斯反演"><a href="#莫比乌斯反演" class="headerlink" title="莫比乌斯反演"></a>莫比乌斯反演</h2><p>定义 $\mathbf 1$ 的逆是 $\mu$。</p>
+<p>如果 $\mathbf g=\mathbf f\ast \mathbf 1$，就有 $\mathbf f=\mathbf f \ast \mathbf {1}\ast \mu=\mathbf g\ast \mu$。</p>
+<p>也就是说，如果 $\mathbf g(n)=\sum\limits_{d\mid n}\mathbf f(d)$，有 $\mathbf f(n)=\sum\limits_{d\mid n}\mu(\frac{n}{d})\mathbf g(d)$。</p>
+<p>类似的，可以发现 $\mathbf {id}^k$ 的逆是 $\mathbf t=\mu(n)n^k$，如果<br>$$<br>\mathbf g(n)=\sum_{d\mid n}\left(\frac nd\right)^k\mathbf f(d)<br>$$<br>有<br>$$<br>\mathbf f(n)=\sum_{d\mid n}\mu\left(\frac nd\right)\left(\frac nd\right)^k\mathbf g(d)<br>$$<br>比如，$\varphi=\mu\ast \mathbf{id}$，也就是<br>$$<br>\varphi(n)=\sum_{d\mid n}\mu\left(\frac nd\right)d<br>$$</p>
+<h2 id="莫比乌斯函数"><a href="#莫比乌斯函数" class="headerlink" title="莫比乌斯函数"></a>莫比乌斯函数</h2><p>由于 $\mathbf 1$ 是积性的，而且 $\mu$ 是 $\mathbf 1$ 的逆，所以 $\mu$ 也是积性的。</p>
+<p>可以得到：<br>$$<br>\mu(p^k)=\begin{cases}1&amp;k=0\-1&amp;k=1\0&amp;k&gt;1\end{cases}<br>$$<br> 于是：<br>$$<br>\mu(n)=\begin{cases}(-1)^t&amp;n=p_1p_2\dots p_t\text{且$ p_i $互不相同}\0&amp;n\text{不满足上述条件（或者说 $ n $ 有平方因子）}\end{cases}<br>$$<br>&emsp;&emsp;通俗的讲，当 $n$ 包含相等的质因子时，$\mu(n)=0$，当 $n$ 的所有质因子各不相等时，若 $n$ 有偶数个质因子，$\mu(n)=1$，若 $n$ 有奇数个质因子，$\mu(n)=-1$。</p>
+<p><strong>另一个方向的莫比乌斯反演：</strong><br>$$<br>\mathbf g(x)=\sum_{x\mid y}\mathbf f(y)\Leftrightarrow\mathbf f(x)=\sum_{x\mid y}\mu\left(\frac yx\right)\mathbf g(y)<br>$$<br>证明：</p>
+<p>定义 $(\mathbf f\oplus\mathbf g)(x)=\sum\limits_{x\mid y}\mathbf f(\frac{y}{x})\mathbf g(y)$，容易得到 $(\mathbf f\ast\mathbf g)\oplus \mathbf h=\mathbf f \oplus(\mathbf g \oplus \mathbf h)$。</p>
+<p>所以：<br>$$<br>\mathbf f=(\mu \ast 1)\oplus\mathbf f=\mu\oplus(\mathbf1 \oplus \mathbf f)=\mu\oplus \mathbf g<br>$$<br>上述结论得证。</p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="bzoj-2820-YY的GCD"><a href="#bzoj-2820-YY的GCD" class="headerlink" title="bzoj-2820    YY的GCD"></a>bzoj-2820    YY的GCD</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>计算<br>$$<br>\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{m}[\gcd(i,j)\in prime]<br>$$<br>多组询问，每组 $n,m\leq 10000000$，数据组数 $T\leq 10000$。</p>
+<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>设<br>$$<br>f(d)=\sum\limits_{i=1}^{n}\sum\limits_{j=1}^m[\gcd(i,j)=d],F(n)=\sum\limits_{n\mid d}f(d)=\lfloor\frac{N}{n}\rfloor\lfloor\frac{M}{n}\rfloor<br>$$<br>则<br>$$<br>f(n)=\sum\limits_{n\mid d}\mu(\lfloor\frac{d}{n}\rfloor)F(d</p>
+<p>)<br>$$<br>考虑枚举 $k$：<br>$$<br>\text{ans}=\sum\limits_{k=1}^{n}\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{m}[\gcd(i,j)=k](k\in prime)<br>$$<br>同时除以 $k$，将 $[\gcd(i,j)=k]$ 化为 $[\gcd(i,j)=1]$<br>$$<br>\text{ans}=\sum\limits_{k=1}^{n}\sum\limits_{i=1}^{\lfloor\frac{n}{k}\rfloor}\sum\limits_{j=1}^{\lfloor\frac{m}{k}\rfloor}[\gcd(i,j)=1](k\in prime)<br>$$</p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://www.destinhistoire.top" rel="external nofollow noreferrer">Destin Histoire</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://www.destinhistoire.top/2020/02/18/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">http://www.destinhistoire.top/2020/02/18/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="http://www.destinhistoire.top" target="_blank">Destin Histoire</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%95%B0%E8%AE%BA/">
+                                    <span class="chip bg-color">数论</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">
+                                    <span class="chip bg-color">莫比乌斯反演</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/02/18/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="莫比乌斯反演">
+                        
+                        <span class="card-title">莫比乌斯反演</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            符号及规定$1.[P]$ 是指，当 $P$ 为真时，式子的值是 $1$；当 $P$ 为假时，式子的值是 $0$。
+$2.a\mid b$ 是指 $b$ 被 $a$ 整除，即存在一个整数 $k$ 使得 $b=ka$。
+$3.n\perp m$
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    算法笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%B0%E8%AE%BA/">
+                        <span class="chip bg-color">数论</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">
+                        <span class="chip bg-color">莫比乌斯反演</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/02/18/%E7%89%9B%E5%AE%A2%E5%B0%8F%E7%99%BD%E6%9C%88%E8%B5%9B21/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="牛客小白月赛21">
+                        
+                        <span class="card-title">牛客小白月赛21</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            A.Audio(几何)题目描述&emsp;&emsp;求三角形外心（垂直平分线的交点）。$(0\leq |x_i|,|y_i|\leq 10^9)$
+分析
+
+代码#include&lt;bits/stdc++.h>
+using namesp
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%A2%98%E8%A7%A3/" class="post-category">
+                                    题解
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%89%9B%E5%AE%A2/">
+                        <span class="chip bg-color">牛客</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">年份</span>
+            <a href="http://www.destinhistoire.top" target="_blank">Destin Histoire</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    window.setTimeout("siteTime()", 1000);
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "12";
+                    var startDate = "4";
+                    var startHour = "22";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/DestinHistoire" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:513219103@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=513219103" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 513219103" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
+
+	<script type="text/javascript"> var OriginTitile = document.title, st; 
+document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "Σ(っ °Д °;)っ喔哟，崩溃啦！", clearTimeout(st)) : (document.title = "φ(゜▽゜*)?咦，又好了！", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) }) 
+	</script>
+</html>
