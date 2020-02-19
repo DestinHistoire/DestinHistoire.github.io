@@ -812,8 +812,8 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
 <p>归纳可得：$f(n)=x^{fib(n-2)}<em>y^{fib(n-1)}</em>a^{fib(n)-1}$</p>
 <p>根据费马小定理，$a^{1e9+6}\equiv 1\pmod{1e9+7}$。因此幂的指数对 $1e9+6$ 取模即可，逐一 $a$ 是 $1e9+7$ 的倍数的特殊情况。</p>
 <p>假设 $f(i)$ 代表斐波那契数列的第 $i$ 项，则有：</p>
-<p>$\left[ \begin{matrix} 0 &amp; 1 \ 1 &amp; 1 \end{matrix} \right]*\left[ \begin{matrix} f(i) &amp; 0\ f(i+1) &amp; 0 \end{matrix} \right]=\left[ \begin{matrix} f(i+1) &amp; 0\ f(i)+f(i+1) &amp; 0 \end{matrix} \right]=\left[ \begin{matrix} f(i+1) &amp; 0\ f(i+2) &amp; 0 \end{matrix} \right]$</p>
-<p>因此 $\left[ \begin{matrix} 0 &amp; 1 \ 1 &amp; 1 \end{matrix} \right]^n*\left[ \begin{matrix} f(1) &amp; 0 \ f(2) &amp; 0 \end{matrix} \right]=\left[ \begin{matrix} f(n+1) &amp; 0 \ f(n+2) &amp; 0 \end{matrix} \right]$</p>
+<p>$\left[ \begin{matrix} 0 &amp; 1 \\ 1 &amp; 1 \end{matrix} \right]*\left[ \begin{matrix} f(i) &amp; 0\\ f(i+1) &amp; 0 \end{matrix} \right]=\left[ \begin{matrix} f(i+1) &amp; 0\\ f(i)+f(i+1) &amp; 0 \end{matrix} \right]=\left[ \begin{matrix} f(i+1) &amp; 0\\ f(i+2) &amp; 0 \end{matrix} \right]$</p>
+<p>因此 $\left[ \begin{matrix} 0 &amp; 1 \\ 1 &amp; 1 \end{matrix} \right]^n*\left[ \begin{matrix} f(1) &amp; 0 \\ f(2) &amp; 0 \end{matrix} \right]=\left[ \begin{matrix} f(n+1) &amp; 0 \\ f(n+2) &amp; 0 \end{matrix} \right]$</p>
 <h3 id="代码-9"><a href="#代码-9" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 <span class="token keyword">const</span> <span class="token keyword">int</span> mod<span class="token operator">=</span><span class="token number">1e9</span><span class="token operator">+</span><span class="token number">7</span><span class="token punctuation">;</span>
@@ -1534,22 +1534,6 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 

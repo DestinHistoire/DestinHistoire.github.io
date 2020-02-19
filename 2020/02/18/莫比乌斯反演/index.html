@@ -485,10 +485,10 @@ $3.n\perp m$">
 <h3 id="狄利克雷卷积"><a href="#狄利克雷卷积" class="headerlink" title="狄利克雷卷积"></a>狄利克雷卷积</h3><p>定义两个数论函数的 <strong>狄利克雷卷积</strong> $\ast$  ：</p>
 <p>若 $\mathbf t=\mathbf f \ast \mathbf g$，则<br>$$<br>\mathbf t(n)=\displaystyle{\sum\limits_{i|n}\mathbf f(i)\mathbf g(\frac{n}{i})}<br>$$<br>即<br>$$<br>\mathbf t(n)=\displaystyle{\sum\limits_{i·j=n}\mathbf f(i)\mathbf g(j)}<br>$$<br>狄利克雷卷积的性质：</p>
 <p>$1.$ <strong>交换律</strong>：$ \mathbf f \ast \mathbf g=\mathbf g \ast \mathbf f $</p>
-<p>$2.$ <strong>结合律</strong>：$ (\mathbf f \ast \mathbf g)\ast \mathbf h=\mathbf f\ast(\mathbf g \ast \mathbf h) $<br>$$<br>\sum\limits_{(i·j)·k=n}(\mathbf f(i)\mathbf g(j))\mathbf h(k)=\sum\limits_{i·(j·k)=n}\mathbf f(i)(\mathbf g(j)\mathbf h(k))<br>$$<br>$3.$ <strong>分配律</strong>：$(\mathbf f+\mathbf g)\ast \mathbf h=\mathbf f \ast \mathbf h+\mathbf g \ast \mathbf h$<br>$$<br>\sum\limits_{i·j=n}(\mathbf f(i)+\mathbf g(i))\ast \mathbf h(j)=\sum\limits_{i·j=n}(\mathbf f(i)\ast \mathbf h(j)+\mathbf g(i)\ast \mathbf h(j))=\sum\limits_{i·j=n}\mathbf f(i)\ast \mathbf h(j)+\sum\limits_{i·j=n}\mathbf g(i)\ast \mathbf h(j)<br>$$<br>$4.(x\mathbf f)\ast \mathbf g=x(\mathbf f\ast \mathbf g)$<br>$$<br>\sum\limits_{i·j=n}(x·\mathbf f(i))\ast \mathbf g(j)=x·\sum\limits_{i·j=n}\mathbf f(i)\ast \mathbf g(j)<br>$$<br>$5.$<strong>单位元</strong>：$\epsilon \ast \mathbf f=\mathbf f$，其中 $\epsilon(n)=[n=1]=\begin{cases} 1 &amp; n=1 \ 0 &amp; n&gt;1\end{cases}$</p>
+<p>$2.$ <strong>结合律</strong>：$ (\mathbf f \ast \mathbf g)\ast \mathbf h=\mathbf f\ast(\mathbf g \ast \mathbf h) $<br>$$<br>\sum\limits_{(i·j)·k=n}(\mathbf f(i)\mathbf g(j))\mathbf h(k)=\sum\limits_{i·(j·k)=n}\mathbf f(i)(\mathbf g(j)\mathbf h(k))<br>$$<br>$3.$ <strong>分配律</strong>：$(\mathbf f+\mathbf g)\ast \mathbf h=\mathbf f \ast \mathbf h+\mathbf g \ast \mathbf h$<br>$$<br>\sum\limits_{i·j=n}(\mathbf f(i)+\mathbf g(i))\ast \mathbf h(j)=\sum\limits_{i·j=n}(\mathbf f(i)\ast \mathbf h(j)+\mathbf g(i)\ast \mathbf h(j))=\sum\limits_{i·j=n}\mathbf f(i)\ast \mathbf h(j)+\sum\limits_{i·j=n}\mathbf g(i)\ast \mathbf h(j)<br>$$<br>$4.(x\mathbf f)\ast \mathbf g=x(\mathbf f\ast \mathbf g)$<br>$$<br>\sum\limits_{i·j=n}(x·\mathbf f(i))\ast \mathbf g(j)=x·\sum\limits_{i·j=n}\mathbf f(i)\ast \mathbf g(j)<br>$$<br>$5.$<strong>单位元</strong>：$\epsilon \ast \mathbf f=\mathbf f$，其中 $\epsilon(n)=[n=1]=\begin{cases} 1 &amp; n=1 \\ 0 &amp; n&gt;1\end{cases}$</p>
 <p>$6.$<strong>逆元</strong>：对每个 $\mathbf f(1)\neq 0$ 的函数 $\mathbf f$，都存在一个函数 $\mathbf g$ 使得 $\mathbf f \ast \mathbf g=\epsilon$</p>
 <p><strong>如何求出一个函数的逆？</strong></p>
-<p>定义：<br>$$<br>\mathbf g(n)=\frac 1{\mathbf f(1)}\left([n=1]-\sum_{i\mid n, i\neq1}\mathbf f(i)\mathbf g\left(\frac ni\right)\right)<br>$$<br>则<br>$$<br>\begin{aligned}&amp;\quad\sum_{i\mid n}\mathbf f(i)\mathbf g\left(\frac ni\right) \ &amp; =\mathbf f(1)\mathbf g(n)+\sum_{i\mid n,i\neq1}\mathbf f(i)\mathbf g\left(\frac ni\right) \ &amp; =[n=1]\end{aligned}<br>$$</p>
+<p>定义：<br>$$<br>\mathbf g(n)=\frac 1{\mathbf f(1)}\left([n=1]-\sum_{i\mid n, i\neq1}\mathbf f(i)\mathbf g\left(\frac ni\right)\right)<br>$$<br>则<br>$$<br>\begin{aligned}&amp;\quad\sum_{i\mid n}\mathbf f(i)\mathbf g\left(\frac ni\right) \\ &amp; =\mathbf f(1)\mathbf g(n)+\sum_{i\mid n,i\neq1}\mathbf f(i)\mathbf g\left(\frac ni\right) \\ &amp; =[n=1]\end{aligned}<br>$$</p>
 <h2 id="积性函数"><a href="#积性函数" class="headerlink" title="积性函数"></a>积性函数</h2><p>定义：如果一个数论函数 $\mathbf f $ 满足：当 $ n\perp m $ 时，$\mathbf f(nm)=\mathbf f(n) \mathbf f(m)$，则称其为 <strong>积性函数</strong>。</p>
 <p>一些常见的积性函数有：</p>
 <p>$\epsilon(n)=[n=1];\mathbf {id}(n)=n;\mathbf{id}^k(n)=n^k$</p>
@@ -503,12 +503,12 @@ $3.n\perp m$">
 <p>&emsp;&emsp;根据中国剩余定理，这种对应是一一对应的（即已知 $a \perp n,b \perp m$ 后可以唯一确定一个 $[1,nm]$ 之间的 $t$ 使得 $t\ \text{mod}\ n=a,t\ \text{mod}\ m=b$，且 $t \perp nm$）。因此 $\varphi(nm)=\varphi(n)\varphi(m)$。</p>
 <h3 id="结论1：两个积性函数的狄利克雷卷积是积性函数"><a href="#结论1：两个积性函数的狄利克雷卷积是积性函数" class="headerlink" title="结论1：两个积性函数的狄利克雷卷积是积性函数"></a>结论1：两个积性函数的狄利克雷卷积是积性函数</h3><p>&emsp;&emsp;已知 $\mathbf t=\mathbf f\ast \mathbf g$，且 $\mathbf f,\mathbf g$ 都是积性函数</p>
 <p>&emsp;&emsp;由于 “若 $n\perp m$ 则每个 $nm$ 的约数都可以分解成一个 $n$ 的约数和一个 $m$ 的约数的积”，且 $n\perp m,a\perp n,b\perp m$，则 $a\perp b$。</p>
-<p>若 $n\perp m$，则<br>$$<br>\begin{aligned}\mathbf t(nm) &amp; =\sum_{d\mid nm}\mathbf f(d)\mathbf g\left(\frac{nm}d\right) \ &amp; =\sum_{a\mid n,b\mid m}\mathbf f(ab) \mathbf g\left(\frac{nm}{ab}\right) \ &amp; =\sum_{a\mid n,b\mid m}\mathbf f(a)\mathbf f(b)\mathbf g\left(\frac na\right)\mathbf g\left(\frac mb\right)\ &amp; = \left(\sum_{a\mid n}\mathbf f(a)\mathbf g\left(\frac na\right)\right)\left(\sum_{b\mid m}\mathbf f(b)\mathbf g\left(\frac mb\right)\right) \ &amp; =\mathbf t(n)\mathbf t(m)\end{aligned}<br>$$</p>
+<p>若 $n\perp m$，则<br>$$<br>\begin{aligned}\mathbf t(nm) &amp; =\sum_{d\mid nm}\mathbf f(d)\mathbf g\left(\frac{nm}d\right) \\ &amp; =\sum_{a\mid n,b\mid m}\mathbf f(ab) \mathbf g\left(\frac{nm}{ab}\right) \\ &amp; =\sum_{a\mid n,b\mid m}\mathbf f(a)\mathbf f(b)\mathbf g\left(\frac na\right)\mathbf g\left(\frac mb\right)\\ &amp; = \left(\sum_{a\mid n}\mathbf f(a)\mathbf g\left(\frac na\right)\right)\left(\sum_{b\mid m}\mathbf f(b)\mathbf g\left(\frac mb\right)\right) \\ &amp; =\mathbf t(n)\mathbf t(m)\end{aligned}<br>$$</p>
 <h3 id="结论2：积性函数的逆是积性函数"><a href="#结论2：积性函数的逆是积性函数" class="headerlink" title="结论2：积性函数的逆是积性函数"></a>结论2：积性函数的逆是积性函数</h3><p>对于一个积性函数 $\mathbf f$，其逆 $\mathbf g(n)=[n=1]-\sum\limits_{i\mid n,i\neq 1}\mathbf f(i)\mathbf g(\frac{n}{i})$（注意，积性函数一定满足 $\mathbf f(1)=1$），因为 $\mathbf f(1)=\mathbf f(1)\mathbf f(1)$；如果 $\mathbf f(1)=0$ 则 $\mathbf f(n)\equiv0$，这种情况不作考虑）</p>
 <p><strong>证明：</strong></p>
 <p>考虑数学归纳法，对 $nm$ 的大小进行归纳：</p>
 <p>$1.nm=1$ 时，$\mathbf g(1)=1$，结论显然成立；</p>
-<p>$2.$假设 $nm&gt;1$，当 $n’m’&lt;nm$ 的时候有 $\mathbf g(n’m’)=\mathbf g(n’)\mathbf g(m’)$<br>$$<br>\begin{aligned}\mathbf g(nm) &amp; =-\sum_{d\mid nm,d\neq1}\mathbf f(d)\mathbf g\left(\frac{nm}d\right) \ &amp; =-\sum_{a\mid n,b\mid m,ab\neq1}\mathbf f(ab)\mathbf g\left(\frac{nm}{ab}\right) \ &amp; =-\sum_{a\mid n,b\mid m,ab\neq1}\mathbf f(a)\mathbf f(b)\mathbf g\left(\frac na\right)\mathbf g\left(\frac mb\right)(此处运用了归纳条件,即 \frac{nm}{ab}&lt;nm) \ &amp; =\mathbf f(1)\mathbf f(1)\mathbf g(n)\mathbf g(m)-\sum_{a\mid n,b\mid m}\mathbf f(a)\mathbf f(b)\mathbf g\left(\frac na\right)\mathbf g\left(\frac mb\right)\ &amp; =\mathbf g(n)\mathbf g(m)-\left(\sum_{a\mid n}\mathbf f(a)\mathbf g\left(\frac na\right)\right)\left(\sum_{b\mid m}\mathbf f(b)\mathbf g\left(\frac mb\right)\right) \ &amp; =\mathbf g(n)\mathbf g(m)-\epsilon(n)\epsilon(m)\ &amp; =\mathbf g(n)\mathbf g(m)\end{aligned}<br>$$<br>最后一步是因为 $nm&gt;1$ 所以 $n,m$ 之间至少一个不为 $1$，则 $\epsilon(n)\epsilon(m)=[n=1][m=1]=0$。</p>
+<p>$2.$假设 $nm&gt;1$，当 $n’m’&lt;nm$ 的时候有 $\mathbf g(n’m’)=\mathbf g(n’)\mathbf g(m’)$<br>$$<br>\begin{aligned}\mathbf g(nm) &amp; =-\sum_{d\mid nm,d\neq1}\mathbf f(d)\mathbf g\left(\frac{nm}d\right) \\ &amp; =-\sum_{a\mid n,b\mid m,ab\neq1}\mathbf f(ab)\mathbf g\left(\frac{nm}{ab}\right) \\ &amp; =-\sum_{a\mid n,b\mid m,ab\neq1}\mathbf f(a)\mathbf f(b)\mathbf g\left(\frac na\right)\mathbf g\left(\frac mb\right)(此处运用了归纳条件,即 \frac{nm}{ab}&lt;nm) \\ &amp; =\mathbf f(1)\mathbf f(1)\mathbf g(n)\mathbf g(m)-\sum_{a\mid n,b\mid m}\mathbf f(a)\mathbf f(b)\mathbf g\left(\frac na\right)\mathbf g\left(\frac mb\right)\\ &amp; =\mathbf g(n)\mathbf g(m)-\left(\sum_{a\mid n}\mathbf f(a)\mathbf g\left(\frac na\right)\right)\left(\sum_{b\mid m}\mathbf f(b)\mathbf g\left(\frac mb\right)\right) \\ &amp; =\mathbf g(n)\mathbf g(m)-\epsilon(n)\epsilon(m)\\ &amp; =\mathbf g(n)\mathbf g(m)\end{aligned}<br>$$<br>最后一步是因为 $nm&gt;1$ 所以 $n,m$ 之间至少一个不为 $1$，则 $\epsilon(n)\epsilon(m)=[n=1][m=1]=0$。</p>
 <h2 id="线性筛"><a href="#线性筛" class="headerlink" title="线性筛"></a>线性筛</h2><p>由于每个正整数 $n$ 都可以写成唯一的质因数分解形式 $n=\prod\limits_{i=1}^{t}p_i^{k_i}$，并且不同的 $p_i^{k_i}$ 显然互质，所以<br>$$<br>\mathbf f(n)=\prod\limits_{i=1}^{t}\mathbf f(p_i^{k_i})<br>$$<br>&emsp;&emsp;所以我们有另一种方法表示积性函数，即给出某积性函数在素数幂处的取值（这些值决定了整个积性函数）。</p>
 <p>&emsp;&emsp;由于在线性筛素数的时候我们可以顺便求出每个数的最小质因数 $p_1$、最小质因数的次数 $k_1$ 以及 $\frac{n}{p_1^{k_1}}$，就可以利用递推式 $\mathbf f(n)=\mathbf f(p_1^{k_1})\mathbf f(\frac{n}{p_1^{k_1}})$ 直接计算 $\mathbf f$ 了。</p>
 <p>&emsp;&emsp;由于 $\sigma_0$ 和 $\varphi$ 在素数幂处的值很容易得到：$k&gt;0$ 时，$\sigma_0(p^k)=k+1,\varphi(p^k)=p^{k-1}(p-1)$。</p>
@@ -518,7 +518,7 @@ $3.n\perp m$">
 <p>也就是说，如果 $\mathbf g(n)=\sum\limits_{d\mid n}\mathbf f(d)$，有 $\mathbf f(n)=\sum\limits_{d\mid n}\mu(\frac{n}{d})\mathbf g(d)$。</p>
 <p>类似的，可以发现 $\mathbf {id}^k$ 的逆是 $\mathbf t=\mu(n)n^k$，如果<br>$$<br>\mathbf g(n)=\sum_{d\mid n}\left(\frac nd\right)^k\mathbf f(d)<br>$$<br>有<br>$$<br>\mathbf f(n)=\sum_{d\mid n}\mu\left(\frac nd\right)\left(\frac nd\right)^k\mathbf g(d)<br>$$<br>比如，$\varphi=\mu\ast \mathbf{id}$，也就是<br>$$<br>\varphi(n)=\sum_{d\mid n}\mu\left(\frac nd\right)d<br>$$</p>
 <h2 id="莫比乌斯函数"><a href="#莫比乌斯函数" class="headerlink" title="莫比乌斯函数"></a>莫比乌斯函数</h2><p>由于 $\mathbf 1$ 是积性的，而且 $\mu$ 是 $\mathbf 1$ 的逆，所以 $\mu$ 也是积性的。</p>
-<p>可以得到：<br>$$<br>\mu(p^k)=\begin{cases}1 &amp; k=0 \ -1 &amp; k=1 \ 0 &amp; k&gt;1\end{cases}<br>$$<br> 于是：<br>$$<br>\mu(n)=\begin{cases}(-1)^t &amp; n=p_1p_2\dots p_t\text{且 $ p_i $互不相同}\0 &amp; n\text{不满足上述条件（或者说 $ n $ 有平方因子）}\end{cases}<br>$$<br>&emsp;&emsp;通俗的讲，当 $n$ 包含相等的质因子时，$\mu(n)=0$，当 $n$ 的所有质因子各不相等时，若 $n$ 有偶数个质因子，$\mu(n)=1$，若 $n$ 有奇数个质因子，$\mu(n)=-1$。</p>
+<p>可以得到：<br>$$<br>\mu(p^k)=\begin{cases}1 &amp; k=0 \\ -1 &amp; k=1 \\ 0 &amp; k&gt;1\end{cases}<br>$$<br> 于是：<br>$$<br>\mu(n)=\begin{cases}(-1)^t &amp; n=p_1p_2\dots p_t\text{且 $ p_i $互不相同}\\0 &amp; n\text{不满足上述条件（或者说 $ n $ 有平方因子）}\end{cases}<br>$$<br>&emsp;&emsp;通俗的讲，当 $n$ 包含相等的质因子时，$\mu(n)=0$，当 $n$ 的所有质因子各不相等时，若 $n$ 有偶数个质因子，$\mu(n)=1$，若 $n$ 有奇数个质因子，$\mu(n)=-1$。</p>
 <p><strong>另一个方向的莫比乌斯反演：</strong><br>$$<br>\mathbf g(x)=\sum_{x\mid y}\mathbf f(y)\Leftrightarrow\mathbf f(x)=\sum_{x\mid y}\mu\left(\frac yx\right)\mathbf g(y)<br>$$<br>证明：</p>
 <p>定义 $(\mathbf f\oplus\mathbf g)(x)=\sum\limits_{x\mid y}\mathbf f(\frac{y}{x})\mathbf g(y)$，容易得到 $(\mathbf f\ast\mathbf g)\oplus \mathbf h=\mathbf f \oplus(\mathbf g \oplus \mathbf h)$。</p>
 <p>所以：<br>$$<br>\mathbf f=(\mu \ast 1)\oplus\mathbf f=\mu\oplus(\mathbf1 \oplus \mathbf f)=\mu\oplus \mathbf g<br>$$<br>上述结论得证。</p>
@@ -1181,22 +1181,6 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 
