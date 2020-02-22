@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="高斯消元, CUG Information Management and Information System">
-    <meta name="description" content="&amp;emsp;&amp;emsp;高斯消元是一种求解线性方程组的方法。所谓线性方程组，是由 $m$ 个 $n$ 元一次方程共同构成的。线性方程组的所有系数可以写成一个 $m$ 行 $n$ 列的 “系数矩阵”，再加上每个方程等号右侧的常数，可以写成一个">
+    <meta name="keywords" content="bzoj-3036 绿豆蛙的归宿(概率dp+拓扑排序), CUG Information Management and Information System">
+    <meta name="description" content="题目描述&amp;emsp;&amp;emsp;给出一个有向无环的连通图，起点为 $1$ 终点为 $n$，每条边都有一个长度。绿豆蛙从起点出发，走向终点。到达每一个顶点时，如果有 $k$ 条离开该点的道路，绿豆蛙可以选择任意一条道路离开该点，并且走向每条路">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>高斯消元 | Destin Histoire的博客</title>
+    <title>bzoj-3036 绿豆蛙的归宿(概率dp+拓扑排序) | Destin Histoire的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -304,13 +304,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        高斯消元
+                        bzoj-3036 绿豆蛙的归宿(概率dp+拓扑排序)
                     </div>
                 </div>
             </div>
@@ -428,12 +428,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
-                                <span class="chip bg-color">线性代数</span>
+                            <a href="/tags/%E6%A6%82%E7%8E%87dp/">
+                                <span class="chip bg-color">概率dp</span>
                             </a>
                         
-                            <a href="/tags/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/">
-                                <span class="chip bg-color">高斯消元</span>
+                            <a href="/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/">
+                                <span class="chip bg-color">拓扑排序</span>
                             </a>
                         
                     </div>
@@ -444,8 +444,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
-                                算法笔记
+                            <a href="/categories/%E9%A2%98%E8%A7%A3/" class="post-category">
+                                题解
                             </a>
                         
                     </div>
@@ -457,7 +457,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-21
+                    2020-02-22
                 </div>
                 
 
@@ -474,72 +474,63 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>&emsp;&emsp;高斯消元是一种求解线性方程组的方法。所谓线性方程组，是由 $m$ 个 $n$ 元一次方程共同构成的。线性方程组的所有系数可以写成一个 $m$ 行 $n$ 列的 “系数矩阵”，再加上每个方程等号右侧的常数，可以写成一个 $m$ 行 $n+1$ 列的 “增广矩阵”，例如：</p>
-<p><img src="https://i.loli.net/2020/02/22/SkpnotDTFfgQKrH.jpg" alt></p>
-<p>&emsp;&emsp;求解这种方程组的步骤可以概括成对 “增广矩阵” 的三类操作：</p>
-<p>&emsp;&emsp;$1.$ 用一个非零的数乘某一行。</p>
-<p>&emsp;&emsp;$2.$ 把其中一行的若干倍加到另一行上。</p>
-<p>&emsp;&emsp;$3.$ 交换两行的位置。</p>
-<p>&emsp;&emsp;我们把这三类操作称为矩阵的 ”初等行变换“。同理，我们也可以定义矩阵的 ”初等列变换“。用若干次初等行变换求解上面的方程组，过程如下：<br>$$<br>\left[\begin{matrix} 1 &amp; 2 &amp; -1 &amp; -6\\ 2 &amp; 1 &amp; -3 &amp; -9 \\ -1 &amp; -1 &amp; 2 &amp; 7\end{matrix}\right]<br>\Rightarrow \left[\begin{matrix}  1 &amp; 2 &amp; -1 &amp; -6\\ 0 &amp; -3 &amp; -1 &amp; 3 \\ -1&amp; -1 &amp;2 &amp; 7\end{matrix}\right]\Rightarrow \left[\begin{matrix}  1 &amp; 2 &amp; -1 &amp; -6\\ 0 &amp; -3 &amp; -1 &amp; 3 \\ 0 &amp; 1 &amp; 1 &amp; 1\end{matrix}\right] \\ \Rightarrow \left[\begin{matrix}  1 &amp; 2 &amp; -1 &amp; -6\\ 0 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; -3 &amp; -1 &amp; 3\end{matrix}\right] \Rightarrow \left[\begin{matrix}  1 &amp; 2 &amp; -1 &amp; -6\\ 0 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 2 &amp; 6\end{matrix}\right]\Rightarrow \left[\begin{matrix}  1 &amp; 2 &amp; -1 &amp; -6\\ 0 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 3\end{matrix}\right]<br>$$<br>&emsp;&emsp;最后得到的矩阵被称为 ”阶梯形矩阵“，它的系数矩阵部分被称为 ”上三角矩阵“，名字来源于形状。这个矩阵表达的信息是：</p>
-<p><img src="https://i.loli.net/2020/02/22/znI6Bbs5AZXjDW7.jpg" alt></p>
-<p>&emsp;&emsp;因此，我们已经知道了最后一个未知量的值，从下往上依次代回方程组，即可得到每个未知量的解。事实上，该矩阵也可以进一步化简：</p>
-<p><img src="https://i.loli.net/2020/02/22/HYvVUlx42NJyIwE.jpg" alt></p>
-<p>&emsp;&emsp;最后得到的矩阵被称为 ”简化阶梯形矩阵“，它的系数矩阵是一个 ”对角矩阵”，名字来源于其形状。该矩阵已经直接给出了方程组的解。</p>
-<p>&emsp;&emsp;<strong>通过初等行变换把增广矩阵变为简化阶梯形矩阵的线性方程组求解算法就是高斯消元算法</strong>。高斯消元算法的思想就是，对每个未知量 $x_i$，找到一个 $x_i$ 的系数非零，但 $x_1$ ~ $x_{i-1}$ 的系数全部消成零。</p>
-<p>&emsp;&emsp;上面给出的例子是一种比较理想的情况。事实上，在高斯消元的过程中，可能会遇到各种各样的特殊情形，需要我们分情况讨论。</p>
-<p>&emsp;&emsp;首先，在高斯消元过程中，可能出现 $0=d$ 这样的方程，其中 $d$ 是一个非零常数。这表明某些方程之间存在矛盾，方程组无解。</p>
-<p>&emsp;&emsp;其次，有可能找不到一个 $x_i$ 的系数非零，但 $x_1$~$x_{i-1}$ 的系数都是零的方程。这是我们要重点讨论的情况，例如：</p>
-<p><img src="https://i.loli.net/2020/02/22/rEjhumcS8ZGIpYO.png" alt></p>
-<p>&emsp;&emsp;在上例中，找不到 $x_2$ 的系数非零，但 $x_1$ 的系数为零的方程。方程组的解可以写作：<br>$$<br>\begin{cases} x_1=4-2x_2\\ x_3=1\end{cases}<br>$$<br> &emsp;&emsp;$x_2$ 取任何值，都可以计算出一个对应的 $x_1$ ，并且满足原方程组。换言之，方程组有无穷多个解。我们把 $x_1,x_3$ 这样的未知量称为 <strong>“主元”</strong>，把 $x_2$ 这样的未知量称为 <strong>“自由元”</strong>。</p>
-<p>&emsp;&emsp;仔细分析可以发现，对于每个主元，整个简化阶梯形矩阵中有且仅有一个位置 $(i,j)$ ，满足该主元的系数非零。第 $j$ 列的其他位置都是零，第 $i$ 行的第 $1$ ~ $j-1$ 列都是零。</p>
-<p>&emsp;&emsp;综上所述，在高斯消元完成后，若存在系数全为零、常数不为零的行，则方程组无解。若系数不全为零的行恰好有 $n$ 个，则说明主元有 $n$ 个，方程组有唯一解。若系数不全为零的行有 $k&lt;n$ 个，则说明主元有 $k$ 个，自由元有 $n-k$ 个，方程组有无穷多个解。</p>
-<h2 id="【模板】高斯消元法"><a href="#【模板】高斯消元法" class="headerlink" title="【模板】高斯消元法"></a>【模板】高斯消元法</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个线性方程组，对其求解</p>
-<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行，一个正整数 $n$</p>
-<p>第二至 $n+1$ 行，每行 $n+1$ 个整数，为 $a_1, a_2 \cdots a_n$ 和 $b$，代表一组方程 $(1 \leq n \leq 100, \left | a_i \right| \leq {10}^4 , \left |b \right| \leq {10}^4)$。</p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>共 $n$ 行，每行一个数，第 $i$ 行为 $x_i$（保留 $2$ 位小数）</p>
-<p>如果不存在唯一解，在第一行输出 $\text{“No Solution”}$</p>
+                <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>&emsp;&emsp;给出一个有向无环的连通图，起点为 $1$ 终点为 $n$，每条边都有一个长度。绿豆蛙从起点出发，走向终点。到达每一个顶点时，如果有 $k$ 条离开该点的道路，绿豆蛙可以选择任意一条道路离开该点，并且走向每条路的概率为 $\frac{1}{k}$ 。</p>
+<p>&emsp;&emsp;现在绿豆蛙想知道，从起点走到终点的所经过的路径总长度期望是多少？  </p>
+<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><p>第一行：两个整数 $n,m$，代表图中有 $n$个点、$m$ 条边$(1\leq n\leq 10^5,1\leq m\leq 2n)$。</p>
+<p>第二行到第 $m+1$ 行：每行 $3$ 个整数  $x,y,z$，代表从 $x$ 到 $y$ 有一条长度为 $z$ 的有向边。</p>
+<h3 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h3><p>从起点到终点路径总长度的期望值，四舍五入保留两位小数。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;设 $\text{dp[x]}$ 表示从节点 $x$ 走到终点所经过的路径的期望长度。若从 $x$ 出发有 $k$ 条边，分别到达 $y_1,y_2,\cdots,y_k$，边长分别为 $z_1,z_2,\cdots,z_k$ ，则根据数学期望的定义和性质，有：<br>$$<br>\text{dp[x]}=\frac{1}{k}\sum\limits_{i=1}^{k}(\text{dp}[y_i]+z_i)<br>$$<br><strong>边界条件</strong>： $\text{dp[n]}=0$</p>
+<p><strong>目标：</strong>$\text{dp[1]}$</p>
+<p>&emsp;&emsp;从终点出发，在反图上（每条边方向取反的图上）执行拓扑排序，在拓扑排序的过程中顺便计算 $\text{dp[x]}$ 即可。</p>
+<p>&emsp;&emsp;时间复杂度 $O(n+m)$。</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
-<span class="token keyword">double</span> a<span class="token punctuation">[</span><span class="token number">110</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">110</span><span class="token punctuation">]</span><span class="token punctuation">,</span>b<span class="token punctuation">[</span><span class="token number">110</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">struct</span> Edge
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> to<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> Next<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> dis<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>edge<span class="token punctuation">[</span><span class="token number">200010</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> head<span class="token punctuation">[</span><span class="token number">200010</span><span class="token punctuation">]</span><span class="token punctuation">,</span>num_edge<span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">add_edge</span><span class="token punctuation">(</span><span class="token keyword">int</span> from<span class="token punctuation">,</span><span class="token keyword">int</span> to<span class="token punctuation">,</span><span class="token keyword">int</span> dis<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    edge<span class="token punctuation">[</span><span class="token operator">++</span>num_edge<span class="token punctuation">]</span><span class="token punctuation">.</span>to<span class="token operator">=</span>to<span class="token punctuation">;</span>
+    edge<span class="token punctuation">[</span>num_edge<span class="token punctuation">]</span><span class="token punctuation">.</span>dis<span class="token operator">=</span>dis<span class="token punctuation">;</span>
+    edge<span class="token punctuation">[</span>num_edge<span class="token punctuation">]</span><span class="token punctuation">.</span>Next<span class="token operator">=</span>head<span class="token punctuation">[</span>from<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    head<span class="token punctuation">[</span>from<span class="token punctuation">]</span><span class="token operator">=</span>num_edge<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">int</span> deg<span class="token punctuation">[</span><span class="token number">100010</span><span class="token punctuation">]</span><span class="token punctuation">,</span>out<span class="token punctuation">[</span><span class="token number">100010</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">double</span> dp<span class="token punctuation">[</span><span class="token number">100010</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+queue<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> Q<span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">int</span> n<span class="token punctuation">;</span>
-    cin<span class="token operator">>></span>n<span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%lf"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-        b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">,</span>m<span class="token punctuation">;</span>
+    cin<span class="token operator">>></span>n<span class="token operator">>></span>m<span class="token punctuation">;</span>
     <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span>i<span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">int</span> x<span class="token punctuation">,</span>y<span class="token punctuation">,</span>z<span class="token punctuation">;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d%d%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>x<span class="token punctuation">,</span><span class="token operator">&amp;</span>y<span class="token punctuation">,</span><span class="token operator">&amp;</span>z<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">add_edge</span><span class="token punctuation">(</span>y<span class="token punctuation">,</span>x<span class="token punctuation">,</span>z<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        deg<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
+        out<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    Q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>Q<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> x<span class="token operator">=</span>Q<span class="token punctuation">.</span><span class="token function">front</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Q<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span>head<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>i<span class="token punctuation">;</span>i<span class="token operator">=</span>edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Next<span class="token punctuation">)</span>
         <span class="token punctuation">{</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">fabs</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token number">1e-8</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>k<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>k<span class="token operator">++</span><span class="token punctuation">)</span>
-                    <span class="token function">swap</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">,</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token function">swap</span><span class="token punctuation">(</span>b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>b<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"No Solution"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">==</span>j<span class="token punctuation">)</span>
-                <span class="token keyword">continue</span><span class="token punctuation">;</span>
-            <span class="token keyword">double</span> rate<span class="token operator">=</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">/</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token operator">=</span>i<span class="token punctuation">;</span>k<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>k<span class="token operator">++</span><span class="token punctuation">)</span>
-                a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">=</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">-</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">*</span>rate<span class="token punctuation">;</span>
-            b<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span>b<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">-</span>b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">*</span>rate<span class="token punctuation">;</span>
+            <span class="token keyword">int</span> y<span class="token operator">=</span>edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>to<span class="token punctuation">;</span>
+            dp<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token operator">=</span>dp<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token operator">+</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">+</span>edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>dis<span class="token punctuation">)</span><span class="token operator">/</span>deg<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            out<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>out<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
+                Q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%.2f\n"</span><span class="token punctuation">,</span>b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">/</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%.2lf\n"</span><span class="token punctuation">,</span>dp<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
@@ -565,7 +556,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.destinhistoire.top/2020/02/21/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/">http://www.destinhistoire.top/2020/02/21/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/</a>
+                    <a href="http://www.destinhistoire.top/2020/02/22/bzoj-3036/">http://www.destinhistoire.top/2020/02/22/bzoj-3036/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -603,12 +594,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
-                                    <span class="chip bg-color">线性代数</span>
+                                <a href="/tags/%E6%A6%82%E7%8E%87dp/">
+                                    <span class="chip bg-color">概率dp</span>
                                 </a>
                             
-                                <a href="/tags/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/">
-                                    <span class="chip bg-color">高斯消元</span>
+                                <a href="/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/">
+                                    <span class="chip bg-color">拓扑排序</span>
                                 </a>
                             
                         </div>
@@ -774,9 +765,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/02/22/bzoj-3036/">
                     <div class="card-image">
@@ -794,9 +786,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-22
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -809,6 +801,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -831,32 +824,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/19/Codeforces-Round-619-Div-2/">
+                <a href="/2020/02/21/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Codeforces Round #619 (Div. 2)">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="高斯消元">
                         
-                        <span class="card-title">Codeforces Round #619 (Div. 2)</span>
+                        <span class="card-title">高斯消元</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            CF1301A    Three Strings(水)https://codeforces.com/contest/1301/problem/A
-题目描述&emsp;&emsp;给定三个字符串 $a,b,c$，长度相等。对于每个下标 $i$
+                            &emsp;&emsp;高斯消元是一种求解线性方程组的方法。所谓线性方程组，是由 $m$ 个 $n$ 元一次方程共同构成的。线性方程组的所有系数可以写成一个 $m$ 行 $n$ 列的 “系数矩阵”，再加上每个方程等号右侧的常数，可以写成一个
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-21
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/codeforces/" class="post-category">
-                                    codeforces
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    算法笔记
                                 </a>
                             
                             
@@ -866,8 +858,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/codeforces/">
-                        <span class="chip bg-color">codeforces</span>
+                    <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
+                        <span class="chip bg-color">线性代数</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/">
+                        <span class="chip bg-color">高斯消元</span>
                     </a>
                     
                 </div>
