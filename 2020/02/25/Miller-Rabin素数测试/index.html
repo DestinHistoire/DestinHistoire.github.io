@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="POJ-2689	Prime Distance(区间素数筛模板), CUG Information Management and Information System">
-    <meta name="description" content="题目描述&amp;emsp;&amp;emsp;给定两个整数 $L,R(1\leq L\leq R\leq 2^{31},R-L\leq 10^6)$，求闭区间 $[L,R]$ 中相邻两个质数的差最小是多少，最大是多少，输出这四个质数。
-分析&amp;emsp;&amp;">
+    <meta name="keywords" content="Miller-Rabin素数测试, CUG Information Management and Information System">
+    <meta name="description" content="同余的性质$1.$ 同加性：若 $a\equiv b\pmod n$，则 $a+c\equiv b+c\pmod n$。
+$2.$ 同乘性：若 $a\equiv b\pmod n$，则 $a\ast c\equiv b\ast c\pmod">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>POJ-2689	Prime Distance(区间素数筛模板) | Destin Histoire的博客</title>
+    <title>Miller-Rabin素数测试 | Destin Histoire的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -305,13 +305,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        POJ-2689	Prime Distance(区间素数筛模板)
+                        Miller-Rabin素数测试
                     </div>
                 </div>
             </div>
@@ -433,8 +433,8 @@
                                 <span class="chip bg-color">数论</span>
                             </a>
                         
-                            <a href="/tags/%E8%B4%A8%E6%95%B0%E7%AD%9B/">
-                                <span class="chip bg-color">质数筛</span>
+                            <a href="/tags/%E7%B1%B3%E5%8B%92%E6%8B%89%E5%AE%BE%E7%B4%A0%E6%95%B0%E6%B5%8B%E8%AF%95/">
+                                <span class="chip bg-color">米勒拉宾素数测试</span>
                             </a>
                         
                     </div>
@@ -445,8 +445,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E9%A2%98%E8%A7%A3/" class="post-category">
-                                题解
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
+                                算法笔记
                             </a>
                         
                     </div>
@@ -475,84 +475,116 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>&emsp;&emsp;给定两个整数 $L,R(1\leq L\leq R\leq 2^{31},R-L\leq 10^6)$，求闭区间 $[L,R]$ 中相邻两个质数的差最小是多少，最大是多少，输出这四个质数。</p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;$L,R$ 的范围很大，无法在规定时间内生成 $[1,R]$ 中的所有质数。但是 $R-L$ 值很小，并且任何一个质数 $n$ 必定包含一个不超过 $\sqrt n$ 的质因子。</p>
-<p>&emsp;&emsp;所以我们只需要用筛法求出 $2$ ~ $\sqrt R$ 之间的所有质数。对于每个质数 $p$，把 $[L,R]$ 中能被 $p$ 整除的数标记，即标记 $i\ast p(\lceil\frac{L}{p}\rceil\leq i\leq \lfloor\frac{R}{p}\rfloor)$ 为合数。</p>
-<p>&emsp;&emsp;最终所有未被标记的数就是 $[L,R]$ 的质数。对相邻的质数两两比较，找出差值最大最小的即可。</p>
-<p>&emsp;&emsp;时间复杂度为 $O(\sum\limits_{p\leq\sqrt R}\frac{R-L}{p})=O(\sqrt R{\log\log\sqrt R}+(R-L)\log\log R)$。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;cstdio></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;cstring></span></span>
+                <h2 id="同余的性质"><a href="#同余的性质" class="headerlink" title="同余的性质"></a>同余的性质</h2><p>$1.$ <strong>同加性：</strong>若 $a\equiv b\pmod n$，则 $a+c\equiv b+c\pmod n$。</p>
+<p>$2.$ <strong>同乘性：</strong>若 $a\equiv b\pmod n$，则 $a\ast c\equiv b\ast c\pmod n$。</p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;若 $a\equiv b\pmod n,c\equiv d\pmod n$，则 $a\ast c\equiv b\ast d\pmod n$。</p>
+<p>$3.$ 若 $\gcd(c,n)=1$，且 $a\ast c\equiv b\ast c \pmod n$ ，则 $a\equiv b\pmod n$，即<strong>同余式两边可以同时除以一个与模数互质的数</strong>。</p>
+<p><strong>证明：</strong></p>
+<p>&emsp;&emsp;已知 $a\ast c+k_1\ast n=b\ast c+k_2*n$，则 $(a-b)\ast c=n\ast (k_2-k_1)$。这表明 $n\mid(a-b)\ast c$ ，由于 $\gcd(c,n)=1$，因此只有可能是 $n\mid(a-b)$，即 $a\equiv b\pmod n$。</p>
+<h2 id="Wilson定理"><a href="#Wilson定理" class="headerlink" title="Wilson定理"></a>Wilson定理</h2><p>&emsp;&emsp;若 $p$ 为质数，则 $(p-1)!\equiv -1\pmod p$</p>
+<p><strong>证明：</strong></p>
+<p>&emsp;&emsp;当 $p=2$ 时，有 $(p-1)!\equiv 1\equiv-1\pmod 2$。因此，当 $p=2$ 时定理成立。现在设 $p$ 是大于 $2$ 的质数。对于每个满足 $1\leq a\leq p-1$ 的整数 $a$，存在逆 $\overline{a}$，使得 $1\leq \overline{a}\leq p-1$ 且 $a\overline{a}\equiv 1 \pmod p$。由于在小于 $p$ 的正整数中，逆是其本身的数只有 $1$ 和 $p-1$。因此，可以将 $2$ 到 $p-2$ 分成 $\frac{(p-3)}{2}$ 组整数对，并且每组的乘积模 $p$ 余 $1$。<br>$$<br>2·3\cdots(p-3)·(p-2)\equiv 1\pmod p<br>$$<br>&emsp;&emsp;将上式两边同时乘以 $1$ 和 $p-1$ ，得<br>$$<br>(p-1)!=1·2·3\cdots(p-3)·(p-2)·(p-1)=1·(p-1)\equiv-1\pmod p<br>$$<br>得证。</p>
+<p>&emsp;&emsp;<strong>威尔逊定理的逆定理</strong>也成立：对于某一正整数 $n$，若 $(n-1)!\equiv-1\pmod n$ ，则 $n$ 是质数。</p>
+<p><strong>证明：</strong></p>
+<p>&emsp;&emsp;假设 $n$ 是一个合数并且 $(n-1)!\equiv-1\pmod n$。因为 $n$ 是合数，有 $n=ab$，其中 $1&lt;a&lt;n$ 且 $1&lt;b&lt;n$。</p>
+<p>&emsp;&emsp;因为 $a&lt;n$ ，则 $a$ 是组成 $(n-1)!$ 的 $n-1$ 个数中的一个，故 $a\mid(n-1)!$。因 $(n-1)!\equiv-1\pmod n$，故 $n\mid((n-1)!+1)$。这意味着，$a$ 也整除 $(n-1)!+1$。</p>
+<p>&emsp;&emsp;利用 $a\mid(n-1)!$ 且 $a\mid((n-1)!+1)$，知 $a\mid((n-1)!+1)-(n-1)!=1$，这与 $a&gt;1$ 矛盾，因此 $n$ 是一个质数。</p>
+<h2 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h2><p>&emsp;&emsp;如果 $p$ 是一个质数，且 $0&lt;a&lt;p$ ，则 $a^{p-1}\equiv 1\pmod p$。</p>
+<p><strong>证明：</strong></p>
+<p>&emsp;&emsp;$1\ast a%p=a_1$  </p>
+<p>&emsp;&emsp;$2\ast a%p=a_2$  </p>
+<p>&emsp;&emsp;$\cdots\cdots$</p>
+<p>&emsp;&emsp;$(p-1)\ast a% p=a_{p-1}$</p>
+<p>易知，$i\neq j$ 时，$a_i\neq a_j$，则 $a_1,a_2,\cdots,a_{p-1}$ 为 $1,2,3,\cdots,p-1$ 的一个全排列。</p>
+<p>将上式两边全部乘在一起，得到：$(p-1)!\ast a^{p-1}%p=(p-1)!$ </p>
+<p>即 $a^{p-1}\equiv 1\pmod p$，得证。</p>
+<h2 id="费马素性检验"><a href="#费马素性检验" class="headerlink" title="费马素性检验"></a>费马素性检验</h2><p>&emsp;&emsp;<strong>费马小定理逆命题</strong>：若 $a^p\equiv p\pmod p$，$p$ 为质数 </p>
+<p>&emsp;&emsp;这个命题是错误的，但是错误概率极小。</p>
+<p>&emsp;&emsp;1819年有人发现了<strong>费马小定理逆命题</strong>的第一个反例：虽然 $2^{340}\ %\ 341=1$，但 $341=11\ast 31$。后来，人们又发现了 $561,645,1105$ 等数都表明 $a=2$ 时费马小定理的逆命题不成立。人们把所有能整除 $2^{(n-1)}-1$ 的合数 $n$ 叫做 <strong>伪素数（$\text{pseudoprime}$）</strong>。</p>
+<p>&emsp;&emsp;不满足 $2^{n-1}\equiv 1\pmod n$ 的 $n$ 一定不是质数；如果满足的话则多半是质数。这样，一个比试除法效率更高的素性判断方法出现了：制作一张伪素数表，记录某个范围内的所有伪素数，那么所有满足 $2^{n-1}\equiv1\pmod n$ 且不在伪素数表中的 $n$ 就是质数。之所以这种方法更快，是因为可以使用快速幂快速计算 $2^{n-1} \text{mod}\ n$ 的值。</p>
+<p>&emsp;&emsp;刚才只考虑了 $a=2$ 的情况。一个合数可能在 $a=2$ 时通过了测试，但 $a=3$ 时的计算结果却排除了素数的可能。于是，扩展伪素数的定义，称满足 $a^{n-1}\ \text{mod} \ n=1$ 的合数 $n$ 叫做以 <strong>a为底的伪素数（$\text{pseudoprime to base a}$）</strong>。</p>
+<p>&emsp;&emsp;随机选择若干个小于待测数的正整数作为底数 $a$ 进行若干次测试，只要有一次没有通过测试就立即把这个数判断为合数。这就是<strong>费马素性检验</strong>。</p>
+<p>&emsp;&emsp;费马小定理毕竟质数判定的一个必要条件。满足费马小定理条件的整数 $n$ 未必全是质数。对于合数 $n$，如果对于所有与 $n$ 互质的正整数 $a$，都有 $a^{n-1}\equiv 1\pmod n$ 成立，则称合数 $n$ 为<strong>卡迈克尔数</strong>。前 $3$ 个卡迈克尔数是 $561,1105,1729$。在 $1$ ~$10^8$ 范围内的整数中，只有 $255$ 个卡迈克尔数。</p>
+<p>&emsp;&emsp;费马小定理的前提是 $a$ 和 $n$ 互质。当 $n$ 本身就是质数的时候如果 $a&lt;n$ 那么 $a$ 和 $n$ 始终互质；但 $n$ 不是素数时，如果 $a$ 和 $n$ 不互质的话不能用费马小定理。也就是说，卡迈克尔数需要排除 $a$ 和 $n$ 不互质的情况。</p>
+<p>&emsp;&emsp;利用下面的<strong>二次探测定理</strong>可以对上面的素数判定算法作进一步改进，以避免将卡迈克尔数当作质数。</p>
+<h2 id="Miller-Rabin素数测试"><a href="#Miller-Rabin素数测试" class="headerlink" title="Miller-Rabin素数测试"></a>Miller-Rabin素数测试</h2><h3 id="二次探测定理优化"><a href="#二次探测定理优化" class="headerlink" title="二次探测定理优化"></a>二次探测定理优化</h3><p>新的测试基于下面的定理：</p>
+<p>&emsp;&emsp;如果 $p$ 是质数，$x&lt;p$ 且 $x^2\equiv 1\pmod p$，解为 $x_1=1,x_2=p-1$。</p>
+<p><strong>证明：</strong></p>
+<p>&emsp;&emsp;因为 $x^2\equiv 1\pmod p$，所以 $p\mid (x^2-1)$ ，即 $p\mid(x-1)\ast(x+1)$。</p>
+<p>&emsp;&emsp;由于 $p$ 是质数，那么只可能是 $p\mid (x-1)$ （此时 $x=1$）或 $p\mid (x+1)$（此时 $x=p-1$）。</p>
+<h3 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h3><p>&emsp;&emsp;$341$ 可以通过以 $2$ 为底的费马素性检验，因为 $2^{340}%341 =1$。如果 $341$ 的确是质数的话，那么 $2^{170}\ %\ 341$ 的结果只可能是 $1$ 或 $340$ ；当算得 $ 2^{170}\ %\ 341 $ 确实等于 $1$ 时，继续查看 $2^{85}\ %\ 341$  的结果，发现，$2^{85}\ %\ 341=32$，这一结果判定 $341$ 是合数。</p>
+<p>&emsp;&emsp;这就是 $\text{Miller-Rabin}$ 素数测试的方法。不断地提取指数 $n-1$ 中的因子 $2$，把 $n-1$ 表示成 $d\ast 2^r$（$d$ 是一个奇数）。需要计算的东西就变成了 $a^{d\ast2^r}$ 模 $n$ 的余数。</p>
+<p>&emsp;&emsp;所以 $a^{d\ast 2^{r-1}}$ 要么等于 $1$，要么等于 $n-1$。如果 $a^{d\ast 2^{r-1}}=1$，定理继续适用于 $a^{d\ast 2^{r-2}}$，这样不断迭代下去，直到存在 $i$ 满足 $a^{d\ast2^{r-i}}%\ n=n-1$ ，或者最后指数中的 $2$ 消耗完得到 $a^d\ %\ n=1$ 或 $a^d %\ n=n-1$。</p>
+<p>&emsp;&emsp;这样，费马小定理加强为如下形式：</p>
+<p>&emsp;&emsp;尽可能提取因子 $2$，把 $n-1$ 表示成 $d\ast 2^r$ ，如果存在 $i$ 满足 $a^{d\ast 2^{r-i}} %\ n=n-1(0\leq i&lt;r)$，或者 $a^d\ %\ n = 1 $，则 $n$ 是一个质数。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>&emsp;&emsp;若 $n$ 通过一次测试，则 $n$ 不是素数的概率为 $25%$，若 $n$ 通过 $t$ 次测试，则 $n$ 不是素数的概率为$\frac{1}{4^t}$。事实上取 $t$ 为 $5$ 时，$n$ 不是素数的概率为 $\frac{1}{128}$，$n$ 为素数的概率已经大于 $99.99%$ 。在实际应用中，可首先用 $300$ ~ $500$ 个小素数对 $n$ 进行测试，以提高 $\text{Miller-Rabin}$ 素数测试通过的概率，从而提高测试速度。</p>
+<p>&emsp;&emsp;把可以通过以 $a$ 为底的 $\text{Miller-Rabin}$ 测试的合数称作<strong>以 $a$ 为底的强伪素数（$\text{strong pseudoprime}$）</strong>。第一个以 $2$ 为底的强伪素数为 $2047$ ，第一个以 $2$ 和 $3$ 为底的强伪素数为 $1373653$，以 $2,3,5,7$ 为底，在 $2.5\ast 10^{13}$ 以内唯一一个判断失误的数为 $3215031752$。</p>
+<h2 id="【例题】HOJ-1356-Prime-Judge"><a href="#【例题】HOJ-1356-Prime-Judge" class="headerlink" title="【例题】HOJ-1356    Prime Judge"></a>【例题】HOJ-1356    Prime Judge</h2><p><a href="http://acm.hit.edu.cn/problemset/1356" target="_blank" rel="noopener">http://acm.hit.edu.cn/problemset/1356</a></p>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>&emsp;&emsp;判断 $n(n\leq 2^{31})$ 是否为质数。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
-<span class="token keyword">const</span> <span class="token keyword">int</span> N<span class="token operator">=</span><span class="token number">1000010</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> prime<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span>vis<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span>cnt<span class="token punctuation">;</span>
-<span class="token keyword">bool</span> isprime<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">int</span> prime<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">61</span><span class="token punctuation">,</span><span class="token number">24251</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">long</span> <span class="token keyword">long</span> <span class="token function">mul</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> a<span class="token punctuation">,</span><span class="token keyword">long</span> <span class="token keyword">long</span> b<span class="token punctuation">,</span><span class="token keyword">long</span> <span class="token keyword">long</span> p<span class="token punctuation">)</span> 
 <span class="token punctuation">{</span>
-    <span class="token function">memset</span><span class="token punctuation">(</span>isprime<span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>isprime<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    cnt<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>N<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> a<span class="token operator">*</span>b<span class="token operator">%</span>p<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">long</span> <span class="token keyword">long</span> <span class="token function">quick_pow</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> a<span class="token punctuation">,</span><span class="token keyword">long</span> <span class="token keyword">long</span> b<span class="token punctuation">,</span><span class="token keyword">long</span> <span class="token keyword">long</span> p<span class="token punctuation">)</span> 
+<span class="token punctuation">{</span>
+    <span class="token keyword">long</span> <span class="token keyword">long</span> ans<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>isprime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span><span class="token boolean">true</span><span class="token punctuation">)</span>
-            prime<span class="token punctuation">[</span><span class="token operator">++</span>cnt<span class="token punctuation">]</span><span class="token operator">=</span>i<span class="token punctuation">;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>cnt<span class="token operator">&amp;&amp;</span>i<span class="token operator">*</span>prime<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">&lt;=</span>N<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            isprime<span class="token punctuation">[</span>i<span class="token operator">*</span>prime<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">false</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">%</span>prime<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
-                <span class="token keyword">break</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>b<span class="token operator">&amp;</span><span class="token number">1</span><span class="token punctuation">)</span> 
+            ans<span class="token operator">=</span><span class="token function">mul</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span>a<span class="token punctuation">,</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        a<span class="token operator">=</span><span class="token function">mul</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>a<span class="token punctuation">,</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        b<span class="token operator">>>=</span><span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">int</span> <span class="token function">TwiceDetect</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> a<span class="token punctuation">,</span><span class="token keyword">long</span> <span class="token keyword">long</span> b<span class="token punctuation">,</span><span class="token keyword">long</span> <span class="token keyword">long</span> p<span class="token punctuation">)</span> 
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> t<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">long</span> <span class="token keyword">long</span> x<span class="token punctuation">,</span> y<span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>b<span class="token operator">%</span><span class="token number">2</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span> 
+    <span class="token punctuation">{</span>
+        b<span class="token operator">>>=</span><span class="token number">1</span><span class="token punctuation">;</span>
+        t<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//b=d*2^t;b=d;</span>
+    x<span class="token operator">=</span>y<span class="token operator">=</span><span class="token function">quick_pow</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//x=y=a^d%n</span>
+    <span class="token comment" spellcheck="true">//二次探测定理是反向递归的,也可以用如下的正向迭代法去测试</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>t<span class="token operator">--</span><span class="token punctuation">)</span> 
+    <span class="token punctuation">{</span>
+        y<span class="token operator">=</span><span class="token function">mul</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>x<span class="token punctuation">,</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>y<span class="token operator">==</span><span class="token number">1</span><span class="token operator">&amp;&amp;</span>x<span class="token operator">!=</span><span class="token number">1</span><span class="token operator">&amp;&amp;</span>x<span class="token operator">!=</span>p<span class="token number">-1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//注意y!=1的时候是不做判断的,即对应递归时在某一环节x==p-1的情况,对此x开方则无意义,</span>
+            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        x<span class="token operator">=</span>y<span class="token punctuation">;</span><span class="token comment" spellcheck="true">///继续向高次迭代,那么至少最后一次应该是等于1的(费马小定理)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">bool</span> <span class="token function">Miller_Rabin</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> n<span class="token punctuation">)</span> 
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span><span class="token number">5</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> 
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">==</span>prime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> 
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">TwiceDetect</span><span class="token punctuation">(</span>prime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>n<span class="token number">-1</span><span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token operator">!=</span><span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> i<span class="token operator">==</span><span class="token number">6</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-    <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> l<span class="token punctuation">,</span>r<span class="token punctuation">;</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">~</span><span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d %d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>l<span class="token punctuation">,</span><span class="token operator">&amp;</span>r<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">long</span> <span class="token keyword">long</span> n<span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">~</span><span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%lld"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token function">memset</span><span class="token punctuation">(</span>vis<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>vis<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>l<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//特殊边界 </span>
-            l<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> a<span class="token punctuation">,</span>b<span class="token punctuation">;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>cnt<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            a<span class="token operator">=</span><span class="token punctuation">(</span>l<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">/</span>prime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
-            b<span class="token operator">=</span>r<span class="token operator">/</span>prime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span>a<span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>b<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>
-                <span class="token keyword">if</span><span class="token punctuation">(</span>j<span class="token operator">></span><span class="token number">1</span><span class="token punctuation">)</span>
-                    vis<span class="token punctuation">[</span>j<span class="token operator">*</span>prime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span>l<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//[l,r]区间小于1e6，而l,r数值范围为int，所以偏移l就能用数组存储了 </span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">int</span> pos<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>max_ans<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>min_ans<span class="token operator">=</span><span class="token number">0x3f3f3f3f</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> min_l<span class="token punctuation">,</span>min_r<span class="token punctuation">,</span>max_l<span class="token punctuation">,</span>max_r<span class="token punctuation">;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>r<span class="token operator">-</span>l<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>vis<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">if</span><span class="token punctuation">(</span>pos<span class="token operator">==</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
-                    pos<span class="token operator">=</span>i<span class="token punctuation">;</span>
-                    <span class="token keyword">continue</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-                <span class="token keyword">if</span><span class="token punctuation">(</span>max_ans<span class="token operator">&lt;</span>i<span class="token operator">-</span>pos<span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
-                    max_ans<span class="token operator">=</span>i<span class="token operator">-</span>pos<span class="token punctuation">;</span>
-                    max_l<span class="token operator">=</span>pos<span class="token operator">+</span>l<span class="token punctuation">;</span>
-                    max_r<span class="token operator">=</span>i<span class="token operator">+</span>l<span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-                <span class="token keyword">if</span><span class="token punctuation">(</span>min_ans<span class="token operator">></span>i<span class="token operator">-</span>pos<span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
-                    min_ans<span class="token operator">=</span>i<span class="token operator">-</span>pos<span class="token punctuation">;</span>
-                    min_l<span class="token operator">=</span>pos<span class="token operator">+</span>l<span class="token punctuation">;</span>
-                    min_r<span class="token operator">=</span>i<span class="token operator">+</span>l<span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-                pos<span class="token operator">=</span>i<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>max_ans<span class="token operator">==</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
-            <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"There are no adjacent primes."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">></span><span class="token number">1</span><span class="token operator">&amp;&amp;</span><span class="token function">Miller_Rabin</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"YES"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">else</span>
-            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d,%d are closest, %d,%d are most distant.\n"</span><span class="token punctuation">,</span>min_l<span class="token punctuation">,</span>min_r<span class="token punctuation">,</span>max_l<span class="token punctuation">,</span>max_r<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"NO"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
@@ -578,7 +610,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.destinhistoire.top/2020/02/25/POJ-2689/">http://www.destinhistoire.top/2020/02/25/POJ-2689/</a>
+                    <a href="http://www.destinhistoire.top/2020/02/25/Miller-Rabin%E7%B4%A0%E6%95%B0%E6%B5%8B%E8%AF%95/">http://www.destinhistoire.top/2020/02/25/Miller-Rabin%E7%B4%A0%E6%95%B0%E6%B5%8B%E8%AF%95/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -620,8 +652,8 @@
                                     <span class="chip bg-color">数论</span>
                                 </a>
                             
-                                <a href="/tags/%E8%B4%A8%E6%95%B0%E7%AD%9B/">
-                                    <span class="chip bg-color">质数筛</span>
+                                <a href="/tags/%E7%B1%B3%E5%8B%92%E6%8B%89%E5%AE%BE%E7%B4%A0%E6%95%B0%E6%B5%8B%E8%AF%95/">
+                                    <span class="chip bg-color">米勒拉宾素数测试</span>
                                 </a>
                             
                         </div>
@@ -787,9 +819,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/02/25/Miller-Rabin%E7%B4%A0%E6%95%B0%E6%B5%8B%E8%AF%95/">
                     <div class="card-image">
@@ -808,9 +841,9 @@ $2.$ 同乘性：若 $a\equiv b\pmod n$，则 $a\ast c\equiv b\ast c\pmod
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -823,6 +856,7 @@ $2.$ 同乘性：若 $a\equiv b\pmod n$，则 $a\ast c\equiv b\ast c\pmod
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -845,20 +879,20 @@ $2.$ 同乘性：若 $a\equiv b\pmod n$，则 $a\ast c\equiv b\ast c\pmod
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/25/%E8%B4%A8%E6%95%B0/">
+                <a href="/2020/02/25/POJ-2689/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="质数">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="POJ-2689	Prime Distance(区间素数筛模板)">
                         
-                        <span class="card-title">质数</span>
+                        <span class="card-title">POJ-2689	Prime Distance(区间素数筛模板)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            质数的定义&emsp;&emsp;若一个正整数无法被除了 $1$ 和它自身之外的任何自然数整除，则称该数为质数(素数)，否则称该正整数为合数。  
-&emsp;&emsp;在整个自然数集合中，质数的数量不多，分布比较稀疏，对于一个足够大的整
+                            题目描述&emsp;&emsp;给定两个整数 $L,R(1\leq L\leq R\leq 2^{31},R-L\leq 10^6)$，求闭区间 $[L,R]$ 中相邻两个质数的差最小是多少，最大是多少，输出这四个质数。
+分析&emsp;&
                         
                     </div>
                     <div class="publish-info">
@@ -869,8 +903,8 @@ $2.$ 同乘性：若 $a\equiv b\pmod n$，则 $a\ast c\equiv b\ast c\pmod
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    算法笔记
+                            <a href="/categories/%E9%A2%98%E8%A7%A3/" class="post-category">
+                                    题解
                                 </a>
                             
                             
@@ -882,6 +916,10 @@ $2.$ 同乘性：若 $a\equiv b\pmod n$，则 $a\ast c\equiv b\ast c\pmod
                     
                     <a href="/tags/%E6%95%B0%E8%AE%BA/">
                         <span class="chip bg-color">数论</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%B4%A8%E6%95%B0%E7%AD%9B/">
+                        <span class="chip bg-color">质数筛</span>
                     </a>
                     
                 </div>
