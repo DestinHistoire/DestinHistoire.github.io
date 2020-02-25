@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="POJ-3268	Silver Cow Party(Dijkstra算法+建反图), CUG Information Management and Information System">
-    <meta name="description" content="题目描述&amp;emsp;&amp;emsp;$n$ 头牛都要去参加一场在编号为 $x(1\leq x\leq n)$ 的牛的农场举行的派对 $(1\leq n\leq 1000)$，农场之间有$m(1\leq m\leq 10^5)$ 条有向边，每条边">
+    <meta name="keywords" content="质数, CUG Information Management and Information System">
+    <meta name="description" content="质数的定义&amp;emsp;&amp;emsp;若一个正整数无法被除了 $1$ 和它自身之外的任何自然数整除，则称该数为质数(素数)，否则称该正整数为合数。  
+&amp;emsp;&amp;emsp;在整个自然数集合中，质数的数量不多，分布比较稀疏，对于一个足够大的整">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>POJ-3268	Silver Cow Party(Dijkstra算法+建反图) | Destin Histoire的博客</title>
+    <title>质数 | Destin Histoire的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -304,13 +305,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        POJ-3268	Silver Cow Party(Dijkstra算法+建反图)
+                        质数
                     </div>
                 </div>
             </div>
@@ -428,12 +429,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%9B%BE%E8%AE%BA/">
-                                <span class="chip bg-color">图论</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/">
-                                <span class="chip bg-color">最短路</span>
+                            <a href="/tags/%E6%95%B0%E8%AE%BA/">
+                                <span class="chip bg-color">数论</span>
                             </a>
                         
                     </div>
@@ -444,8 +441,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E9%A2%98%E8%A7%A3/" class="post-category">
-                                题解
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
+                                算法笔记
                             </a>
                         
                     </div>
@@ -457,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-24
+                    2020-02-25
                 </div>
                 
 
@@ -474,86 +471,93 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>&emsp;&emsp;$n$ 头牛都要去参加一场在编号为 $x(1\leq x\leq n)$ 的牛的农场举行的派对 $(1\leq n\leq 1000)$，农场之间有$m(1\leq m\leq 10^5)$ 条有向边，每条边长 $t_i(1\leq t_i\leq 100)$。</p>
-<p>&emsp;&emsp;每头牛参加完派对后都必须回家，无论是去参加派对还是回家，每头牛都会选择最短路径，求这 $n$ 头牛的最短路径（一个来回）中最长的一条路径长度。</p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;从每个点跑一次 $\text{Dijkstra}$，记录下每个点到 $x$ 点的距离（即奶牛们去的距离），然后再以 $x$ 点为起点跑一次$\text{Dijkstra}$，记录从 $x$ 点出发到每个点的距离（即奶牛们回来的距离）。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;cstring></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;queue></span></span>
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
-<span class="token keyword">int</span> n<span class="token punctuation">,</span>m<span class="token punctuation">,</span>pos<span class="token punctuation">;</span>
-<span class="token keyword">struct</span> Edge
+                <h2 id="质数的定义"><a href="#质数的定义" class="headerlink" title="质数的定义"></a>质数的定义</h2><p>&emsp;&emsp;若一个正整数无法被除了 $1$ 和它自身之外的任何自然数整除，则称该数为质数(素数)，否则称该正整数为合数。  </p>
+<p>&emsp;&emsp;在整个自然数集合中，质数的数量不多，分布比较稀疏，对于一个足够大的整数 $N$，不超过 $N$ 的质数大约有 $ N/\text{ln}N$ 个，即每 $\text{ln}N$ 个数中大约有 $1$ 个质数。</p>
+<h2 id="质数的判定"><a href="#质数的判定" class="headerlink" title="质数的判定"></a>质数的判定</h2><h3 id="试除法"><a href="#试除法" class="headerlink" title="试除法"></a>试除法</h3><p>&emsp;&emsp;若一个正整数 $N$ 为合数，则存在一个能整除 $N$ 的数 $T$，其中 $2\leq T \leq\sqrt N$。  </p>
+<p><strong>证明</strong>：  </p>
+<p>&emsp;&emsp;由定义得，因为 $N$ 为合数，所以存在一个能整除 $N$ 的数 $M$，其中 $2\leq M\leq N-1$。  </p>
+<p>&emsp;&emsp;反证法：假设命题不成立，那么这样的数 $M$ 一定满足 $\sqrt N+1\leq M\leq N-1$。  </p>
+<p>&emsp;&emsp;因为 $M$ 能整除 $N$ ，所以它们的商 $N/M$ 也能整除 $N$。而 $2\leq N/M\leq \sqrt N $，令 $ T=N/M $，这与假设矛盾。故假设不成立，原命题成立。  </p>
+<p>&emsp;&emsp;根据上述命题，只需扫描 $2$ ~ $\sqrt N$ 之间的所有整数，依次检查它们能否整除，若都不能整除，则 $N$ 是质数，否则 $N$ 是合数。试除法的时间复杂度为 $O(\sqrt N)$。当然，我们需要特判 $0$ 和 $1$ 这两个整数,它们既不是质数, 也不是合数。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">bool</span> <span class="token function">is_prime</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">int</span> to<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> dis<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> Next<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>edge<span class="token punctuation">[</span><span class="token number">100010</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> head<span class="token punctuation">[</span><span class="token number">10010</span><span class="token punctuation">]</span><span class="token punctuation">,</span>num_edge<span class="token punctuation">;</span>
-<span class="token keyword">int</span> dist<span class="token punctuation">[</span><span class="token number">10010</span><span class="token punctuation">]</span><span class="token punctuation">,</span>dist1<span class="token punctuation">[</span><span class="token number">10010</span><span class="token punctuation">]</span><span class="token punctuation">,</span>dist2<span class="token punctuation">[</span><span class="token number">10010</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> vis<span class="token punctuation">[</span><span class="token number">10010</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> u<span class="token punctuation">[</span><span class="token number">10010</span><span class="token punctuation">]</span><span class="token punctuation">,</span>v<span class="token punctuation">[</span><span class="token number">10010</span><span class="token punctuation">]</span><span class="token punctuation">,</span>w<span class="token punctuation">[</span><span class="token number">10010</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">void</span> <span class="token function">add_edge</span><span class="token punctuation">(</span><span class="token keyword">int</span> from<span class="token punctuation">,</span><span class="token keyword">int</span> to<span class="token punctuation">,</span><span class="token keyword">int</span> dis<span class="token punctuation">)</span> 
-<span class="token punctuation">{</span>
-    edge<span class="token punctuation">[</span><span class="token operator">++</span>num_edge<span class="token punctuation">]</span><span class="token punctuation">.</span>to<span class="token operator">=</span>to<span class="token punctuation">;</span>
-    edge<span class="token punctuation">[</span>num_edge<span class="token punctuation">]</span><span class="token punctuation">.</span>dis<span class="token operator">=</span>dis<span class="token punctuation">;</span>
-    edge<span class="token punctuation">[</span>num_edge<span class="token punctuation">]</span><span class="token punctuation">.</span>Next<span class="token operator">=</span>head<span class="token punctuation">[</span>from<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    head<span class="token punctuation">[</span>from<span class="token punctuation">]</span><span class="token operator">=</span>num_edge<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">==</span><span class="token number">0</span><span class="token operator">||</span>n<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">*</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">%</span>i<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>&emsp;&emsp;“试除法”作为最简单也最经典的确定性算法，是算法竞赛中通常会使用的方法。有一些效率更高的随机性算法，例如 “$\text{Miller-Rabin}$” 等，有较小的概率把合数错误判定为质数，但多次判定合起来的错误概率趋近于零。 </p>
+<h2 id="质数的筛选"><a href="#质数的筛选" class="headerlink" title="质数的筛选"></a>质数的筛选</h2><p>&emsp;&emsp;给定一个整数 $N$，求出 $1$~$N$ 之间的所有质数，称为质数的筛选问题。</p>
+<h3 id="Eratosthenes筛法"><a href="#Eratosthenes筛法" class="headerlink" title="Eratosthenes筛法"></a>Eratosthenes筛法</h3><p>&emsp;&emsp;$\text{Eratosthenes}$ 筛法基于这样的想法：任意整数 $x$ 的倍数 $2x,3x,···$都不是质数。根据质数的定义，上述命题显然成立。  </p>
+<p>&emsp;&emsp;可以从 $2$ 开始，由小到大扫描每个数 $x$ ，把它的倍数 $2x,3x,···,\lfloor N/x \rfloor* x$ 标为合数。当扫描到一个数时，若它尚未被标记，则它不能被 $2$ ~ $x-1$ 之间的任何数整除，该数就是质数。<br>&emsp;&emsp;Eratosthenes 筛法的进行过程如下：<br><a href="https://imgchr.com/i/efkxbV" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/08/06/efkxbV.gif" alt="efkxbV.gif"></a><br>&emsp;&emsp;另外可以发现，$2$ 和 $3$ 都会把 $6$ 标记为合数。实际上，小于 $x^2$ 的 $x$ 的倍数在扫描更小的数时就已经被标记过了。因此，我们可以对Eratosthenes筛法进行优化，对于每个数 $x$ ，我们只需要从 $x^2$ 开始，把 $x^2,(x+1)* x,···,\lfloor N/x \rfloor* x$ 标记为合数即可。  </p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">int</span> N<span class="token operator">=</span><span class="token number">100010</span><span class="token punctuation">;</span>
+<span class="token keyword">bool</span> isprime<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//isprime[i]表示i为质数还是合数</span>
+<span class="token keyword">int</span> prime<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//prime[i]表示第i个质数</span>
 <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-    num_edge<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token function">memset</span><span class="token punctuation">(</span>dist<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>dist<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">memset</span><span class="token punctuation">(</span>head<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">memset</span><span class="token punctuation">(</span>vis<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>vis<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">void</span> <span class="token function">Dijkstra</span><span class="token punctuation">(</span><span class="token keyword">int</span> s<span class="token punctuation">)</span> 
-<span class="token punctuation">{</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> 
-        dist<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0x3f3f3f3f</span><span class="token punctuation">;</span>  
-    priority_queue<span class="token operator">&lt;</span>pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token operator">></span> Q<span class="token punctuation">;</span>
-    Q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token function">make_pair</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>pos<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    dist<span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>Q<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
+    <span class="token keyword">int</span> cnt<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>N<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+        isprime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">false</span><span class="token punctuation">;</span>
+    isprime<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span>isprime<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>N<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> x<span class="token operator">=</span>Q<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>second<span class="token punctuation">;</span>
-        Q<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>vis<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span> 
-            <span class="token keyword">continue</span><span class="token punctuation">;</span>
-        vis<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span>head<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>i<span class="token punctuation">;</span>i<span class="token operator">=</span>edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Next<span class="token punctuation">)</span> 
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>isprime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+            prime<span class="token punctuation">[</span><span class="token operator">++</span>cnt<span class="token punctuation">]</span><span class="token operator">=</span>i<span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span>i<span class="token operator">*</span>i<span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>N<span class="token punctuation">;</span>j<span class="token operator">+</span><span class="token operator">=</span>i<span class="token punctuation">)</span>
+            isprime<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>cnt<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+        cout<span class="token operator">&lt;&lt;</span>prime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>&emsp;&emsp;$\text{Eratosthenes}$ 筛法时间复杂度为 $O(\sum\limits_{p\leq N} \frac{N}{p})=O(N\log \log N)$。  该算法实现简单，效率已经非常接近于线性，是算法竞赛中最常用的质数筛法。  </p>
+<h3 id="线性筛法"><a href="#线性筛法" class="headerlink" title="线性筛法"></a>线性筛法</h3><p>&emsp;&emsp;即使在优化后（从$x^2$开始），$\text{Eratosthenes}$ 筛法仍然会重复标记合数。例如 $12$ 既会被 $2$ 又会被 $3$ 标记，在标记 $2$ 的倍数时，$12=6\ast2$，在标记 $3$ 的倍数时，$12=4\ast3$。其根本原因是我们没有确定出唯一的产生 $12$ 的方式。  </p>
+<p>&emsp;&emsp;线性筛法通过<strong>从小到大累积质因子</strong>的方式标记每个合数，即让 $12$ 只有 $3\ast 2\ast 2$ 一种产生方式。  </p>
+<p>&emsp;&emsp;每个合数 $i\ast p $ 只会被它的最小质因子 $p$ 筛一次，时间复杂度为 $O(N)$。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">int</span> N<span class="token operator">=</span><span class="token number">100010</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> prime<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">bool</span> isprime<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">memset</span><span class="token punctuation">(</span>isprime<span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>isprime<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> cnt<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>N<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>isprime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span><span class="token boolean">true</span><span class="token punctuation">)</span>
+            prime<span class="token punctuation">[</span><span class="token operator">++</span>cnt<span class="token punctuation">]</span><span class="token operator">=</span>i<span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>cnt<span class="token operator">&amp;&amp;</span>i<span class="token operator">*</span>prime<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">&lt;=</span>N<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>
         <span class="token punctuation">{</span>
-            <span class="token keyword">int</span> y<span class="token operator">=</span>edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>to<span class="token punctuation">,</span>z<span class="token operator">=</span>edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>dis<span class="token punctuation">;</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>dist<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token operator">></span>dist<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">+</span>z<span class="token punctuation">)</span> 
-            <span class="token punctuation">{</span>
-                dist<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token operator">=</span>dist<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">+</span>z<span class="token punctuation">;</span>
-                Q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token function">make_pair</span><span class="token punctuation">(</span><span class="token operator">-</span>dist<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">,</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
+            isprime<span class="token punctuation">[</span>i<span class="token operator">*</span>prime<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">%</span>prime<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>cnt<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+        cout<span class="token operator">&lt;&lt;</span>prime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="质数数分解"><a href="#质数数分解" class="headerlink" title="质数数分解"></a>质数数分解</h2><h3 id="算术基本定理"><a href="#算术基本定理" class="headerlink" title="算术基本定理"></a>算术基本定理</h3><p>&emsp;&emsp;任何一个大于1的正整数都能唯一分解为有限个质数的乘积，可写作:<br>$$<br>N=p_1^{c_1}p_2^{c_2}…p_m^{c_m}<br>$$<br>&emsp;&emsp;其中 $c_i$ 都是正整数，$p_i$ 都是质数，且满足 $p_1&lt;p_2&lt;···&lt;p_m $。</p>
+<h3 id="试除法-1"><a href="#试除法-1" class="headerlink" title="试除法"></a>试除法</h3><p>&emsp;&emsp;扫描 $2$ ~ $\lfloor\sqrt{N}\rfloor$ 的每个数 $d$ ，若 $d$ 能整除 $N$ ，则从 $N$ 中除掉所有的因子 $d$ ，同时累计除去的 $d$ 的个数。  &emsp;&emsp;因为一个合数的因子一定在扫描到这个合数之前就从 $N$ 中被除掉了，所以在上述过程中能整除 $N$ 的一定是质数。最终就得到了质因数分解的结果，易知时间复杂度为$O(\sqrt{N})$。<br>&emsp;&emsp;特别地，若 $N$ 没有被任何 $2$ ~ $\sqrt N$ 的数整除，则 $N$ 是质数，无需分解。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">divide</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-    cin<span class="token operator">>></span>n<span class="token operator">>></span>m<span class="token operator">>></span>pos<span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>m<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> 
+    num<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">*</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        cin<span class="token operator">>></span>u<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">>></span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">>></span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> 
-        <span class="token function">add_edge</span><span class="token punctuation">(</span>u<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">%</span>i<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//i是质数 </span>
+        <span class="token punctuation">{</span>
+            prime<span class="token punctuation">[</span><span class="token operator">++</span>num<span class="token punctuation">]</span><span class="token operator">=</span>i<span class="token punctuation">;</span>cnt<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span><span class="token punctuation">(</span>n<span class="token operator">%</span>i<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                n<span class="token operator">=</span>n<span class="token operator">/</span>i<span class="token punctuation">;</span>
+                cnt<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//除掉所有的i </span>
+            <span class="token punctuation">}</span> 
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">!=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//n是质数</span>
+            prime<span class="token punctuation">[</span><span class="token operator">++</span>cnt<span class="token punctuation">]</span><span class="token punctuation">,</span>cnt<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>num<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+            cout<span class="token operator">&lt;&lt;</span>prime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;&lt;</span><span class="token string">"^"</span><span class="token operator">&lt;&lt;</span>cnt<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span> 
     <span class="token punctuation">}</span>
-    <span class="token function">Dijkstra</span><span class="token punctuation">(</span>pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> 
-        dist1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>dist<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> 
-    <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>m<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> 
-        <span class="token function">add_edge</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>u<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">Dijkstra</span><span class="token punctuation">(</span>pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-        dist2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>dist<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> ans<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> 
-        ans<span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span>dist1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>dist2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    cout<span class="token operator">&lt;&lt;</span>ans<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span> 
-    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
@@ -579,7 +583,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.destinhistoire.top/2020/02/24/POJ-3268/">http://www.destinhistoire.top/2020/02/24/POJ-3268/</a>
+                    <a href="http://www.destinhistoire.top/2020/02/25/%E8%B4%A8%E6%95%B0/">http://www.destinhistoire.top/2020/02/25/%E8%B4%A8%E6%95%B0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -617,12 +621,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%9B%BE%E8%AE%BA/">
-                                    <span class="chip bg-color">图论</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/">
-                                    <span class="chip bg-color">最短路</span>
+                                <a href="/tags/%E6%95%B0%E8%AE%BA/">
+                                    <span class="chip bg-color">数论</span>
                                 </a>
                             
                         </div>
@@ -788,9 +788,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/02/25/%E8%B4%A8%E6%95%B0/">
                     <div class="card-image">
@@ -809,9 +810,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -824,6 +825,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -842,31 +844,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/23/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9DP/">
+                <a href="/2020/02/24/POJ-3268/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="状态压缩DP">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="POJ-3268	Silver Cow Party(Dijkstra算法+建反图)">
                         
-                        <span class="card-title">状态压缩DP</span>
+                        <span class="card-title">POJ-3268	Silver Cow Party(Dijkstra算法+建反图)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            二进制状态压缩&emsp;&emsp;二进制状态压缩，是指将一个长度为 $m$ 的 $\text{bool}$ 数组用一个 $m$ 位二进制整数表示并存储的方法。利用下列位运算操作可以实现原 $\text{bool}$ 数组中对应下标元素的
+                            题目描述&emsp;&emsp;$n$ 头牛都要去参加一场在编号为 $x(1\leq x\leq n)$ 的牛的农场举行的派对 $(1\leq n\leq 1000)$，农场之间有$m(1\leq m\leq 10^5)$ 条有向边，每条边
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-24
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    算法笔记
+                            <a href="/categories/%E9%A2%98%E8%A7%A3/" class="post-category">
+                                    题解
                                 </a>
                             
                             
@@ -876,8 +878,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%8A%B6%E5%8E%8Bdp/">
-                        <span class="chip bg-color">状压dp</span>
+                    <a href="/tags/%E5%9B%BE%E8%AE%BA/">
+                        <span class="chip bg-color">图论</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/">
+                        <span class="chip bg-color">最短路</span>
                     </a>
                     
                 </div>
