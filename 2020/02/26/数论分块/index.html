@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="分类, CUG Information Management and Information System">
-    <meta name="description" content="分类 | Destin Histoire的博客">
+    <meta name="keywords" content="数论分块, CUG Information Management and Information System">
+    <meta name="description" content="数论分块&amp;emsp;&amp;emsp;数论分块用于快速处理形似 $\displaystyle\sum\limits_{i=1}^{n}\lfloor\frac{n}{i}\rfloor$ 的式子。
+&amp;emsp;&amp;emsp;显然这个式子可以 $O(">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>分类 | Destin Histoire的博客</title>
+    <title>数论分块 | Destin Histoire的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -304,13 +305,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        categories
+                        数论分块
                     </div>
                 </div>
             </div>
@@ -426,12 +427,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%95%B0%E8%AE%BA/">
+                                <span class="chip bg-color">数论</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%95%B0%E8%AE%BA%E5%88%86%E5%9D%97/">
+                                <span class="chip bg-color">数论分块</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
+                                算法笔记
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -440,7 +458,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-04
+                    2020-02-26
                 </div>
                 
 
@@ -457,7 +475,101 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="数论分块"><a href="#数论分块" class="headerlink" title="数论分块"></a>数论分块</h2><p>&emsp;&emsp;数论分块用于快速处理形似 $\displaystyle\sum\limits_{i=1}^{n}\lfloor\frac{n}{i}\rfloor$ 的式子。</p>
+<p>&emsp;&emsp;显然这个式子可以 $O(n)$ 得到答案，但如果数据加强到 $10^{10}$ 以上，这时无法通过 $O(n)$ 的解法来得到答案，需要一个 $O(\sqrt n)$ 的更为优秀的解法。</p>
+<p>&emsp;&emsp;对于单一的 $\lfloor\frac{n}{i}\rfloor$，某些地方的值是相同的，并且呈块状分布。</p>
+<p>&emsp;&emsp;可以发现如下性质：</p>
+<p><strong>性质1：</strong>$\lfloor\frac{n}{i}\rfloor$ 最多只有 $2\sqrt n$ 种取值</p>
+<p><strong>证明：</strong></p>
+<p>&emsp;&emsp;对于 $i\leq \sqrt n$，只有 $\sqrt n$ 种取值；对于 $i&gt;\sqrt n$，$\frac{n}{i}&lt;\sqrt n$，也只有 $\sqrt n$ 种取值，共计 $ 2\sqrt n$ 种。</p>
+<p><strong>性质2</strong>：设 $\lfloor \frac{n}{i’}\rfloor=\lfloor \frac{n}{i}\rfloor$ ，则  $i’$ 的最大值为 $\lfloor\frac{n}{\lfloor\frac{n}{i}\rfloor}\rfloor $</p>
+<p><strong>证明：</strong></p>
+<p>&emsp;&emsp;假设 $k=\lfloor\frac{n}{i}\rfloor$，可以写成 $k\ast i+p=n$ 的形式，其中 $0\leq p&lt;i$；若 $k=\lfloor\frac{n}{i+d}\rfloor$，有 $k\ast (i+d)+p’=n $，可以得到 $p=p’+kd$，则 $d$ 的最大值为 $d_{max}=\lfloor\frac{p}{k}\rfloor$。<br>$$<br>\begin{align}i’ &amp;= i+d_{max} \<br>   &amp;= i+\lfloor\frac{p}{k}\rfloor \<br>   &amp;=i+\left\lfloor \dfrac{n\ \text{mod}\ i}{\lfloor\frac{n}{i}\rfloor}\right \rfloor \\<br>   &amp;= \left\lfloor i+\dfrac{n-\lfloor\frac{n}{i}\rfloor\ast i}{\lfloor\frac{n}{i} \rfloor} \right\rfloor \<br>   &amp;=\left\lfloor \frac{\lfloor\frac{n}{i}\rfloor\ast i}{\lfloor\frac{n}{i}\rfloor}+\dfrac{n-\lfloor\frac{n}{i}\rfloor\ast i}{\lfloor\frac{n}{i} \rfloor} \right\rfloor\<br>   &amp;=\left\lfloor \dfrac{n}{\lfloor\frac{n}{i} \rfloor} \right\rfloor\end{align}<br>$$<br>&emsp;&emsp;也就是说，对于每一个块，假设它的起始位置的下标为 $L$，则它的结束位置的下标为 $R=\left\lfloor\dfrac{n}{\lfloor\frac{n}{L} \rfloor}\right\rfloor$，将 $(R-L+1)·\frac{n}{L}$ 累加到答案中，再令 $L=R+1$。</p>
+<p>&emsp;&emsp;由于 $\lfloor\frac{n}{L}\rfloor$ 只有 $ 2\sqrt n $ 种取值，且单调递减，则最多有 $ 2\sqrt n$ 个取值不同的段，时间复杂度为 $O(\sqrt n)$。</p>
+<h2 id="【例题一】bzoj-1968-Ahoi2005-COMMON-约数研究"><a href="#【例题一】bzoj-1968-Ahoi2005-COMMON-约数研究" class="headerlink" title="【例题一】bzoj-1968    [Ahoi2005]COMMON 约数研究"></a>【例题一】bzoj-1968    [Ahoi2005]COMMON 约数研究</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>&emsp;&emsp;设 $f(n)$ 为 $n$ 的约数的个数，求 $\displaystyle\sum\limits_{i=1}^n f(i)$，$0&lt;n&lt;10^6$。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;考虑每个因子对答案的贡献，可以发现 $\displaystyle\sum\limits_{i=1}^n f(i)=\displaystyle\sum\limits_{i=1}^{n} \left\lfloor\dfrac{n}{i}\right \rfloor $，数论分块即可。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">long</span> <span class="token keyword">long</span> n<span class="token punctuation">,</span>ans<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    cin<span class="token operator">>></span>n<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> l<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>r<span class="token punctuation">;</span>l<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>l<span class="token operator">=</span>r<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        r<span class="token operator">=</span>n<span class="token operator">/</span><span class="token punctuation">(</span>n<span class="token operator">/</span>l<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ans<span class="token operator">=</span>ans<span class="token operator">+</span><span class="token punctuation">(</span>r<span class="token operator">-</span>l<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>n<span class="token operator">/</span>l<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span>
+    cout<span class="token operator">&lt;&lt;</span>ans<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="【例题二】bzoj-1257-CQOI2007-余数求和"><a href="#【例题二】bzoj-1257-CQOI2007-余数求和" class="headerlink" title="【例题二】bzoj-1257    [CQOI2007]余数求和"></a>【例题二】bzoj-1257    [CQOI2007]余数求和</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>&emsp;&emsp;给定正整数 $n$ 和 $k$ ，求 $\displaystyle\sum\limits_{i=1}^{n}k\ \text{mod}\ i(1\leq n,k\leq 10^9)$。</p>
+<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p>$$<br>\displaystyle\sum\limits_{i=1}^{n}k\ \text{mod}\ i=\displaystyle\sum\limits_{i=1}^{n}k-i\times\lfloor\frac{k}{i}\rfloor=n\times k-\displaystyle\sum_{i=1}^{n}i\times \lfloor\frac{k}{i}\rfloor<br>$$</p>
+<p>&emsp;&emsp;这样处理之后原式的每个块相当于一个公差为 $\lfloor\frac{k}{i}\rfloor$ 的等差数列。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token keyword">long</span> <span class="token keyword">long</span> n<span class="token punctuation">,</span>k<span class="token punctuation">,</span>ans<span class="token punctuation">,</span>l<span class="token punctuation">,</span>r<span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>cin<span class="token operator">>></span>n<span class="token operator">>></span>k<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        ans<span class="token operator">=</span>n<span class="token operator">*</span>k<span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>l<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>l<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>l<span class="token operator">=</span>r<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>k<span class="token operator">/</span>l<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
+                r<span class="token operator">=</span>n<span class="token punctuation">;</span>
+            <span class="token keyword">else</span>
+                r<span class="token operator">=</span><span class="token function">min</span><span class="token punctuation">(</span>k<span class="token operator">/</span><span class="token punctuation">(</span>k<span class="token operator">/</span>l<span class="token punctuation">)</span><span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            ans<span class="token operator">=</span>ans<span class="token operator">-</span><span class="token punctuation">(</span>k<span class="token operator">/</span>l<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>l<span class="token operator">+</span>r<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>r<span class="token operator">-</span>l<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        cout<span class="token operator">&lt;&lt;</span>ans<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="【例题三】bzoj-2956-模积和"><a href="#【例题三】bzoj-2956-模积和" class="headerlink" title="【例题三】bzoj-2956    模积和"></a>【例题三】bzoj-2956    模积和</h2><h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p>$$<br>计算：\displaystyle\sum\limits_{i=1}^{n}\displaystyle\sum\limits_{j=1}^{m}(n \ \text{mod}\ i)\ast(m\ \text{mod}\ j)(i\neq j)，其中\ n,m\leq10^9<br>$$</p>
+<h3 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h3><p>$$<br>\begin{align}<br>&amp;\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{m}(n \ \text{mod}\ i)\ast(m\ \text{mod}\ j)(i\neq j)\<br>=&amp;\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{m}(n-\left\lfloor\dfrac{n}{i} \right\rfloor\ast i)\ast(m-\left\lfloor\dfrac{m}{j} \right\rfloor\ast j)-\sum\limits_{i=1}^{\min(n,m)}(n-\left\lfloor\dfrac{n}{i} \right\rfloor\ast i)\ast(m-\left\lfloor\dfrac{n}{i} \right\rfloor\ast i)\<br>=&amp;\sum\limits_{i=1}^{n}(n-\left\lfloor\dfrac{n}{i} \right\rfloor\ast i)\ast\sum\limits_{j=1}^{m}(m-\left\lfloor\dfrac{m}{j} \right\rfloor\ast j)-<br>\sum\limits_{i=1}^{\min(n,m)}(n\ast m+\left\lfloor\dfrac{n}{i}\right\rfloor \left\lfloor\dfrac{m}{i} \right\rfloor i^2-(m\left\lfloor\dfrac{n}{i} \right\rfloor+n\left\lfloor\dfrac{m}{i} \right\rfloor)i)<br>\end{align}<br>$$</p>
+<p>&emsp;&emsp;其中 $\left\lfloor\dfrac{n}{i}\right\rfloor \left\lfloor\dfrac{m}{i} \right\rfloor i^2$ 部分需要用平方和公式进行计算，$\displaystyle\sum\limits_{i=1}^{n}i^2=\frac{i(i+1)(2i+1)}{6}$。</p>
+<p>&emsp;&emsp;套用公式的时候需要除法，不能先取模，但是不先取模会爆 $\text{long long}$。由于除的数是固定的 $2$ 和 $6$ ，可以直接把模数放大 $6$ 倍，最后再模回去即可。</p>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">long</span> <span class="token keyword">long</span> mod<span class="token operator">=</span><span class="token number">19940417</span><span class="token operator">*</span><span class="token number">6</span><span class="token punctuation">;</span>
+<span class="token keyword">long</span> <span class="token keyword">long</span> <span class="token function">sum1</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">return</span> x<span class="token operator">*</span><span class="token punctuation">(</span>x<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">long</span> <span class="token keyword">long</span> <span class="token function">sum2</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">return</span> x<span class="token operator">*</span><span class="token punctuation">(</span>x<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">*</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">*</span>x<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">/</span><span class="token number">6</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">long</span> <span class="token keyword">long</span> <span class="token function">solve1</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> n<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">long</span> <span class="token keyword">long</span> ans<span class="token operator">=</span>n<span class="token operator">*</span>n<span class="token operator">%</span>mod<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> l<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>r<span class="token punctuation">;</span>l<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>l<span class="token operator">=</span>r<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        r<span class="token operator">=</span>n<span class="token operator">/</span><span class="token punctuation">(</span>n<span class="token operator">/</span>l<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ans<span class="token operator">=</span><span class="token punctuation">(</span>ans<span class="token operator">-</span><span class="token punctuation">(</span>n<span class="token operator">/</span>l<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">*</span><span class="token punctuation">(</span><span class="token function">sum1</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token operator">-</span><span class="token function">sum1</span><span class="token punctuation">(</span>l<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">+</span>mod<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">+</span>mod<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">long</span> <span class="token keyword">long</span> <span class="token function">solve2</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> n<span class="token punctuation">,</span><span class="token keyword">long</span> <span class="token keyword">long</span> m<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">long</span> <span class="token keyword">long</span> ans<span class="token operator">=</span>n<span class="token operator">*</span>m<span class="token operator">%</span>mod<span class="token operator">*</span><span class="token function">min</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span>m<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> l<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>r<span class="token punctuation">;</span>l<span class="token operator">&lt;=</span>n<span class="token operator">&amp;&amp;</span>l<span class="token operator">&lt;=</span>m<span class="token punctuation">;</span>l<span class="token operator">=</span>r<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        r<span class="token operator">=</span><span class="token function">min</span><span class="token punctuation">(</span>n<span class="token operator">/</span><span class="token punctuation">(</span>n<span class="token operator">/</span>l<span class="token punctuation">)</span><span class="token punctuation">,</span>m<span class="token operator">/</span><span class="token punctuation">(</span>m<span class="token operator">/</span>l<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ans<span class="token operator">=</span><span class="token punctuation">(</span>ans<span class="token operator">-</span>m<span class="token operator">*</span><span class="token punctuation">(</span>n<span class="token operator">/</span>l<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">*</span><span class="token punctuation">(</span><span class="token function">sum1</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token operator">-</span><span class="token function">sum1</span><span class="token punctuation">(</span>l<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">+</span>mod<span class="token punctuation">)</span><span class="token operator">%</span>mod
+                <span class="token operator">-</span>n<span class="token operator">*</span><span class="token punctuation">(</span>m<span class="token operator">/</span>l<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">*</span><span class="token punctuation">(</span><span class="token function">sum1</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token operator">-</span><span class="token function">sum1</span><span class="token punctuation">(</span>l<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">+</span>mod<span class="token punctuation">)</span><span class="token operator">%</span>mod
+                <span class="token operator">+</span><span class="token punctuation">(</span>n<span class="token operator">/</span>l<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>m<span class="token operator">/</span>l<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">*</span><span class="token punctuation">(</span><span class="token function">sum2</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token operator">-</span><span class="token function">sum2</span><span class="token punctuation">(</span>l<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">+</span>mod<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">+</span><span class="token number">2</span><span class="token operator">*</span>mod<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">long</span> <span class="token keyword">long</span> n<span class="token punctuation">,</span>m<span class="token punctuation">;</span>
+    cin<span class="token operator">>></span>n<span class="token operator">>></span>m<span class="token punctuation">;</span>
+    cout<span class="token operator">&lt;&lt;</span><span class="token punctuation">(</span><span class="token function">solve1</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token operator">*</span><span class="token function">solve1</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">-</span><span class="token function">solve2</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span>m<span class="token punctuation">)</span><span class="token operator">+</span>mod<span class="token punctuation">)</span><span class="token operator">%</span><span class="token punctuation">(</span>mod<span class="token operator">/</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
             </div>
             <hr/>
 
@@ -482,7 +594,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.destinhistoire.top/categories/index-1.html">http://www.destinhistoire.top/categories/index-1.html</a>
+                    <a href="http://www.destinhistoire.top/2020/02/26/%E6%95%B0%E8%AE%BA%E5%88%86%E5%9D%97/">http://www.destinhistoire.top/2020/02/26/%E6%95%B0%E8%AE%BA%E5%88%86%E5%9D%97/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -519,7 +631,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E6%95%B0%E8%AE%BA/">
+                                    <span class="chip bg-color">数论</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%95%B0%E8%AE%BA%E5%88%86%E5%9D%97/">
+                                    <span class="chip bg-color">数论分块</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -688,34 +808,51 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/categories/index-1.html">
+                <a href="/2020/02/26/%E6%95%B0%E8%AE%BA%E5%88%86%E5%9D%97/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="categories">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="数论分块">
                         
-                        <span class="card-title">categories</span>
+                        <span class="card-title">数论分块</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            数论分块&emsp;&emsp;数论分块用于快速处理形似 $\displaystyle\sum\limits_{i=1}^{n}\lfloor\frac{n}{i}\rfloor$ 的式子。
+&emsp;&emsp;显然这个式子可以 $O(
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-26
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Destin Histoire
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    算法笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%B0%E8%AE%BA/">
+                        <span class="chip bg-color">数论</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E8%AE%BA%E5%88%86%E5%9D%97/">
+                        <span class="chip bg-color">数论分块</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -723,37 +860,53 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/categories/index-1.html">
+                <a href="/2020/02/25/Miller-Rabin%E7%B4%A0%E6%95%B0%E6%B5%8B%E8%AF%95/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="categories">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Miller-Rabin素数测试">
                         
-                        <span class="card-title">categories</span>
+                        <span class="card-title">Miller-Rabin素数测试</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            同余的性质$1.$ 同加性：若 $a\equiv b\pmod n$，则 $a+c\equiv b+c\pmod n$。
+$2.$ 同乘性：若 $a\equiv b\pmod n$，则 $a\ast c\equiv b\ast c\pmod
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-25
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Destin Histoire
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    算法笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%B0%E8%AE%BA/">
+                        <span class="chip bg-color">数论</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%B1%B3%E5%8B%92%E6%8B%89%E5%AE%BE%E7%B4%A0%E6%95%B0%E6%B5%8B%E8%AF%95/">
+                        <span class="chip bg-color">米勒拉宾素数测试</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -887,6 +1040,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
     <footer class="page-footer bg-color">
