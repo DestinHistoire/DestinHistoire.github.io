@@ -4,9 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="互质与欧拉函数, CUG Information Management and Information System">
-    <meta name="description" content="互质的定义&amp;emsp;&amp;emsp;$\forall a,b\in N $，若 $\gcd(a,b)=1 $，则称 $a,b$ 互质。  
-&amp;emsp;&amp;emsp;对于三个数或更多个数的情况，我们把 $ \gcd(a,b,c)=1$ 的情况称">
+    <meta name="keywords" content="乘法逆元, CUG Information Management and Information System">
+    <meta name="description" content="费马小定理如果 $p$ 是一个质数，且 $0&amp;lt;a&amp;lt;p$ ，则 $a^{p-1}\equiv 1\pmod p$。
+证明：
+&amp;emsp;&amp;emsp;$1\ast a%p=a_1$  
+&amp;emsp;&amp;emsp;$2\ast a%p=">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>互质与欧拉函数 | Destin Histoire的博客</title>
+    <title>乘法逆元 | Destin Histoire的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -305,13 +307,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        互质与欧拉函数
+                        乘法逆元
                     </div>
                 </div>
             </div>
@@ -433,8 +435,8 @@
                                 <span class="chip bg-color">数论</span>
                             </a>
                         
-                            <a href="/tags/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0/">
-                                <span class="chip bg-color">欧拉函数</span>
+                            <a href="/tags/%E9%80%86%E5%85%83/">
+                                <span class="chip bg-color">逆元</span>
                             </a>
                         
                     </div>
@@ -475,80 +477,107 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="互质的定义"><a href="#互质的定义" class="headerlink" title="互质的定义"></a>互质的定义</h2><p>&emsp;&emsp;$\forall a,b\in N $，若 $\gcd(a,b)=1 $，则称 $a,b$ 互质。  </p>
-<p>&emsp;&emsp;对于三个数或更多个数的情况，我们把 $ \gcd(a,b,c)=1$ 的情况称为 $a,b,c$ 互质。把 $\gcd(a,b)=\gcd(a,c)=\gcd(b,c)=1 $ 称为 $ a,b,c $ 两两互质。后者显然是一个更强的条件。  </p>
-<h2 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h2><p>&emsp;&emsp;$1$ ~ $N$ 中与 $N$ 互质的数的个数被称为欧拉函数，记为 $\varphi(N)$。</p>
-<h3 id="性质1"><a href="#性质1" class="headerlink" title="性质1"></a>性质1</h3><p>&emsp;&emsp;若 $p$ 为质数， 则：$\varphi(p)=p-1$。  </p>
-<h4 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h4><p>&emsp;&emsp;质数 $p$ 除了 $1$ 以外的因数只有 $p$，故 $1$ 至 $p$ 的整数只有 $p$ 与 $p$ 不互质。  </p>
-<h3 id="性质2"><a href="#性质2" class="headerlink" title="性质2"></a>性质2</h3><p>&emsp;&emsp;若 $p$ 为质数，对于某一个素数 $p$ 的幂次 $ p^k $，有：$\varphi(p^k)=(p-1)* p^{k-1}$</p>
-<h4 id="证明-1"><a href="#证明-1" class="headerlink" title="证明"></a>证明</h4><p>&emsp;&emsp;$\because$ 比  $ p^{k} $  小的正整数有 $ p^k-1 $ 个。其中，所有能被 $p$ 整除的数字可以表示成 $p* t=(t=1,2,···,p^{k-1}-1)$，即共有 $p^{k-1}-1$ 个这样的数字能被 $p$ 整除，从而不与 $ p^k $ 互质。<br>&emsp;&emsp;$\therefore$ $\varphi(p^a)=p^a-1-(p^{a-1}-1)=(p-1)* p^{a-1}$ </p>
-<h3 id="性质3"><a href="#性质3" class="headerlink" title="性质3"></a>性质3</h3><p>&emsp;&emsp;若 $ \gcd(a,b)=1 $，则 $ \varphi(a\ast b)=\varphi(a)\ast\varphi(b) $  </p>
-<h4 id="证明-2"><a href="#证明-2" class="headerlink" title="证明"></a>证明</h4><p>&emsp;&emsp;在比 $a* b$ 小的 $a\ast b-1$ 个整数中，只有那些既与 $a$ 互质（有$\varphi(a)$个），又与 $b$ 互质（有$\varphi(b)$个）的数字才会与 $a* b$ 互质。显然满足这种条件的数字有 $\varphi(a)\ast \varphi (b)$  个。把该性质推广到一般的函数上，可以得到“积性函数”的概念。</p>
-<h3 id="性质4"><a href="#性质4" class="headerlink" title="性质4"></a>性质4</h3><p>&emsp;&emsp;若在算术基本定理中，$ N=p_1^{c_1}p_2^{c_2}\cdots p_m^{c_m} $，则：$\varphi(N)=N\ast\frac{p_1-1}{p_1}\ast \frac{p_2-1}{p_2}\ast\cdots\ast\frac{p_m-1}{p_m}=N* \prod\limits_{p|N}(1-\frac{1}{p})$  </p>
-<h4 id="证明一"><a href="#证明一" class="headerlink" title="证明一"></a>证明一</h4><p>&emsp;&emsp;由于各个质数幂互相之间是互质的，根据性质 $1,2,3$ 得出：  </p>
-<p><img src="https://i.loli.net/2020/02/26/kp2fOarFBuMgRoT.png" alt></p>
-<h4 id="证明二"><a href="#证明二" class="headerlink" title="证明二"></a>证明二</h4><p>&emsp;&emsp;设 $p$ 是 $N$ 的质因子，$1$ ~ $N$ 中 $p$ 的倍数有  $ p,2p,3p,\cdots,(N/p)\ast p $，共 $ N/p $ 个。  </p>
-<p>&emsp;&emsp;同理，若 $q$ 也是 $N$ 的质因子，则 $1$ ~ $N$ 中 $ q $ 的倍数有 $ N/q $个。如果我们把这 $ N/p+N/q $ 个数去掉，那么 $ p\ast q $ 的倍数被排除了两次,需要加回来一次。因此，$1$ ~ $N$ 中不与 $ N $ 含有共同质因子 $p$ 或 $q$ 的数的个数为：$N-\frac{N}{p}-\frac{N}{q}+\frac{N}{pq}=N* (1-\frac{1}{p}-\frac{1}{q}+\frac{1}{pq})=N(1-\frac{1}{p})(1-\frac{1}{q})$ 。</p>
-<p>&emsp;&emsp;上述思想被称为容斥原理。类似地，可以在 $N$ 的全部质因子上使用容斥原理，即可得到 $1$ ~ $N$ 中不与 $N$ 含有任何共同质因子的数的个数，也就是与 $N$ 互质的数的个数。  </p>
-<p>&emsp;&emsp;证毕。  </p>
-<p>&emsp;&emsp;根据欧拉函数的计算式，我们只需要分解质因数，即可顺便求出欧拉函数。</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">phi</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
+                <h2 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h2><p>如果 $p$ 是一个质数，且 $0&lt;a&lt;p$ ，则 $a^{p-1}\equiv 1\pmod p$。</p>
+<p><strong>证明：</strong></p>
+<p>&emsp;&emsp;$1\ast a%p=a_1$  </p>
+<p>&emsp;&emsp;$2\ast a%p=a_2$  </p>
+<p>&emsp;&emsp;$\cdots\cdots$</p>
+<p>&emsp;&emsp;$(p-1)\ast a% p=a_{p-1}$</p>
+<p>易知，$i\neq j$ 时，$a_i\neq a_j$，则 $a_1,a_2,\cdots,a_{p-1}$ 为 $1,2,3,\cdots,p-1$ 的一个全排列。</p>
+<p>将上式两边全部乘在一起，得到：$(p-1)!\ast a^{p-1}%p=(p-1)!$ </p>
+<p>即 $a^{p-1}\equiv 1\pmod p$，得证。</p>
+<h2 id="逆元的定义"><a href="#逆元的定义" class="headerlink" title="逆元的定义"></a>逆元的定义</h2><p>&emsp;&emsp;若整数 $ b,p $ 互质，并且 $ b\mid a $ ，则存在一个整数 $x$，使得 $ \frac{a}{b}\equiv a\ast x(\text{mod}\ p) $。称 $x$ 为 <strong>$ b $ 的模 $ p $ 乘法逆元</strong>，记为 $ b^{-1}(\text{mod}\ p)$。  </p>
+<p>&emsp;&emsp;$\because \frac{a}{b}\equiv a\ast b^{-1}\equiv \frac{a}{b}\ast b\ast b^{-1}(\text{mod}\ p)$。  </p>
+<p>&emsp;&emsp;$\therefore b\ast b^{-1}\equiv1(\text{mod}\ p)$。  </p>
+<p>&emsp;&emsp;如果 $ p $ 是质数，并且 $ b&lt;p $，根据费马小定理，$ b^{p-1}\equiv 1(\text{mod}\ p) $，即 $ b\ast  b^{p-2}\equiv1(\text{mod}\ p) $。  </p>
+<p>&emsp;&emsp;因此，<strong>当模数 $p$ 为质数时，$ b^{p-2} $ 即为 $b$ 的乘法逆元</strong> 。  </p>
+<p>&emsp;&emsp;如果只是保证 $b,p$ 互质，那么乘法逆元可通过 *<em>求解同余方程 $ b\ast x\equiv1(\text{mod}\ m)$ *</em> 得到。  </p>
+<p>&emsp;&emsp;有了乘法逆元，我们在计数类问题中即使遇到 $\frac{a}{b}$ 这样的乘法算式，也可以先把 $a,b$ 各自对模数 $p$ 取模，再计算 $a* b^{-1}\ \text{mod}\ p$ 作为最终的结果。当然，前提是必须保证 $b,p$ 互质（当 $p$ 是质数时，等价于 $b$ 不是 $p$ 的倍数）</p>
+<h2 id="求逆元的三种方法"><a href="#求逆元的三种方法" class="headerlink" title="求逆元的三种方法"></a>求逆元的三种方法</h2><h3 id="方法一-扩展欧几里得算法"><a href="#方法一-扩展欧几里得算法" class="headerlink" title="方法一    扩展欧几里得算法"></a>方法一    扩展欧几里得算法</h3><p>&emsp;&emsp;当模数 $ p $ 比较大时，这种方法比后面介绍的几种方法快。  </p>
+<p>&emsp;&emsp;这种方法就是利用扩展欧几里得算法求解线性同余方程 $a\ast x\equiv c(\text{mod}\ p)$ 的 $c=1$ 的情况。我们可以转化为 $a* x+p* y=1$ ，求这个方程的解。  </p>
+<p>&emsp;&emsp;这种方法还有个好处在于，当 $ a,p $ 互质，但 $ p $ 不是质数的时候也可以使用。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token keyword">int</span> x<span class="token punctuation">,</span>y<span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">exgcd</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span><span class="token keyword">int</span> b<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">int</span> ans<span class="token operator">=</span>n<span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">*</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>b<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">%</span>i<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            ans<span class="token operator">=</span>ans<span class="token operator">/</span>i<span class="token operator">*</span><span class="token punctuation">(</span>i<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">while</span><span class="token punctuation">(</span>n<span class="token operator">%</span>i<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
-                n<span class="token operator">=</span>n<span class="token operator">/</span>i<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+        x<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+        y<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">></span><span class="token number">1</span><span class="token punctuation">)</span>
-        ans<span class="token operator">=</span>ans<span class="token operator">/</span>n<span class="token operator">*</span><span class="token punctuation">(</span>n<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="性质5"><a href="#性质5" class="headerlink" title="性质5"></a>性质5</h3><p>&emsp;&emsp;$\forall n&gt;1$，$1{\sim}n$ 中与 $n$ 互质的数的和为 $\frac{n\ast \varphi(n)}{2}$。  </p>
-<h4 id="证明-3"><a href="#证明-3" class="headerlink" title="证明"></a>证明</h4><p>&emsp;&emsp;$\because \gcd(n,x)=\gcd(n,n-x)$  </p>
-<p>&emsp;&emsp;$\therefore$ 与 $ n $ 不互质的数 $ x,n-x $ 成对出现，平均值为 $ \frac{n}{2} $<br>&emsp;&emsp;$\therefore$ 与 $n$ 互质的数的平均值也是 $ \frac{n}{2} $，进而得到性质 $5$。  </p>
-<h3 id="积性函数"><a href="#积性函数" class="headerlink" title="积性函数"></a>积性函数</h3><h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><p>&emsp;&emsp;若 $f$ 是积性函数，且在算术基本定理中 $n=\prod\limits_{i=1}^mp_i^{c_i}$，则 $f(n)=\prod\limits_{i=1}^mf(p_i^{c_i})$</p>
-<h4 id="证明-4"><a href="#证明-4" class="headerlink" title="证明"></a>证明</h4><p>&emsp;&emsp;把 $n$ 分解质因数，按照积性函数的定义，该性质显然成立。</p>
-<h3 id="性质6"><a href="#性质6" class="headerlink" title="性质6"></a>性质6</h3><p>&emsp;&emsp;设 $p$ 为质数，若 $p|n$ 且 $p^2|n$，则 $\varphi(n)=\varphi(\frac{n}{p})* p$。  </p>
-<h4 id="证明-5"><a href="#证明-5" class="headerlink" title="证明"></a>证明</h4><p>&emsp;&emsp;若 $p|n$ 且 $p^2|n$，则 $n,\frac{n}{p}$ 包含相同的质因子，只是 $p$ 的指数不同。直接把 $\varphi(n)$ 与 $\varphi(\frac{n}{p})$ 按照欧拉函数的计算公式写出，两者相除，商为 $p$，所以性质 $6$ 成立。  </p>
-<h3 id="性质7"><a href="#性质7" class="headerlink" title="性质7"></a>性质7</h3><p>&emsp;&emsp;设 $p$ 为质数，若 $p|n$ 但 $p^2\nmid n$，则 $\varphi(n)=\varphi(\frac{n}{p})* (p-1)$。    </p>
-<h4 id="证明-6"><a href="#证明-6" class="headerlink" title="证明"></a>证明</h4><p>&emsp;&emsp;若 $p|n$ 但 $p^2\nmid n$，则 $\gcd(p,\frac{n}{p})=1$，由 $\varphi$ 是积性函数得 $\varphi(n)=\varphi(\frac{n}{p})* \varphi(p)$ ，而 $\varphi(p)=p-1$，所以性质 $7$ 成立。  </p>
-<h3 id="性质8"><a href="#性质8" class="headerlink" title="性质8"></a>性质8</h3><p>&emsp;&emsp;$\sum\limits_{d|n}\varphi(d)=n$  </p>
-<h4 id="证明-7"><a href="#证明-7" class="headerlink" title="证明"></a>证明</h4><p>&emsp;&emsp;设 $f(n)=\sum\limits_{d|n}\varphi(d)$。用乘法分配律展开比较，再利用 $\varphi$ 是积性函数，得到：若 $n,m$ 互质，则 $f(nm)=\sum\limits_{d|nm}\varphi(d)=(\sum\limits_{d|n}\varphi(d))* (\sum\limits_{d|m}\varphi(d))=f(n)* f(m)$。即 $\sum\limits_{d|n}\varphi(d)$ 是积性函数。对于单个质因子，$f(p^m)=\sum\limits_{d|p^m}\varphi(d)=\varphi(1)+\varphi(p)+\varphi(p^2)+···+\varphi(p^m)$ 是一个等比数列求和再加 $1$，结果为 $p^m$。所以 $f(n)=\prod\limits_{i=1}^mf(p_i^{c_i})=\prod\limits_{i=1}^m p_i^{c_i}=n$，性质 $8$ 成立。  </p>
-<h2 id="欧拉函数的线性筛法"><a href="#欧拉函数的线性筛法" class="headerlink" title="欧拉函数的线性筛法"></a>欧拉函数的线性筛法</h2><p>&emsp;&emsp;该算法可以在线性时间内筛素数的同时求出所有数的欧拉函数。  </p>
-<p>&emsp;&emsp;由前面提到的性质 $6$ 和性质 $ 7 $：  </p>
-<p>&emsp;&emsp;$1.$设 $p$ 为质数，若 $p|n$ 且 $p^2|n$，则 $\varphi(n)=\varphi(\frac{n}{p})\ast p $。  </p>
-<p>&emsp;&emsp;$2.$设 $p$ 为质数，若 $p|n$ 但 $p^2\nmid n$，则 $\varphi(n)=\varphi(\frac{n}{p})\ast(p-1) $。  </p>
-<p>&emsp;&emsp;在线性筛法中，每个合数 $n$ 只会被它的最小质因子 $p$ 筛一次。恰好可以在此时执行上面两条判断，从 $\varphi(\frac{n}{p})$ 递推到 $\varphi(n)$。</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> vis<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span>prime<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span>phi<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">void</span> <span class="token function">euler</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
+    <span class="token function">exgcd</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span>a<span class="token operator">%</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> temp<span class="token operator">=</span>x<span class="token punctuation">;</span>x<span class="token operator">=</span>y<span class="token punctuation">;</span>y<span class="token operator">=</span>temp<span class="token operator">-</span>a<span class="token operator">/</span>b<span class="token operator">*</span>y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-    <span class="token function">memset</span><span class="token punctuation">(</span>vis<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>vis<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//最小质因子</span>
-    cnt<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//质数数量</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//相当于分解质因式的逆过程 </span>
-    <span class="token punctuation">{</span> 
-        <span class="token keyword">if</span><span class="token punctuation">(</span>vis<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//i是质数 </span>
-        <span class="token punctuation">{</span>
-            vis<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>i<span class="token punctuation">;</span>
-            prime<span class="token punctuation">[</span><span class="token operator">++</span>cnt<span class="token punctuation">]</span><span class="token operator">=</span>i<span class="token punctuation">;</span>
-            phi<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>i<span class="token number">-1</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//当i是质数时,phi[i]=i-1</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>cnt<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//给当前的数i乘上一个质因子</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>prime<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">></span>vis<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">||</span>prime<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">></span>n<span class="token operator">/</span>i<span class="token punctuation">)</span>
-                <span class="token keyword">break</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//i有比prime[j]更小的质因子,或者超出n的范围,停止循环</span>
-            vis<span class="token punctuation">[</span>i<span class="token operator">*</span>prime<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">=</span>prime<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//prime[j]是合数i*prime[j]的最小质因子 </span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">%</span>prime<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//判断prime[j]是否是i的约数 </span>
-                phi<span class="token punctuation">[</span>i<span class="token operator">*</span>prime<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">=</span>phi<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">*</span>prime<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">else</span>
-                phi<span class="token punctuation">[</span>i<span class="token operator">*</span>prime<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">=</span>phi<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">*</span><span class="token punctuation">(</span>prime<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//这里prime[j]-1就是phi[prime[j]],利用了欧拉函数的积性 </span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span> 
+    <span class="token keyword">int</span> n<span class="token punctuation">,</span>p<span class="token punctuation">;</span>
+    cin<span class="token operator">>></span>n<span class="token operator">>></span>p<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span><span class="token operator">++</span>i<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">exgcd</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        cout<span class="token operator">&lt;&lt;</span><span class="token punctuation">(</span>x<span class="token operator">%</span>p<span class="token operator">+</span>p<span class="token punctuation">)</span><span class="token operator">%</span>p<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="方法二-费马小定理"><a href="#方法二-费马小定理" class="headerlink" title="方法二    费马小定理"></a>方法二    费马小定理</h3><p>&emsp;&emsp;<strong>费马小定理</strong>：若 $p$ 为素数，$a$ 为正整数，且 $a$、$p$ 互质。 则有 $a^{p-1} \equiv 1 (\text{mod}\ p)$。  </p>
+<p>&emsp;&emsp;可以发现它这个式子右边刚好为 $1$。  </p>
+<p>&emsp;&emsp;所以我们可以放入原式，得到：<br>$$<br>a\ast x \equiv 1 \pmod p\Longrightarrow a\ast x\equiv a^{p-1} \pmod p\Longrightarrow x \equiv a^{p-2} \pmod p<br>$$<br>&emsp;&emsp;所以可以用快速幂来算出 $ a^{p-2} \pmod p$ 的值，这个数就是 $a$ 的逆元。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token keyword">long</span> <span class="token keyword">long</span> <span class="token function">quick_pow</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> a<span class="token punctuation">,</span><span class="token keyword">long</span> <span class="token keyword">long</span> b<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">long</span> <span class="token keyword">long</span> ans<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    a<span class="token operator">%</span><span class="token operator">=</span>p<span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>b<span class="token operator">&amp;</span><span class="token number">1</span><span class="token punctuation">)</span> 
+            ans<span class="token operator">=</span>ans<span class="token operator">*</span>a<span class="token operator">%</span>p<span class="token punctuation">;</span>
+        a<span class="token operator">=</span>a<span class="token operator">*</span>a<span class="token operator">%</span>p<span class="token punctuation">;</span>
+        b<span class="token operator">>>=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> ans<span class="token operator">%</span>p<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">,</span>p<span class="token punctuation">;</span>
+    cin<span class="token operator">>></span>n<span class="token operator">>></span>p<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+        cout<span class="token operator">&lt;&lt;</span><span class="token function">quick_pow</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>p<span class="token number">-2</span><span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="方法三-线性递推"><a href="#方法三-线性递推" class="headerlink" title="方法三    线性递推"></a>方法三    线性递推</h3><p>&emsp;&emsp;首先，$ 1^{-1}\equiv1\pmod p $  </p>
+<p>&emsp;&emsp;然后，设 $ p=k\ast i + r (r&lt;i,1&lt;i&lt;p) $，再将这个式子放到模 $  p $ 意义下就会得到：  </p>
+<p>&emsp;&emsp;$k* i+r\equiv0\pmod p $  </p>
+<p>&emsp;&emsp;在两边同时乘上 $i^{-1},r^{-1}$ 就会得到：  </p>
+<p>&emsp;&emsp;$ k\ast r^{-1}+i^{-1}\equiv 0\pmod p$  </p>
+<p>&emsp;&emsp;$i^{-1}≡-k* r^{-1}\pmod p$  </p>
+<p>&emsp;&emsp;$i^{-1}\equiv -\lfloor\frac{p}{i}\rfloor * (p%i)^{-1}\pmod p$  </p>
+<p>&emsp;&emsp;于是，就可以从前面推出当前的逆元了。代码只有两行：  </p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">inv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">-</span><span class="token punctuation">(</span>p<span class="token operator">/</span>i<span class="token punctuation">)</span><span class="token operator">*</span>inv<span class="token punctuation">[</span>p<span class="token operator">%</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+inv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">(</span>inv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">%</span>p<span class="token operator">+</span>p<span class="token punctuation">)</span><span class="token operator">%</span>p<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>&emsp;&emsp;实际上，这也提供了一种 $ O(\log_2 p) $ 的时间内求出单个数逆元的方法，只要直接按照上述公式递归就可以了。可以证明：$p%i&lt;i/2$，每次递归问题规模减半，最终只会有 $ O(\log_2 p)$ 次递归。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token keyword">long</span> <span class="token keyword">long</span> n<span class="token punctuation">,</span>p<span class="token punctuation">,</span>inv<span class="token punctuation">[</span><span class="token number">3000010</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span><span class="token keyword">int</span> p<span class="token punctuation">)</span><span class="token comment" spellcheck="true">//线性求逆元，时间复杂度O(n) </span>
+<span class="token punctuation">{</span>
+    inv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        inv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">-</span><span class="token punctuation">(</span>p<span class="token operator">/</span>i<span class="token punctuation">)</span><span class="token operator">*</span>inv<span class="token punctuation">[</span>p<span class="token operator">%</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        inv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">(</span>inv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">%</span>p<span class="token operator">+</span>p<span class="token punctuation">)</span><span class="token operator">%</span>p<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    cin<span class="token operator">>></span>n<span class="token operator">>></span>p<span class="token punctuation">;</span>
+    <span class="token function">init</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%lld\n"</span><span class="token punctuation">,</span>inv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
@@ -574,7 +603,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.destinhistoire.top/2020/02/26/%E4%BA%92%E8%B4%A8%E4%B8%8E%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0/">http://www.destinhistoire.top/2020/02/26/%E4%BA%92%E8%B4%A8%E4%B8%8E%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0/</a>
+                    <a href="http://www.destinhistoire.top/2020/02/26/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/">http://www.destinhistoire.top/2020/02/26/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -616,8 +645,8 @@
                                     <span class="chip bg-color">数论</span>
                                 </a>
                             
-                                <a href="/tags/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0/">
-                                    <span class="chip bg-color">欧拉函数</span>
+                                <a href="/tags/%E9%80%86%E5%85%83/">
+                                    <span class="chip bg-color">逆元</span>
                                 </a>
                             
                         </div>
@@ -783,9 +812,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/02/26/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/">
                     <div class="card-image">
@@ -806,9 +836,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -821,6 +851,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -843,20 +874,20 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/26/%E7%BA%A6%E6%95%B0/">
+                <a href="/2020/02/26/%E4%BA%92%E8%B4%A8%E4%B8%8E%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="约数">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="互质与欧拉函数">
                         
-                        <span class="card-title">约数</span>
+                        <span class="card-title">互质与欧拉函数</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            约数定义&emsp;&emsp;若整数 $n$ 除以整数 $d$ 的余数为 $0$，即 $d$ 能整除 $n$，则称 $d$ 是 $n$ 的约数，$n$ 是 $d$ 的倍数，记为 $d\mid n$。
-算术基本定理的推论唯一分解定理&ems
+                            互质的定义&emsp;&emsp;$\forall a,b\in N $，若 $\gcd(a,b)=1 $，则称 $a,b$ 互质。  
+&emsp;&emsp;对于三个数或更多个数的情况，我们把 $ \gcd(a,b,c)=1$ 的情况称
                         
                     </div>
                     <div class="publish-info">
@@ -880,6 +911,10 @@
                     
                     <a href="/tags/%E6%95%B0%E8%AE%BA/">
                         <span class="chip bg-color">数论</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0/">
+                        <span class="chip bg-color">欧拉函数</span>
                     </a>
                     
                 </div>
