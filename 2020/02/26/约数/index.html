@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="行列式, CUG Information Management and Information System">
-    <meta name="description" content="一、二阶与三阶行列式$\left| \begin{matrix}a_{11} &amp;amp; a_{12}\\ a_{21} &amp;amp; a_{22}\end{matrix} \right|=a_{11}a_{22}-a_{12}a_{21}$">
+    <meta name="keywords" content="约数, CUG Information Management and Information System">
+    <meta name="description" content="约数定义&amp;emsp;&amp;emsp;若整数 $n$ 除以整数 $d$ 的余数为 $0$，即 $d$ 能整除 $n$，则称 $d$ 是 $n$ 的约数，$n$ 是 $d$ 的倍数，记为 $d\mid n$。
+算术基本定理的推论唯一分解定理&amp;ems">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>行列式 | Destin Histoire的博客</title>
+    <title>约数 | Destin Histoire的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -304,13 +305,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        行列式
+                        约数
                     </div>
                 </div>
             </div>
@@ -428,8 +429,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
-                                <span class="chip bg-color">线性代数</span>
+                            <a href="/tags/%E6%95%B0%E8%AE%BA/">
+                                <span class="chip bg-color">数论</span>
                             </a>
                         
                     </div>
@@ -440,8 +441,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E5%AD%A6/" class="post-category">
-                                数学
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
+                                算法笔记
                             </a>
                         
                     </div>
@@ -453,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-18
+                    2020-02-26
                 </div>
                 
 
@@ -470,13 +471,65 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="一、二阶与三阶行列式"><a href="#一、二阶与三阶行列式" class="headerlink" title="一、二阶与三阶行列式"></a>一、二阶与三阶行列式</h2><p>$\left| \begin{matrix}a_{11} &amp; a_{12}\\ a_{21} &amp; a_{22}\end{matrix} \right|=a_{11}a_{22}-a_{12}a_{21}$</p>
-<p>$\left| \begin{matrix}a_{11} &amp; a_{12} &amp; a_{13} \\ a_{21} &amp; a_{22} &amp; a_{23} \\ a_{31} &amp; a_{32} &amp; a_{33}\end{matrix} \right|=a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{12}a_{21}a_{33}-a_{11}a_{23}a_{32}$</p>
-<h2 id="二、排列与逆序数"><a href="#二、排列与逆序数" class="headerlink" title="二、排列与逆序数"></a>二、排列与逆序数</h2><p>$1.$把 $n$ 个不同的元素排成一列，叫做这 $n$ 个元素的全排列（也简称排列）。$n$ 个不同元素的所有排列的种数，通常用 $P_n$ 表示：$P_n=n·(n-1)·\dots·3·2·1=n!$  </p>
-<p>$2.$</p>
-<h2 id="三、-n-阶行列式的定义"><a href="#三、-n-阶行列式的定义" class="headerlink" title="三、$n$ 阶行列式的定义"></a>三、$n$ 阶行列式的定义</h2><p>$1.$ $n$ 阶行列式用  </p>
-<p>$D=\left| \begin{matrix}a_{11} &amp; a_{12} &amp;\dots &amp; a_{1n} \\ a_{21} &amp; a_{22} &amp; \dots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; &amp; \vdots \\ a_{n1} &amp; a_{n2} &amp; \cdots &amp;  a_{nn}\end{matrix} \right|=a_{11}a_{22}-a_{12}a_{21}$ 表示，也可简单记作 $D=|a_{ij}|$。</p>
-<p>$2.$ </p>
+                <h2 id="约数"><a href="#约数" class="headerlink" title="约数"></a>约数</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>&emsp;&emsp;若整数 $n$ 除以整数 $d$ 的余数为 $0$，即 $d$ 能整除 $n$，则称 $d$ 是 $n$ 的约数，$n$ 是 $d$ 的倍数，记为 $d\mid n$。</p>
+<h2 id="算术基本定理的推论"><a href="#算术基本定理的推论" class="headerlink" title="算术基本定理的推论"></a>算术基本定理的推论</h2><h3 id="唯一分解定理"><a href="#唯一分解定理" class="headerlink" title="唯一分解定理"></a>唯一分解定理</h3><p>&emsp;&emsp;任何一个大于 $1$ 的正整数都能唯一分解为有限个质数的乘积，可写作：<br>$$<br>N=p_1^{c_1}p_2^{c_2}…p_m^{c_m}<br>$$<br>&emsp;&emsp;其中 $c_i$ 都是正整数，$p_i$ 都是质数，且满足 $p_{1} &lt;p_2&lt;\cdots&lt;p_m $。  </p>
+<p>&emsp;&emsp;$N$ 的正约数集合可写作：${p_1^{b_1}p_2^{b_2}\cdots p^{b_m}}$，其中 $0≤b_i≤c_i$</p>
+<h3 id="约数个数定理"><a href="#约数个数定理" class="headerlink" title="约数个数定理"></a>约数个数定理</h3><p>$$<br>N的正约数个数为(1+c_1)\ast(1+c_2)\ast\cdots\ast(1+c_m)=\displaystyle\prod\limits_{i=1}^{m}(1+c_i)<br>$$</p>
+<h4 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h4><p>&emsp;&emsp;由约数定义可知，$ p_1^{c_1} $ 的约数有：$p_1^{0}$，$p_1^{1}$， $p_1^{2}$ $……$ $p_1^{c_1}$，共$(1+c_1)$个；同理$p_2^{c_2}$的约数有$(1+c_2)$个……$p_m^{c_m}$的约数有$(1+c_m)$个。  </p>
+<p>&emsp;&emsp;根据乘法原理：$n$的约数的个数就是$(1+c_1)\ast(1+c_2)\ast\cdots\ast(1+c_m)$。  </p>
+<h3 id="约数和定理"><a href="#约数和定理" class="headerlink" title="约数和定理"></a>约数和定理</h3><p>$$<br>N的所有正约数的和为(1+p_1+p_1^2+\cdots+p_1^{c_1})\ast(1+p_2+p_2^2+…+p_2^{c_2})\ast\cdots\ast(1+p_m+p_m^2+\cdots+p_m^{c_m})=\prod\limits_{i=1}^{m}(\sum\limits_{j=0}^{c_i}(p_i)^j)<br>$$</p>
+<h4 id="证明-1"><a href="#证明-1" class="headerlink" title="证明"></a>证明</h4><p>&emsp;&emsp;$p_1^{c_1}$的约数有：$p_1^{0}$，$p_1^{1}$， $p_1^{2}$ $……$ $p_1^{c_1}$  </p>
+<p>&emsp;&emsp;同理 $p_m^{c_m}$ 的约数有$p_m^0$，$p_m^1$，$p_m^2$ $……$ $p_m^{c_m}$  </p>
+<p>&emsp;&emsp;$n$ 的约数是在$p_1^{c_1}$、$p_2^{c_2}$、$…$、$p_m^{c_m}$每一个的约数中分别挑一个相乘得到，共有 $(1+c_1)* (1+c_2)<em>…</em> (1+c_m)$种挑法，即约数的个数。   </p>
+<p>&emsp;&emsp;由乘法原理可知它们的和为 $(1+p_1+p_1^2+\cdots+p_1^{c_1})* (1+p_2+p_2^2+\cdots+p_2^{c_2})\ast\cdots\ast(1+p_m+p_m^2+\cdots+p_m^{c_m})  $</p>
+<h3 id="求-N-的正约数集合——试除法"><a href="#求-N-的正约数集合——试除法" class="headerlink" title="求 N 的正约数集合——试除法"></a>求 N 的正约数集合——试除法</h3><p>&emsp;&emsp;若 $d≥\sqrt N$ 是 $N$ 的约数，则 $N/d≤\sqrt N$ 也是 $N$ 的约数。换言之，约数总是成对出现的（除了对于完全平方数，$\sqrt N$ 会单独出现）。  </p>
+<p>&emsp;&emsp;因此，只需要扫描 $ d=1 $ ~ $N$，尝试 $d$ 能否单独整除 $N$ ，若能整除，则 $N/d$ 也是 $N$ 的约数。时间复杂度为 $O(\sqrt N)$。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> factor<span class="token punctuation">[</span><span class="token number">1600</span><span class="token punctuation">]</span><span class="token punctuation">,</span>cnt<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">*</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">%</span>i<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        factor<span class="token punctuation">[</span><span class="token operator">++</span>cnt<span class="token punctuation">]</span><span class="token operator">=</span>i<span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">*</span>i<span class="token operator">!=</span>n<span class="token punctuation">)</span>
+            factor<span class="token punctuation">[</span><span class="token operator">++</span>cnt<span class="token punctuation">]</span><span class="token operator">=</span>n<span class="token operator">/</span>i<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>cnt<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+    cout<span class="token operator">&lt;&lt;</span>factor<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="试除法的推论"><a href="#试除法的推论" class="headerlink" title="试除法的推论"></a>试除法的推论</h3><p>&emsp;&emsp;一个整数 $N$ 的约数个数上界为 $2\sqrt N$。</p>
+<h3 id="求-1-N-每个数的正约数集合——倍数法"><a href="#求-1-N-每个数的正约数集合——倍数法" class="headerlink" title="求 1~N 每个数的正约数集合——倍数法"></a>求 1~N 每个数的正约数集合——倍数法</h3><p>&emsp;&emsp;若用 “试除法”分别求出 $1$ ~ $N$ 每个数的正约数集合，时间复杂度过高，为 $O(N\sqrt N)$。可以反过来考虑，对于每个数 $d$ ，$1$ ~ $N$ 中以 $d$ 为约数的数就是 $d$ 的倍数 $d,2d,3d,\cdots,\lfloor N/d\rfloor\ast d$。</p>
+<p>&emsp;&emsp;以下程序采用“倍数法”求出 $1$ ~ $N$ 每个数的正约数集合：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> factor<span class="token punctuation">[</span><span class="token number">500010</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>n<span class="token operator">/</span>i<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>
+        factor<span class="token punctuation">[</span>i<span class="token operator">*</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">&lt;</span>factor<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d "</span><span class="token punctuation">,</span>factor<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    cout<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>&emsp;&emsp;上述算法的时间复杂度为 $O(N+N/2+N/3+···+N/N)=O(N\log N)$。</p>
+<h3 id="倍数法的推论"><a href="#倍数法的推论" class="headerlink" title="倍数法的推论"></a>倍数法的推论</h3><p>&emsp;&emsp;$1$ ~ $N$ 每个数的约数个数的总和大约为 $N\log N$。</p>
+<h2 id="最大公约数"><a href="#最大公约数" class="headerlink" title="最大公约数"></a>最大公约数</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>&emsp;&emsp;若自然数 $d$ 同时是自然数 $a$ 和 $b$ 的约数，则称 $d$ 是 $a$ 和 $b$ 的公约数。在所有 $a$ 和 $b$ 的公约数中最大的一个，称为 $a$ 和 $b$ 的最大公约数，记为 $\gcd(a,b)$。  </p>
+<p>&emsp;&emsp;若自然数 $m$ 同时是自然数 $a$ 和 $b$ 的倍数，则称 $m$ 是 $a$ 和 $b$ 的公倍数。在所有 $a$ 和 $b$ 的公倍数中最小的一个，称为 $a$ 和 $b$ 的最小公倍数,记为 $\text{lcm}(a,b)$。  </p>
+<p>&emsp;&emsp;同理，也可以定义三个数以及更多个数的最大公约数,最小公倍数。</p>
+<h3 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h3><p>&emsp;&emsp;$\forall a,b\in N,\gcd(a,b)\ast\text{lcm}(a,b)=a\ast b $  </p>
+<h3 id="证明-2"><a href="#证明-2" class="headerlink" title="证明"></a>证明</h3><p>&emsp;&emsp;设 $ d=\gcd(a,b),a_0=a/d,b_0=b/d $。根据最大公约数的定义，有<br> $\gcd(a_0,b_0)=1$。再根据最小公倍数的定义，有 $ \text{lcm}(a_0,b_0)=a_0\ast b_0 $。  </p>
+<p>&emsp;&emsp;于是 $\text{lcm}(a,b)=\text{lcm}(a_0\ast d,b_0\ast d)=\text{lcm}(a_0,b_0)\ast d=a_0\ast  b_0\ast d=a\ast b/d $ 。 </p>
+<p>&emsp;&emsp;证毕。  </p>
+<h2 id="九章算术-·-更相减损术"><a href="#九章算术-·-更相减损术" class="headerlink" title="九章算术$\ ·\ $更相减损术"></a>九章算术$\ ·\ $更相减损术</h2><p>$$<br>\forall a,b\in n,\gcd(a,b)=\gcd(b,a-b)=\gcd(a,a-b)<br>$$</p>
+<h3 id="证明-3"><a href="#证明-3" class="headerlink" title="证明"></a>证明</h3><p>&emsp;&emsp;对于 $a,b$ 的任意公约数 $d$ ，因为 $ d\mid a,d\mid b $，所以 $ d\mid (a-b) $。因此 $d$ 也是 $ b,a-b $ 公约数。反之亦成立。故 $a,b$ 的公约数集合与 $b,a-b$ 的公约数集合相同。于是它们的最大公约数自然也相等。对于 $a,a-b$ 同理。</p>
+<p> &emsp;&emsp;证毕。  </p>
+<h2 id="欧几里得算法"><a href="#欧几里得算法" class="headerlink" title="欧几里得算法"></a>欧几里得算法</h2><p>$$<br>\forall a,b\in N,b\neq0,\gcd(a,b)=\gcd(b,a\ \text{mod}\ b)<br>$$</p>
+<h3 id="证明-4"><a href="#证明-4" class="headerlink" title="证明"></a>证明</h3><p>&emsp;&emsp;若 $a&lt;b$，则 $\gcd(b,a\ \text{mod}\ b)=\gcd(b,a)=\gcd(a,b)$，命题成立。  </p>
+<p>&emsp;&emsp;若 $ a\geq b $，不妨设 $ a=q\ast b+r $，其中 $0\leq r&lt;b$。显然 $r=a\ \text{mod}\ b$。对于 $a,b$ 的任意公约数 $d$，因为 $ d\mid a,d\mid q\ast b $，故 $ d\mid (a-q\ast b) $，即 $d\mid r$，因此 $d$ 也是 $ b,r $ 的公约数。反之亦成立。故 $a,b$ 的公约数集合与$ b,a\ \text{mod}\ b$ 的公约数集合相同。于是它们的最大公约数自然也相等。  </p>
+<p>&emsp;&emsp;证毕。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">gcd</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span><span class="token keyword">int</span> b<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">return</span> b<span class="token operator">?</span><span class="token function">gcd</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span>a<span class="token operator">%</span>b<span class="token punctuation">)</span><span class="token operator">:</span>a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>&emsp;&emsp;使用欧几里得算法求最大公约数的复杂度为 $ O(\log(a+b)) $。欧几里得算法是最常用的求最大公约数的方法。不过，因为高精度除法（取模）不容易实现，需要做高精度运算时，可考虑用更相减损术代替欧几里得算法。</p>
 
             </div>
             <hr/>
@@ -502,7 +555,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.destinhistoire.top/2019/12/18/%E8%A1%8C%E5%88%97%E5%BC%8F/">http://www.destinhistoire.top/2019/12/18/%E8%A1%8C%E5%88%97%E5%BC%8F/</a>
+                    <a href="http://www.destinhistoire.top/2020/02/26/%E7%BA%A6%E6%95%B0/">http://www.destinhistoire.top/2020/02/26/%E7%BA%A6%E6%95%B0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -540,8 +593,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
-                                    <span class="chip bg-color">线性代数</span>
+                                <a href="/tags/%E6%95%B0%E8%AE%BA/">
+                                    <span class="chip bg-color">数论</span>
                                 </a>
                             
                         </div>
@@ -707,38 +760,51 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/01/02/%E9%9A%8F%E6%9C%BA%E4%BA%8B%E4%BB%B6%E5%8F%8A%E5%85%B6%E6%A6%82%E7%8E%87/">
+                <a href="/2020/02/26/%E7%BA%A6%E6%95%B0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="随机事件及其——概率">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="约数">
                         
-                        <span class="card-title">随机事件及其——概率</span>
+                        <span class="card-title">约数</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1.1    样本空间与随机事件1.1.1    随机试验&emsp;&emsp;在概率论中将具备下列三个条件的试验称为随机试验，简称试验：
-&emsp;&emsp;$(1)$在相同的条件下可重复进行.
-&emsp;&emsp;$(2)$每
+                            约数定义&emsp;&emsp;若整数 $n$ 除以整数 $d$ 的余数为 $0$，即 $d$ 能整除 $n$，则称 $d$ 是 $n$ 的约数，$n$ 是 $d$ 的倍数，记为 $d\mid n$。
+算术基本定理的推论唯一分解定理&ems
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-26
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Destin Histoire
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    算法笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%B0%E8%AE%BA/">
+                        <span class="chip bg-color">数论</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -750,31 +816,32 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/05/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E4%B8%8E%E5%8D%95%E7%BA%AF%E5%BD%A2%E6%B3%95/">
+                <a href="/2020/02/26/%E6%95%B0%E8%AE%BA%E5%88%86%E5%9D%97/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="线性规划与单纯形法">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="数论分块">
                         
-                        <span class="card-title">线性规划与单纯形法</span>
+                        <span class="card-title">数论分块</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            线性规划问题及其数学模型一、问题的提出&emsp;&emsp;共同特征:&emsp;&emsp;(1) 每一个问题都用一组决策变量 $(x_1,x_2,···,x_n)$ 表示某一方案，这组决策变量的值就代表一个具体方案。一般这些变量取值是
+                            数论分块&emsp;&emsp;数论分块用于快速处理形似 $\displaystyle\sum\limits_{i=1}^{n}\lfloor\frac{n}{i}\rfloor$ 的式子。
+&emsp;&emsp;显然这个式子可以 $O(
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-26
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E5%AD%A6/" class="post-category">
-                                    数学
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    算法笔记
                                 </a>
                             
                             
@@ -784,8 +851,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%BF%90%E7%AD%B9%E5%AD%A6/">
-                        <span class="chip bg-color">运筹学</span>
+                    <a href="/tags/%E6%95%B0%E8%AE%BA/">
+                        <span class="chip bg-color">数论</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E8%AE%BA%E5%88%86%E5%9D%97/">
+                        <span class="chip bg-color">数论分块</span>
                     </a>
                     
                 </div>
