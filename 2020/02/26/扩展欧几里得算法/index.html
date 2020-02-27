@@ -513,7 +513,7 @@
 <p>&emsp;&emsp;因为：$ d=\gcd(a,b) $，所以 $ a\ast t/d $ 是整数，$ b\ast t/d $ 也是整数，所以 $ c/d $ 也需要是整数，否则无解。  &emsp;&emsp;$(2)$ 式两边都乘 $ (c/d) $ ，得到：$ a\ast t_0\ast (c/d)+b\ast p_0\ast (c/d)=c $    </p>
 <p>&emsp;&emsp;所以：$ t_0\ast (c/d) $ 是最小的解，但有可能是负数。  </p>
 <p>&emsp;&emsp;因为：$a\ast (t_0\ast(c/d)+b\ast n)+b\ast(<br>p_0\ast (c/d)-a\ast n)=d $，其中的 $ n $ 是自然数。  </p>
-<p>&emsp;&emsp;所以，解为 $ (t_0 \ast (c/d) % b+b)% b $。  </p>
+<p>&emsp;&emsp;所以，解为 $ (t_0 \ast (c/d)\ \text{mod}\ b+b)\ \text{mod}\ b $。  </p>
 <h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">exgcd</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span><span class="token keyword">int</span> b<span class="token punctuation">,</span><span class="token keyword">int</span> <span class="token operator">&amp;</span>x<span class="token punctuation">,</span><span class="token keyword">int</span> <span class="token operator">&amp;</span>y<span class="token punctuation">)</span>
@@ -818,7 +818,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            中国剩余定理&emsp;&emsp;设 $ m_1,m_2,···,m_n $ 是两两互质的整数，$ m=\displaystyle \prod\limits_{i=1}^{n}m_i,M_i=\frac{m}{m_i} $，$t_i$ 是
                         
                     </div>
                     <div class="publish-info">
@@ -827,11 +827,27 @@
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Destin Histoire
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    算法笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%B0%E8%AE%BA/">
+                        <span class="chip bg-color">数论</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86/">
+                        <span class="chip bg-color">中国剩余定理</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1207,22 +1223,6 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 

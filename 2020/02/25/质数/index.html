@@ -536,8 +536,10 @@
     <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>cnt<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
         cout<span class="token operator">&lt;&lt;</span>prime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="质数数分解"><a href="#质数数分解" class="headerlink" title="质数数分解"></a>质数数分解</h2><h3 id="算术基本定理"><a href="#算术基本定理" class="headerlink" title="算术基本定理"></a>算术基本定理</h3><p>&emsp;&emsp;任何一个大于1的正整数都能唯一分解为有限个质数的乘积，可写作:<br>$$<br>N=p_1^{c_1}p_2^{c_2}…p_m^{c_m}<br>$$<br>&emsp;&emsp;其中 $c_i$ 都是正整数，$p_i$ 都是质数，且满足 $p_1&lt;p_2&lt;···&lt;p_m $。</p>
-<h3 id="试除法-1"><a href="#试除法-1" class="headerlink" title="试除法"></a>试除法</h3><p>&emsp;&emsp;扫描 $2$ ~ $\lfloor\sqrt{N}\rfloor$ 的每个数 $d$ ，若 $d$ 能整除 $N$ ，则从 $N$ 中除掉所有的因子 $d$ ，同时累计除去的 $d$ 的个数。  &emsp;&emsp;因为一个合数的因子一定在扫描到这个合数之前就从 $N$ 中被除掉了，所以在上述过程中能整除 $N$ 的一定是质数。最终就得到了质因数分解的结果，易知时间复杂度为$O(\sqrt{N})$。<br>&emsp;&emsp;特别地，若 $N$ 没有被任何 $2$ ~ $\sqrt N$ 的数整除，则 $N$ 是质数，无需分解。</p>
+<h2 id="质因数分解"><a href="#质因数分解" class="headerlink" title="质因数分解"></a>质因数分解</h2><h3 id="算术基本定理"><a href="#算术基本定理" class="headerlink" title="算术基本定理"></a>算术基本定理</h3><p>&emsp;&emsp;任何一个大于1的正整数都能唯一分解为有限个质数的乘积，可写作:<br>$$<br>N=p_1^{c_1}p_2^{c_2}…p_m^{c_m}<br>$$<br>&emsp;&emsp;其中 $c_i$ 都是正整数，$p_i$ 都是质数，且满足 $p_1&lt;p_2&lt;···&lt;p_m $。</p>
+<h3 id="试除法-1"><a href="#试除法-1" class="headerlink" title="试除法"></a>试除法</h3><p>&emsp;&emsp;扫描 $2$ ~ $\lfloor\sqrt{N}\rfloor$ 的每个数 $d$ ，若 $d$ 能整除 $N$ ，则从 $N$ 中除掉所有的因子 $d$ ，同时累计除去的 $d$ 的个数。  </p>
+<p>&emsp;&emsp;因为一个合数的因子一定在扫描到这个合数之前就从 $N$ 中被除掉了，所以在上述过程中能整除 $N$ 的一定是质数。最终就得到了质因数分解的结果，易知时间复杂度为$O(\sqrt{N})$。  </p>
+<p>&emsp;&emsp;特别地，若 $N$ 没有被任何 $2$ ~ $\sqrt N$ 的数整除，则 $N$ 是质数，无需分解。</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">divide</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
     num<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
@@ -1207,22 +1209,6 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 
