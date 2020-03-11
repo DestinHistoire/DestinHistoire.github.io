@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="类欧几里得算法, CUG Information Management and Information System">
-    <meta name="description" content="类欧几里得算法 | Destin Histoire的博客">
+    <meta name="description" content="&amp;emsp;&amp;emsp;类欧几里得算法是统计直线下整点贡献的一种算法，最常见的类欧几里得算法是求：$$\displaystyle\sum\limits_{i=0}^{n}\left\lfloor\dfrac{ai+b}{c}\right \">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -426,12 +426,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%95%B0%E8%AE%BA/">
+                                <span class="chip bg-color">数论</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%B1%BB%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">类欧几里得算法</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
+                                算法笔记
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -457,7 +474,89 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <p>&emsp;&emsp;类欧几里得算法是统计直线下整点贡献的一种算法，最常见的类欧几里得算法是求：<br>$$<br>\displaystyle\sum\limits_{i=0}^{n}\left\lfloor\dfrac{ai+b}{c}\right \rfloor<br>$$<br>也就是直线 $ \frac{ax+b}{c} $ 下纵坐标大于 $0$ 的整点数。</p>
+<h2 id="常见形式"><a href="#常见形式" class="headerlink" title="常见形式"></a>常见形式</h2><p>&emsp;&emsp;给定 $a,b,c,n$，求：<br>$$<br>f(a,b,c,n)=\sum\limits_{i=0}^{n}\left\lfloor\dfrac{ai+b}{c}\right \rfloor<br>$$</p>
+<p>$$<br>g(a,b,c,n)=\sum\limits_{i=0}^{n}i\left\lfloor\dfrac{ai+b}{c}\right \rfloor<br>$$</p>
+<p>$$<br>h(a,b,c,n)=\sum\limits_{i=0}^{n}\left\lfloor\dfrac{ai+b}{c}\right \rfloor^2<br>$$</p>
+<h2 id="前置数学关系"><a href="#前置数学关系" class="headerlink" title="前置数学关系"></a>前置数学关系</h2><p>$$<br>\Big\lfloor\frac{a}{b} \Big\rfloor\geq c  \Longleftrightarrow a\geq bc<br>$$</p>
+<p>$$<br>\Big\lceil\frac{a}{b} \Big\rceil\leq c  \Longleftrightarrow a\leq bc<br>$$</p>
+<p>$$<br>\Big\lfloor\frac{a}{b} \Big\rfloor&lt; c  \Longleftrightarrow a&lt; bc<br>$$</p>
+<p>$$<br>\Big\lceil\frac{a}{b} \Big\rceil&gt; c  \Longleftrightarrow a&gt; bc<br>$$</p>
+<p>&emsp;&emsp;如果有等号的话就说明可以挨到，那就让他尽量接近，所以取整取离 $c$ 近的那一边。反之，如果没有等号说明挨不到，那么就要让它尽量避免“接触” $c$，所以取整取离 $c$ 远的那一边。<br>$$<br>\Big\lceil\frac{a}{b} \Big\rceil=\Big\lfloor \frac{a+b-1}{b} \Big\rfloor<br>$$</p>
+<p>$$<br>\Big\lfloor\frac{a}{b} \Big\rfloor=\Big\lceil \frac{a+b+1}{b} \Big\rceil<br>$$</p>
+<p>&emsp;&emsp;因为 $“−1/+1”$ 相当于把取整符号”移到下面/上面”，但是因为取整本身差 $“1”$ ，于是就要相应地$+b/−b$。</p>
+<h2 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h2><h3 id="f-a-b-c-n"><a href="#f-a-b-c-n" class="headerlink" title="$f(a,b,c,n)$"></a>$f(a,b,c,n)$</h3><p>$$<br>f(a,b,c,n)=\sum\limits_{i=0}^{n}\left\lfloor\dfrac{ai+b}{c}\right \rfloor<br>$$</p>
+<p>&emsp;&emsp;当 $a\geq c$ <strong>或</strong> $b\geq c$ 时，</p>
+<p><img src="https://i.loli.net/2020/03/11/U8LcIrp6qlbhJgD.png" alt></p>
+<p>&emsp;&emsp;当 $a&lt;c$ <strong>且</strong> $b&lt;c$ 时，</p>
+<p><img src="https://i.loli.net/2020/03/11/nGTv62AXCIsuwkt.png" alt></p>
+<p>&emsp;&emsp;可以发现右边递归成为子问题，继续一轮操作即可。边界条件：$a=0$。</p>
+<h3 id="g-a-b-c-n"><a href="#g-a-b-c-n" class="headerlink" title="$g(a,b,c,n)$"></a>$g(a,b,c,n)$</h3><p>$$<br>g(a,b,c,n)=\sum\limits_{i=0}^{n}i\left\lfloor\dfrac{ai+b}{c}\right \rfloor<br>$$</p>
+<p>&emsp;&emsp;当 $a\geq c$ <strong>或</strong> $b\geq c$ 时，</p>
+<p><img src="https://i.loli.net/2020/03/11/WysnDVHFT5bMKOE.png" alt></p>
+<p>&emsp;&emsp;当 $a&lt;c$ <strong>且</strong> $b&lt;c$ 时，</p>
+<p><img src="https://i.loli.net/2020/03/11/eCr63FIxGvqzMyn.png" alt></p>
+<p>&emsp;&emsp;可以发现需要继续推导 $h(a,b,c,n)$。</p>
+<h3 id="h-a-b-c-n"><a href="#h-a-b-c-n" class="headerlink" title="$h(a,b,c,n)$"></a>$h(a,b,c,n)$</h3><p>$$<br>h(a,b,c,n)=\sum\limits_{i=0}^{n}\left\lfloor\dfrac{ai+b}{c}\right \rfloor^2<br>$$</p>
+<p>&emsp;&emsp;当 $a\geq c$ <strong>或</strong> $b\geq c$ 时，</p>
+<p><img src="https://i.loli.net/2020/03/11/IqCUN7bjHeSp8PR.png" alt></p>
+<p>&emsp;&emsp;当 $a&lt;c$ <strong>且</strong> $b&lt;c$ 时，</p>
+<p>&emsp;&emsp;由于 $n^2=2\times \frac{n(n+1)}{2}-n=2\displaystyle\sum\limits_{i=1}^{n}i-n$</p>
+<p>&emsp;&emsp;可以得到：</p>
+<p><img src="https://i.loli.net/2020/03/11/4lKciDukaHCsXeL.png" alt></p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="P5170-【模板】类欧几里得算法"><a href="#P5170-【模板】类欧几里得算法" class="headerlink" title="P5170 【模板】类欧几里得算法"></a>P5170 【模板】类欧几里得算法</h3><p>&emsp;&emsp;给定 $n,a,b,c(0\leq n,a,b,c\leq 10^9,c\neq 0)$，分别求：<br>$$<br>f(a,b,c,n)=\sum\limits_{i=0}^{n}\left\lfloor\dfrac{ai+b}{c}\right \rfloor<br>$$</p>
+<p>$$<br>h(a,b,c,n)=\sum\limits_{i=0}^{n}\left\lfloor\dfrac{ai+b}{c}\right \rfloor^2<br>$$</p>
+<p>$$<br>g(a,b,c,n)=\sum\limits_{i=0}^{n}i\left\lfloor\dfrac{ai+b}{c}\right \rfloor<br>$$</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">long</span> <span class="token keyword">long</span> mod<span class="token operator">=</span><span class="token number">998244353</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">long</span> <span class="token keyword">long</span> inv2<span class="token operator">=</span><span class="token number">499122177</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">long</span> <span class="token keyword">long</span> inv6<span class="token operator">=</span><span class="token number">166374059</span><span class="token punctuation">;</span>
+<span class="token keyword">struct</span> Node
+<span class="token punctuation">{</span>
+    <span class="token keyword">long</span> <span class="token keyword">long</span> f<span class="token punctuation">,</span>g<span class="token punctuation">,</span>h<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+Node <span class="token function">solve</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> a<span class="token punctuation">,</span><span class="token keyword">long</span> <span class="token keyword">long</span> b<span class="token punctuation">,</span><span class="token keyword">long</span> <span class="token keyword">long</span> c<span class="token punctuation">,</span><span class="token keyword">long</span> <span class="token keyword">long</span> n<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Node ans<span class="token punctuation">,</span>temp<span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>a<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        ans<span class="token punctuation">.</span>f<span class="token operator">=</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>b<span class="token operator">/</span>c<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">;</span>
+        ans<span class="token punctuation">.</span>g<span class="token operator">=</span><span class="token punctuation">(</span>b<span class="token operator">/</span>c<span class="token punctuation">)</span><span class="token operator">*</span>n<span class="token operator">%</span>mod<span class="token operator">*</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">*</span>inv2<span class="token operator">%</span>mod<span class="token punctuation">;</span>
+        ans<span class="token punctuation">.</span>h<span class="token operator">=</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>b<span class="token operator">/</span>c<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">*</span><span class="token punctuation">(</span>b<span class="token operator">/</span>c<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>a<span class="token operator">>=</span>c<span class="token operator">||</span>b<span class="token operator">>=</span>c<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        temp<span class="token operator">=</span><span class="token function">solve</span><span class="token punctuation">(</span>a<span class="token operator">%</span>c<span class="token punctuation">,</span>b<span class="token operator">%</span>c<span class="token punctuation">,</span>c<span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ans<span class="token punctuation">.</span>f<span class="token operator">=</span><span class="token punctuation">(</span>temp<span class="token punctuation">.</span>f<span class="token operator">+</span><span class="token punctuation">(</span>a<span class="token operator">/</span>c<span class="token punctuation">)</span><span class="token operator">*</span>n<span class="token operator">%</span>mod<span class="token operator">*</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">*</span>inv2<span class="token operator">%</span>mod<span class="token operator">+</span><span class="token punctuation">(</span>b<span class="token operator">/</span>c<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">;</span>
+        ans<span class="token punctuation">.</span>g<span class="token operator">=</span><span class="token punctuation">(</span>temp<span class="token punctuation">.</span>g<span class="token operator">+</span><span class="token punctuation">(</span>a<span class="token operator">/</span>c<span class="token punctuation">)</span><span class="token operator">*</span>n<span class="token operator">%</span>mod<span class="token operator">*</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">*</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">*</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">*</span>inv6<span class="token operator">%</span>mod<span class="token operator">+</span><span class="token punctuation">(</span>b<span class="token operator">/</span>c<span class="token punctuation">)</span><span class="token operator">*</span>n<span class="token operator">%</span>mod<span class="token operator">*</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">*</span>inv2<span class="token operator">%</span>mod<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">;</span>
+        ans<span class="token punctuation">.</span>h<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token operator">/</span>c<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>a<span class="token operator">/</span>c<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">*</span>n<span class="token operator">%</span>mod<span class="token operator">*</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">*</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">*</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">*</span>inv6<span class="token operator">%</span>mod <span class="token operator">+</span> 
+                <span class="token punctuation">(</span>b<span class="token operator">/</span>c<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>b<span class="token operator">/</span>c<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">*</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">+</span><span class="token punctuation">(</span>a<span class="token operator">/</span>c<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>b<span class="token operator">/</span>c<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">*</span>n<span class="token operator">%</span>mod<span class="token operator">*</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">+</span> 
+                temp<span class="token punctuation">.</span>h<span class="token operator">+</span><span class="token number">2</span><span class="token operator">*</span><span class="token punctuation">(</span>a<span class="token operator">/</span>c<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">*</span>temp<span class="token punctuation">.</span>g<span class="token operator">%</span>mod<span class="token operator">+</span><span class="token number">2</span><span class="token operator">*</span><span class="token punctuation">(</span>b<span class="token operator">/</span>c<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">*</span>temp<span class="token punctuation">.</span>f<span class="token operator">%</span>mod<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>        
+    <span class="token punctuation">}</span>
+    <span class="token keyword">long</span> <span class="token keyword">long</span> m<span class="token operator">=</span><span class="token punctuation">(</span>a<span class="token operator">*</span>n<span class="token operator">+</span>b<span class="token punctuation">)</span><span class="token operator">/</span>c<span class="token punctuation">;</span>
+    temp<span class="token operator">=</span><span class="token function">solve</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span>c<span class="token operator">-</span>b<span class="token number">-1</span><span class="token punctuation">,</span>a<span class="token punctuation">,</span>m<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ans<span class="token punctuation">.</span>f<span class="token operator">=</span><span class="token punctuation">(</span>n<span class="token operator">*</span><span class="token punctuation">(</span>m<span class="token operator">%</span>mod<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">-</span>temp<span class="token punctuation">.</span>f<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">;</span>
+    ans<span class="token punctuation">.</span>g<span class="token operator">=</span><span class="token punctuation">(</span>n<span class="token operator">*</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">*</span><span class="token punctuation">(</span>m<span class="token operator">%</span>mod<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">-</span>temp<span class="token punctuation">.</span>f<span class="token operator">-</span>temp<span class="token punctuation">.</span>h<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">*</span>inv2<span class="token operator">%</span>mod<span class="token punctuation">;</span>
+    ans<span class="token punctuation">.</span>h<span class="token operator">=</span><span class="token punctuation">(</span>n<span class="token operator">*</span><span class="token punctuation">(</span>m<span class="token operator">%</span>mod<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">(</span>m<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token number">-2</span><span class="token operator">*</span>temp<span class="token punctuation">.</span>g<span class="token number">-2</span><span class="token operator">*</span>temp<span class="token punctuation">.</span>f<span class="token operator">-</span>ans<span class="token punctuation">.</span>f<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> T<span class="token punctuation">;</span>
+    cin<span class="token operator">>></span>T<span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>T<span class="token operator">--</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">long</span> <span class="token keyword">long</span> n<span class="token punctuation">,</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%lld%lld%lld%lld"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>n<span class="token punctuation">,</span><span class="token operator">&amp;</span>a<span class="token punctuation">,</span><span class="token operator">&amp;</span>b<span class="token punctuation">,</span><span class="token operator">&amp;</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Node ans<span class="token operator">=</span><span class="token function">solve</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%lld %lld %lld\n"</span><span class="token punctuation">,</span><span class="token punctuation">(</span>ans<span class="token punctuation">.</span>f<span class="token operator">+</span>mod<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">,</span><span class="token punctuation">(</span>ans<span class="token punctuation">.</span>h<span class="token operator">+</span>mod<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">,</span><span class="token punctuation">(</span>ans<span class="token punctuation">.</span>g<span class="token operator">+</span>mod<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
             </div>
             <hr/>
 
@@ -519,7 +618,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E6%95%B0%E8%AE%BA/">
+                                    <span class="chip bg-color">数论</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%B1%BB%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">类欧几里得算法</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
