@@ -546,6 +546,57 @@ $(function () {
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2020/03/20/%E6%9C%80%E5%A4%A7%E6%B5%81/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="最大流与最小割">
+                            
+                            <span class="card-title">最大流与最小割</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                网络流简介&emsp;&emsp;一个网络 $G=(V,E)$ 是一张有向图，图中每条有向边 $(x,y)\in E$ 都有一个给定的权值 $c(x,y)$ ，称为边的容量。特别地，若 $(x,y)\in E$，则 $ c(x,y)=0 $
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-20
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    算法笔记
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E5%9B%BE%E8%AE%BA/">
+                            <span class="chip bg-color">图论</span>
+                        </a>
+                        
+                        <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/">
+                            <span class="chip bg-color">网络流</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2020/03/19/%E4%BA%8C%E5%88%86%E5%9B%BE%E7%9A%84%E8%A6%86%E7%9B%96%E4%B8%8E%E7%8B%AC%E7%AB%8B%E9%9B%86/">
                         <div class="card-image">
                             
@@ -1105,58 +1156,6 @@ Konig定
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/02/26/%E4%BA%92%E8%B4%A8%E4%B8%8E%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="互质与欧拉函数">
-                            
-                            <span class="card-title">互质与欧拉函数</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                互质的定义&emsp;&emsp;$\forall a,b\in N $，若 $\gcd(a,b)=1 $，则称 $a,b$ 互质。  
-&emsp;&emsp;对于三个数或更多个数的情况，我们把 $ \gcd(a,b,c)=1$ 的情况称
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-26
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    算法笔记
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E6%95%B0%E8%AE%BA/">
-                            <span class="chip bg-color">数论</span>
-                        </a>
-                        
-                        <a href="/tags/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0/">
-                            <span class="chip bg-color">欧拉函数</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
@@ -1365,6 +1364,22 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 

@@ -565,7 +565,7 @@ Konig定">
 <h3 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h3><p>&emsp;&emsp;二分图最小边覆盖包含的边数等于二分图顶点数减去二分图最大匹配包含的边数。</p>
 <p><strong>证明：</strong></p>
 <p>&emsp;&emsp;设二分图最大匹配数为 $m$，总顶点数为 $n$。为了使边集 $E$ 包含的边数最少，尽量先选择连接两个点的边，也就是二分图最大匹配的所有边，对于剩下的没有被匹配的点，只能一条边覆盖一个点，设这些边的数量为 $x$。显然，$2m+x=n$，而最小边覆盖等于 $m+x$，即最小边覆盖等于 $n-m$。</p>
-<h2 id="二分图最大独立集"><a href="#二分图最大独立集" class="headerlink" title="二分图最大独立集"></a>二分图最大独立集</h2><p>&emsp;&emsp;给定一张二分图 $G=(V,E)$，满足下列条件的点集 $S$ 被称为<strong>图的独立集</strong>：</p>
+<h2 id="二分图最大独立集"><a href="#二分图最大独立集" class="headerlink" title="二分图最大独立集"></a>二分图最大独立集</h2><p>&emsp;&emsp;给定一张图 $G=(V,E)$，满足下列条件的点集 $S$ 被称为<strong>图的独立集</strong>：</p>
 <p>&emsp;&emsp;$1.S\subseteq V$。</p>
 <p>&emsp;&emsp;$2.\forall x,y\in S$，$(x,y)\notin S$。 </p>
 <p>&emsp;&emsp;通俗地讲，图的独立集就是”任意两点之间都没有边相连“的点集。包含点数最多的一个就是图的最大独立集。</p>
@@ -657,8 +657,8 @@ Konig定">
     cout<span class="token operator">&lt;&lt;</span>n<span class="token operator">*</span>n<span class="token operator">-</span>cnt<span class="token operator">-</span>ans<span class="token operator">/</span><span class="token number">2</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="有向无环图的最小路径覆盖"><a href="#有向无环图的最小路径覆盖" class="headerlink" title="有向无环图的最小路径覆盖"></a>有向无环图的最小路径覆盖</h2><p>&emsp;&emsp;给定一张<strong>有向无环图</strong>，要求用尽量少的不相交的简单路径，覆盖有向无环图的所有顶点（也就是每个顶点恰好被覆盖一次）。这个问题被称为有向无环图的<strong>最小路径点覆盖</strong>，简称 “最小路径覆盖”。</p>
-<h3 id="有向无环图最小不相交路径覆盖"><a href="#有向无环图最小不相交路径覆盖" class="headerlink" title="有向无环图最小不相交路径覆盖"></a>有向无环图最小不相交路径覆盖</h3><p>&emsp;&emsp;设原来的有向无环图为 $G=(V,E)$，$n=|V|$。把 $G$ 中的每个点 $x$ 拆成编号为 $x$ 和 $x+n$ 的两个点。建立一张新的二分图，$1$ ~ $n$ 作为二分图左部点，$n+1$ ~ $2n$ 作为二分图右部点，对于原图的每条有向边 $(x,y)$，在二分图的左部点 $x$ 与右部点 $y+n$ 之间连边。最终得到的二分图称为 $G$ 的拆点二分图，记为 $G_2$。</p>
+<h2 id="有向无环图的最小路径覆盖"><a href="#有向无环图的最小路径覆盖" class="headerlink" title="有向无环图的最小路径覆盖"></a>有向无环图的最小路径覆盖</h2><h3 id="有向无环图最小不相交路径覆盖"><a href="#有向无环图最小不相交路径覆盖" class="headerlink" title="有向无环图最小不相交路径覆盖"></a>有向无环图最小不相交路径覆盖</h3><p>&emsp;&emsp;给定一张<strong>有向无环图</strong>，要求用尽量少的不相交的简单路径，覆盖有向无环图的所有顶点（也就是每个顶点恰好被覆盖一次）。这个问题被称为有向无环图的<strong>最小路径点覆盖</strong>，简称 “最小路径覆盖”。</p>
+<p>&emsp;&emsp;设原来的有向无环图为 $G=(V,E)$，$n=|V|$。把 $G$ 中的每个点 $x$ 拆成编号为 $x$ 和 $x+n$ 的两个点。建立一张新的二分图，$1$ ~ $n$ 作为二分图左部点，$n+1$ ~ $2n$ 作为二分图右部点，对于原图的每条有向边 $(x,y)$，在二分图的左部点 $x$ 与右部点 $y+n$ 之间连边。最终得到的二分图称为 $G$ 的拆点二分图，记为 $G_2$。</p>
 <h4 id="定理-3"><a href="#定理-3" class="headerlink" title="定理"></a>定理</h4><p>&emsp;&emsp;有向无环图 $G$ 的最小路径点覆盖包含的路径条数，等于 $n$ 减去拆点二分图 $G_2$ 的最大匹配数。</p>
 <p><strong>证明：</strong></p>
 <p>&emsp;&emsp;在有向无环图 $G=(V,E)$ 的最小路径覆盖中，对于任意的 $x\in V$ ，因为路径不相交，所以 $x$ 的入度和出度都不超过 $1$。因为每个节点都被覆盖，所以 $x$ 的入度和出度至少有一个是 $1$。</p>
@@ -904,31 +904,29 @@ Konig定">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/03/19/%E4%BA%8C%E5%88%86%E5%9B%BE%E7%9A%84%E8%A6%86%E7%9B%96%E4%B8%8E%E7%8B%AC%E7%AB%8B%E9%9B%86/">
+                <a href="/2020/03/20/%E6%9C%80%E5%A4%A7%E6%B5%81/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="二分图的覆盖与独立集">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="最大流与最小割">
                         
-                        <span class="card-title">二分图的覆盖与独立集</span>
+                        <span class="card-title">最大流与最小割</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            二分图最小点覆盖&emsp;&emsp;给定一张二分图，求出一个最小的点集 $S$，使得图中任意一条边都有至少一个端点属于 $S$。这个问题被称为二分图的最小点覆盖（$\text{vertex cover}$），简称最小覆盖。
-Konig定
+                            网络流简介&emsp;&emsp;一个网络 $G=(V,E)$ 是一张有向图，图中每条有向边 $(x,y)\in E$ 都有一个给定的权值 $c(x,y)$ ，称为边的容量。特别地，若 $(x,y)\in E$，则 $ c(x,y)=0 $
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-20
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -941,7 +939,6 @@ Konig定
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -949,8 +946,8 @@ Konig定
                         <span class="chip bg-color">图论</span>
                     </a>
                     
-                    <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE/">
-                        <span class="chip bg-color">二分图</span>
+                    <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/">
+                        <span class="chip bg-color">网络流</span>
                     </a>
                     
                 </div>
@@ -1325,6 +1322,22 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 
