@@ -481,9 +481,9 @@
 <p>&emsp;&emsp;<strong>优化：</strong>可以使用 $\text{Primal-Dual}$ 原始对偶算法将 $\text{SPFA}$ 改成 $\text{Dijkstra}$。</p>
 <p>&emsp;&emsp;$\text{Dijkstra}$ 算法不能求有负权边的最短路。类似于 $\text{Johnson}$ 算法，可以设计一个势函数，以满足在与原图等价的新图中的边权非负。但是这个算法并不能处理有负环的情况。</p>
 <p>&emsp;&emsp;对网络 $G=(V,E)$ 中的每一个点设置一个势函数 $h(u)$，任意残留网络 $G’$ 的任意边 $(u,v)$ 都需要满足 $w_{u,v}+h(u)-h(v)\geq 0$。</p>
-<p>&emsp;&emsp;令图 $G$ 的对偶图为 $G’$，其对应的边 $(u,v)$ 的权值为 $w’<em>{u,v}=w</em>{u,v}+h(u)+h(v)$。对于原图中的任意一条路径 $(u_1,u_2,\cdots,u_k)$，它在图 $G$ 中的权值为 $w_{u_1,u_2}+w_{u_2,u_3}+\cdots+w_{u_{k-1},u_k}$，在 $ G’ $ 中的权值为：</p>
+<p>&emsp;&emsp;令图 $G$ 的对偶图为 $G’$，其对应的边 $(u,v)$ 的权值为 $ w’<em>{u,v}=w</em>{u,v}+h(u)+h(v) $。对于原图中的任意一条路径 $(u_1,u_2,\cdots,u_k)$，它在图 $G$ 中的权值为 $ w_{u_1,u_2}+w_{u_2,u_3}+\cdots+w_{u_{k-1},u_k} $，在 $ G’ $ 中的权值为：</p>
 <p><img src="https://i.loli.net/2020/03/23/Z3ok7jSCzius4wg.png" alt></p>
-<p>&emsp;&emsp;所以，我们在 $G’$ 求出的路径上都可以对应到 $G$ 上，令 $dist_{u,v}$ 为图 $G$ 点 $u$ 到点 $v$ 的最短路径，$dist’<em>{u,v}$ 为图 $G’$ 点 $u$ 到 $v$ 的最短路径，显然有 $dist</em>{u,v}=dist’_{u,v}-h(u)+h(v)$。</p>
+<p>&emsp;&emsp;所以，我们在 $G’$ 求出的路径上都可以对应到 $G$ 上，令 $dist_{u,v}$ 为图 $G$ 点 $u$ 到点 $v$ 的最短路径，$dist’<em>{u,v}$ 为图 $G’$ 点 $u$ 到 $v$ 的最短路径，显然有 $ dist</em>{u,v}=dist’_{u,v}-h(u)+h(v) $。</p>
 <p>&emsp;&emsp;所以只需求出图 $G’$ 的最短路径，就能对应回原图的最短路径。</p>
 <p>&emsp;&emsp;若网络 $G=(V,E)$ 初始边权非负，可令 $h(u)=0$；否则令 $h(u)=dist_{S,u}$，这个可以用 $\text{Bellman-Ford}$ 算法解决（这与 $\text{Johnson}$ 算法一模一样）。</p>
 <p>&emsp;&emsp;考虑如何维护势函数 $h(u)$。</p>
