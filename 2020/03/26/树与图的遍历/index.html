@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="树与图的遍历, CUG Information Management and Information System">
-    <meta name="description" content="树与图的遍历 | Destin Histoire的博客">
+    <meta name="description" content="&amp;emsp;&amp;emsp;树与图最常见的存储方式就是使用一个邻接表保存它们的边集。给定 $n$ 个点的树或图时，其节点编号均为 $1$ ~ $n$，无向图中的边看作成对出现的双向边，树看作一张具有 $n-1$ 条边的无向图，它们的边都存储在一">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -426,12 +426,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%90%9C%E7%B4%A2/">
+                                <span class="chip bg-color">搜索</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
+                                算法笔记
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -457,7 +470,175 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <p>&emsp;&emsp;树与图最常见的存储方式就是使用一个邻接表保存它们的边集。给定 $n$ 个点的树或图时，其节点编号均为 $1$ ~ $n$，无向图中的边看作成对出现的双向边，树看作一张具有 $n-1$ 条边的无向图，它们的边都存储在一个邻接表中，邻接表以 $\text{head}$ 数组为表头，使用 $\text{edge[i].to}$ 和 $\text{edge[i].dis}$ 数组分别存储边的终点和权值，使用 $\text{edge[i].Next}$ 数组模拟链表指针。</p>
+<h2 id="树与图的深度优先遍历，树的-text-DFS-序、深度和重心"><a href="#树与图的深度优先遍历，树的-text-DFS-序、深度和重心" class="headerlink" title="树与图的深度优先遍历，树的 $\text{DFS}$ 序、深度和重心"></a>树与图的深度优先遍历，树的 $\text{DFS}$ 序、深度和重心</h2><p>&emsp;&emsp;深度优先遍历，就是在每个点 $x$ 上面对多条分支时，任意选一条边走下去，执行递归，直至回溯到点 $x$ 后，再考虑走向其他的边，如下图所示。根据上面提到的存储方式，我们可以采用下面的代码，调用 $\text{dfs(1)}$，对一张图进行深度优先遍历。</p>
+<p><img src="https://i.loli.net/2020/03/26/TyStU5ruC7YaFcL.jpg" alt></p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    vis<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//记录点x被访问过</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span>head<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>i<span class="token punctuation">;</span>i<span class="token operator">=</span>edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Next<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> y<span class="token operator">=</span>edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>to<span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>vis<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//点y已经被访问过了 </span>
+            <span class="token keyword">continue</span><span class="token punctuation">;</span>
+        <span class="token function">dfs</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>&emsp;&emsp;这段代码访问每个点和每条边恰好 $1$ 次（如果是无向边，正反向各访问 $1$ 次），其时间复杂度为 $O(n+m)$，其中 $m$ 为边数。以这段代码为框架，我们可以统计许多关于树和图的基本信息。</p>
+<h3 id="时间戳"><a href="#时间戳" class="headerlink" title="时间戳"></a>时间戳</h3><p>&emsp;&emsp;按照上述深度优先遍历的过程，以每个节点第一次被访问（$\text{vis}[x]$ 被赋值为 $1$ 时）的顺序，依次给予这 $n$ 个节点 $1$ ~ $n$ 的整数标记，该标记就被称为时间戳，记为 $dfn$。</p>
+<p>&emsp;&emsp;例如，在上图中 $dfn[1]=1,dfn[2]=2,dfn[8]=3,dfn[5]=4,dfn[7]=5,dfn[4]=6,dfn[3]=7$，$dfn[9]=8,dfn[6]=9$。</p>
+<h3 id="树的-text-DFS-序"><a href="#树的-text-DFS-序" class="headerlink" title="树的 $\text{DFS}$ 序"></a>树的 $\text{DFS}$ 序</h3><p>&emsp;&emsp;一般来讲，我们在对树进行深度优先遍历时，对于每个节点，在刚进入递归后以及即将回溯前各记录一次该点的编号，最后产生的长度为 $2n$ 的节点序列就称为树的 $\text{DFS}$ 序。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    a<span class="token punctuation">[</span><span class="token operator">++</span>cnt<span class="token punctuation">]</span><span class="token operator">=</span>x<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//a数组存储DFS序 </span>
+    vis<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//记录点x被访问过</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span>head<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>i<span class="token punctuation">;</span>i<span class="token operator">=</span>edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Next<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> y<span class="token operator">=</span>edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>to<span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>vis<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//点y已经被访问过了 </span>
+            <span class="token keyword">continue</span><span class="token punctuation">;</span>
+        <span class="token function">dfs</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    a<span class="token punctuation">[</span><span class="token operator">++</span>cnt<span class="token punctuation">]</span><span class="token operator">=</span>x<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>&emsp;&emsp;$\text{DFS}$ 序的特点是：每个节点的编号在序列中恰好出现两次。设这两次出现的位置为 $L[x]$ 与 $R[x]$，那么闭区间 $\big[L[x],R[x]\big]$ 就是以 $x$ 为根的子树的 $\text{DFS}$ 序。这使我们在很多与树相关的问题中，可以通过 $\text{DFS}$ 序把子树统计转化为序列上的区间统计。</p>
+<p><img src="https://i.loli.net/2020/03/26/2dBrZpjeAkFSgb8.jpg" alt></p>
+<h3 id="树的深度"><a href="#树的深度" class="headerlink" title="树的深度"></a>树的深度</h3><p>&emsp;&emsp;树中各个节点的深度是一种自顶向下的统计信息。起初，我们已知根节点的深度为 $0$。若节点 $x$ 的深度为 $d[x]$，则它的子节点 $y$ 的深度就是 $d[y]=d[x]+1$。在深度优先遍历的过程中结合自顶向下的递推，就可以求出每个节点的深度 $d$。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    vis<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span>head<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>i<span class="token punctuation">;</span>i<span class="token operator">=</span>edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Next<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> y<span class="token operator">=</span>edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>to<span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>vis<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">)</span> 
+            <span class="token keyword">continue</span><span class="token punctuation">;</span>
+        d<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token operator">=</span>d<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//从父节点x到子节点y递推，计算深度 </span>
+        <span class="token function">dfs</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="树的重心"><a href="#树的重心" class="headerlink" title="树的重心"></a>树的重心</h3><p>&emsp;&emsp;当然，也有许多信息是自底向上进行统计的，比如以每个节点 $x$ 为根的子树大小 $size[x]$。对于叶子节点，我们已知 “以它为根的子树” 大小为 $1$。若节点 $x$ 有 $k$ 个子节点 $y_1$ ~ $y_k$，并且以 $y_1$ ~ $y_k$ 为根的子树大小分别是 $size[y_1],size[y_2],\cdots,size[y_k]$，则以 $x$ 为根的子树的大小就是 $size[x]=size[y_1]+size[y_2]+\cdots+size[y_k]+1$。</p>
+<p><img src="https://i.loli.net/2020/03/26/I9WyJK5H2ojRBln.jpg" alt></p>
+<p>&emsp;&emsp;对于一个节点 $x$，如果我们把它从树中删除，那么原来的一棵树可能会分成若干个不相连的部分，其中每一部分都是一棵子树。设 $\text{max_part}(x)$ 表示在删除节点 $x$ 后产生的子树中，最大的一棵的大小。使 $\text{max_part}$ 函数取到最小值的节点 $p$ 就称为整棵树的重心。例如上图中的树的重心应该是节点 $1$。通过下面的代码，我们可以统计出 $\text{size}$ 数组，并求出树的重心。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    vis<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    size<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//子树x的大小</span>
+    <span class="token keyword">int</span> max_part<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//删掉x后分成的最大子树的大小 </span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span>head<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>i<span class="token punctuation">;</span>i<span class="token operator">=</span>edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Next<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> y<span class="token operator">=</span>edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>to<span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>vis<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//点y已经被访问过了 </span>
+            <span class="token keyword">continue</span><span class="token punctuation">;</span>
+        size<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">=</span>size<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">+</span>size<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        max_part<span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>max_part<span class="token punctuation">,</span>n<span class="token operator">-</span>size<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//n为整棵树的节点数目 </span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>max_part<span class="token operator">&lt;</span>ans<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            ans<span class="token operator">=</span>max_part<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//全局变量ans记录重心对应的max_part值</span>
+            pos<span class="token operator">=</span>x<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//全局变量pos记录了重心 </span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="图的连通块划分"><a href="#图的连通块划分" class="headerlink" title="图的连通块划分"></a>图的连通块划分</h3><p>&emsp;&emsp;上面的代码每从 $x$ 开始一次遍历，就会访问 $x$ 能够到达的所有的点与边。因此，通过多次深度优先遍历，可以划分出一张无向图中的各个连通块。同理，对一个森林进行深度优先遍历，可以划分出森林中的每棵树。如下面的代码所示，$cnt$ 就是无向图包含的连通块的个数，$v$ 数组标记了每个点属于哪一个连通块。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    v<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">=</span>cnt<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span>head<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>i<span class="token punctuation">;</span>i<span class="token operator">=</span>edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Next<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> y<span class="token operator">=</span>edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>to<span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>vis<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//点y已经被访问过了 </span>
+            <span class="token keyword">continue</span><span class="token punctuation">;</span>
+        <span class="token function">dfs</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span> 
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            cnt<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token function">dfs</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="树与图的广度优先遍历，拓扑排序"><a href="#树与图的广度优先遍历，拓扑排序" class="headerlink" title="树与图的广度优先遍历，拓扑排序"></a>树与图的广度优先遍历，拓扑排序</h2><p>&emsp;&emsp;树与图的广度优先需要使用一个队列来实现。起初，队列中仅包含一个起点（例如 $1$ 号节点。在广度优先遍历的过程中，我们不断从队头取出一个节点 $x$，对于 $x$ 面对的多条分支，把沿着每条分支到达的下一个节点（如果尚未被访问过）插入队尾。重复执行上述过程直到队列为空。</p>
+<p><img src="https://i.loli.net/2020/03/26/L6mCFWD3UQurHG1.jpg" alt></p>
+<p>&emsp;&emsp;采用下面的代码对一张图进行广度优先遍历。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">bfs</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">memset</span><span class="token punctuation">(</span>d<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    queue<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> Q<span class="token punctuation">;</span>
+    Q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    d<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>Q<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> x<span class="token operator">=</span>Q<span class="token punctuation">.</span><span class="token function">front</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Q<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span>head<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>i<span class="token punctuation">;</span>i<span class="token operator">=</span>edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Next<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> y<span class="token operator">=</span>edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>to<span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>d<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">)</span>
+                <span class="token keyword">continue</span><span class="token punctuation">;</span>
+            d<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token operator">=</span>d<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+            Q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>&emsp;&emsp;在上面的代码中，我们在广度优先遍历的过程中顺便求出了一个 $d$ 数组。对于一棵树来讲，$d[x]$ 就是点 $x$ 在树中的深度。对于一张图来讲，$d[x]$ 被称为点 $x$ 的层次（从起点 $1$ 走到点 $x$ 需要经过的最少点数）。从代码和示意图中我们可以发现，广度优先遍历是一种按照层次顺序进行访问的方法，它具有如下两个重要性质：</p>
+<p>&emsp;&emsp;$1.$<strong>在访问完所有的第 $i$ 层节点后，才会开始访问第 $i+1$ 层节点</strong>。</p>
+<p>&emsp;&emsp;$2.$任意时刻，队列中至多有两个层次的节点。若其中一部分节点属于第 $i$ 层，则另一部分节点属于第 $i+1$ 层，并且所有第 $i$ 层节点排在第 $i+1$ 层节点之前。也就是说，<strong>广度优先遍历队列中的元素关于层次满足“二段性”和“单调性”</strong>。</p>
+<p>&emsp;&emsp;这两条性质是广度优先思想的基础。与深度优先遍历一样，上面这段代码的时间复杂度也是 $O(n+m)$。</p>
+<h3 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h3><p>&emsp;&emsp;给定一张有向无环图，若一个由图中所有点构成的序列 $A$ 满足：对于图中的每条边 $(x,y)$，$x$ 在 $A$ 中都出现在 $y$ 之前，则称 $A$ 是该有向无环图顶点的一个拓扑序。求解序列 $A$ 的过程就称为拓扑排序。</p>
+<p>&emsp;&emsp;拓扑排序过程的思想非常简单，我们只需要不断选择图中入度为 $0$ 的节点 $x$，然后把 $x$ 连向的点的入度减 $1$。可以结合广度优先遍历的框架来高效地实现这个过程：</p>
+<p>&emsp;&emsp;$1.$建立空的拓扑序列 $A$。</p>
+<p>&emsp;&emsp;$2.$预处理出所有点的入度 $\text{deg[i]}$，起初把所有入读为 $0$ 的点入队。</p>
+<p>&emsp;&emsp;$3.$取出队头节点 $x$，把 $x$ 加入拓扑序列 $A$ 的末尾。</p>
+<p>&emsp;&emsp;$4.$对于从 $x$ 出发的每条边 $(x,y)$，把 $\text{deg[y]}$ 减 $1$。若被减为 $0$，则把 $y$ 入队。</p>
+<p>&emsp;&emsp;$5.$重复第 $3$ ~ $4$ 步直到队列为空，此时 $A$ 即为所求。</p>
+<p>&emsp;&emsp;<strong>拓扑排序可以判定有向图中是否存在环</strong>。我们可以对任意有向图执行上述过程，在完成后检查 $A$ 序列的长度。若 $A$ 序列的长度小于图中点的数量，则说明某些节点未被遍历，进而说明图中存在环。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">add_edge</span><span class="token punctuation">(</span><span class="token keyword">int</span> from<span class="token punctuation">,</span><span class="token keyword">int</span> to<span class="token punctuation">,</span><span class="token keyword">int</span> dis<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    edge<span class="token punctuation">[</span><span class="token operator">++</span>num_edge<span class="token punctuation">]</span><span class="token punctuation">.</span>to<span class="token operator">=</span>to<span class="token punctuation">;</span>
+    edge<span class="token punctuation">[</span>num_edge<span class="token punctuation">]</span><span class="token punctuation">.</span>dis<span class="token operator">=</span>dis<span class="token punctuation">;</span>
+    edge<span class="token punctuation">[</span>num_edge<span class="token punctuation">]</span><span class="token punctuation">.</span>Next<span class="token operator">=</span>head<span class="token punctuation">[</span>from<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    head<span class="token punctuation">[</span>from<span class="token punctuation">]</span><span class="token operator">=</span>num_edge<span class="token punctuation">;</span>
+    deg<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">void</span> <span class="token function">topsort</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    queue<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> Q<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>deg<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
+            Q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>Q<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> x<span class="token operator">=</span>Q<span class="token punctuation">.</span><span class="token function">front</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Q<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        a<span class="token punctuation">[</span><span class="token operator">++</span>cnt<span class="token punctuation">]</span><span class="token operator">=</span>x<span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span>head<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>i<span class="token punctuation">;</span>i<span class="token operator">=</span>edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Next<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> y<span class="token operator">=</span>edge<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>to<span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">--</span>deg<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
+                Q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    cin<span class="token operator">>></span>n<span class="token operator">>></span>m<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>m<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> x<span class="token punctuation">,</span>y<span class="token punctuation">;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>x<span class="token punctuation">,</span><span class="token operator">&amp;</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">add_edge</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">topsort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d "</span><span class="token punctuation">,</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    cout<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
             </div>
             <hr/>
 
@@ -519,7 +700,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E6%90%9C%E7%B4%A2/">
+                                    <span class="chip bg-color">搜索</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -700,7 +885,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            &emsp;&emsp;树与图最常见的存储方式就是使用一个邻接表保存它们的边集。给定 $n$ 个点的树或图时，其节点编号均为 $1$ ~ $n$，无向图中的边看作成对出现的双向边，树看作一张具有 $n-1$ 条边的无向图，它们的边都存储在一
                         
                     </div>
                     <div class="publish-info">
@@ -709,13 +894,25 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Destin Histoire
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    算法笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%90%9C%E7%B4%A2/">
+                        <span class="chip bg-color">搜索</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
