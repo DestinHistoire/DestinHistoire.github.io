@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="树形dp, CUG Information Management and Information System">
-    <meta name="description" content="&amp;emsp;&amp;emsp;给定一棵有 $N$ 个节点的（树通常是无根树，也就是有 $N-1$ 条无向边），我们可以任选一个节点为根节点，从而定义出每个节点的深度和每棵子树的根。在树上设计动态规划算法时，一般就以节点从深到浅（子树从小到大）的顺">
+    <meta name="description" content="&amp;emsp;&amp;emsp;给定一棵有 $N$ 个节点的树（树通常是无根树，也就是有 $N-1$ 条无向边），我们可以任选一个节点为根节点，从而定义出每个节点的深度和每棵子树的根。在树上设计动态规划算法时，一般就以节点从深到浅（子树从小到大）的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -474,10 +474,10 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>&emsp;&emsp;给定一棵有 $N$ 个节点的（树通常是无根树，也就是有 $N-1$ 条无向边），我们可以任选一个节点为根节点，从而定义出每个节点的深度和每棵子树的根。在树上设计动态规划算法时，一般就以<strong>节点从深到浅（子树从小到大）的顺序作为DP的“阶段”</strong>。DP的状态表示中，<strong>第一维通常是节点编号</strong>（代表以该节点为根的子树）。大多数时候，我们采用递归的方式实现树形动态规划。对于每个节点 $x$，先<strong>递归在它的每个子节点</strong>上进行DP，在<strong>回溯时，从子节点向节点 $x$ 进行状态转移</strong>。 </p>
-<h3 id="【例题】P1352-没有上司的舞会"><a href="#【例题】P1352-没有上司的舞会" class="headerlink" title="【例题】P1352 没有上司的舞会"></a>【例题】P1352 没有上司的舞会</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>&emsp;&emsp;$\text{Ural}$ 大学有 $n$ 名职员，编号为 $1{\sim}N$。他们的关系就像一棵以校长为根的树，父节点就是子节点的直接上司。每个职员有一个快乐指数，用整数 $H_i$ 给出，其中 $1≤i≤N$ 。现在要召开一场周年庆宴会，不过，没有职员愿意和直接上司一起参会。在满足这个条件的前提下，主办方希望邀请一部分职员参会，使得所有参会职员的快乐指数总和最大，求这个最大值 （$1\leq n \leq 6 \times 10^3,-128 \leq r_i\leq 127,1 \leq l,k \leq n $，且给出的关系一定是一棵树）。 </p>
+                <p>&emsp;&emsp;给定一棵有 $N$ 个节点的树（树通常是无根树，也就是有 $N-1$ 条无向边），我们可以任选一个节点为根节点，从而定义出每个节点的深度和每棵子树的根。在树上设计动态规划算法时，一般就以<strong>节点从深到浅（子树从小到大）的顺序作为DP的“阶段”</strong>。DP的状态表示中，<strong>第一维通常是节点编号</strong>（代表以该节点为根的子树）。大多数时候，我们采用递归的方式实现树形动态规划。对于每个节点 $x$，先<strong>递归在它的每个子节点</strong>上进行DP，在<strong>回溯时，从子节点向节点 $x$ 进行状态转移</strong>。 </p>
+<h3 id="【例题】P1352-没有上司的舞会"><a href="#【例题】P1352-没有上司的舞会" class="headerlink" title="【例题】P1352 没有上司的舞会"></a>【例题】P1352 没有上司的舞会</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>&emsp;&emsp;$\text{Ural}$ 大学有 $n$ 名职员，编号为 $1$ ~ $N$。他们的关系就像一棵以校长为根的树，父节点就是子节点的直接上司。每个职员有一个快乐指数，用整数 $H_i$ 给出，其中 $1≤i≤N$ 。现在要召开一场周年庆宴会，不过，没有职员愿意和直接上司一起参会。在满足这个条件的前提下，主办方希望邀请一部分职员参会，使得所有参会职员的快乐指数总和最大，求这个最大值 （$1\leq n \leq 6 \times 10^3,-128 \leq r_i\leq 127,1 \leq l,k \leq n $，且给出的关系一定是一棵树）。 </p>
 <h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>&emsp;&emsp;输入的第一行是一个整数 $n$。</p>
-<p>&emsp;&emsp;第 $2$ 到第 $(n+1)$ 行，每行一个整数，第 $ i+1 $ 行的整数表示 $i$ 号职员的快乐指数 $r_i$。</p>
+<p>&emsp;&emsp;第 $2$ 到第 $n+1$ 行，每行一个整数，第 $ i+1 $ 行的整数表示 $i$ 号职员的快乐指数 $ H_i$。</p>
 <p>&emsp;&emsp;第 $n+2$ 到第 $2n+1$ 行，每行输入一对整数 $l,k$，代表 $k$ 是 $l$ 的直接上司。</p>
 <h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>&emsp;&emsp;输出一行一个整数代表最大的快乐指数。</p>
 <h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>&emsp;&emsp;以节点编号（子树的根）作为 $\text{DP}$ 状态的第一维。因为一名职员是否愿意参加只跟他的直接上司是否参加有关，所以我们在每棵子树递归完成时，保留两个“代表信息”——根节点参加时整棵子树的最大快乐指数和，以及根节点不参加时整棵子树的最大快乐指数和，就可以满足“最优子结构”性质了。  </p>
