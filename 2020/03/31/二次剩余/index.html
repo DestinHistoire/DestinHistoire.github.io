@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Z函数(扩展KMP), CUG Information Management and Information System">
-    <meta name="description" content="&amp;emsp;&amp;emsp;假设有一个长度为 $n$ 的字符串 $s$。该字符串的 Z函数 为一个长度为 $n$ 的数组，其中第 $i$ 个元素为满足从位置 $i$ 开始且为 $s$ 前缀的字符串的最大长度，即 $z[i]$ 是 $s$ 和从 ">
+    <meta name="keywords" content="二次剩余, CUG Information Management and Information System">
+    <meta name="description" content="&amp;emsp;&amp;emsp;若存在 $1\leq x\leq p-1$ 使方程 $x^2\equiv a\pmod p$ 有解，则称 $a$ 为 $p$ 的二次剩余，否则 $a$ 为 $p$ 的非二次剩余（$p$ 为奇素数）。
+勒让德符号&amp;em">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Z函数(扩展KMP) | Destin Histoire的博客</title>
+    <title>二次剩余 | Destin Histoire的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -304,13 +305,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Z函数(扩展KMP)
+                        二次剩余
                     </div>
                 </div>
             </div>
@@ -428,12 +429,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                                <span class="chip bg-color">字符串</span>
+                            <a href="/tags/%E6%95%B0%E8%AE%BA/">
+                                <span class="chip bg-color">数论</span>
                             </a>
                         
-                            <a href="/tags/%E6%89%A9%E5%B1%95KMP/">
-                                <span class="chip bg-color">扩展KMP</span>
+                            <a href="/tags/%E4%BA%8C%E6%AC%A1%E5%89%A9%E4%BD%99/">
+                                <span class="chip bg-color">二次剩余</span>
                             </a>
                         
                     </div>
@@ -457,7 +458,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-30
+                    2020-03-31
                 </div>
                 
 
@@ -474,133 +475,25 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>&emsp;&emsp;假设有一个长度为 $n$ 的字符串 $s$。该字符串的 <strong>Z函数</strong> 为一个长度为 $n$ 的数组，其中第 $i$ 个元素为满足从位置 $i$ 开始且为 $s$ 前缀的字符串的最大长度，即 $z[i]$ 是 $s$ 和从 $i$ 开始的 $s$ 的后缀的最长公共前缀的长度。$\text{Z}$ 函数的第一个元素 $z[0]$ 通常是无意义的，假定 $z[0]=0$。</p>
-<p>&emsp;&emsp;$\text{Z}$ 函数举例如下：</p>
-<p><img src="https://i.loli.net/2020/03/31/ZdtUbk5mfwNvg6K.png" alt></p>
-<h3 id="朴素算法"><a href="#朴素算法" class="headerlink" title="朴素算法"></a>朴素算法</h3><p>&emsp;&emsp;按照 $\text{Z}$ 函数的定义，可写出下列代码，时间复杂度为 $O(n^2)$。</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">Z_algorithm</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span>i<span class="token operator">+</span>z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span>n<span class="token operator">&amp;&amp;</span>s<span class="token punctuation">[</span>z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">==</span>s<span class="token punctuation">[</span>i<span class="token operator">+</span>z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-            z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>&emsp;&emsp;我们所做的仅仅是循环每个位置 $i$，并通过如下做法更新每个 $z[i]$：从 $z[i]=0$ 开始，只要没有失配（并且没有到达末尾），就将 $z[i]$ 加 $1$。显然，这并不是一个高效的实现。</p>
-<h3 id="计算-text-Z-函数的高效算法"><a href="#计算-text-Z-函数的高效算法" class="headerlink" title="计算 $\text{Z}$ 函数的高效算法"></a>计算 $\text{Z}$ 函数的高效算法</h3><p>&emsp;&emsp;为了得到一个高效算法，我们将以 $i=1$ 到 $i=n-1$ 的顺序计算 $z[i]$，在计算一个新值的同时，我们将尝试尽最大努力使用之前已经计算好的值。</p>
-<p>&emsp;&emsp;为了简便起见，定义 <strong>匹配段</strong> 为和 $s$ 一个前缀相同的那些子串。举例来说，所求 $\text{Z}$ 函数的第 $i$ 个元素 $z[i]$ 为从位置 $i$ 开始的匹配段的长度（其终止位置位于 $i+z[i]-1$）。</p>
-<p>&emsp;&emsp;为了达成目标，我们将始终保持 $[l,r]$ <strong>为最靠右的匹配段</strong>。也就是说，在所有已探测到的匹配段中，我们将保持结尾最靠右的那一个。另一方面，下标 $r$ 可被认为是字符串 $s$ 已被算法扫描的边界；任何超过该点的字符都是未知的。</p>
-<p>&emsp;&emsp;假设当前下标为 $i$（即我们要计算的下一个 $\text{Z}$ 函数值的下标），则有两种情况：</p>
-<p>&emsp;&emsp;$1.i&gt;r$——当前位置在我们已处理位置<strong>之外</strong>。</p>
-<p>&emsp;&emsp;接下来使用 <strong>朴素算法</strong>（即一个一个的比较字符）来计算 $z[i]$。注意如果最后 $z[i]&gt;0$，需要更新最靠右的匹配段的下标，因为新的 $r=i+z[i]-1$ 一定比之前的 $r$ 优。</p>
-<p>&emsp;&emsp;$2.i\leq r$——当前位置位于当前匹配段 $[l,r]$ 之内。</p>
-<p>&emsp;&emsp;那么我们可以用已经计算过的 $\text{Z}$ 函数值来 “初始化” $z[i]$ 至某值（至少比从 $0$ 开始要好），甚至可能是某些较大的值。</p>
-<p>&emsp;&emsp;为了做到这一点，可以注意到子串 $s[l\cdots r]$ 和 $s[0\cdots r-l]$ 匹配。这意味着作为 $z[i] $ 的一个初始近似，可以直接使用对应于子串 $s[0\cdots r-l]$ 的已经计算过的 $\text{Z}$ 函数的值，也即 $z[i-l]$。</p>
-<p>&emsp;&emsp;然而 $z[i-l]$ 可能非常大：将其应用到位置 $i$ 结果可能超过下标 $r$。这种做法并不合法，原因在于我们对 $r$ 右侧的字符一无所知：它们可能并不满足要求。</p>
-<p>&emsp;&emsp;比如：<br>$$<br>s=\text{aaaabaa}<br>$$<br>&emsp;&emsp;当我们尝试计算末尾位置（$i=6$）的值时，当前匹配的段为 $[5,6]$。位置 $6$ 会匹配位置 $6-5=1$，其 $\text{Z}$ 函数值为 $z[1]=3$。显然不能将 $z[6]$ 初始化为 $3$。但是我们可以初始化最大值为 $1$——这是使我们不超过段 $[l,r]$ 的边界 $r$ 的最大可能取值。</p>
-<p>&emsp;&emsp;因此，可以将下列值作为 $z[i]$ 的一个初始近似：<br>$$<br>z_0[i]=\min\big(r-i+1,z[i-l]\big)<br>$$</p>
-<p>&emsp;&emsp;当将 $z[i]$ 初始化为 $z_0[i]$ 后，我们尝试使用 <strong>朴素算法</strong> 增加 $z[i]$ 的值——因为宏观来讲，对于边界 $r$ 之后的字符，无法得知段是否会继续匹配还是失配。</p>
-<p>&emsp;&emsp;综上所述，整个算法被划分成两种情况，他们只在设置 $z[i]$ 的 <strong>初始值</strong> 时有所不同：在第一种情况下，其被认为为 $0$，在第二种情况下它由先前已计算过的值确定（使用前述公式）。之后，该算法的两个分支都被规约为实现 <strong>朴素算法</strong> 。当我们设置完初始值后，该算法即开始执行。</p>
-<p>&emsp;&emsp;尽管在每轮迭代后都会运行朴素算法，但是其时间复杂度为 $O(n)$。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>&emsp;&emsp;当前最右的匹配段假定为 $[0,0]$（不包含任何 $i$ 的小段）。在循环 $i=1\cdots n-1$ 中，首先确定 $z[i]$ 的初始值——要么保持为 $0$，要么使用前述公式进行计算。之后，朴素算法尝试尽可能多的增加 $z[i]$ 值。最后，如果 $i+z[i]-1&gt;r$，更新最右匹配段 $[l,r]$。</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">Z_algorithm</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">,</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    z<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>n<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> l<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>r<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">&lt;=</span>r<span class="token punctuation">)</span>
-            z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">min</span><span class="token punctuation">(</span>z<span class="token punctuation">[</span>i<span class="token operator">-</span>l<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>r<span class="token operator">-</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span>i<span class="token operator">+</span>z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;=</span>n<span class="token operator">&amp;&amp;</span>s<span class="token punctuation">[</span>i<span class="token operator">+</span>z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">==</span>s<span class="token punctuation">[</span>z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-            z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">+</span>z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span><span class="token number">1</span><span class="token operator">></span>r<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            l<span class="token operator">=</span>i<span class="token punctuation">;</span>
-            r<span class="token operator">=</span>i<span class="token operator">+</span>z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="算法的时间复杂度证明"><a href="#算法的时间复杂度证明" class="headerlink" title="算法的时间复杂度证明"></a>算法的时间复杂度证明</h3><p>&emsp;&emsp;只考虑内层的 $\text{while}$ 循环，因为其余部分在一次循环中只是一堆常数次操作，时间复杂度总和为 $O(n)$。</p>
-<p>&emsp;&emsp;下面将证明 $\text{while}$ 的每次迭代都将增加匹配段的右边界 $r$。</p>
-<p>&emsp;&emsp;考虑算法的所有分支：</p>
-<p>&emsp;&emsp;$1.i&gt;r$</p>
-<p>&emsp;&emsp;在这种情况下，要么 $\text{while}$ 循环不进行任何迭代（如果 $s[0]\neq s[i]$），要么其将从位置 $i$ 开始进行若干次迭代，其中每次迭代将向右移动一个字符。每次迭代后，右边界 $r$ 必定被更新。</p>
-<p>&emsp;&emsp;因此当 $i&gt;r$ 时，$\text{while}$ 循环的每轮迭代都会使新的 $r$ 增加 $1$。</p>
-<p>&emsp;&emsp;$ 2.i\leq r $</p>
-<p>&emsp;&emsp;在这种情况下，将 $z[i]$ 初始化为前述公式给出的某个具体 $z_0$。将 $z_0$ 和 $r-i+1$ 比较，可能有三种情况：</p>
-<p>&emsp;&emsp;①$z_0&lt;r-i+1$</p>
-<p>&emsp;&emsp;在这种情况下 $\text{while}$ 循环不会进行任何迭代。</p>
-<p>&emsp;&emsp;运用反证法：如果 $\text{while}$ 循环进行了至少一次迭代，这意味着初始近似 $z[i]=z_0$ 是不准确的（小于匹配的实际长度）。但是由于 $s[l\cdots r]$ 和 $s[0\cdots r-l]$ 是相同的，因此 $z[i-l]$ 的值是错误的（比其应有的值要小）。</p>
-<p>&emsp;&emsp;因为 $z[i-l]$ 的值是正确的且 $z[i-l]&lt;r-i+1$，所以此值与所求的 $z[i]$ 是相同的。</p>
-<p>&emsp;&emsp;②$z_0=r-i+1$</p>
-<p>&emsp;&emsp;在这种情况下，$\text{while}$ 循环可能会进行若干次迭代。因为我们从 $s[r+1]$ 开始比较，其位置已经超过了区间 $[l,r]$，故每次迭代都会使 $r$ 增加。</p>
-<p>&emsp;&emsp;③$z_0&gt;r-i+1$</p>
-<p>&emsp;&emsp;根据 $z_0$ 的定义，这种情况不可能。</p>
-<p>&emsp;&emsp;综上，我们已经证明了内层循环的每次迭代都会使 $r$ 向右移动，由于 $r$ 不可能超过 $n-1$，因此内层 $\text{while}$ 循环至多进行 $n-1$ 轮迭代。</p>
-<p>&emsp;&emsp;所以算法的时间复杂度为 $O(n)$。</p>
-<h3 id="P5410【模板】扩展-KMP（Z-函数）"><a href="#P5410【模板】扩展-KMP（Z-函数）" class="headerlink" title="P5410【模板】扩展 KMP（Z 函数）"></a>P5410【模板】扩展 KMP（Z 函数）</h3><p>&emsp;&emsp;给定两个字符串 $a,b$，求出两个数组：</p>
-<p>&emsp;&emsp;$b$ 的 $\text{Z}$ 函数数组 $z$，即 $b$ 与 $b$ 的每一个后缀的 $ \text{LCP} $ 长度。</p>
-<p>&emsp;&emsp;$b$ 与 $a$ 的每一个后缀的$\text{ LCP }$长度数组 $p$。</p>
-<p>&emsp;&emsp;对于一个长度为 $n$ 的数组 $a$，设其权值为 $\text{xor}_{i=1}^n i \times (a_i+1)$。 </p>
-<p>&emsp;&emsp;输出 $z$ 的权值与 $p$ 的权值$(1\leq |a|,|b|\leq 2\times 10^7)$。</p>
-<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;cstdio></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;cstring></span></span>
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
-<span class="token keyword">const</span> <span class="token keyword">int</span> N<span class="token operator">=</span><span class="token number">2e7</span><span class="token operator">+</span><span class="token number">10</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> n<span class="token punctuation">,</span>m<span class="token punctuation">,</span>z<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span>p<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">char</span> a<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span>b<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">long</span> <span class="token keyword">long</span> ans<span class="token punctuation">;</span>
-<span class="token keyword">void</span> <span class="token function">Z_algorithm</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">,</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    z<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>n<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> l<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>r<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">&lt;=</span>r<span class="token punctuation">)</span>
-            z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">min</span><span class="token punctuation">(</span>z<span class="token punctuation">[</span>i<span class="token operator">-</span>l<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>r<span class="token operator">-</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span>i<span class="token operator">+</span>z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;=</span>n<span class="token operator">&amp;&amp;</span>s<span class="token punctuation">[</span>i<span class="token operator">+</span>z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">==</span>s<span class="token punctuation">[</span>z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-            z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">+</span>z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span><span class="token number">1</span><span class="token operator">></span>r<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            l<span class="token operator">=</span>i<span class="token punctuation">;</span>
-            r<span class="token operator">=</span>i<span class="token operator">+</span>z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">void</span> <span class="token function">exKMP</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">,</span><span class="token keyword">char</span> <span class="token operator">*</span>t<span class="token punctuation">,</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span> l<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>r<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">&lt;=</span>r<span class="token punctuation">)</span>
-            p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">min</span><span class="token punctuation">(</span>z<span class="token punctuation">[</span>i<span class="token operator">-</span>l<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>r<span class="token operator">-</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span>i<span class="token operator">+</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;=</span>n<span class="token operator">&amp;&amp;</span>s<span class="token punctuation">[</span>i<span class="token operator">+</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">==</span>t<span class="token punctuation">[</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-            p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">+</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span><span class="token number">1</span><span class="token operator">></span>r<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            l<span class="token operator">=</span>i<span class="token punctuation">;</span>
-            r<span class="token operator">=</span>i<span class="token operator">+</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%s%s"</span><span class="token punctuation">,</span>a<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>b<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    n<span class="token operator">=</span><span class="token function">strlen</span><span class="token punctuation">(</span>a<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>m<span class="token operator">=</span><span class="token function">strlen</span><span class="token punctuation">(</span>b<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">Z_algorithm</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    ans<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>m<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-        ans<span class="token operator">^</span><span class="token operator">=</span><span class="token number">1ll</span><span class="token operator">*</span>i<span class="token operator">*</span><span class="token punctuation">(</span>z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%lld\n"</span><span class="token punctuation">,</span>ans<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    ans<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token function">exKMP</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-        ans<span class="token operator">^</span><span class="token operator">=</span><span class="token number">1ll</span><span class="token operator">*</span>i<span class="token operator">*</span><span class="token punctuation">(</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%lld\n"</span><span class="token punctuation">,</span>ans<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+                <p>&emsp;&emsp;若存在 $1\leq x\leq p-1$ 使方程 $x^2\equiv a\pmod p$ 有解，则称 $a$ 为 $p$ 的二次剩余，否则 $a$ 为 $p$ 的非二次剩余（$p$ 为奇素数）。</p>
+<h2 id="勒让德符号"><a href="#勒让德符号" class="headerlink" title="勒让德符号"></a>勒让德符号</h2><p>&emsp;&emsp;定义勒让德符号为：<br>$$<br>\bigg( \frac{a}{p}\bigg)=\begin{cases}1 &amp; a在模p意义下是二次剩余\\ -1 &amp; a在模p意义下是非二次剩余\\ 0 &amp; p|a \end{cases}<br>$$</p>
+<h2 id="欧拉判别准则"><a href="#欧拉判别准则" class="headerlink" title="欧拉判别准则"></a>欧拉判别准则</h2><p>&emsp;&emsp;对于勒让德符号，有：<br>$$<br>\bigg( \frac{a}{p}\bigg)\equiv a^{\frac{p-1}{2}}\pmod p<br>$$<br>&emsp;&emsp;由费马小定理：$a^{p-1}\equiv 1\pmod p$，且 $p-1$ 是偶数：<br>$$<br>(a^{\frac{p-1}{2}}-1)(a^{\frac{p-1}{2}}+1)\equiv 0\pmod p<br>$$<br>&emsp;&emsp;$p$ 是一个质数，所以 $a^{\frac{p-1}{2}}-1$ 和 $a^{\frac{p-1}{2}}+1$ 中必有一个是 $p$ 的倍数，因此 $a^{\frac{p-1}{2}}\equiv 1\pmod p$ 或 $a^{\frac{p-1}{2}}\equiv -1\pmod p$。</p>
+<h3 id="二次剩余的充要条件：勒让德符号为-1"><a href="#二次剩余的充要条件：勒让德符号为-1" class="headerlink" title="二次剩余的充要条件：勒让德符号为 $1$"></a>二次剩余的充要条件：勒让德符号为 $1$</h3><h4 id="充分性"><a href="#充分性" class="headerlink" title="充分性"></a>充分性</h4><p>&emsp;&emsp;若 $a$ 在模 $p$ 意义下是二次剩余，则 $a^{\frac{p-1}{2}}\equiv 1\pmod p$。 </p>
+<p><strong>证明：</strong></p>
+<p>&emsp;&emsp;若 $a$ 在模 $p$ 意义下是二次剩余，即方程 $x^2\equiv a\pmod p$ 有解，而 $p$ 与 $a,x$ 都互质。</p>
+<p>&emsp;&emsp;根据费马小定理：<br>$$<br>a^{\frac{p-1}{2}}\equiv x^{p-1}\equiv 1\pmod p<br>$$</p>
+<h4 id="必要性"><a href="#必要性" class="headerlink" title="必要性"></a>必要性</h4><p>&emsp;&emsp;若 $a^{\frac{p-1}{2}}\equiv 1\pmod p$，则 $a$ 是模 $p$ 的二次剩余。</p>
+<p><strong>证明：</strong></p>
+<p>&emsp;&emsp;$p$ 是一个奇素数，所以关于 $p$ 的原根存在。设 $g$ 是 $p$ 的一个原根，则存在 $1\leq j\leq p-1$，使得 $a=g^j$。</p>
+<p>&emsp;&emsp;所以：$g^{j\frac{p-1}{2}}\equiv 1\pmod p$。</p>
+<p>&emsp;&emsp;$g$ 是 $p$ 的一个原根，因此 $g$ 模 $p$ 的指数为 $p-1$，所以 $(p-1)\Big| \frac{j(p-1)}{2}$。说明 $j$ 是一个偶数，令 $i=\frac{j}{2}$，有 $(g^i)^2=g^{2i}=a$，因此 $a$ 是模 $p$ 的二次剩余。</p>
+<h3 id="二次非剩余的充要条件：勒让德符号余数为-1"><a href="#二次非剩余的充要条件：勒让德符号余数为-1" class="headerlink" title="二次非剩余的充要条件：勒让德符号余数为 $-1$"></a>二次非剩余的充要条件：勒让德符号余数为 $-1$</h3><p><strong>证明：</strong></p>
+<p>&emsp;&emsp;由于 $p$ 是质数，由 <strong>扩展欧几里得算法</strong> 可知对于每个 $1\leq i\leq p-1$，都存在唯一的一个整数 $j$，使得 $ij\equiv a\pmod p$。所以可以把 $1,2,\cdots ,p-1$ 分成 $\frac{p-1}{2}$ 对，使得每对的乘积都为 $a$。此时有 $ (p-1)!\equiv a^{\frac{p-1}{2}}$，根据威尔逊定理有 $ (p-1)!\equiv-1\pmod p$，所以 $a^{\frac{p-1}{2}}\equiv -1\pmod p$。</p>
+<p>&emsp;&emsp;涉及 <strong>扩展欧几里得算法</strong> 的证明：</p>
+<p>&emsp;&emsp;由于 $ij\equiv a\pmod p$，则 $ij+pk=a$。因为 $\gcd(i,p)=1$，所以 $ij+pk=1$ 必然有解。因为 $a$ 是 $1$ 的倍数，所以 $ij+pk=n$ 必然有解。</p>
+<p>&emsp;&emsp;令 $j=j_0+pk’$，则有且只有一个解 $j$ 落在 $[1,p-1]$ 内。</p>
+<h3 id="p-a-时，勒让德符号为-0"><a href="#p-a-时，勒让德符号为-0" class="headerlink" title="$p|a$ 时，勒让德符号为 $0$"></a>$p|a$ 时，勒让德符号为 $0$</h3><p>&emsp;&emsp;显然成立。</p>
+<h2 id="相关定理"><a href="#相关定理" class="headerlink" title="相关定理"></a>相关定理</h2>
             </div>
             <hr/>
 
@@ -625,7 +518,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.destinhistoire.top/2020/03/30/Z%E5%87%BD%E6%95%B0-%E6%89%A9%E5%B1%95KMP/">http://www.destinhistoire.top/2020/03/30/Z%E5%87%BD%E6%95%B0-%E6%89%A9%E5%B1%95KMP/</a>
+                    <a href="http://www.destinhistoire.top/2020/03/31/%E4%BA%8C%E6%AC%A1%E5%89%A9%E4%BD%99/">http://www.destinhistoire.top/2020/03/31/%E4%BA%8C%E6%AC%A1%E5%89%A9%E4%BD%99/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -663,12 +556,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                                    <span class="chip bg-color">字符串</span>
+                                <a href="/tags/%E6%95%B0%E8%AE%BA/">
+                                    <span class="chip bg-color">数论</span>
                                 </a>
                             
-                                <a href="/tags/%E6%89%A9%E5%B1%95KMP/">
-                                    <span class="chip bg-color">扩展KMP</span>
+                                <a href="/tags/%E4%BA%8C%E6%AC%A1%E5%89%A9%E4%BD%99/">
+                                    <span class="chip bg-color">二次剩余</span>
                                 </a>
                             
                         </div>
@@ -834,9 +727,65 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/03/31/%E4%BA%8C%E6%AC%A1%E5%89%A9%E4%BD%99/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="二次剩余">
+                        
+                        <span class="card-title">二次剩余</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            &emsp;&emsp;若存在 $1\leq x\leq p-1$ 使方程 $x^2\equiv a\pmod p$ 有解，则称 $a$ 为 $p$ 的二次剩余，否则 $a$ 为 $p$ 的非二次剩余（$p$ 为奇素数）。
+勒让德符号&em
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-31
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    算法笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%B0%E8%AE%BA/">
+                        <span class="chip bg-color">数论</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BA%8C%E6%AC%A1%E5%89%A9%E4%BD%99/">
+                        <span class="chip bg-color">二次剩余</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2020/03/31/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/">
                     <div class="card-image">
@@ -854,9 +803,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-31
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-31
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -878,59 +827,6 @@
                     
                     <a href="/tags/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/">
                         <span class="chip bg-color">AC自动机</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/03/30/%E5%AD%97%E5%85%B8%E6%A0%91/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="字典树">
-                        
-                        <span class="card-title">字典树</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            $ \text{Trie} $&emsp;&emsp;$\text{Trie}$（字典树）是一种用于实现字符串快速检索的多叉树结构。$\text{Trie}$ 的每个节点都拥有若干个字符指针，若在插入或检索字符串时扫描到一个字符 $c$，就
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-30
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    算法笔记
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                        <span class="chip bg-color">字符串</span>
-                    </a>
-                    
-                    <a href="/tags/Trie/">
-                        <span class="chip bg-color">Trie</span>
                     </a>
                     
                 </div>
