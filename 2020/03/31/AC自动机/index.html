@@ -487,7 +487,7 @@
 <p>&emsp;&emsp;扩展定义转移函数 $\delta$，令其第二个参数可以接收一个字符串：</p>
 <p>&emsp;&emsp;$\delta(v,s)=\delta(\delta(v,s[1]),s[s\cdots |s|])$，扩展后的转移函数就可以表示从一个状态起接收一个字符串后转移到的状态。那么，$A(s)=[\delta(start,s)\in F]$。</p>
 <p>&emsp;&emsp;如，一个接受且仅接受字符串 “$\text{a}$”，”$\text{ab}$”，”$\text{aac}$” 的 $\text{DFA}$：</p>
-<p>【图片】</p>
+<p><img src="https://i.loli.net/2020/04/05/BEGxtny4VRmClbA.png" alt></p>
 <h2 id="AC自动机"><a href="#AC自动机" class="headerlink" title="AC自动机"></a>AC自动机</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>&emsp;&emsp;$\text{AC}$自动机是以 <strong>$\text{Trie}$ 的结构为基础</strong>，结合 <strong>$\text{KMP}$ 的思想</strong>建立的。</p>
 <p>&emsp;&emsp;简单来说，建立一个 $\text{AC}$ 自动机有两个步骤：</p>
 <p>&emsp;&emsp;$1.$基础的 $ \text{Trie} $ 结构：将所有的模式串构成一棵 $ \text{Trie }$。</p>
@@ -593,7 +593,7 @@
 <p>&emsp;&emsp;定义 $p$ 为字典树上当前匹配到的节点，$ans$ 即返回的答案。循环遍历匹配串，$p$ 在字典树上跟踪当前字符。利用 $\text{fail}$ 指针找出所有匹配的模式串，累加到答案中，然后清 $0$。对 $ed[j]$ 取反的操作用来判断 $ed[j]$ 是否等于 $-1$。在上文中我们分析过，字典树的结构其实就是一个 $trans$ 函数，构建好这个函数后，在匹配字符串的过程中，我们会舍弃部分前缀达到最低限度的匹配。$\text{fail}$ 指针则指向了更多的匹配状态。</p>
 <p><img src="https://i.loli.net/2020/04/04/HUiFSTrXb2oJjMG.png" alt></p>
 <p>&emsp;&emsp;对于刚才的自动机，我们从根节点开始尝试匹配 $\text{ushersheishis}$，那么 $p$ 的变化将是：</p>
-<p>【图片】</p>
+<p><img src="https://i.loli.net/2020/04/05/gGn5B6ytlY2pKz3.gif" alt></p>
 <p>&emsp;&emsp;$1.$红色节点：$p$ 节点。</p>
 <p>&emsp;&emsp;$2.$粉色箭头：$p$ 在自动机上的跳转。</p>
 <p>&emsp;&emsp;$3.$蓝色的边：成功匹配的模式串。</p>

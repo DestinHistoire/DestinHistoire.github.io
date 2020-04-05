@@ -552,7 +552,61 @@ stack<span class="token operator">&lt;</span><span class="token keyword">int</sp
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="单调队列"><a href="#单调队列" class="headerlink" title="单调队列"></a>单调队列</h2><p>&emsp;&emsp;单调队列的重点分为 “单调” 和 “队列”。”单调” 指的是元素的 “规律”——递增或递减，”队列” 指的是元素只能从队头和队尾进行操作。因为每个元素至多入队一次、出队一次，所以整个算法的时间复杂度为 $O(N)$。它的思想是<strong>在决策集合（队列）中及时排除一定不是最优解的选择</strong>。单调队列也是优化动态规划的一个重要手段。</p>
-
+<h2 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h2><h3 id="P1886-滑动窗口-【模板】单调队列"><a href="#P1886-滑动窗口-【模板】单调队列" class="headerlink" title="P1886 滑动窗口/【模板】单调队列"></a>P1886 滑动窗口/【模板】单调队列</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>&emsp;&emsp;有一个长为 $n$ 的序列 $a$，以及一个大小为 $k$ 的窗口。现在这个从左边开始向右滑动，每次滑动一个单位，求出每次滑动后窗口中的最大值和最小值。</p>
+<p>&emsp;&emsp;例如：The array is $[1,3,-1,-3,5,3,6,7]$， and $k=3$。</p>
+<p>【图片】</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>&emsp;&emsp;输入一共有两行，第一行有两个正整数 $n,k(1\leq k\leq n\leq 10^6)$。 </p>
+<p>&emsp;&emsp;第二行 $n$ 个整数，表示序列 $a,a_i\in[-2^{31},2^{31})$。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>&emsp;&emsp;输出共两行，第一行为每次窗口滑动的最小值。</p>
+<p>&emsp;&emsp;第二行为每次窗口滑动的最大值。</p>
+<h4 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h4><p>&emsp;&emsp;暴力的方法很简单，对于每一段 $i$ ~ $i+k-1$ 的序列，逐个比较来找出最大值和最小值，时间复杂度为 $O(nk)$。</p>
+<p>&emsp;&emsp;显然，这其中进行了大量重复重复工作，除了开头 $k-1$ 个和结尾 $k-1$ 个数之外，每个数都进行了 $k$ 次比较，而题中 $100%$ 的数据为 $n\leq 1000000$，当 $k$ 稍大的情况下，显然会超时。</p>
+<p>&emsp;&emsp;要求的是每连续的 $k$ 个数中的最大（最小）值，很明显，当一个数进入所要 “寻找” 最大值的范围中时，若这个数比其前面（先进队）的数要大，显然，前面的数会比这个数先出队且不再可能是最大值。</p>
+<p>&emsp;&emsp;也就是说，当满足以上条件时，可将前面的数字 “弹出”，再将该数 $\text{push}$ 进队尾。</p>
+<p>&emsp;&emsp;这就相当于维护了一个递减的队列，符合单调队列的定义，减少了重复的比较次数，不仅如此，由于维护的队伍是查询范围内的且是递减的，队头必定是该查询区域内的最大值，因此输出时只需输出队头即可。</p>
+<p>&emsp;&emsp;由于查询区间的长度是固定的，超出查询空间的值再大也不能输出，因此还需要 $p$ 数组记录第 $i$ 个队列中的数字在原数组中的位置，以弹出越界的队首。</p>
+<p>&emsp;&emsp;每次取最小值的算法流程：</p>
+<p>【图片】</p>
+<h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token number">1000010</span><span class="token punctuation">]</span><span class="token punctuation">,</span>q<span class="token punctuation">[</span><span class="token number">1000010</span><span class="token punctuation">]</span><span class="token punctuation">,</span>p<span class="token punctuation">[</span><span class="token number">1000010</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">,</span>k<span class="token punctuation">;</span>
+    cin<span class="token operator">>></span>n<span class="token operator">>></span>k<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span>    head<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>tail<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>head<span class="token operator">&lt;=</span>tail<span class="token operator">&amp;&amp;</span>q<span class="token punctuation">[</span>tail<span class="token punctuation">]</span><span class="token operator">>=</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//要队列里有元素，并且队尾元素比当前元素大，表示队尾元素不可能作为最大值，所以从队尾出队。直到队尾元素小于当前值，满足单调。 </span>
+            tail<span class="token operator">--</span><span class="token punctuation">;</span>
+        q<span class="token punctuation">[</span><span class="token operator">++</span>tail<span class="token punctuation">]</span><span class="token operator">=</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//待处理值入队 </span>
+        p<span class="token punctuation">[</span>tail<span class="token punctuation">]</span><span class="token operator">=</span>i<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//存下当前处理值的编号 </span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>p<span class="token punctuation">[</span>head<span class="token punctuation">]</span><span class="token operator">&lt;=</span>i<span class="token operator">-</span>k<span class="token punctuation">)</span>
+            head<span class="token operator">++</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//如果队首元素已经不在范围内，从队首出队</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">>=</span>k<span class="token punctuation">)</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d "</span><span class="token punctuation">,</span>q<span class="token punctuation">[</span>head<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span> 
+    cout<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token function">memset</span><span class="token punctuation">(</span>q<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">memset</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    head<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>tail<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//a[i]为当前要处理的值 </span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>head<span class="token operator">&lt;=</span>tail<span class="token operator">&amp;&amp;</span>q<span class="token punctuation">[</span>tail<span class="token punctuation">]</span><span class="token operator">&lt;=</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//只要队列里有元素，并且队尾元素比当前元素小，表示队尾元素不可能作为最大值，所以从队尾出队。直到队尾元素大于当前值，满足单调。 </span>
+            tail<span class="token operator">--</span><span class="token punctuation">;</span>
+        q<span class="token punctuation">[</span><span class="token operator">++</span>tail<span class="token punctuation">]</span><span class="token operator">=</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//待处理值入队 </span>
+        p<span class="token punctuation">[</span>tail<span class="token punctuation">]</span><span class="token operator">=</span>i<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//存下当前处理值的编号 </span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>p<span class="token punctuation">[</span>head<span class="token punctuation">]</span><span class="token operator">&lt;=</span>i<span class="token operator">-</span>k<span class="token punctuation">)</span>
+            head<span class="token operator">++</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//如果队首元素已经不在范围内，从队首出队 </span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">>=</span>k<span class="token punctuation">)</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d "</span><span class="token punctuation">,</span>q<span class="token punctuation">[</span>head<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span>
+    cout<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="最大子序和"><a href="#最大子序和" class="headerlink" title="最大子序和"></a>最大子序和</h3>
             </div>
             <hr/>
 
@@ -790,31 +844,29 @@ stack<span class="token operator">&lt;</span><span class="token keyword">int</sp
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/03/%E5%8D%95%E8%B0%83%E6%A0%88%E4%B8%8E%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">
+                <a href="/2020/04/04/%E5%9B%9E%E6%96%87%E6%A0%91/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="单调栈与单调队列">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="回文树">
                         
-                        <span class="card-title">单调栈与单调队列</span>
+                        <span class="card-title">回文树</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            单调栈&emsp;&emsp;单调栈即满足单调性的栈结构。与单调队列相比，其只在一端进行进出。借助单调性处理问题的思想在于及时排除不可能的选项，保持策略集合的高度有效性和秩序性。为了描述方便，以下以维护一个整数单调递增的栈为例。
-&emsp
+                            概述&emsp;&emsp;回文树（$\text{EER Tree}$，$\text{Palindromic Tree}$，也被称为回文自动机）是一种可以存储一个串中所有回文子串的高效数据结构。它的灵感来源于后缀树等字符串后缀数据结构，使用
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-03
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-04
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -827,20 +879,15 @@ stack<span class="token operator">&lt;</span><span class="token keyword">int</sp
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
+                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                        <span class="chip bg-color">字符串</span>
                     </a>
                     
-                    <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/">
-                        <span class="chip bg-color">单调栈</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">
-                        <span class="chip bg-color">单调队列</span>
+                    <a href="/tags/%E5%9B%9E%E6%96%87%E6%A0%91/">
+                        <span class="chip bg-color">回文树</span>
                     </a>
                     
                 </div>
