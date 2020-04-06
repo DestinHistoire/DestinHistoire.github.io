@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="回文树, CUG Information Management and Information System">
-    <meta name="description" content="概述&amp;emsp;&amp;emsp;回文树（$\text{EER Tree}$，$\text{Palindromic Tree}$，也被称为回文自动机）是一种可以存储一个串中所有回文子串的高效数据结构。它的灵感来源于后缀树等字符串后缀数据结构，使用">
+    <meta name="keywords" content="斜率优化, CUG Information Management and Information System">
+    <meta name="description" content="斜率优化 | Destin Histoire的博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>回文树 | Destin Histoire的博客</title>
+    <title>斜率优化 | Destin Histoire的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -304,13 +304,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        回文树
+                        斜率优化
                     </div>
                 </div>
             </div>
@@ -428,12 +428,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                                <span class="chip bg-color">字符串</span>
+                            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                                <span class="chip bg-color">动态规划</span>
                             </a>
                         
-                            <a href="/tags/%E5%9B%9E%E6%96%87%E6%A0%91/">
-                                <span class="chip bg-color">回文树</span>
+                            <a href="/tags/%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96/">
+                                <span class="chip bg-color">斜率优化</span>
                             </a>
                         
                     </div>
@@ -457,7 +457,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-04-04
+                    2020-04-05
                 </div>
                 
 
@@ -474,18 +474,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>&emsp;&emsp;回文树（$\text{EER Tree}$，$\text{Palindromic Tree}$，也被称为回文自动机）是一种可以存储一个串中所有回文子串的高效数据结构。它的灵感来源于后缀树等字符串后缀数据结构，使用回文树可以简单高效地解决一系列涉及回文串的问题。</p>
-<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p>【图片】</p>
-<p>&emsp;&emsp;和其他自动机类似，回文树也是由转移边和后缀指针（$\text{fail}$ 指针）组成，每个节点都可以代表一个回文子串。</p>
-<p>&emsp;&emsp;因为回文串长度分为奇数和偶数，我们可以像 $\text{Manacher}$ 算法那样加入一个不在字符集中的字符（如 ‘#’）作为分隔符来将所有回文串的长度都变为奇数，另一棵树中的节点对应的回文子串长度均为偶数。</p>
-<p>&emsp;&emsp;和其他的自动机一样，一个节点的 $\text{fail}$ 指针指向的是这个节点所代表的回文串的最长回文后缀所对应的节点，但是转移边并非代表在原节点代表的回文串后加一个字符，而是表示在原节点代表的回文串前后各加一个相同的字符（因为要保证存的是回文串）。</p>
-<p>&emsp;&emsp;我们还需要在每个节点上维护此节点对应的回文子串的长度 $\text{len}$，这个信息保证了我们可以轻松地构造出回文树。</p>
-<h2 id="建造"><a href="#建造" class="headerlink" title="建造"></a>建造</h2><p>&emsp;&emsp;回文树有两个初始状态，分别代表长度为 $-1,0$ 的回文串，分别称它们为奇根，偶根。它们不表示任何实际的字符串，仅作为初始状态存在，这与其他自动机的根节点是异曲同工的。</p>
-<p>&emsp;&emsp;偶根的 $\text{fail}$ 指针指向奇根，而我们并不关心奇根的 $\text{fail}$ 指针，因为奇根不可能失配（奇根转移出的下一个状态长度为 $1$，即单个字符，一定是回文子串）。</p>
-<p>&emsp;&emsp;类似后缀自动机，我们增量构造回文树。</p>
-<p>&emsp;&emsp;考虑构造完前 $p-1$ 个字符的回文树后，向自动机中添加在原串里位置为 $p$ 的字符。</p>
-<p>&emsp;&emsp;我们从以上一个字符结尾的最长回文子串对应的节点开始，不断沿着 $\text{fail}$ 指针走，直到找到一个节点满足 $s_p=s_{p-len-1}$，即满足此节点所对应回文子串的上一个字符与待添加字符相同。</p>
-
+                
             </div>
             <hr/>
 
@@ -510,7 +499,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.destinhistoire.top/2020/04/04/%E5%9B%9E%E6%96%87%E6%A0%91/">http://www.destinhistoire.top/2020/04/04/%E5%9B%9E%E6%96%87%E6%A0%91/</a>
+                    <a href="http://www.destinhistoire.top/2020/04/05/%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96/">http://www.destinhistoire.top/2020/04/05/%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -548,12 +537,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                                    <span class="chip bg-color">字符串</span>
+                                <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                                    <span class="chip bg-color">动态规划</span>
                                 </a>
                             
-                                <a href="/tags/%E5%9B%9E%E6%96%87%E6%A0%91/">
-                                    <span class="chip bg-color">回文树</span>
+                                <a href="/tags/%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96/">
+                                    <span class="chip bg-color">斜率优化</span>
                                 </a>
                             
                         </div>
@@ -719,9 +708,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/04/05/%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96/">
                     <div class="card-image">
@@ -739,9 +729,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -754,6 +744,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -776,25 +767,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/03/%E5%8D%95%E8%B0%83%E6%A0%88%E4%B8%8E%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">
+                <a href="/2020/04/04/%E5%9B%9E%E6%96%87%E6%A0%91/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="单调栈与单调队列">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="回文树">
                         
-                        <span class="card-title">单调栈与单调队列</span>
+                        <span class="card-title">回文树</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            单调栈&emsp;&emsp;单调栈即满足单调性的栈结构。与单调队列相比，其只在一端进行进出。借助单调性处理问题的思想在于及时排除不可能的选项，保持策略集合的高度有效性和秩序性。为了描述方便，以下以维护一个整数单调递增的栈为例。
-&emsp
+                            概述&emsp;&emsp;回文树（$\text{EER Tree}$，$\text{Palindromic Tree}$，也被称为回文自动机）是一种可以存储一个串中所有回文子串的高效数据结构。它的灵感来源于后缀树等字符串后缀数据结构，使用
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-04
                             </span>
                         <span class="publish-author">
                             
@@ -811,16 +801,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
+                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                        <span class="chip bg-color">字符串</span>
                     </a>
                     
-                    <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/">
-                        <span class="chip bg-color">单调栈</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">
-                        <span class="chip bg-color">单调队列</span>
+                    <a href="/tags/%E5%9B%9E%E6%96%87%E6%A0%91/">
+                        <span class="chip bg-color">回文树</span>
                     </a>
                     
                 </div>
