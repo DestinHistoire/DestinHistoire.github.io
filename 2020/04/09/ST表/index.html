@@ -531,11 +531,11 @@
     <span class="token punctuation">}</span>    
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="二维-text-RMQ"><a href="#二维-text-RMQ" class="headerlink" title="二维$\text{RMQ}$"></a>二维$\text{RMQ}$</h2><h3 id="【例题】HDU-2888-Check-Corners"><a href="#【例题】HDU-2888-Check-Corners" class="headerlink" title="【例题】HDU-2888    Check Corners"></a>【例题】HDU-2888    Check Corners</h3><p>&emsp;&emsp;给定一个 $n\times m$ 的矩阵，$q$ 次询问，每次询问以 $(r_1,c_1)$ 为左上角，$(r_2,c_2)$ 为右下角的最大值，并判断这个最大值是否出现在了这个子矩阵的四个角之中$(1\leq n,m\leq 300,1\leq q\leq 10^6)$。</p>
-<h3 id="暴力"><a href="#暴力" class="headerlink" title="暴力"></a>暴力</h3><p>&emsp;&emsp;每次花子矩阵大小的时间复杂度去查询，最坏时间复杂度为 $O(q\times n\times m)$。</p>
+<h2 id="二维-text-RMQ"><a href="#二维-text-RMQ" class="headerlink" title="二维$\text{RMQ}$"></a>二维$\text{RMQ}$</h2><h3 id="【例题】HDU-2888-Check-Corners"><a href="#【例题】HDU-2888-Check-Corners" class="headerlink" title="【例题】HDU-2888    Check Corners"></a>【例题】HDU-2888    Check Corners</h3><p>&emsp;&emsp;给定一个 $n\times m$ 的矩阵，$Q$ 次询问，每次询问以 $(r_1,c_1)$ 为左上角，$(r_2,c_2)$ 为右下角的最大值，并判断这个最大值是否出现在了这个子矩阵的四个角之中$(1\leq n,m\leq 300,1\leq Q\leq 10^6)$。</p>
+<h3 id="暴力"><a href="#暴力" class="headerlink" title="暴力"></a>暴力</h3><p>&emsp;&emsp;每次花子矩阵大小的时间复杂度去查询，最坏时间复杂度为 $O(Q\times n\times m)$。</p>
 <h3 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h3><p>&emsp;&emsp;用 $n$ 棵线段树或者树状数组来维护每行区间最大值，最坏时间复杂度为 $O(n\times m\log m+Q\times n\log m)$。</p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;既然是静态的询问，没有修改操作，很容易想到处理 $\text{RMQ}$ 问题中的 $\text{ST}$ 表。</p>
-<p>&emsp;&emsp;暴力的 $\text{ST}$ 表和线段树的做法类似，预处理 $n$ 个 $\text{ST}$ 表，每次在多个 $\text{ST}$ 表中查询最大值，最坏时间复杂度为 $O(n\times m\log m+Qn)$，仍然无法通过。</p>
+<p>&emsp;&emsp;暴力的 $\text{ST}$ 表和线段树的做法类似，预处理 $n$ 个 $\text{ST}$ 表，每次在多个 $\text{ST}$ 表中查询最大值，最坏时间复杂度为 $O(n\times m\log m+Q\times n)$，仍然无法通过。</p>
 <h3 id="二维-text-ST-表"><a href="#二维-text-ST-表" class="headerlink" title="二维 $\text{ST}$ 表"></a>二维 $\text{ST}$ 表</h3><p>&emsp;&emsp;既然查询对象是一个二维矩阵，可以考虑维护一个二维 $\text{ST}$ 表。</p>
 <h3 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h3><p>&emsp;&emsp;设 $f[i][j][k][l]$ 为以 $(i,j)$ 为左上角，$(i+2^k-1,j+2^l-1)$ 的矩阵中的最大值。预处理的时间复杂度为 $O(n\times m\times\log n\times\log m)$，所以对询问数较少的问题时间复杂度为 $O(n\times m\log m)$ 的预处理更好一些。</p>
 <p>&emsp;&emsp;下面来分析对于每个 $f[i][j][k][l]$ 可以由哪些状态更新。</p>
