@@ -544,7 +544,7 @@
         b<span class="token punctuation">[</span>cnt<span class="token punctuation">[</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">--</span><span class="token punctuation">]</span><span class="token operator">=</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><p>&emsp;&emsp;基数排序是将待排序的元素拆分为 $k$ 个关键字（比较两个元素时，先比较第一关键字，如果相同再比较第二关键字……），然后先对第 $k$ 关键字进行稳定排序，再对第 $k-1$ 关键字进行稳定排序，再对第 $k-2$ 关键字进行稳定排序……最后对第一关键字进行稳定排序，这样就完成了对整个待排序序列的稳定排序。</p>
-<p>&emsp;&emsp;一般来说，每个关键字的值域都不大，就可以使用计数排序作为内层排序，复杂度为 $O(nk+\sum\limits_{i=1}^{k}w_i)$，其中 $w_i$ 为第 $i$ 关键字的值域大小。（如果关键字值域很大，就可以直接使用基于比较的 $O(nk\log n)$ 排序而无需使用基数排序了。）</p>
+<p>&emsp;&emsp;一般来说，每个关键字的值域都不大，就可以使用计数排序作为内层排序，复杂度为 $O(nk+\sum\limits_{i=1}^{k}w_i)$，其中 $w_i$ 为第 $i$ 关键字的值域大小（如果关键字值域很大，就可以直接使用基于比较的 $O(nk\log n)$ 排序而无需使用基数排序了）。</p>
 <h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">int</span> N<span class="token operator">=</span><span class="token number">100010</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> <span class="token keyword">int</span> W<span class="token operator">=</span><span class="token number">100010</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> <span class="token keyword">int</span> K<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">;</span>
@@ -897,7 +897,7 @@
 <p>&emsp;&emsp;$k$ 不会超过 $n$，最多减 $n$ 次，所以最多加 $2n$ 次，总时间复杂度为 $O(n)$。</p>
 <h1 id="text-height-数组的应用"><a href="#text-height-数组的应用" class="headerlink" title="$\text{height}$ 数组的应用"></a>$\text{height}$ 数组的应用</h1><h2 id="两子串最长公共前缀"><a href="#两子串最长公共前缀" class="headerlink" title="两子串最长公共前缀"></a>两子串最长公共前缀</h2><p>&emsp;&emsp;<strong>性质 $1$：</strong>$\forall i\leq k\leq j,\text{LCP}(i,j)=\min(\text{LCP}(i,k),\text{LCP}(k,j))$。</p>
 <p>&emsp;&emsp;<strong>性质 $2$：</strong>$\forall 1&lt;k\leq j,\text{LCP}(i,j)=\min{\text{LCP}(k-1,k)}$。</p>
-<p>&emsp;&emsp;性质 $1$ 显然正确，它的意义在于用来证明性质 $2$。性质 $2$ 的意义在于提供了一个将 $\text{LCP}$ 问题转化为 $\text{RMQ}$ 问题的方法：<br>$$<br>\text{LCP}(sa[i],sa[j])=\min{\text{height}[i+1]\cdots j}<br>$$<br>&emsp;&emsp;使用 $\text{RMQ}$ 算法即可，预处理的时间复杂度为 $O(n\log n)$，查询的时间复杂度为 $O(1)$。</p>
+<p>&emsp;&emsp;性质 $1$ 显然正确，它的意义在于用来证明性质 $2$。性质 $2$ 的意义在于提供了一个将 $\text{LCP}$ 问题转化为 $\text{RMQ}$ 问题的方法：<br>$$<br>\text{LCP}(sa[i],sa[j])=\min{\text{height}[i+1]\cdots \text{height}[j]}<br>$$<br>&emsp;&emsp;使用 $\text{RMQ}$ 算法即可，预处理的时间复杂度为 $O(n\log n)$，查询的时间复杂度为 $O(1)$。</p>
 <h3 id="【例题】UVA-12338-Anti-Rhyme-Pairs"><a href="#【例题】UVA-12338-Anti-Rhyme-Pairs" class="headerlink" title="【例题】UVA - 12338    Anti-Rhyme Pairs"></a>【例题】UVA - 12338    Anti-Rhyme Pairs</h3><p>&emsp;&emsp;$T$ 组数据，每组数据给定 $N$ 个字符串，$q$ 次询问，每次询问求出编号为 $l,r$ 的字符串的最长公共前缀的长度。</p>
 <p>&emsp;&emsp;数据范围：$T\leq 35,N\leq 10^5,\sum|S|\leq 10^6,1\leq q\leq 10^6$。</p>
 <h3 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;将 $n$ 个字符串拼接起来，中间用不相同且没有出现在字符串中的字符隔开，求出后缀数组，使用 $\text{ST}$ 表维护 $\text{height}$ 数组，每次查询计算 $\text{query}(rk[pos[l]]+1,rk[pos[r]])$ 即可，设拼接后的字符串的长度为 $L=\sum\limits_{i=1}^{n}|s_i|$，时间复杂度 $O\Big(T\times\big(L\log L+q\big)\Big)$。</p>
@@ -1086,9 +1086,9 @@
 <p>&emsp;&emsp;设拼接后的字符串的长度为 $L=O(n+\sum\limits_{i=1}^{n}|s_i|)$，所以整个算法的时间复杂度为 $O(T\times L\log L)$。</p>
 <h3 id="代码-7"><a href="#代码-7" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="连续的若干个相同子串"><a href="#连续的若干个相同子串" class="headerlink" title="连续的若干个相同子串"></a>连续的若干个相同子串</h2><h3 id="【例题】POJ-3693-Maximum-repetition-substring"><a href="#【例题】POJ-3693-Maximum-repetition-substring" class="headerlink" title="【例题】POJ-3693    Maximum repetition substring"></a>【例题】POJ-3693    Maximum repetition substring</h3><p>&emsp;&emsp;给定字符串 $S(1\leq |S|\leq 10^5)$，求该字符串重复次数最多的连续重复子串（每次出现不重合）。如果有多个答案，输出字典序最小的。</p>
-<h3 id="分析-5"><a href="#分析-5" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;先枚举长度 $L$，然后求长度为 $L$ 的子串最多能连续出现几次。连续出现 $1$ 次显然可以，所以只考虑连续出现至少 $2$ 次的情况。假设某字符串在原字符串中连续出现两次，设这个子串为 $s’$，则 $s’$ 肯定包括 $s[0],s[L],s[2<em>L],s[3</em>L]\cdots$ 中的某相邻的两个。所以只需要计算字符 $s[i\ast L]$ 和 $s[(i+1)\ast L]$ 往前和往后各能匹配多远，设总长度为 $k$，则这里连续出现了 $\lfloor\frac{k}{L}\rfloor+1$ 次。</p>
-<p>&emsp;&emsp;往后匹配多远的 $r$ 用 $\text{ST}$ 表求 $\text{LCP}$ 即可。往前匹配多远的 $l$ 把字符串反过来再用 $\text{ST}$ 表处理即可。</p>
-<p>&emsp;&emsp;但是有可能求出来的最长字串可以前移或后移  </p>
+<h3 id="分析-5"><a href="#分析-5" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;先枚举长度 $L$，然后求长度为 $L$ 的子串最多能连续出现几次。连续出现 $1$ 次显然可以，所以只考虑连续出现至少 $2$ 次的情况。假设某字符串在原字符串中连续出现两次，设这个子串为 $s’$，则 $s’$ 肯定包括 $s[0],s[L],s[2<em>L],s[3</em>L]\cdots$ 中的某相邻的两个。所以只需要枚举相邻两字符 $s[i\ast L]$ 和 $s[(i+1)\ast L]$ 往前和往后各能匹配多远，即查询 $\text{LCP}\big(i<em>L,(i+1)</em>L\big)$ ，也就是区间的 $\text{height}$ 的最小值。</p>
+<p>&emsp;&emsp;往后匹配多远的 $r$ 用 $\text{ST}$ 表求 $\text{LCP}$ 即可，往前匹配多远的 $l$ 把字符串反过来再用 $\text{ST}$ 表处理即可。</p>
+<p>&emsp;&emsp;设 $\text{LCP}$ 长度为 $k$，则这个循环节至少循环了 $\lfloor\frac{k}{L}\rfloor+1 $ 次，但是当 $k\mod L\neq 0$ 时，后面多余出来的部分（长度为 $k\mod L$ 的部分）可能和前面的拼凑成循环节。所以对于位置 $i\times L-(L-k\mod L)$ 和 $(i+1)\times L-(L-k\mod L)$，求这两个位置的 $\text{LCP}$ 的长度，如果大于之前的结果，说明从这个位置开始可以比之前多一个循环节。于是可以通过枚举得到最多循环次数和循环节长度，利用后缀数组的字典序性质，找到字典序最小的即可。</p>
 <h3 id="代码-8"><a href="#代码-8" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="结合并查集"><a href="#结合并查集" class="headerlink" title="结合并查集"></a>结合并查集</h2><p>&emsp;&emsp;某些题目求解时要求你将后缀数组划分成若干个连续 $\text{LCP}$ 长度大于等于某一值的段，亦即将          数组划分成若干个连续最小值大于等于某一值的段并统计每一段的答案。如果有多次询问，可以将询问离线。观察到当给定值单调递减的时候，满足条件的区间个数总是越来越少，而新区间都是两个或多个原区间相连所得，且新区间中不包含在原区间内的部分的 $\text{height} $ 值都为减少到的这个值。只需要维护一个并查集，每次合并相邻的两个区间，并维护统计信息即可。</p>
 <h3 id="【例题】P2178-NOI2015-品酒大会"><a href="#【例题】P2178-NOI2015-品酒大会" class="headerlink" title="【例题】P2178    [NOI2015]品酒大会"></a>【例题】P2178    [NOI2015]品酒大会</h3><h2 id="结合线段树"><a href="#结合线段树" class="headerlink" title="结合线段树"></a>结合线段树</h2><p>&emsp;&emsp;某些题目要求满足条件的前若干个数，而这些数又在后缀排序中的一个区间内。这时我们可以用归并排序的性质来合并两个结点的信息，利用线段树维护和查询区间答案。</p>
@@ -1327,30 +1327,29 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/07/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84-SA/">
+                <a href="/2020/04/09/ST%E8%A1%A8/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="后缀数组(SA)">
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="ST表">
                         
-                        <span class="card-title">后缀数组(SA)</span>
+                        <span class="card-title">ST表</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            后缀数组
+                            $\text{RMQ}$ 问题&emsp;&emsp;范围最大值问题（$\text{Range Maximum Query,RMQ}$）：给定长为 $n$ 的序列 $a$，有 $m$ 次询问，对于每次询问，回答区间 $[l,r]$ 中的最大
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-07
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-09
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1363,16 +1362,15 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                        <span class="chip bg-color">字符串</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">数据结构</span>
                     </a>
                     
-                    <a href="/tags/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/">
-                        <span class="chip bg-color">后缀数组</span>
+                    <a href="/tags/RMQ/">
+                        <span class="chip bg-color">RMQ</span>
                     </a>
                     
                 </div>
