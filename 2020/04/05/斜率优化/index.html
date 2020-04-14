@@ -513,11 +513,11 @@
 <p>&emsp;&emsp;数据范围：$1\leq N\leq 3\times 10^5,1\leq S,T_i,C_i\leq 512$。</p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;对上一题的解法二进行优化，先对状态转移方程稍作变形，把常数、仅与 $i$ 有关的项、仅与 $j$ 有关的项以及 $i,j$ 的乘积项分开。</p>
 <p><img src="https://i.loli.net/2020/04/14/VOr5xXs4BHjCLQZ.png" alt></p>
-<p>&emsp;&emsp;把 $\min$ 函数去掉，把关于 $j$ 的值 $F[j]$ 和 $sumC[j]$ 看作变量，其余部分看作常数，得到：<br>$$<br>F[j]=(S+sumT[i])<em>sumC[j]+F[i]-sumT[i]</em>sumC[i]-S<em>sumC[N]<br>$$<br>&emsp;&emsp;在 $sumC[j]$ 为横坐标，$F[j]$ 为纵坐标的平面直角坐标系中，这是一条以 $S+sumT[i]$ 为斜率，$F[i]-sumT[i]</em>sumC[i]-S*sumC[N]$ 为截距的直线。也就是说，决策候选集合是坐标系中的一个点集，每个决策 $j$ 都对应着坐标系中中的一个点 $(sumC[j],F[j])$。每个待求解的状态 $F[i]$ 都对应着一条直线的截距，直线的斜率是一个固定的值 $S+sumT[i]$，截距未知。当截距最小化时，$F[i]$ 也取到最小值。</p>
+<p>&emsp;&emsp;把 $\min$ 函数去掉，把关于 $j$ 的值 $F[j]$ 和 $sumC[j]$ 看作变量，其余部分看作常数，得到：<br>$$<br>F[j]=(S+sumT[i])\ast sumC[j]+F[i]-sumT[i]\ast sumC[i]-S\ast sumC[N]<br>$$<br>&emsp;&emsp;在 $sumC[j]$ 为横坐标，$F[j]$ 为纵坐标的平面直角坐标系中，这是一条以 $S+sumT[i]$ 为斜率，$ F[i]-sumT[i]\ast sumC[i]-S\ast sumC[N] $ 为截距的直线。也就是说，决策候选集合是坐标系中的一个点集，每个决策 $j$ 都对应着坐标系中中的一个点 $(sumC[j],F[j])$。每个待求解的状态 $F[i]$ 都对应着一条直线的截距，直线的斜率是一个固定的值 $S+sumT[i]$，截距未知。当截距最小化时，$F[i]$ 也取到最小值。</p>
 <p>&emsp;&emsp;该问题实际上是一个<strong>线性规划问题</strong>。令直线过每个决策点 $(sumC[j],F[j])$，都可以解出一个截距，其中使截距最小的一个就是最优决策。体现在坐标系中，就是用一条斜率为固定正整数的直线自下而上平移，第一次接触到某个决策点时，就得到了最小截距。如下图所示：</p>
 <p><img src="https://i.loli.net/2020/04/14/o8qFysV2MgaEknO.jpg" alt></p>
 <p>&emsp;&emsp;对于任意三个决策点 $(sumC[j_1],F[j_1])$，$(sumC[j_2],F[j_2])$ 和 $(sumC[j_3],F[j_3])$，不妨设 $j_1&lt;j_2&lt;j_3$，因为 $T,C$ 均为正整数，亦有 $sumC[j_1]&lt;sumC[j_2]&lt;sumC[j_3]$。根据 “及时排除无用决策” 的思想，我们来考虑 $j_2$ 有可能成为最优决策的条件。</p>
-<p><img src="https://i.loli.net/2020/04/14/4QgJfjeGDz8MK7F.jpg" alt="IMG_0151_20200414-225440_.JPG"></p>
+<p><img src="https://i.loli.net/2020/04/14/4QgJfjeGDz8MK7F.jpg" alt></p>
 <p>&emsp;&emsp;从上图中我们发现，$j_2$ 有可能成为最优决策，当且仅当：<br>$$<br>\frac{F[j_2]-F[j_1]}{sumC[j_2]-sumC[j_1]}&lt;\frac{F[j_3]-F[j_2]}{sumC[j_3]-sumC[j_2]}<br>$$<br>&emsp;&emsp;不等号两侧实际上都是连接两个决策点的线段的斜率。通俗地讲，我们应该维护 <strong>“连接相邻两点的线段斜率” 单调递增</strong>的一个 <strong>“下凸壳”</strong>（凸壳，意思是点集的边界。在斜率优化中，我们一般称 “连接相邻两点的线段斜率” 单调递增的一组顶点构成 “下凸壳”，称），只有这个 “下凸壳” 的顶点才有可能成为最优决策。实际上，对于一条斜率为 $k$ 的直线，若某个顶点左侧线段的斜率比 $k$ 小、右侧线段的斜率比 $k$ 大，则该顶点就是最优决策。换言之，如果把这条直线和所有的线段组成一个序列，那么令直线截距最小化的顶点就出现在按照斜率大小排序时，直线应该排在的位置上。如下图所示：</p>
 <p><img src="https://i.loli.net/2020/04/14/NDfhj78Pab3AuZ6.jpg" alt></p>
 <p>&emsp;&emsp;在本题中，$j$ 的取值范围是 $0\leq j&lt;i$，随着 $i$ 的增大，每次会有一个新的决策进入候选集合。因为 $sumC$ 的单调性，新决策在坐标系中的横坐标一定大于之前的所有决策，出现在整个凸壳的最右端。另外，因为 $sumT$ 的单调性，每次求解 “最小截距” 的直线斜率 $S+sumT[i]$ 也单调递增，如果我们只保留凸壳上 “连接相邻两点的线段斜率” 大于 $S+sumT[i]$ 的部分，那么凸壳的最左端顶点就一定是最优决策。</p>
@@ -627,7 +627,7 @@
 <p>&emsp;&emsp;假设第 $i$ 个饲养员带走第 $k+1$ ~ $j$ 只猫，那么该饲养员的最早出发时间就是 $A_j$。这些猫的等待时间之和就是 $\sum\limits_{p=k+1}^{j}\big(A_j-A_p\big)=A_j*(j-k)-(S_j-S_k)$。写出状态转移方程：</p>
 <p><img src="https://i.loli.net/2020/04/14/6haG2AQcxRSKiTX.png" alt></p>
 <p>&emsp;&emsp;直接枚举 $k$，求出 $F[i,j]$ 的最小值，时间复杂度为 $O(PM^2)$。</p>
-<p>&emsp;&emsp;把外层循环 $i$ 看作定值，$j$ 是状态变量，$k$ 是决策变量。方程中存在乘积项 $A_j<em>k$，应考虑使用斜率优化。去掉 $\min$ 函数，对方程进行移项，等号左边放仅与 $k$ 有关的项，等号右边放 $j,k$ 乘积项以及仅与 $j$ 有关的项：<br>$$<br>F[i-1,k]+S_k=A_j</em>k+F[i,j]-A_j<em>j+S_j<br>$$<br>&emsp;&emsp;以 $k$ 为横坐标，$F[i-1,k]+S_k$ 为纵坐标建立平面直角坐标系。上式是一条以 $A_j$ 为斜率，$F[i,j]-A_j</em>j+S_j$ 为截距的直线，当截距最小化时，$F[i,j]$ 取到最小值。</p>
+<p>&emsp;&emsp;把外层循环 $i$ 看作定值，$j$ 是状态变量，$k$ 是决策变量。方程中存在乘积项 $A_j\ast k$，应考虑使用斜率优化。去掉 $\min$ 函数，对方程进行移项，等号左边放仅与 $k$ 有关的项，等号右边放 $j,k$ 乘积项以及仅与 $j$ 有关的项：<br>$$<br>F[i-1,k]+S_k=A_j\ast k+F[i,j]-A_j\ast j+S_j<br>$$<br>&emsp;&emsp;以 $k$ 为横坐标，$F[i-1,k]+S_k$ 为纵坐标建立平面直角坐标系。上式是一条以 $A_j$ 为斜率，$F[i,j]-A_j*j+S_j$ 为截距的直线，当截距最小化时，$F[i,j]$ 取到最小值。</p>
 <p>&emsp;&emsp;在最小化截距的线性规划问题中，应维护一个下凸壳。建立一个单调队列，队列中相邻两个决策 $k_1$ 和 $k_2$ 应满足 $k_1&lt;k_2$ 并且斜率 $((F[i-1,k_2]+S_{k_2})-(F[i-1,k_1]+S_{k_1}))/(k_2-k_1)$ 单调递增。因为直线斜率 $A_j$ 也已经从小到大排过序，所以在程序实现中，采用与 “任务安排 $2$” 类似的单调队列的三个基本操作即可。</p>
 <h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>

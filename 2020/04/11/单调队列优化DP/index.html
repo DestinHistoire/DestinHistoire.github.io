@@ -709,7 +709,7 @@
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>&emsp;&emsp;最后，我们对单调队列优化 $\text{DP}$ 的模型进行总结。重新写出上面三道例题的状态转移方程：</p>
-<p><img src="https://i.loli.net/2020/04/14/wP6FfvgotEUdHi9.jpg" alt></p>
+<p><img src="https://i.loli.net/2020/04/14/Z3wTcnesHPoXp5r.jpg" alt></p>
 <p>&emsp;&emsp;只关注 “状态变量”、“决策变量” 及其所在的维度，这些状态转移方程都可以大致归为如下形式（除第三个方程稍有不同）：</p>
 <p><img src="https://i.loli.net/2020/04/14/LvjnEat8B2fDdbl.png" alt></p>
 <p>&emsp;&emsp;上式所代表的问题覆盖广泛，是 $\text{DP}$ 中一类非常基本、非常重要的模型。这种模型也被称为 <strong>$\text{1D/1D}$ 的动态规划</strong>。它是一个最优化问题，$L(i)$ 和 $R(i)$ 是关于变量 $i$ 的一次函数，限制了决策 $j$ 的取值范围，并保证其上下界变化具有单调性。$val(i,j)$ 是一个关于变量 $i$ 和 $j$ 的多项式函数，通常是决定我们采用何种优化策略的关键之处。</p>
