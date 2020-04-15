@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="二次剩余, CUG Information Management and Information System">
-    <meta name="description" content="&amp;emsp;&amp;emsp;若存在 $1\leq x\leq p-1$ 使方程 $x^2\equiv a\pmod p$ 有解，则称 $a$ 为 $p$ 的二次剩余，否则 $a$ 为 $p$ 的非二次剩余（$p$ 为奇素数）。
-勒让德符号&amp;em">
+    <meta name="description" content="&amp;emsp;&amp;emsp;若存在 $x\in[1,p-1]$，使方程 $x^2\equiv a\pmod p$ 有解，则称 $a$ 为 $p$ 的二次剩余，否则 $a$ 为 $p$ 的非二次剩余（$p$ 为奇素数）。
+勒让德符号&amp;emsp;&amp;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -475,25 +475,134 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>&emsp;&emsp;若存在 $1\leq x\leq p-1$ 使方程 $x^2\equiv a\pmod p$ 有解，则称 $a$ 为 $p$ 的二次剩余，否则 $a$ 为 $p$ 的非二次剩余（$p$ 为奇素数）。</p>
-<h2 id="勒让德符号"><a href="#勒让德符号" class="headerlink" title="勒让德符号"></a>勒让德符号</h2><p>&emsp;&emsp;定义勒让德符号为：<br>$$<br>\bigg( \frac{a}{p}\bigg)=\begin{cases}1 &amp; a在模p意义下是二次剩余\\ -1 &amp; a在模p意义下是非二次剩余\\ 0 &amp; p|a \end{cases}<br>$$</p>
-<h2 id="欧拉判别准则"><a href="#欧拉判别准则" class="headerlink" title="欧拉判别准则"></a>欧拉判别准则</h2><p>&emsp;&emsp;对于勒让德符号，有：<br>$$<br>\bigg( \frac{a}{p}\bigg)\equiv a^{\frac{p-1}{2}}\pmod p<br>$$<br>&emsp;&emsp;由费马小定理：$a^{p-1}\equiv 1\pmod p$，且 $p-1$ 是偶数：<br>$$<br>(a^{\frac{p-1}{2}}-1)(a^{\frac{p-1}{2}}+1)\equiv 0\pmod p<br>$$<br>&emsp;&emsp;$p$ 是一个质数，所以 $a^{\frac{p-1}{2}}-1$ 和 $a^{\frac{p-1}{2}}+1$ 中必有一个是 $p$ 的倍数，因此 $a^{\frac{p-1}{2}}\equiv 1\pmod p$ 或 $a^{\frac{p-1}{2}}\equiv -1\pmod p$。</p>
+                <p>&emsp;&emsp;若存在 $x\in[1,p-1]$，使方程 $x^2\equiv a\pmod p$ 有解，则称 $a$ 为 $p$ 的二次剩余，否则 $a$ 为 $p$ 的非二次剩余（$p$ 为奇素数）。</p>
+<h2 id="勒让德符号"><a href="#勒让德符号" class="headerlink" title="勒让德符号"></a>勒让德符号</h2><p>&emsp;&emsp;定义勒让德符号为：</p>
+<p><img src="https://i.loli.net/2020/04/15/2d6NMOPXVJZK597.png" alt></p>
+<h2 id="欧拉判别准则"><a href="#欧拉判别准则" class="headerlink" title="欧拉判别准则"></a>欧拉判别准则</h2><p>&emsp;&emsp;对于勒让德符号，有：<br>$$<br>\bigg( \frac{a}{p}\bigg)\equiv a^{\frac{p-1}{2}}\pmod p<br>$$<br>&emsp;&emsp;由费马小定理：$ a^{p-1}\equiv 1\pmod p$，且 $p-1$ 是偶数：<br>$$<br>(a^{\frac{p-1}{2}}-1)(a^{\frac{p-1}{2}}+1)\equiv 0\pmod p<br>$$<br>&emsp;&emsp;$p$ 是一个质数，所以 $a^{\frac{p-1}{2}}-1$ 和 $a^{\frac{p-1}{2}}+1$ 中必有一个是 $p$ 的倍数，因此 $a^{\frac{p-1}{2}}\equiv 1\pmod p$ 或 $a^{\frac{p-1}{2}}\equiv -1\pmod p$。</p>
 <h3 id="二次剩余的充要条件：勒让德符号为-1"><a href="#二次剩余的充要条件：勒让德符号为-1" class="headerlink" title="二次剩余的充要条件：勒让德符号为 $1$"></a>二次剩余的充要条件：勒让德符号为 $1$</h3><h4 id="充分性"><a href="#充分性" class="headerlink" title="充分性"></a>充分性</h4><p>&emsp;&emsp;若 $a$ 在模 $p$ 意义下是二次剩余，则 $a^{\frac{p-1}{2}}\equiv 1\pmod p$。 </p>
 <p><strong>证明：</strong></p>
 <p>&emsp;&emsp;若 $a$ 在模 $p$ 意义下是二次剩余，即方程 $x^2\equiv a\pmod p$ 有解，而 $p$ 与 $a,x$ 都互质。</p>
 <p>&emsp;&emsp;根据费马小定理：<br>$$<br>a^{\frac{p-1}{2}}\equiv x^{p-1}\equiv 1\pmod p<br>$$</p>
 <h4 id="必要性"><a href="#必要性" class="headerlink" title="必要性"></a>必要性</h4><p>&emsp;&emsp;若 $a^{\frac{p-1}{2}}\equiv 1\pmod p$，则 $a$ 是模 $p$ 的二次剩余。</p>
 <p><strong>证明：</strong></p>
-<p>&emsp;&emsp;$p$ 是一个奇素数，所以关于 $p$ 的原根存在。设 $g$ 是 $p$ 的一个原根，则存在 $1\leq j\leq p-1$，使得 $a=g^j$。</p>
+<p>&emsp;&emsp;$p$ 是一个奇素数，所以关于 $p$ 的原根存在。设 $g$ 是 $p$ 的一个原根，则存在 $j\in[1,p-1]$，使得 $a=g^j$。</p>
 <p>&emsp;&emsp;所以：$g^{j\frac{p-1}{2}}\equiv 1\pmod p$。</p>
-<p>&emsp;&emsp;$g$ 是 $p$ 的一个原根，因此 $g$ 模 $p$ 的指数为 $p-1$，所以 $(p-1)\Big| \frac{j(p-1)}{2}$。说明 $j$ 是一个偶数，令 $i=\frac{j}{2}$，有 $(g^i)^2=g^{2i}=a$，因此 $a$ 是模 $p$ 的二次剩余。</p>
-<h3 id="二次非剩余的充要条件：勒让德符号余数为-1"><a href="#二次非剩余的充要条件：勒让德符号余数为-1" class="headerlink" title="二次非剩余的充要条件：勒让德符号余数为 $-1$"></a>二次非剩余的充要条件：勒让德符号余数为 $-1$</h3><p><strong>证明：</strong></p>
+<p>&emsp;&emsp;$g$ 是 $p$ 的一个原根，因此 $g$ 模 $p$ 的指数为 $p-1$，所以 $(p-1)\Big| \frac{j(p-1)}{2}$。说明 $j$ 是一个偶数，令 $i=\frac{j}{2}$，有 $(g^i)^2=g^{2i}=a$，因此 $a$ 是模 $p$ 意义下的二次剩余。</p>
+<h3 id="二次非剩余的充要条件：勒让德符号为-1"><a href="#二次非剩余的充要条件：勒让德符号为-1" class="headerlink" title="二次非剩余的充要条件：勒让德符号为 $-1$"></a>二次非剩余的充要条件：勒让德符号为 $-1$</h3><p><strong>证明：</strong></p>
 <p>&emsp;&emsp;由于 $p$ 是质数，由 <strong>扩展欧几里得算法</strong> 可知对于每个 $1\leq i\leq p-1$，都存在唯一的一个整数 $j$，使得 $ij\equiv a\pmod p$。所以可以把 $1,2,\cdots ,p-1$ 分成 $\frac{p-1}{2}$ 对，使得每对的乘积都为 $a$。此时有 $ (p-1)!\equiv a^{\frac{p-1}{2}}$，根据威尔逊定理有 $ (p-1)!\equiv-1\pmod p$，所以 $a^{\frac{p-1}{2}}\equiv -1\pmod p$。</p>
 <p>&emsp;&emsp;涉及 <strong>扩展欧几里得算法</strong> 的证明：</p>
 <p>&emsp;&emsp;由于 $ij\equiv a\pmod p$，则 $ij+pk=a$。因为 $\gcd(i,p)=1$，所以 $ij+pk=1$ 必然有解。因为 $a$ 是 $1$ 的倍数，所以 $ij+pk=n$ 必然有解。</p>
 <p>&emsp;&emsp;令 $j=j_0+pk’$，则有且只有一个解 $j$ 落在 $[1,p-1]$ 内。</p>
 <h3 id="p-a-时，勒让德符号为-0"><a href="#p-a-时，勒让德符号为-0" class="headerlink" title="$p|a$ 时，勒让德符号为 $0$"></a>$p|a$ 时，勒让德符号为 $0$</h3><p>&emsp;&emsp;显然成立。</p>
-<h2 id="相关定理"><a href="#相关定理" class="headerlink" title="相关定理"></a>相关定理</h2>
+<h2 id="相关定理"><a href="#相关定理" class="headerlink" title="相关定理"></a>相关定理</h2><h3 id="定理-1"><a href="#定理-1" class="headerlink" title="定理 $1$"></a>定理 $1$</h3><p>&emsp;&emsp;对于方程 $x^2\equiv a\pmod p$，共有 $\frac{p-1}{2}$ 个不同的 $a$ 使该方程有解。</p>
+<p><strong>证明：</strong>考虑除 $0$ 外所有的 $x^2$，如果存在两个<strong>不同</strong>的数 $u,v$ 满足 $u^2\equiv v^2\pmod p$，显然有 $p\mid(u^2-v^2)$，由平方差公式：$p\mid(u-v)(u+v)$，由于 $u,v\leq p-1$，则 $u-v\in[1,p-2]$，显然 $p\nmid(u-v)$，所以 $p\mid (u+v)$，即 $u+v\equiv 0\pmod p$。说明对于每对 $u+v=p$，$u^2\equiv a\pmod p$ 且 $v^2\equiv a\pmod p$。因此共有 $\frac{p-1}{2}$ 个不同的 $a$ 使该方程有解，每个 $x^2\equiv a\pmod p $ 恰有两个解，且两个解的和为 $p$。  </p>
+<h3 id="定理-2"><a href="#定理-2" class="headerlink" title="定理 $2$"></a>定理 $2$</h3><p>$$<br>(a+b)^p\equiv a^p+b^p\pmod p<br>$$</p>
+<p><strong>证明：</strong></p>
+<p>&emsp;&emsp;左边按照二项式定理展开：$(a+b)^p=\sum\limits_{i=0}^{p}C_{p}^{i}a^{i}b^{p-i}$。</p>
+<p>&emsp;&emsp;当 $i\neq 0$ 且 $i\neq p$ 时，$C_{p}^{i} \mod p=0$，所以只剩下第一项和最后一项，即 $a^p$ 和 $ b^p $。</p>
+<h2 id="Cipolla算法"><a href="#Cipolla算法" class="headerlink" title="Cipolla算法"></a>Cipolla算法</h2><p>&emsp;&emsp;现在要求出方程 $x^2\equiv n\pmod p $ 的一个解。</p>
+<p>&emsp;&emsp;在 $[0,p-1]$ 中随机挑选一个数 $a$，定义 $\omega=\sqrt{a^2-n}$，若 $(a^2-n)^{\frac{p-1}{2}}\equiv -1\pmod p$，即 $\Big(\frac{\omega^2}{p}\Big)=-1$，那么 $x=(a+\omega)^{\frac{p+1}{2}}$。</p>
+<p><strong>证明：</strong></p>
+<p>&emsp;&emsp;可以发现：<br>$$<br>(a^2-n)^{\frac{p-1}{2}}\equiv -1\pmod p\Longrightarrow (\omega ^2)^{\frac{p-1}{2}}\equiv -1\pmod p\Longrightarrow \omega^{p-1}\equiv-1\pmod p<br>$$<br>&emsp;&emsp;则：</p>
+<p><img src="https://i.loli.net/2020/04/15/FjuLaENp6ITlV3r.png" alt></p>
+<p>&emsp;&emsp;证毕。</p>
+<p>&emsp;&emsp;由于满足 $\Big(\frac{\omega^2}{p}\Big)=-1$ 的解有 $\frac{p-1}{2}$ 个，选中的概率为 $\frac{1}{2}$，所以期望是两次。</p>
+<p>&emsp;&emsp;$x$ 是一个解，$p-x$ 显然也是解，因为 $(p-x)^2=p^2-2\ast p\ast x+x^2\equiv x^2\pmod p$。所以求出了一个解，相当于求出了另一个。</p>
+<h2 id="扩域"><a href="#扩域" class="headerlink" title="扩域"></a>扩域</h2><p>&emsp;&emsp;上文中，$a^2-n$ 不能直接开根号，但是可以把域扩充一下，设扩充后的域为 $\mathbb{F}<em>{p^2}$，定义 $\omega=\sqrt{a^2-n}$ 为这个域的 “虚数单位元”（类比 $i=\sqrt{-1}$），则这个 “复数域” $\mathbb{F}</em>{p^2}$ 中的数可以表示为 $a+b\omega$（类比复数域 $a+bi$，$b\omega$ 相当于虚部）。</p>
+<p>&emsp;&emsp;我们将复数域的四则运算法则全部类比到 $\mathbb{F}_{p^2}$ 上，显然它依然满足封闭性、交换律、结合律、分配律，还存在加法零元和乘法逆元。具体见下图：</p>
+<p><img src="https://i.loli.net/2020/04/15/KTrNZbAfYwCjtpu.png" alt></p>
+<p>&emsp;&emsp;由此定义后，$a^2-n$ 就可以开根号了。</p>
+<p>&emsp;&emsp;最后一个问题：我们需要的解是在 $\mathbb{F}<em>p$ 意义下的，但是求出的解是在 $\mathbb{F}</em>{p^2}$ 意义下的，也就是说：如何确定求出的解虚部为 $0$ ？</p>
+<p>&emsp;&emsp;根据 <strong>拉格朗日定理</strong>，可知在在任意一个模 $p(p\in\mathbb{P})$ 的数域里面，任意一个多项式 $f(x)$ 最多有$\text{deg}(f(x))$ 个根（ $f(x)\equiv 0\pmod p$）的解称为 $f(x)$ 在 $\mathbb{F}<em>p $ 下的根），$\text{deg}$ 表示多项式的度数，即最大指数。由于 $\mathbb{F}</em>{p^2}$ 是对 $ \mathbb{F}<em>p $ 域的扩充，$\mathbb{F}_p$ 域的两根一定在 $\mathbb{F}</em>{p^2} $ 内也有效，并且我们知道 $x^2-n$ 在数域 $\mathbb{F}_{p^2}$ 下的根有两个 $(x_1,x_2)$，那么 $x_1,x_2$ 一定也是 $\mathbb{F}_p$ 域下的根，也就是 “虚部” 系数为 $0$。 </p>
+<p>&emsp;&emsp;算法时间复杂度为 $O(\log p)$。</p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="P5491-【模板】二次剩余"><a href="#P5491-【模板】二次剩余" class="headerlink" title="P5491 【模板】二次剩余"></a>P5491 【模板】二次剩余</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>&emsp;&emsp;求解方程 $x^2 \equiv n\pmod p$。多组数据。保证 $p$ 是奇素数。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>&emsp;&emsp;第一行一个整数 $T$ 表示数据组数。</p>
+<p>&emsp;&emsp;接下来 $T$ 行，每行一个 $n$，一个 $p$。</p>
+<p>&emsp;&emsp;$T\leq 10000,n,p\leq 10^9+9$。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>&emsp;&emsp;输出共 $T$ 行。</p>
+<p>&emsp;&emsp;对于每一行输出：</p>
+<p>&emsp;&emsp;若有解，则按  $\bmod  p$ 后递增的顺序输出在 $ \bmod  p$ 意义下的全部解。</p>
+<p>&emsp;&emsp;若两解相同，只输出其中一个。</p>
+<p>&emsp;&emsp;若无解，则输出 $\text{Hola!}$。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token keyword">long</span> <span class="token keyword">long</span> n<span class="token punctuation">,</span>p<span class="token punctuation">,</span>w_2<span class="token punctuation">;</span>
+<span class="token keyword">struct</span> Complex
+<span class="token punctuation">{</span>
+    <span class="token keyword">long</span> <span class="token keyword">long</span> x<span class="token punctuation">,</span>y<span class="token punctuation">;</span>
+    <span class="token function">Complex</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> _x<span class="token punctuation">,</span><span class="token keyword">long</span> <span class="token keyword">long</span> _y<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        x<span class="token operator">=</span>_x<span class="token punctuation">,</span>y<span class="token operator">=</span>_y<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+Complex <span class="token keyword">operator</span> <span class="token operator">*</span> <span class="token punctuation">(</span>Complex a<span class="token punctuation">,</span>Complex b<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">Complex</span><span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>x<span class="token operator">*</span>b<span class="token punctuation">.</span>x<span class="token operator">%</span>p<span class="token operator">+</span>w_2<span class="token operator">*</span>a<span class="token punctuation">.</span>y<span class="token operator">%</span>p<span class="token operator">*</span>b<span class="token punctuation">.</span>y<span class="token operator">%</span>p<span class="token operator">+</span>p<span class="token punctuation">)</span><span class="token operator">%</span>p<span class="token punctuation">,</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>x<span class="token operator">*</span>b<span class="token punctuation">.</span>y<span class="token operator">%</span>p<span class="token operator">+</span>a<span class="token punctuation">.</span>y<span class="token operator">*</span>b<span class="token punctuation">.</span>x<span class="token operator">%</span>p<span class="token operator">+</span>p<span class="token punctuation">)</span><span class="token operator">%</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">bool</span> <span class="token keyword">operator</span> <span class="token operator">==</span> <span class="token punctuation">(</span>Complex a<span class="token punctuation">,</span>Complex b<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a<span class="token punctuation">.</span>x<span class="token operator">==</span>b<span class="token punctuation">.</span>x<span class="token operator">&amp;&amp;</span>a<span class="token punctuation">.</span>y<span class="token operator">==</span>b<span class="token punctuation">.</span>y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">long</span> <span class="token keyword">long</span> <span class="token function">quick_pow</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> a<span class="token punctuation">,</span><span class="token keyword">long</span> <span class="token keyword">long</span> b<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">long</span> <span class="token keyword">long</span> ans<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>b<span class="token operator">&amp;</span><span class="token number">1</span><span class="token punctuation">)</span>
+            ans<span class="token operator">=</span>ans<span class="token operator">*</span>a<span class="token operator">%</span>p<span class="token punctuation">;</span>
+        a<span class="token operator">=</span>a<span class="token operator">*</span>a<span class="token operator">%</span>p<span class="token punctuation">;</span>
+        b<span class="token operator">>>=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+Complex <span class="token function">quick_pow</span><span class="token punctuation">(</span>Complex a<span class="token punctuation">,</span><span class="token keyword">long</span> <span class="token keyword">long</span> b<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Complex ans<span class="token operator">=</span><span class="token function">Complex</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>b<span class="token operator">&amp;</span><span class="token number">1</span><span class="token punctuation">)</span>
+            ans<span class="token operator">=</span>ans<span class="token operator">*</span>a<span class="token punctuation">;</span>
+        a<span class="token operator">=</span>a<span class="token operator">*</span>a<span class="token punctuation">;</span>
+        b<span class="token operator">>>=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">long</span> <span class="token keyword">long</span> <span class="token function">Cipolla</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">long</span> <span class="token keyword">long</span> a<span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        a<span class="token operator">=</span><span class="token function">rand</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">%</span>p<span class="token punctuation">;</span>
+        <span class="token keyword">long</span> <span class="token keyword">long</span> w<span class="token operator">=</span><span class="token punctuation">(</span>a<span class="token operator">*</span>a<span class="token operator">%</span>p<span class="token operator">-</span>n<span class="token operator">+</span>p<span class="token punctuation">)</span><span class="token operator">%</span>p<span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">quick_pow</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span><span class="token punctuation">(</span>p<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">==</span>p<span class="token number">-1</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    w_2<span class="token operator">=</span><span class="token punctuation">(</span>a<span class="token operator">*</span>a<span class="token operator">%</span>p<span class="token operator">-</span>n<span class="token operator">+</span>p<span class="token punctuation">)</span><span class="token operator">%</span>p<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> 
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">srand</span><span class="token punctuation">(</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> T<span class="token punctuation">;</span>
+    cin<span class="token operator">>></span>T<span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>T<span class="token operator">--</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        cin<span class="token operator">>></span>n<span class="token operator">>></span>p<span class="token punctuation">;</span>
+        n<span class="token operator">=</span>n<span class="token operator">%</span>p<span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
+            cout<span class="token operator">&lt;&lt;</span><span class="token number">0</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">quick_pow</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span><span class="token punctuation">(</span>p<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">==</span>p<span class="token number">-1</span><span class="token punctuation">)</span>
+            <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"Hola!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">long</span> <span class="token keyword">long</span> ans<span class="token operator">=</span><span class="token function">quick_pow</span><span class="token punctuation">(</span><span class="token function">Complex</span><span class="token punctuation">(</span><span class="token function">Cipolla</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">(</span>p<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span>x<span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>ans<span class="token operator">></span>p<span class="token operator">-</span>ans<span class="token punctuation">)</span>
+                ans<span class="token operator">=</span>p<span class="token operator">-</span>ans<span class="token punctuation">;</span>
+            cout<span class="token operator">&lt;&lt;</span>ans<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span>p<span class="token operator">-</span>ans<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>            
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
             </div>
             <hr/>
 
