@@ -512,7 +512,8 @@
 <p>&emsp;&emsp;我们将复数域上的四则运算全部类比到 $\text{F}_{p^2}$ 上，显然它依然满足封闭性、交换律、结合律、分配律，还存在加法零元和乘法逆元。具体见下图：</p>
 <p><img src="https://i.loli.net/2020/04/15/kQ15SKZjMn237Vz.png" alt></p>
 <p>&emsp;&emsp;由此定义后，就可以对 $a^2-n$ 开根号了。</p>
-<p>&emsp;&emsp;最后一个问题：</p>
+<p>&emsp;&emsp;最后一个问题：我们需要的解是在 $\text{F}<em>{p}$ 意义下的，但是求出的解是在 $\text{F}</em>{p^2}$ 意义下的，也就是说，如何确定求出的解虚部为 $0$ ？</p>
+<p>&emsp;&emsp;根据 <strong>拉格朗日定理</strong>，可知在任意一个模 $p(p\in \text{P})$ 的数域里面，任意一个多项式 $f(x)$ 最多有 $\text{deg}(f(x))$ 个根（$f(x)\equiv 0\pmod p$ 的解称为 $f(x)$ 在 $\text{F}<em>{p}$ 下的根），$\text{deg}$ 表示多项式的度数，即最大指数。由于 $\text{F}</em>{p^2}$  是对 $\text{F}<em>{p}$ 域的扩充，$\text{F}</em>{p}$ 域的两根一定在 $\text{F}<em>{p^2}$ 内也有效，并且我们知道 $x^2-n$ 在数域 $\text{F}</em>{p^2}$ 下的根有两个 $(x_1,x_2)$，那么 $x_1,x_2$ 一定也是 $\text{F}_{p}$ 域下的根，也就是 “虚部” 系数为 $0$。<br>&emsp;&emsp;算法的时间复杂度为 $O(\log p)$。</p>
 <h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="P5491-【模板】二次剩余"><a href="#P5491-【模板】二次剩余" class="headerlink" title="P5491 【模板】二次剩余"></a>P5491 【模板】二次剩余</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>&emsp;&emsp;求解方程 $x^2 \equiv n\pmod p$。多组数据。保证 $p$ 是奇素数。</p>
 <h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>&emsp;&emsp;第一行一个整数 $T$ 表示数据组数。</p>
 <p>&emsp;&emsp;接下来 $T$ 行，每行一个 $n$，一个 $p$。</p>
