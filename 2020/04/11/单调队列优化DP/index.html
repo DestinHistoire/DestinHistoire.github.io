@@ -644,7 +644,7 @@
 <p>&emsp;&emsp;余数为 $0$ —— $0,V_i,2V_i,\cdots$</p>
 <p>&emsp;&emsp;余数为 $1$ —— $1,1+V_i,1+2V_i,\cdots$</p>
 <p>&emsp;&emsp;$\cdots$</p>
-<p>&emsp;&emsp;余数为 $0$ —— $(V_i-1),(V_i-1)+V_i,(V_i-1)+2V_i,\cdots$</p>
+<p>&emsp;&emsp;余数为 $V_i-1$ —— $(V_i-1),(V_i-1)+V_i,(V_i-1)+2V_i,\cdots$</p>
 <p>&emsp;&emsp;把 “倒序循环 $j$” 的过程，改为对每个余数 $u\in[0,V_i-1]$，倒序循环 $p=\lfloor(M-u)/V_i\rfloor$ ~ $0$，对应的状态就是 $j=u+p<em>V_i$。第 $i$ 种物品只有 $C_i$ 个，故能转移到 $j=u+p</em>V_i$ 的决策候选集合就是 ${u+k*V_i\mid p-C_i\leq k\leq p-1}$。写出新的状态转移方程：</p>
 <p><img src="https://i.loli.net/2020/04/14/xEkmsGILnB3NfD9.png" alt></p>
 <p>&emsp;&emsp;与本节的第一题类似，把外层循环 $i$ 和 $u$ 看作定值，当内层循环变量 $p$ 减少 $1$ 时，决策 $k$ 的取值范围 $[p-C_i,p-1]$ 的上、下界均单调减小。状态转移方程等号右侧的式子仍然分为两部分，仅包含变量 $p$ 的 $p<em>W_i$ 和仅包含变量 $k$ 的 $F[u+k</em>V_i]-k<em>W_i$。综上所述，我们可以建立一个决策点 $k$ 单调递减、数值 $F[u+k</em>V_i]-k*W_i$ 单调递减的队列，用于维护候选集合。对于每个 $p$，执行单调队列的三个惯例操作：</p>
@@ -679,8 +679,8 @@
             <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> u<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>u<span class="token operator">&lt;=</span>V<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>u<span class="token operator">++</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//除以V[i]的余数</span>
             <span class="token punctuation">{</span>
                 <span class="token keyword">int</span> head<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>tail<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//单调队列 </span>
-                <span class="token keyword">int</span> maxp<span class="token operator">=</span><span class="token punctuation">(</span>m<span class="token operator">-</span>u<span class="token punctuation">)</span><span class="token operator">/</span>V<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//把最初的候选集合插入队列</span>
-                <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token operator">=</span>maxp<span class="token number">-1</span><span class="token punctuation">;</span>k<span class="token operator">>=</span><span class="token function">max</span><span class="token punctuation">(</span>maxp<span class="token operator">-</span>C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>k<span class="token operator">--</span><span class="token punctuation">)</span>
+                <span class="token keyword">int</span> maxp<span class="token operator">=</span><span class="token punctuation">(</span>m<span class="token operator">-</span>u<span class="token punctuation">)</span><span class="token operator">/</span>V<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token operator">=</span>maxp<span class="token number">-1</span><span class="token punctuation">;</span>k<span class="token operator">>=</span><span class="token function">max</span><span class="token punctuation">(</span>maxp<span class="token operator">-</span>C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>k<span class="token operator">--</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//把最初的候选集合插入队列</span>
                 <span class="token punctuation">{</span>
                     <span class="token keyword">while</span><span class="token punctuation">(</span>head<span class="token operator">&lt;=</span>tail<span class="token operator">&amp;&amp;</span><span class="token function">fun</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>u<span class="token punctuation">,</span>q<span class="token punctuation">[</span>tail<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">&lt;=</span><span class="token function">fun</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>u<span class="token punctuation">,</span>k<span class="token punctuation">)</span><span class="token punctuation">)</span>
                         tail<span class="token operator">--</span><span class="token punctuation">;</span>
@@ -692,7 +692,7 @@
                         head<span class="token operator">++</span><span class="token punctuation">;</span>
                     <span class="token keyword">if</span><span class="token punctuation">(</span>head<span class="token operator">&lt;=</span>tail<span class="token punctuation">)</span>
                         dp<span class="token punctuation">[</span>u<span class="token operator">+</span>p<span class="token operator">*</span>V<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>u<span class="token operator">+</span>p<span class="token operator">*</span>V<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token function">fun</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>u<span class="token punctuation">,</span>q<span class="token punctuation">[</span>head<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    <span class="token keyword">if</span><span class="token punctuation">(</span>p<span class="token operator">-</span>C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span><span class="token number">1</span><span class="token operator">>=</span><span class="token number">0</span><span class="token punctuation">)</span>
+                    <span class="token keyword">if</span><span class="token punctuation">(</span>p<span class="token operator">-</span>C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span><span class="token number">1</span><span class="token operator">>=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//插入新决策,同时维护队尾单调性</span>
                     <span class="token punctuation">{</span>
                         <span class="token keyword">while</span><span class="token punctuation">(</span>head<span class="token operator">&lt;=</span>tail<span class="token operator">&amp;&amp;</span><span class="token function">fun</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>u<span class="token punctuation">,</span>q<span class="token punctuation">[</span>tail<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">&lt;=</span><span class="token function">fun</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>u<span class="token punctuation">,</span>p<span class="token operator">-</span>C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
                             tail<span class="token operator">--</span><span class="token punctuation">;</span>
@@ -1366,22 +1366,6 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 

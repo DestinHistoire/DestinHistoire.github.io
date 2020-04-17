@@ -518,7 +518,7 @@
 <p><img src="https://i.loli.net/2020/04/14/o8qFysV2MgaEknO.jpg" alt></p>
 <p>&emsp;&emsp;对于任意三个决策点 $(sumC[j_1],F[j_1])$，$(sumC[j_2],F[j_2])$ 和 $(sumC[j_3],F[j_3])$，不妨设 $j_1&lt;j_2&lt;j_3$，因为 $T,C$ 均为正整数，亦有 $sumC[j_1]&lt;sumC[j_2]&lt;sumC[j_3]$。根据 “及时排除无用决策” 的思想，我们来考虑 $j_2$ 有可能成为最优决策的条件。</p>
 <p><img src="https://i.loli.net/2020/04/14/4QgJfjeGDz8MK7F.jpg" alt></p>
-<p>&emsp;&emsp;从上图中我们发现，$j_2$ 有可能成为最优决策，当且仅当：<br>$$<br>\frac{F[j_2]-F[j_1]}{sumC[j_2]-sumC[j_1]}&lt;\frac{F[j_3]-F[j_2]}{sumC[j_3]-sumC[j_2]}<br>$$<br>&emsp;&emsp;不等号两侧实际上都是连接两个决策点的线段的斜率。通俗地讲，我们应该维护 <strong>“连接相邻两点的线段斜率” 单调递增</strong>的一个 <strong>“下凸壳”</strong>（凸壳，意思是点集的边界。在斜率优化中，我们一般称 “连接相邻两点的线段斜率” 单调递增的一组顶点构成 “下凸壳”，称），只有这个 “下凸壳” 的顶点才有可能成为最优决策。实际上，对于一条斜率为 $k$ 的直线，若某个顶点左侧线段的斜率比 $k$ 小、右侧线段的斜率比 $k$ 大，则该顶点就是最优决策。换言之，如果把这条直线和所有的线段组成一个序列，那么令直线截距最小化的顶点就出现在按照斜率大小排序时，直线应该排在的位置上。如下图所示：</p>
+<p>&emsp;&emsp;从上图中我们发现，$j_2$ 有可能成为最优决策，当且仅当：<br>$$<br>\frac{F[j_2]-F[j_1]}{sumC[j_2]-sumC[j_1]}&lt;\frac{F[j_3]-F[j_2]}{sumC[j_3]-sumC[j_2]}<br>$$<br>&emsp;&emsp;不等号两侧实际上都是连接两个决策点的线段的斜率。通俗地讲，我们应该维护 <strong>“连接相邻两点的线段斜率” 单调递增</strong>的一个 <strong>“下凸壳”</strong>（凸壳，意思是点集的边界。在斜率优化中，我们一般称 “连接相邻两点的线段斜率” 单调递增的一组顶点构成 “下凸壳”，称 “连接相邻两点的线段斜率” 单调递减的一组顶点称为 “上凸壳”），只有这个 “下凸壳” 的顶点才有可能成为最优决策。实际上，对于一条斜率为 $k$ 的直线，若某个顶点左侧线段的斜率比 $k$ 小、右侧线段的斜率比 $k$ 大，则该顶点就是最优决策。换言之，如果把这条直线和所有的线段组成一个序列，那么令直线截距最小化的顶点就出现在按照斜率大小排序时，直线应该排在的位置上。如下图所示：</p>
 <p><img src="https://i.loli.net/2020/04/14/NDfhj78Pab3AuZ6.jpg" alt></p>
 <p>&emsp;&emsp;在本题中，$j$ 的取值范围是 $0\leq j&lt;i$，随着 $i$ 的增大，每次会有一个新的决策进入候选集合。因为 $sumC$ 的单调性，新决策在坐标系中的横坐标一定大于之前的所有决策，出现在整个凸壳的最右端。另外，因为 $sumT$ 的单调性，每次求解 “最小截距” 的直线斜率 $S+sumT[i]$ 也单调递增，如果我们只保留凸壳上 “连接相邻两点的线段斜率” 大于 $S+sumT[i]$ 的部分，那么凸壳的最左端顶点就一定是最优决策。</p>
 <p>&emsp;&emsp;综上所述，我们可以建立单调队列 $q$，维护这个下凸壳。队列中保存若干个决策变量，它们对应凸壳上的顶点，且满足横坐标 $sumC$ 递增、连接相邻两点的线段斜率也递增。需要支持的操作与一般的单调队列题目类似，对于每个状态变量 $i$：</p>
@@ -1332,22 +1332,6 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 
