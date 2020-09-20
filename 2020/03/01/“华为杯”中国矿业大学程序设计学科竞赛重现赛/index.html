@@ -1198,7 +1198,7 @@ priority_queue<span class="token operator">&lt;</span><span class="token keyword
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            离散对数&emsp;&emsp;对于给定的 $ a、b、p $ 存在一个 $x$，使得$$a^x\equiv b \pmod p$$则称 $x$ 为 $b$ 在模 $p$ 意义下以 $a$ 为底的离散对数。
+                            离散对数&emsp;&emsp;对于给定的 $ a,b,p $ 存在一个 $x$，使得$$a^x\equiv b \pmod p$$则称 $x$ 为 $b$ 在模 $p$ 意义下以 $a$ 为底的离散对数。
 性质离散对数有类似于一般的对数的
                         
                     </div>
@@ -1548,6 +1548,22 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 

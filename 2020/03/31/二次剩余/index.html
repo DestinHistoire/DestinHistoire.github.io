@@ -491,7 +491,7 @@
 <h3 id="二次非剩余的充要条件：勒让德符号为-1"><a href="#二次非剩余的充要条件：勒让德符号为-1" class="headerlink" title="二次非剩余的充要条件：勒让德符号为 $-1$"></a>二次非剩余的充要条件：勒让德符号为 $-1$</h3><p><strong>证明：</strong></p>
 <p>&emsp;&emsp;由于 $p$ 是质数，由 <strong>扩展欧几里得算法</strong> 可知对于每个 $1\leq i\leq p-1$，都存在唯一的一个整数 $j$，使得 $ij\equiv a\pmod p$。所以可以把 $1,2,\cdots ,p-1$ 分成 $\frac{p-1}{2}$ 对，使得每对的乘积都为 $a$。此时有 $ (p-1)!\equiv a^{\frac{p-1}{2}}$，根据威尔逊定理有 $ (p-1)!\equiv-1\pmod p$，所以 $a^{\frac{p-1}{2}}\equiv -1\pmod p$。</p>
 <p>&emsp;&emsp;涉及 <strong>扩展欧几里得算法</strong> 的证明：</p>
-<p>&emsp;&emsp;由于 $ij\equiv a\pmod p$，则 $ij+pk=a$。因为 $\gcd(i,p)=1$，所以 $ij+pk=1$ 必然有解。因为 $a$ 是 $1$ 的倍数，所以 $ij+pk=n$ 必然有解。</p>
+<p>&emsp;&emsp;由于 $ij\equiv a\pmod p$，则 $ij+pk=a$。因为 $\gcd(i,p)=1$，所以 $ij+pk=1$ 必然有解。因为 $a$ 是 $1$ 的倍数，所以 $ ij+pk=a $ 必然有解。</p>
 <p>&emsp;&emsp;令 $j=j_0+pk’$，则有且只有一个解 $j$ 落在 $[1,p-1]$ 内。</p>
 <h3 id="p-a-时，勒让德符号为-0"><a href="#p-a-时，勒让德符号为-0" class="headerlink" title="$p|a$ 时，勒让德符号为 $0$"></a>$p|a$ 时，勒让德符号为 $0$</h3><p>&emsp;&emsp;显然成立。</p>
 <h2 id="相关定理"><a href="#相关定理" class="headerlink" title="相关定理"></a>相关定理</h2><h3 id="定理-1"><a href="#定理-1" class="headerlink" title="定理 $1$"></a>定理 $1$</h3><p>&emsp;&emsp;对于方程 $x^2\equiv a\pmod p$，共有 $\frac{p-1}{2}$ 个不同的 $a$ 使该方程有解。</p>
@@ -1257,6 +1257,22 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 

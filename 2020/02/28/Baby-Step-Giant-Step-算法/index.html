@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Baby-Step-Giant-Step 算法, CUG Information Management and Information System">
-    <meta name="description" content="离散对数&amp;emsp;&amp;emsp;对于给定的 $ a、b、p $ 存在一个 $x$，使得$$a^x\equiv b \pmod p$$则称 $x$ 为 $b$ 在模 $p$ 意义下以 $a$ 为底的离散对数。
+    <meta name="description" content="离散对数&amp;emsp;&amp;emsp;对于给定的 $ a,b,p $ 存在一个 $x$，使得$$a^x\equiv b \pmod p$$则称 $x$ 为 $b$ 在模 $p$ 意义下以 $a$ 为底的离散对数。
 性质离散对数有类似于一般的对数的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -475,7 +475,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="离散对数"><a href="#离散对数" class="headerlink" title="离散对数"></a>离散对数</h2><p>&emsp;&emsp;对于给定的 $ a、b、p $ 存在一个 $x$，使得<br>$$<br>a^x\equiv b \pmod p<br>$$<br>则称 $x$ 为 $b$ 在模 $p$ 意义下以 $a$ 为底的<strong>离散对数</strong>。</p>
+                <h2 id="离散对数"><a href="#离散对数" class="headerlink" title="离散对数"></a>离散对数</h2><p>&emsp;&emsp;对于给定的 $ a,b,p $ 存在一个 $x$，使得<br>$$<br>a^x\equiv b \pmod p<br>$$<br>则称 $x$ 为 $b$ 在模 $p$ 意义下以 $a$ 为底的<strong>离散对数</strong>。</p>
 <h4 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h4><p>离散对数有类似于一般的对数的性质：</p>
 <p><img src="https://i.loli.net/2020/02/28/xHJS4ZvtuYVE8B7.png" alt></p>
 <h2 id="BSGS算法"><a href="#BSGS算法" class="headerlink" title="BSGS算法"></a>BSGS算法</h2><p>&emsp;&emsp;需要求解的方程为（$p$ 为质数）<br>$$<br>a^x\equiv b\pmod p<br>$$<br>&emsp;&emsp;令 $ m=\lceil\sqrt p\rceil $。根据费马小定理，有 $ a^{p-1}\equiv 1\pmod p $，故若方程有解，则必然存在一个 $ 0\leq x&lt;p-1 $。</p>
@@ -1371,6 +1371,22 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 

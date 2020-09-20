@@ -541,7 +541,7 @@
 <h2 id="扩展中国剩余定理"><a href="#扩展中国剩余定理" class="headerlink" title="扩展中国剩余定理"></a>扩展中国剩余定理</h2><p>&emsp;&emsp;即使模数不满足两两互质，也有办法判断线性同余方程是否有解，并求出方程组的解。</p>
 <h3 id="【例题】POJ-2891-Strange-Way-to-Express-Integers"><a href="#【例题】POJ-2891-Strange-Way-to-Express-Integers" class="headerlink" title="【例题】POJ-2891    Strange Way to Express Integers"></a>【例题】POJ-2891    Strange Way to Express Integers</h3><p>&emsp;&emsp;给定 $2n$ 个正整数 $a_1,a_2,\cdots,a_n$ 和 $m_1,m_2,\cdots,m_n$，求一个最小的正整数 $x$ ，满足 $\forall i\in[1,n],x\equiv a_i(\text{mod}\ m_i)$，或者给出无解。</p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;本题中 $m_i$ 不一定满足两两互质，中国剩余定理不再适用。可以考虑数学归纳法，假设已经求出了前 $k-1$ 个方程构成的方程组的一个解 $x$。记 $m=\displaystyle\prod\limits_{i=1}^{k-1}m_i $，则 $ x+i\ast m(i\in Z) $ 是前 $k-1$ 个方程的通解。</p>
-<p>&emsp;&emsp;考虑第 $k$ 个方程，求出一个整数 $t$ ，使得 $ x+t\ast m\equiv a_k(\text{mod}\ m_k)$。该方程等价于 $ m\ast t\equiv a_k-x(\text{mod}\ m_k)$，其中 $t$ 是未知量。这就是一个线性同余方程，可以用扩展欧几里得算法判断是否有解，并求出它的解。若有解，则 $x’=x+t\ast m $ 就是前 $k$ 个方程构成的方程组的一个解。</p>
+<p>&emsp;&emsp;考虑第 $k$ 个方程，求出一个整数 $t$ ，使得 $ x+t\ast m\equiv a_k\pmod {m_k}$。该方程等价于 $ m\ast t\equiv a_k-x(\text{mod}\ m_k)$，其中 $t$ 是未知量。这就是一个线性同余方程，可以用扩展欧几里得算法判断是否有解，并求出它的解。若有解，则 $x’=x+t\ast m $ 就是前 $k$ 个方程构成的方程组的一个解。</p>
 <p>&emsp;&emsp;综上所述，使用 $n$ 次扩展欧几里得算法，就求出了整个方程组的解。</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span> </span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
@@ -837,7 +837,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            离散对数&emsp;&emsp;对于给定的 $ a、b、p $ 存在一个 $x$，使得$$a^x\equiv b \pmod p$$则称 $x$ 为 $b$ 在模 $p$ 意义下以 $a$ 为底的离散对数。
+                            离散对数&emsp;&emsp;对于给定的 $ a,b,p $ 存在一个 $x$，使得$$a^x\equiv b \pmod p$$则称 $x$ 为 $b$ 在模 $p$ 意义下以 $a$ 为底的离散对数。
 性质离散对数有类似于一般的对数的
                         
                     </div>
@@ -1241,6 +1241,22 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 

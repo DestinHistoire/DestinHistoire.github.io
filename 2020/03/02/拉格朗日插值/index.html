@@ -485,7 +485,7 @@
 <p><img src="https://i.loli.net/2020/03/02/v8ZzfIKuWVkTM2B.png" alt></p>
 <p>&emsp;&emsp;此时代入数值 $18$ 就可以求出值：$L(18)=f(18)=-11$</p>
 <h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><h3 id="存在性"><a href="#存在性" class="headerlink" title="存在性"></a>存在性</h3><p>&emsp;&emsp;对于给定的 $n+1$ 个点 $(x_0,y_0),(x_1,y_1),\cdots,(x_n,y_n)$，拉格朗日插值法的思路是找到一个在一点 $x_i$ 取值为 $1$，而在其他点取值都是 $0$ 的多项式 $l_i(x)$。这样，多项式 $y_il_i(x)$ 在点 $x_i$ 取值为 $y_i$，而在其他点取值都是 $0$。</p>
-<p>&emsp;&emsp;多项式 $L(x)=\displaystyle\sum\limits_{i=0}^{n}y_il_i(x)$ 就可以满足：<br>$$<br>L(x)=\displaystyle\sum\limits_{i=0}^{n}y_il_i(x)=0+0+\cdots+y_i+\cdots+0=y_i<br>$$<br>&emsp;&emsp;在其他点取值为 $0$ 的多项式容易找到，例如：<br>$$<br> (x-x_0)\cdots(x-x_{i-1})(x-x_{j+1})\cdots(x-x_n)<br>$$<br>&emsp;&emsp;它在点 $x_i$ 处取值为：<br>$$<br>(x_i-x_0)\cdots(x_i-x_{i-1})(x_i-x_{i+1})\cdots(x_i-x_n)<br>$$<br>&emsp;&emsp;将多项式除以上述取值，就得到一个满足<strong>在 $x_i$ 取值为 $1$，而在其他点取值都是 $0$ 的多项式</strong>：<br>$$<br>l_i(x)=\prod\limits_{j=0,j\neq i}^{n}\frac{x-x_j}{x_i-x_j}=\frac{(x-x_0)}{(x_i-x_0)}\cdots\frac{(x-x_{j-1})(x-x_{j+1})}{(x_i-x_{j-1})(x_i-x_{j+1})}\cdots\frac{x-x_n}{x_i-x_n}<br>$$<br>&emsp;&emsp;这就是拉格朗日基本多项式。</p>
+<p>&emsp;&emsp;多项式 $L(x)=\displaystyle\sum\limits_{i=0}^{n}y_il_i(x)$ 就可以满足：<br>$$<br>L(x)=\displaystyle\sum\limits_{i=0}^{n}y_il_i(x)=0+0+\cdots+y_i+\cdots+0=y_i<br>$$<br>&emsp;&emsp;在其他点取值为 $0$ 的多项式容易找到，例如：<br>$$<br>(x-x_0)\cdots(x-x_{i-1})(x-x_{i+1})\cdots(x-x_n)<br>$$<br>&emsp;&emsp;它在点 $x_i$ 处取值为：<br>$$<br>(x_i-x_0)\cdots(x_i-x_{i-1})(x_i-x_{i+1})\cdots(x_i-x_n)<br>$$<br>&emsp;&emsp;将多项式除以上述取值，就得到一个满足<strong>在 $x_i$ 取值为 $1$，而在其他点取值都是 $0$ 的多项式</strong>：<br>$$<br>l_i(x)=\prod\limits_{j=0,j\neq i}^{n}\frac{x-x_j}{x_i-x_j}=\frac{(x-x_0)}{(x_i-x_0)}\cdots\frac{(x-x_{j-1})(x-x_{j+1})}{(x_i-x_{j-1})(x_i-x_{j+1})}\cdots\frac{x-x_n}{x_i-x_n}<br>$$<br>&emsp;&emsp;这就是拉格朗日基本多项式。</p>
 <h3 id="唯一性"><a href="#唯一性" class="headerlink" title="唯一性"></a>唯一性</h3><p>&emsp;&emsp;次数不超过 $n$ 的拉格朗日多项式至多只有 $1$ 个，因为对任意两个次数不超过 $n$ 的拉格朗日多项式： $P_1$ 和 $P_2$ ，它们的差 $P_1-P_2$ 在所有 $n+1$ 个点上取值都是 $0$，因此必然是多项式 $(x-x_0)(x-x_1)\cdots(x-x_n)$ 的倍数。因此，如果这个差 $P_1-P_2$ 不等于 $0$，次数就一定不小于 $n+1$。但是 $P_1-P_2$ 是两个次数不超过 $n$ 的多项式之差，它的次数也不超过 $n$。</p>
 <p>&emsp;&emsp;所以 $P_1-P_2=0$，也就是说 $P_1=P_2$，这样就证明了唯一性。</p>
 <h2 id="【例题】P4781-【模板】拉格朗日插值"><a href="#【例题】P4781-【模板】拉格朗日插值" class="headerlink" title="【例题】P4781 【模板】拉格朗日插值"></a>【例题】P4781 【模板】拉格朗日插值</h2><p>&emsp;&emsp;$n$ 个点 $(x_i,y_i)$ 可以唯一地确定一个多项式 $y = f(x)$。</p>
@@ -1177,6 +1177,22 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 
